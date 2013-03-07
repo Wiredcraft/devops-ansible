@@ -1,0 +1,12 @@
+---
+# file: services/mysql/tasks/mysql-client.yml
+
+# Ensure packages
+- name: be sure mysql-client is installed
+  apt: pkg=mysql-client state=present
+  
+- name: be sure python-mysqldb is installed
+  apt: pkg=python-mysqldb state=present
+
+# Ensure config
+# Do some shit about the config

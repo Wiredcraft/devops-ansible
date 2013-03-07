@@ -1,0 +1,14 @@
+---
+# file: services/nginx/tasks/main.yml
+
+# Ensure packages
+- name: be sure nginx is installed
+  apt: pkg=nginx state=present
+  notify: enable nginx service
+
+# Ensure config
+# Do some shit about the config
+
+# Ensure running
+- name: be sure nginx is running
+  service: name=nginx state=started

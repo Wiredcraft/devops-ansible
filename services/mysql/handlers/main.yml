@@ -1,0 +1,5 @@
+---
+# file: services/mysql/handlers/main.yml
+
+- include: mysql-client.yml
+- include: mysql-server.yml

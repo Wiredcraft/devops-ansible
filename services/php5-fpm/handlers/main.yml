@@ -1,0 +1,6 @@
+---
+# file: services/php5-fpm/handlers/main.yml
+
+# Ensure service enabled at boot
+- name: enable php5-fpm service
+  service: name=php5-fpm enabled=yes

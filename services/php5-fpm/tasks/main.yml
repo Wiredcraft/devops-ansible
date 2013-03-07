@@ -1,0 +1,14 @@
+---
+# file: services/php5-fpm/tasks/main.yml
+
+# Ensure packages
+- name: be sure php5-fpm is installed
+  apt: pkg=php5-fpm state=present
+  notify: enable php5-fpm service
+
+# Ensure config
+# Do some shit about the config
+
+# Ensure running
+- name: be sure php5-fpm is running
+  service: name=php5-fpm state=started

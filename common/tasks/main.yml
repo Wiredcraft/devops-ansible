@@ -1,0 +1,5 @@
+---
+# file: common/tasks/main.yml
+
+- include: users.yml tags=devops
+- include: packages.yml tags=devops
