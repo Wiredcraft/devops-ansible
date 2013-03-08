@@ -2,3 +2,4 @@
 !.gitignore
 *.swp
 spaces
+node_modules
