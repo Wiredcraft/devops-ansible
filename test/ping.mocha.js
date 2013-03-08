@@ -59,7 +59,10 @@ function buildServer(name, callback) {
 
 function destroyServer(name, callback) {
     // hardcore destroy the box
-    exec('sudo lxc-destroy -f -n '+ name, callback);
+    exec('sudo lxc-destroy -f -n '+ name, function() {
+        // wait a short while
+        setTimeout(callback, 2000);
+    });
 }
 
 // Destroy all the created servers.
