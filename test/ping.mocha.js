@@ -59,7 +59,10 @@ function buildServer(name, callback) {
 
 function destroyServer(name, callback) {
     exec('sudo lxc-shutdown -n '+ name, function() {
-        exec('sudo lxc-destroy -n '+ name, callback);
+        exec('sudo lxc-destroy -n '+ name, function() {
+            // Make sure this is fully completed ..
+            setTimeout(callback, 2000);
+        });
     });
 }
 
