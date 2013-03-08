@@ -13,8 +13,7 @@ var servers = [
     'test3'
 ]
 
-
-describe('spawn a box', function() {
+describe.skip('spawn a box', function() {
     before(function(done) {
         this.timeout(100000);
         lxc.buildServers(servers, done);
