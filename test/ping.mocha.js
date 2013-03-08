@@ -24,10 +24,14 @@ describe('spawn a box', function() {
         lxc.destroyServers(done);
     });
     
-    it('should be able to ping the servers', function(done) {
+    it('should be able to ping the '+ servers.length +' servers', function(done) {
         var remaining = lxc.servers.length;
         _.each(lxc.servers, function(server) {
             exec('ping -c 1 '+ server.ip, function(err, stdout, stderr) {
+                should.not.exist(err);
+                should.exist(stdout);
+                should.exist(stderr);
+                stderr.should.equal('');
                 if (--remaining === 0) return done();
             });
         });
