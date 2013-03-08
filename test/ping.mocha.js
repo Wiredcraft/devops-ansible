@@ -32,7 +32,7 @@ describe('spawn a box', function() {
         _.each(servers, function(server) {
             exec('ping -c 1 '+ server.ip, function(err, stdout, stderr) {
                 should.not.exist(err);
-                should.not.exist(stderr);
+                should.exist(stderr);
                 should.exist(stdout);
                 console.log(stdout);
                 if (--remaining === 0) return done();
