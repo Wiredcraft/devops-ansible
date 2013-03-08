@@ -31,6 +31,16 @@ exports.destroyServer = function destroyServer(name, callback) {
 }
 
 // Destroy all the created servers.
+exports.buildServers = function buildServers(list, callback) {
+    var remaining = list.length;
+    _.each(list, function(name) {
+        exports.buildServer(name, function() {
+            if (--remaining === 0) return callback();
+        });
+    });
+}
+
+// Destroy all the created servers.
 exports.destroyServers = function destroyServers(callback) {
     var remaining = exports.servers.length;
     _.each(exports.servers, function(server) {
