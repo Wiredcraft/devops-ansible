@@ -51,9 +51,8 @@ function buildServer(name, callback) {
             name: name,
             ip: ip
         });
-        console.log(ip);
         exec('sudo echo "lxc.network.ipv4 = '+ ip +'/24" >> /var/lib/lxc/'+ name +'/config', function() {
-            exec('sudo lxc-start -d -n '+ name, done);
+            exec('sudo lxc-start -d -n '+ name, callback);
         });
     });
 }
