@@ -34,7 +34,7 @@ exports.destroyServer = function destroyServer(name, callback) {
 exports.destroyServers = function destroyServers(callback) {
     var remaining = exports.servers.length;
     _.each(exports.servers, function(server) {
-        destroyServer(server.name, function() {
+        exports.destroyServer(server.name, function() {
             if (--remaining === 0) return callback();
         });
     });
