@@ -3,7 +3,7 @@ var exec = require('child_process').exec;
 
 var template = 'ubuntu';
 var ipBase = '10.0.3.';
-var ipStart = 4;
+var ipStart = 10;
 
 exports.servers = []
 

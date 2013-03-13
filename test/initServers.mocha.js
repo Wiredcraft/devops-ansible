@@ -16,13 +16,25 @@ describe('spawn a box', function() {
     before(function(done) {
         this.timeout(100000);
         lxc.buildServers(servers, function() {
-            // TODO - fill the fake hosts in test_space
-            done()
+            fs.mkdirSync('./fixture/spaces');
+            fs.mkdirSync('./fixture/spaces/test');
+            exec('echo "[server]
+'+ lxc.servers[0].ip +'
+" > ./fixture/spaces/test/hosts', function(err, stdout, stderr) {
+                fs.symlinkSync('../../../playbooks', './fixture/spaces/test/playbooks');
+                done()
+            });
         });
     });
     after(function(done) {
         this.timeout(100000);
-        lxc.destroyServers(done);
+        lxc.destroyServers(function() {
+            fs.unlinkSync('./fixture/spaces/test/hosts');
+            fs.unlinkSync('./fixture/spaces/test/playbooks');
+            fs.rmdirSync('./fixture/spaces/test');
+            fs.rmdirSync('./fixture/spaces');
+            done();
+        });
     });
     
     it('should be able to ping the server', function(done) {
@@ -34,8 +46,11 @@ describe('spawn a box', function() {
             done();
         });
     });
+
     it('should be able to init the server', function(done) {
-        exec('echo "ubuntu" | ansible -i fixture/test_space/hosts ../common/tasks/users.yml -u ubuntu -p -k -s', function(err, stdout, stderr) {
+        exec('python ../../../../bindevops-playbook.py -i hosts playbooks/initServer.yml -u ubuntu -p ubuntu -e newserver='+ lxc.servers[0].ip +' -s', {
+            cwd: './fixture/spaces/test'
+        }, function(err, stdout, stderr) {
             console.log(err);
             console.log(stderr);
             console.log(stdout);
@@ -46,8 +61,11 @@ describe('spawn a box', function() {
             done()
         });
     });
+    
     it('should be able to access the server with the regular user', function(done) {
-        exec('ansible -i fixture/test_space/hosts ../common/tasks/users.yml -s', function(err, stdout, stderr) {
+        exec('python ../../../../bindevops-playbook.py -i hosts playbooks/initServer.yml -e newserver='+ lxc.servers[0].ip +' -s', {
+            cwd: './fixture/spaces/test'
+        }, function(err, stdout, stderr) {
             console.log(err);
             console.log(stderr);
             console.log(stdout);
