@@ -1,0 +1,2 @@
+# This file is auto-generated
+devops ALL=(ALL:ALL) NOPASSWD: ALL
