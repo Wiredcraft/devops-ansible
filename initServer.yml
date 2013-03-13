@@ -8,9 +8,15 @@
 #
 # It should be replaced from user / pass to SSH key
 
-- hosts:
-    all
-- tasks:
-    - include: common/tasks/users.yml
+# Run initServer playbook with either of the following:
+#   - if ssh user / password based
+#       python bin/devops-playbook.py -i spaces/.../hosts initServer.yml \
+#            -s -e newserver=__ip/host from inventory__ -u ubuntu -p ubuntu
+#   - if ssh user / key based
+#       python bin/devops-playbook.py -i spaces/.../hosts initServer.yml \
+#            -s -e newserver=__ip/host from inventory__ -u ubuntu --private-key=PATH
 
-# TODO - use?
+
+- hosts: ${newserver}
+  tasks:
+    - include: common/tasks/users.yml

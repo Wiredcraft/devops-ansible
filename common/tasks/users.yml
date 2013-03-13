@@ -9,10 +9,4 @@
   authorized_key: user=devops state=present key='$FILE(/home/devops/.ssh/id_rsa.pub)'
 
 - name: be sure devops user can sudo
-  copy: src=../files/10-devops dest=/etc/sudoers.d/10-devops owner=root mode=440
-
-# - name: be sure devops has a .ssh folder
-#   file: path=/home/devops/.ssh state=directory owner=devops group=devops mode=600
-# 
-# - name: be sure devops user can ssh
-#   copy: src=../files/devops.id_rsa dest=/etc/sudoers.d/10-devops owner=devops mode=400
+  copy: src=common/files/10-devops dest=/etc/sudoers.d/10-devops owner=root mode=440
