@@ -20,3 +20,4 @@
 - hosts: ${server}
   tasks:
     - include: common/tasks/users.yml
+    - include: common/tasks/dependencies.yml

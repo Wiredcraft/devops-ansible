@@ -7,4 +7,4 @@
   
 - name: restart php5-fpm
   service: name=php5-fpm state=restarted
-  when_string: 'php5-fpm' in $group_names
+  when_string: "'php5-fpm' in $group_names"

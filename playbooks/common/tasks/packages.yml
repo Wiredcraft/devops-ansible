@@ -3,39 +3,20 @@
 
 # Ensure troubleshooting tools
 
-# - name: be sure troubleshooting tools are installed
-#   apt: pkg=$item state=installed
-#   with_items:
-#     - htop
-#     - iftop
-#     - sysstat
-#     - dstat
-
-- name: be sure htop is installed
-  apt: pkg=htop state=installed
-
-- name: be sure iftop is installed
-  apt: pkg=iftop state=installed
-
-- name: be sure sysstat is installed
-  apt: pkg=sysstat state=installed
-
-- name: be sure dstat is installed
-  apt: pkg=dstat state=installed
+- name: be sure troubleshooting tools are installed
+  apt: pkg=$item state=installed
+  with_items:
+    - htop
+    - iftop
+    - sysstat
+    - dstat
 
 # Ensure code versionning tools
 
-# - name: be sure VCS tools are installed
-#   apt: pkg=$item state=installed
-#   with_items:
-#     - subversion
-#     - git
-
-- name: be sure git is installed
-  apt: pkg=git state=installed
-
-- name: be sure subversion is installed
-  apt: pkg=subversion state=installed
-
+- name: be sure VCS tools are installed
+  apt: pkg=$item state=installed
+  with_items:
+    - subversion
+    - git
 
 # Ensure more... 
