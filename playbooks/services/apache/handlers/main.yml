@@ -2,9 +2,9 @@
 # file: services/nginx/handlers/main.yml
 
 # Ensure service enabled at boot
-- name: enable apache2 service
+- name: enable apache service
   service: name=apache2 enabled=yes
   
-- name: restart apache2
+- name: restart apache
   service: name=apache2 state=restarted
-  when_string: 'apache2' in $group_names
+  when_string: 'apache' in $group_names

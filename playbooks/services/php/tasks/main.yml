@@ -15,12 +15,21 @@
       - php-apc
 
 # Ensure config
+- name: ensure php5 confguration cli
+  template: src=services/php/templates/php.ini.j2 dest=/etc/php5/cli/php.ini owner=root group=root mode=0644
+  notify: 
+    - restart php5-fpm
+    - restart apache
+
+- name: ensure php5 confguration fpm
+  template: src=services/php/templates/php.ini.j2 dest=/etc/php5/fpm/php.ini owner=root group=root mode=0644
+  notify: 
+    - restart php5-fpm
+    - restart apache
+
+
 - name: ensure php5 confguration
   template: src=services/php/templates/apc.ini.j2 dest=/etc/php5/conf.d/apc.ini owner=root group=root mode=0644
   notify: 
-    - restart php5-fpm if present
-    - restart apache if present
-
-# Ensure running
-- name: be sure nginx is running
-  service: name=nginx state=started
+    - restart php5-fpm
+    - restart apache
