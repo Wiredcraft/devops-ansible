@@ -18,5 +18,8 @@
 
 
 - hosts: ${server}
-  tasks:
-    - include: common/tasks/users.yml
+  - include: ${service}/playbook.yml
+  # tasks:
+  #   - include: ${service}/tasks/main.yml
+  # handlers:
+  #   - include: ${service}/handlers/main.yml

@@ -1,0 +1,7 @@
+---
+tasks:
+  - include: ../php/tasks/main.yml
+  - include: tasks/main.yml
+handlers:
+  - include: handlers/main.yml
+  - include: ../php/handlers/main.yml

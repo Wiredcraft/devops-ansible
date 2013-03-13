@@ -1,0 +1,8 @@
+---
+tasks:
+  - include: tasks/main.yml
+handlers:
+  - include: handlers/main.yml
+  # Include potential dependencies to allow service restart
+  - include: ../apache/handlers/main.yml
+  - include: ../php-fpm/handlers/main.yml

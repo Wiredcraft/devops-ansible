@@ -4,3 +4,7 @@
 # Ensure service enabled at boot
 - name: enable php5-fpm service
   service: name=php5-fpm enabled=yes
+  
+- name: restart php5-fpm
+  service: name=php5-fpm state=restarted
+  when_string: 'php5-fpm' in $group_names

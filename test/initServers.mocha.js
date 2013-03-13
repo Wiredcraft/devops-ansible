@@ -46,7 +46,7 @@ describe('spawn a box and initialize it', function() {
         });
     });
 
-    it('should be able to init the server', function(done) {
+    it('should be able to init the server with the default ubuntu user', function(done) {
         exec('python ../../../../bin/devops-playbook.py -i hosts playbooks/initServer.yml -u ubuntu -p ubuntu -e newserver='+ lxc.servers[0].ip +' -s', {
             cwd: __dirname +'/fixture/spaces/test'
         }, function(err, stdout, stderr) {
@@ -61,7 +61,7 @@ describe('spawn a box and initialize it', function() {
         });
     });
     
-    it('should be able to access the server with the regular user', function(done) {
+    it('should be able to access the server with the regular devops user', function(done) {
         exec('python ../../../../bin/devops-playbook.py -i hosts playbooks/initServer.yml -e newserver='+ lxc.servers[0].ip +' -s', {
             cwd: __dirname +'/fixture/spaces/test'
         }, function(err, stdout, stderr) {

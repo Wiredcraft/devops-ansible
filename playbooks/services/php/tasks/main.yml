@@ -1,0 +1,26 @@
+---
+# file: services/nginx/tasks/main.yml
+
+# Ensure packages
+- name: be sure php is installed
+  apt: pkg=$item state=present
+  with_items:
+      - php5-common
+      - php5-cli
+      - php5-dev
+      - php5-suhosin
+      - php5-mysql
+      - php5-gd
+      - php-pear
+      - php-apc
+
+# Ensure config
+- name: ensure php5 confguration
+  template: src=services/php/templates/apc.ini.j2 dest=/etc/php5/conf.d/apc.ini owner=root group=root mode=0644
+  notify: 
+    - restart php5-fpm if present
+    - restart apache if present
+
+# Ensure running
+- name: be sure nginx is running
+  service: name=nginx state=started

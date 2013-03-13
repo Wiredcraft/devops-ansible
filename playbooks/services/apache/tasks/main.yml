@@ -1,0 +1,14 @@
+---
+# file: services/apache/tasks/main.yml
+
+# Ensure packages
+- name: be sure apaches is installed
+  apt: pkg=apache2 state=present
+  notify: enable apache2 service
+
+# Ensure config
+# Do some shit about the config
+
+# Ensure running
+- name: be sure apache2 is running
+  service: name=apache2 state=started
