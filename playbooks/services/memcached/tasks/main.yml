@@ -1,0 +1,20 @@
+---
+# file: services/memcached/tasks/main.yml
+
+# Ensure packages
+- name: be sure memcached is installed
+  apt: pkg=memcached state=present
+  notify: enable memcached service
+
+# Ensure config
+- name: ensure the memcached default file
+  template: src=${base}/services/mysql/templates/default_memcached.j2 dest=/etc/default/memcached user=root group=root mode=0644
+  notify: restart memcached
+
+- name: ensure the memcached config file
+  template: src=${base}/services/mysql/templates/memcached.conf.js dest=/etc/memcached.conf user=root group=root mode=0644
+  notify: restart memcached
+
+# Ensure running
+- name: be sure memcached is running
+  service: name=memcached state=started

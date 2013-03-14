@@ -1,0 +1,10 @@
+---
+# file: services/memcached/handlers/main.yml
+
+# Ensure service enabled at boot
+- name: enable memcached service
+  service: name=memcached enabled=yes
+  
+- name: restart memcached
+  service: name=memcached state=restarted
+  when_string: "'memcached' in $group_names"

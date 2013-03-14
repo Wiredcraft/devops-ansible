@@ -7,3 +7,6 @@
   
 - name: restart mysql-server
   service: name=mysql state=restarted
+  
+- name: reload mysql-server
+  service: name=mysql state=reloaded
