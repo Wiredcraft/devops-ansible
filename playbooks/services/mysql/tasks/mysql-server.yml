@@ -12,14 +12,15 @@
 # Do some shit about the config
 - name: ensure mysql-server configuration
   template: src=${base}/services/mysql/templates/my.cnf.j2 dest=/etc/mysql/my.cnf owner=root mode=0640
+  notify: restart mysql-server
 
 # Ensure running
 - name: be sure mysql-server is running
-  service: name=mysql-server state=started
+  service: name=mysql state=started
 
 # Ensure root password
 - name: retrieve or generate root password
-  shell: [ ! -f /home/devops/.ansible/mysql_root_password ] && openssl passwd -1 -in /dev/urandom | head -1 | tee /home/devops/.ansible/mysql_root_password || cat /home/devops/.ansible/mysql_root_password
+  shell: export FILE='/home/devops/.ansible/mysql_root_password' && [ -f $FILE ] && cat $FILE || ( openssl passwd -in /dev/urandom | head -1 | tee $FILE )
   register: mysql_root_password
 
 - name: be sure mysql has a root password
