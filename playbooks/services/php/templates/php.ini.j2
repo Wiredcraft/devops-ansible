@@ -4,6 +4,11 @@
 ; 
 ; The original file is available for reference at php.ini.orig
 
+{# Define default variables if undefined #}
+{% set php = {} if php is undefined %}
+{% set cgi = default(php.cgi, {})  %}
+{% set session = default(php.session, {})  %}
+
 [PHP]
 
 ; Enable the PHP scripting language engine under Apache.
@@ -112,7 +117,7 @@ memory_limit = {{ php.memory_limit | default('128M') }}
 
 ; This directive informs PHP of which errors, warnings and notices you would like
 ; it to take action for.
-error_reporting = {{ php.error_reporting | default('"E_ALL & ~E_DEPRECATED'") }}
+error_reporting = {{ php.error_reporting | default('"E_ALL & ~E_DEPRECATED"') }}
 
 ; This directive controls whether or not and where PHP will output errors,
 ; notices and warnings too.
@@ -216,7 +221,7 @@ user_dir =
 enable_dl = Off
 
 ; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.
-cgi.fix_pathinfo={{ php.cgi.fix_pathinfo | default('1') }}
+cgi.fix_pathinfo={{ cgi.fix_pathinfo | default('1') }}
 
 ;;;;;;;;;;;;;;;;
 ; File Uploads ;
@@ -404,10 +409,10 @@ bcmath.scale = 0
 
 [Session]
 ; Handler used to store/retrieve data.
-session.save_handler = {{ php.session.save_handler | default('files') }}
+session.save_handler = {{ session.save_handler | default('files') }}
 
 ; Argument passed to save_handler.
-session.save_path = {{ php.session.save_path | default('/var/lib/php/session') }}
+session.save_path = {{ session.save_path | default('/var/lib/php/session') }}
 
 ; Whether to use cookies.
 session.use_cookies = 1
