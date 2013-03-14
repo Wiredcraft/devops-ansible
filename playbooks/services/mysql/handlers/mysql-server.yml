@@ -4,3 +4,6 @@
 # Ensure service enabled at boot
 - name: enable mysql-server service
   service: name=mysql-server enabled=yes
+  
+- name: restart mysql-server
+  service: name=mysql-server state=restarted
