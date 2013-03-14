@@ -96,39 +96,39 @@ query_cache_size        = {{ tunable.query_cache_size | default('64M') }}
 #log            = /var/log/mysql/mysql.log
 #
 # Error logging goes to syslog. This is a Debian improvement :)
-{%- if tunable.log_error -%}
+{% if tunable.log_error %}
 log-error = {{ tunable.log_error }}
-{%- endif -%}
+{% endif %}
 #
 # Here you can see queries with especially long duration
 log_slow_queries        = {{ tunable.log_slow_queries | default('/var/log/mysql/slow.log') }}
 long_query_time         = {{ tunable.long_query_time | default('1') }}
-{%- if tunable.log_queries_not_using_index -%}
+{% if tunable.log_queries_not_using_index %}
 log-queries-not-using-indexes
-{%- endif -%}
+{% endif %}
 #
 # The following can be used as easy to replay backup logs or for replication.
 # note: if you are setting up a replication slave, see README.Debian about
 #       other settings you may need to change.
 #server-id              = 1
-{%- if tunable.log_bin -%}
+{% if tunable.log_bin %}
 log_bin = {{ tunable.log_bin | default('mysql-bin') }}
 log_slave_updates       = {{ tunable.log_slave_updates | default('true') }}
-{%- endif -%}
-{%- if tunable.log_bin_trust_function_creators -%}
+{% endif %}
+{% if tunable.log_bin_trust_function_creators %}
 log_bin_trust_function_creators
-{%- endif -%}
+{% endif %}
 expire_logs_days        = {{ tunable.expire_logs_days | default('10') }}
 max_binlog_size         = {{ tunable.max_binlog_size | default('100M') }}
 #binlog_do_db           = include_database_name
 #binlog_ignore_db       = include_database_name
-{%- if tunable.relay_log -%}
+{% if tunable.relay_log %}
 relay-log               = {{ tunable.relay_log | default('relay-bin') }}
-{%- endif -%}
+{% endif %}
 sync_binlog             = {{ tunable.sync_binlog | default('1') }}
-{%- if tunable.skip_slave_start -%}
+{% if tunable.skip_slave_start %}
 skip_slave_start
-{%- endif -%}
+{% endif %}
 
 #
 # * InnoDB
@@ -143,13 +143,13 @@ innodb_additional_mem_pool_size = {{ tunable.innodb_additional_mem_pool_size | d
 innodb_data_file_path   = {{ tunable.innodb_data_file_path | default('ibdata1:10M:autoextend:max:500M') }}
 innodb_file_per_table
 innodb_flush_log_at_trx_commit = {{ tunable.innodb_flush_log_at_trx_commit | default('1') }}
-{%- if tunable.innodb_flush_method -%}
+{% if tunable.innodb_flush_method %}
 innodb_flush_method     = {{ tunable.innodb_flush_method | default('O_DIRECT') }}
-{%- endif -%}
+{% endif %}
 innodb_log_buffer_size  = {{ tunable.innodb_log_buffer_size | default('8M') }}
-{%- if tunable.innodb_adaptive_flushing -%}
+{% if tunable.innodb_adaptive_flushing %}
 innodb_adaptive_flushing  = {{ tunable.innodb_adaptive_flushing | default('') }}
-{%- endif -%}
+{% endif %}
 
 {% if skip_federated %}
 #
