@@ -1,6 +1,6 @@
 ---
 - hosts: ${server}
-  var_files:
+  vars_files:
     - ../../config/global.yml
   tasks:
     # Dependencies first
