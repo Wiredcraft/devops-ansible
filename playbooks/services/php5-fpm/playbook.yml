@@ -10,5 +10,6 @@
   handlers:
     # Dependencies first
     - include: ../php/handlers/main.yml
+    - include: ../apache/handlers/main.yml
     # Self
     - include: handlers/main.yml
