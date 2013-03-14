@@ -24,15 +24,15 @@
 # escpecially if they contain "#" chars...
 # Remember to edit /etc/mysql/debian.cnf when changing the socket location.
 [client]
-port            = {{ mysql.port }}
-socket          = {{ mysql.socket }}
+port            = {{ mysql.port | default('3306') }}
+socket          = {{ mysql.socket | default('/var/run/mysqld/mysqld.sock') }}
 
 # Here is entries for some specific programs
 # The following values assume you have at least 32M ram
 
 # This was formally known as [safe_mysqld]. Both versions are currently parsed.
 [mysqld_safe]
-socket          = {{ mysql.socket }}
+socket          = {{ mysql.socket | default('/var/run/mysqld/mysqld.sock') }}
 nice            = 0
 
 [mysqld]
@@ -47,27 +47,27 @@ nice            = 0
 #
 
 user            = mysql
-pid-file        = {{ mysql.pid_file }}
-socket          = {{ mysql.socket }}
-port            = {{ mysql.port }}
-basedir         = {{ mysql.base_dir }}
-datadir         = {{ mysql.data_dir }}
+pid-file        = {{ mysql.pid_file | default('/var/run/mysqld/mysqld.pid') }}
+socket          = {{ mysql.socket | default('/var/run/mysqld/mysqld.sock') }}
+port            = {{ mysql.port | default('3306') }}
+basedir         = {{ mysql.base_dir | default('/usr') }}
+datadir         = {{ mysql.data_dir | default('/var/lib/mysql') }}
 tmpdir          = /tmp
 skip-external-locking
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-bind-address            = {{ mysql.bind_address }}
+bind-address            = {{ mysql.bind_address | default('127.0.0.1') }}
 #
 # * Fine Tuning
 #
-key_buffer              = {{ tunable.key_buffer }}
-max_allowed_packet      = {{ tunable.max_allowed_packet }}
-thread_stack            = {{ tunable.thread_stack }}
-thread_cache_size       = {{ tunable.thread_cache_size }}
+key_buffer              = {{ tunable.key_buffer | default('256M') }}
+max_allowed_packet      = {{ tunable.max_allowed_packet | default('16M') }}
+thread_stack            = {{ tunable.thread_stack | default('256K') }}
+thread_cache_size       = {{ tunable.thread_cache_size | default('32') }}
 
-auto-increment-increment = {{ mysql.auto_increment_increment }}
-auto-increment-offset    = {{ mysql.auto_increment_offset }}
+auto-increment-increment = {{ mysql.auto_increment_increment | default('1') }}
+auto-increment-offset    = {{ mysql.auto_increment_offset | default('1') }}
 
 # This replaces the startup script and checks MyISAM tables if needed
 # the first time they are touched
@@ -75,19 +75,19 @@ myisam-recover          = BACKUP
 #max_connections        = 100
 #table_cache            = 64
 #thread_concurrency     = 10
-max_connections         = {{ tunable.max_connections }}
-wait_timeout            = {{ tunable.wait_timeout }}
-net_read_timeout        = {{ tunable.net_read_timeout }}
-net_write_timeout       = {{ tunable.net_write_timeout }}
-back_log                = {{ tunable.back_log }}
-table_cache             = {{ tunable.table_cache }}
-max_heap_table_size     = {{ tunable.max_heap_table_size }}
+max_connections         = {{ tunable.max_connections | default('256') }}
+wait_timeout            = {{ tunable.wait_timeout | default('180') }}
+net_read_timeout        = {{ tunable.net_read_timeout | default('30') }}
+net_write_timeout       = {{ tunable.net_write_timeout | default('30') }}
+back_log                = {{ tunable.back_log | default('128') }}
+table_cache             = {{ tunable.table_cache | default('1024') }}
+max_heap_table_size     = {{ tunable.max_heap_table_size | default('64M') }}
 
 #
 # * Query Cache Configuration
 #
-query_cache_limit       = {{ tunable.query_cache_limit }}
-query_cache_size        = {{ tunable.query_cache_size }}
+query_cache_limit       = {{ tunable.query_cache_limit | default('2M') }}
+query_cache_size        = {{ tunable.query_cache_size | default('64M') }}
 #
 # * Logging and Replication
 #
@@ -101,8 +101,8 @@ log-error = {{ tunable.log_error }}
 {%- endif -%}
 #
 # Here you can see queries with especially long duration
-log_slow_queries        = {{ tunable.log_slow_queries }}
-long_query_time         = {{ tunable.long_query_time }}
+log_slow_queries        = {{ tunable.log_slow_queries | default('/var/log/mysql/slow.log') }}
+long_query_time         = {{ tunable.long_query_time | default('1') }}
 {%- if tunable.log_queries_not_using_index -%}
 log-queries-not-using-indexes
 {%- endif -%}
@@ -112,20 +112,20 @@ log-queries-not-using-indexes
 #       other settings you may need to change.
 #server-id              = 1
 {%- if tunable.log_bin -%}
-log_bin = {{ tunable.log_bin }}
-log_slave_updates       = {{ tunable.log_slave_updates }}
+log_bin = {{ tunable.log_bin | default('mysql-bin') }}
+log_slave_updates       = {{ tunable.log_slave_updates | default('true') }}
 {%- endif -%}
 {%- if tunable.log_bin_trust_function_creators -%}
 log_bin_trust_function_creators
 {%- endif -%}
-expire_logs_days        = {{ tunable.expire_logs_days }}
-max_binlog_size         = {{ tunable.max_binlog_size }}
+expire_logs_days        = {{ tunable.expire_logs_days | default('10') }}
+max_binlog_size         = {{ tunable.max_binlog_size | default('100M') }}
 #binlog_do_db           = include_database_name
 #binlog_ignore_db       = include_database_name
 {%- if tunable.relay_log -%}
-relay-log               = {{ tunable.relay_log }}
+relay-log               = {{ tunable.relay_log | default('relay-bin') }}
 {%- endif -%}
-sync_binlog             = {{ tunable.sync_binlog }}
+sync_binlog             = {{ tunable.sync_binlog | default('1') }}
 {%- if tunable.skip_slave_start -%}
 skip_slave_start
 {%- endif -%}
@@ -137,18 +137,18 @@ skip_slave_start
 # Read the manual for more InnoDB related options. There are many!
 # You might want to disable InnoDB to shrink the mysqld process by circa 100MB.
 #skip-innodb
-innodb_buffer_pool_size = {{ tunable.innodb_buffer_pool_size }}
-innodb_log_file_size    = {{ tunable.innodb_log_file_size }}
-innodb_additional_mem_pool_size = {{ tunable.innodb_additional_mem_pool_size }}
-innodb_data_file_path   = {{ tunable.innodb_data_file_path }}
+innodb_buffer_pool_size = {{ tunable.innodb_buffer_pool_size | default('128M') }}
+innodb_log_file_size    = {{ tunable.innodb_log_file_size | default('5M') }}
+innodb_additional_mem_pool_size = {{ tunable.innodb_additional_mem_pool_size | default('8M') }}
+innodb_data_file_path   = {{ tunable.innodb_data_file_path | default('ibdata1:10M:autoextend:max:500M') }}
 innodb_file_per_table
-innodb_flush_log_at_trx_commit = {{ tunable.innodb_flush_log_at_trx_commit }}
+innodb_flush_log_at_trx_commit = {{ tunable.innodb_flush_log_at_trx_commit | default('1') }}
 {%- if tunable.innodb_flush_method -%}
-innodb_flush_method     = {{ tunable.innodb_flush_method }}
+innodb_flush_method     = {{ tunable.innodb_flush_method | default('O_DIRECT') }}
 {%- endif -%}
-innodb_log_buffer_size  = {{ tunable.innodb_log_buffer_size }}
+innodb_log_buffer_size  = {{ tunable.innodb_log_buffer_size | default('8M') }}
 {%- if tunable.innodb_adaptive_flushing -%}
-innodb_adaptive_flushing  = {{ tunable.innodb_adaptive_flushing }}
+innodb_adaptive_flushing  = {{ tunable.innodb_adaptive_flushing | default('') }}
 {%- endif -%}
 
 {% if skip_federated %}
@@ -175,13 +175,13 @@ skip-federated
 [mysqldump]
 quick
 quote-names
-max_allowed_packet      = {{ tunable.max_allowed_packet }}
+max_allowed_packet      = {{ tunable.max_allowed_packet | default('16M') }}
 
 [mysql]
 #no-auto-rehash # faster start of mysql but no tab completition
 
 [isamchk]
-key_buffer              = {{ tunable.max_allowed_packet }}
+key_buffer              = {{ tunable.max_allowed_packet | default('16M') }}
 
 #
 # * NDB Cluster
@@ -194,4 +194,4 @@ key_buffer              = {{ tunable.max_allowed_packet }}
 # [MYSQL_CLUSTER]
 # ndb-connectstring=127.0.0.1
 
-old_passwords           = {{ mysql.old_passwords }}
+old_passwords           = {{ mysql.old_passwords | default('0') }}
