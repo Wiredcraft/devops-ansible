@@ -1,4 +1,2 @@
 ---
 # file: services/php/handlers/main.yml
-- include: services/apache/handlers/main.yml
-- include: services/php-fpm/handlers/main.yml

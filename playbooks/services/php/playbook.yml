@@ -1,8 +1,14 @@
 ---
-tasks:
-  - include: tasks/main.yml
-handlers:
-  - include: handlers/main.yml
-  # Include potential dependencies to allow service restart
-  - include: ../apache/handlers/main.yml
-  - include: ../php-fpm/handlers/main.yml
+- hosts: ${server}
+  var_files:
+    - ../../config/global.yml
+  tasks:
+    # Dependencies first
+    # Self
+    - include: tasks/main.yml
+  handlers:
+    # Dependencies first
+    - include: ../apache/handlers/main.yml
+    - include: ../php5-fpm/handlers/main.yml
+    # Self
+    - include: handlers/main.yml

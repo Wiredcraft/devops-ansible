@@ -4,11 +4,9 @@
     - ../../config/global.yml
   tasks:
     # Dependencies first
-    - include: ../php/tasks/main.yml
     # Self
     - include: tasks/main.yml
   handlers:
     # Dependencies first
-    - include: ../php/handlers/main.yml
     # Self
     - include: handlers/main.yml
