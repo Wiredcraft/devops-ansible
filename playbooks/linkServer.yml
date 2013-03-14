@@ -19,4 +19,4 @@
 
 - hosts: ${server}
   tasks:
-    - include: common/tasks/main.yml
+    - include: common/tasks/users.yml
