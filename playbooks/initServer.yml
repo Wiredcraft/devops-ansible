@@ -19,4 +19,6 @@
 
 - hosts: ${server}
   tasks:
-    - include: common/tasks/main.yml
+    - include: common/tasks/dependencies.yml
+    - include: common/tasks/users.yml tags=devops
+    - include: common/tasks/packages.yml tags=devops
