@@ -6,8 +6,8 @@
 
 {# Define default variables if undefined #}
 {% set php = {} if php is undefined %}
-{% set cgi = default(php.cgi, {})  %}
-{% set session = default(php.session, {})  %}
+{% set cgi = php.cgi|default({}) %}
+{% set session = php.session|default({}) %}
 
 [PHP]
 
