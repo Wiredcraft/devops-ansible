@@ -3,8 +3,16 @@
 
 # Ensure packages
 - name: be sure apache is installed
-  apt: pkg=apache2 state=present
+  apt: pkg=$item state=present
+  with_items:
+    - apache2
+    - apache2-mpm-prefork
+    - libapache2-mod-gnutls
   notify: enable apache service
+
+- name: be sure php extension is installed
+  apt: pkg=libapache2-mod-php5 state=present
+  when_string: "'php' in $group_names"
 
 # Ensure config
 - name: ensure the apache config file

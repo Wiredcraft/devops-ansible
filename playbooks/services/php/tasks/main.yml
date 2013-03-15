@@ -21,23 +21,11 @@
            creates=/etc/php5/cli/php.ini.orig 
            removes=/etc/php5/cli/php.ini
 
-- name: backup original config fpm
-  command: mv /etc/php5/fpm/php.ini /etc/php5/fpm/php.ini.orig 
-           creates=/etc/php5/fpm/php.ini.orig 
-           removes=/etc/php5/fpm/php.ini
-
 - name: ensure php5 confguration cli
   template: src=${base}/services/php/templates/php.ini.j2 dest=/etc/php5/cli/php.ini owner=root group=root mode=0644
-  notify: 
+  notify:
     - restart php5-fpm
     - restart apache
-
-- name: ensure php5 confguration fpm
-  template: src=${base}/services/php/templates/php.ini.j2 dest=/etc/php5/fpm/php.ini owner=root group=root mode=0644
-  notify: 
-    - restart php5-fpm
-    - restart apache
-
 
 - name: ensure php5 confguration
   template: src=${base}/services/php/templates/apc.ini.j2 dest=/etc/php5/conf.d/apc.ini owner=root group=root mode=0644
