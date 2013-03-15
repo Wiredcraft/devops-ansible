@@ -7,4 +7,3 @@
   
 - name: restart memcached
   service: name=memcached state=restarted
-  when_string: "'memcached' in $group_names"
