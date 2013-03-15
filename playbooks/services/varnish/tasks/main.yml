@@ -8,7 +8,7 @@
 
 # Ensure config
 - name: ensure the varnish default file
-  template: src=${base}/services/mysql/templates/default_varnish.j2 dest=/etc/default/varnish user=root group=root mode=0644
+  template: src=${base}/services/varnish/templates/default_varnish.j2 dest=/etc/default/varnish user=root group=root mode=0644
   notify: restart varnish
 
 # 

@@ -11,6 +11,7 @@
       - php5-suhosin
       - php5-mysql
       - php5-gd
+      - php5-memcache
       - php-pear
       - php-apc
 

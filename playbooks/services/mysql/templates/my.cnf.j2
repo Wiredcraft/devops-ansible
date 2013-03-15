@@ -4,6 +4,7 @@
 {# Define default variables if undefined #}
 {% set mysql = {} if mysql is undefined %}
 {% set tunable = mysql.tunable|default({}) %}
+
 # Local modifications will be overwritten.
 #
 # The MySQL database server configuration file.
