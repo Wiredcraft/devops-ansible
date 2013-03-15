@@ -1,0 +1,16 @@
+---
+# file: services/mongodb/tasks/main.yml
+
+# Ensure packages
+- name: be sure mongodb is installed
+  apt: pkg=mongodb state=present
+  notify: enable mongodb service
+
+# Ensure config
+- name: ensure the mongodb config file
+  template: src=${base}/services/mongodb/templates/mongodb.conf.j2 dest=/etc/mongodb.conf user=root group=root mode=0644
+  notify: restart mongodb
+
+# Ensure running
+- name: be sure mongodb is running
+  service: name=mongodb state=started
