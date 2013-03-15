@@ -9,4 +9,3 @@
   apt: pkg=python-mysqldb state=present
 
 # Ensure config
-# Do some shit about the config

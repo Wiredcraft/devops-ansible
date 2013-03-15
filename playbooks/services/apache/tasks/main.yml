@@ -7,7 +7,14 @@
   notify: enable apache service
 
 # Ensure config
-# Do some shit about the config
+- name: ensure the apache config file
+  template: src=${base}/services/apache/templates/apache2.conf.j2 dest=/etc/apache2/apache2.conf user=root group=root mode=0644
+  notify: reload apache
+
+- name: ensure the apache config file
+  template: src=${base}/services/apache/templates/envvars.j2 dest=/etc/apache2/envvars user=root group=root mode=0644
+  notify: reload apache
+
 
 # Ensure running
 - name: be sure apache is running

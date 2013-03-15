@@ -1,5 +1,5 @@
 ---
-# file: services/nginx/tasks/main.yml
+# file: services/php/tasks/main.yml
 
 # Ensure packages
 - name: be sure php is installed

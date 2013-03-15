@@ -1,4 +1,6 @@
 ---
+# file: services/varnish/playbook.yml
+
 - hosts: ${server}
   vars_files:
     - ../../config/global.yml

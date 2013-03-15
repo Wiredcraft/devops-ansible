@@ -7,7 +7,6 @@
   notify: enable nginx service
 
 # Ensure config
-# Do some shit about the config
 
 # Ensure running
 - name: be sure nginx is running

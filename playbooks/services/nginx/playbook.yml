@@ -1,5 +1,5 @@
 ---
-# file: services/apache/playbook.yml
+# file: services/nginx/playbook.yml
 
 - hosts: ${server}
   vars_files:

@@ -1,4 +1,6 @@
 ---
+# file: services/php5-fpm/playbook.yml
+
 - hosts: ${server}
   vars_files:
     - ../../config/global.yml
