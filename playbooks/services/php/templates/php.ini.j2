@@ -54,11 +54,11 @@ serialize_precision = 100
 allow_call_time_pass_reference = Off
 
 ; Safe Mode
-safe_mode = {{ php.safe_mode | default('On') }}
+safe_mode = {{ php.safe_mode | default('Off') }}
 
 ; By default, Safe Mode does a UID compare check when
 ; opening files.
-safe_mode_gid = {{ php.safe_mode_gid | default('On') }}
+safe_mode_gid = {{ php.safe_mode_gid | default('Off') }}
 
 ; When safe_mode is on, UID/GID checks are bypassed when
 ; including files from this directory and its subdirectories.

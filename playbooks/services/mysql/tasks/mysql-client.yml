@@ -2,6 +2,9 @@
 # file: services/mysql/tasks/mysql-client.yml
 
 # Ensure packages
+- name: be sure we have apt updated
+  apt: update_cache=yes
+  
 - name: be sure mysql-client is installed
   apt: pkg=mysql-client state=present
   

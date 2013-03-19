@@ -2,6 +2,8 @@
 # file: common/tasks/packages.yml
 
 # Ensure troubleshooting tools
+- name: be sure we have apt updated
+  apt: update_cache=yes
 
 - name: be sure troubleshooting tools are installed
   apt: pkg=$item state=installed
