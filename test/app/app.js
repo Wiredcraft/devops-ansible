@@ -8,6 +8,7 @@ var _ = require('underscore');
 var root = path.resolve(__dirname, 'files');
 var devops_py = path.resolve(__dirname, '../../bin/inventory/devops.py');
 var devops_playbook_py = path.resolve(__dirname, '../../bin/devops-playbook.py');
+var playbooksPath = path.resolve(__dirname, '../../playbooks');
 var lxc = require('./lib/lxc');
 
 // Middleware
@@ -108,7 +109,7 @@ app.post('/link/:id', function(req, res, next) {
     if (!space) return next(new Error('missing space'));
     var link = spawn('python', [
         devops_playbook_py,
-        '/opt/devops/ansible-devops/playbooks/linkServer.yml',
+        path.resolve(playbooksPath, 'linkServer.yml'),
         '-i',
         devops_py,
         '-u',
