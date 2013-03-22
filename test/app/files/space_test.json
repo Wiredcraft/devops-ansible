@@ -1,0 +1,13 @@
+{
+    "mysql": {
+        "hosts": [
+            "test1",
+            "test2"
+        ]
+    },
+    "apache": {
+        "hosts": [
+            "test1"
+        ]
+    }
+}

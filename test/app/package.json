@@ -1,0 +1,14 @@
+{
+    "name": "devopsapi",
+    "description": "Testing platform for ansible / devo.ps",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "3.x",
+        "underscore": "*"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "should": "*"
+    }
+}
