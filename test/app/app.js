@@ -6,7 +6,8 @@ var spawn = require('child_process').spawn;
 var _ = require('underscore');
 
 var root = path.resolve(__dirname, 'files');
-var devops_py = path.resolve(__dirname, '../../bin/inventory/devops.py')
+var devops_py = path.resolve(__dirname, '../../bin/inventory/devops.py');
+var lxc = require('./lib/lxc');
 
 // Middleware
 app.use(express.bodyParser());
@@ -98,6 +99,21 @@ app.post('/run/:id', function(req, res, next) {
         res.json(output);
     });
 });
+
+// Create servers
+app.post('/server/:name', function(req, res, next) {
+    var name = req.params.name;
+    lxc.buildServer(name, function(err) {
+        if (err) return next(err);
+        res.send('Server '+ name +' created successfully: '+ lxc.servers[lxc.servers.length - 1].ip);
+    })
+})
+app.del('/server/:name', function(req, res, next) {
+    var name = req.params.name;
+    lxc.destroyServer(name, function() {
+        res.send('Server '+ name +' destroyed successfully.');
+    })
+})
 
 console.log('Shit is on.');
 app.listen(3000);

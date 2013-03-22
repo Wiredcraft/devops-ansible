@@ -5,7 +5,7 @@ var fs = require('fs');
 var path = require('path');
 
 // Add lxc helper
-var lxc = require('./fixture/lxc.js');
+var lxc = require('./app/lib/lxc.js');
 
 var servers = [
     'test1'

@@ -26,6 +26,9 @@ exports.destroyServer = function destroyServer(name, callback) {
     // hardcore destroy the box
     exec('sudo lxc-destroy -f -n '+ name, function() {
         // wait a short while
+        exports.servers = _.filter(exports.servers, function(server) {
+            return server.name !== name;
+        });
         setTimeout(callback, 2000);
     });
 }
