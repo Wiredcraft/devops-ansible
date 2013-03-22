@@ -118,6 +118,7 @@ app.post('/link/:id', function(req, res, next) {
         'ubuntu',
         '--limit',
         id,
+        '--sudo',
         '-vvv'
     ], {
         env: _.extend(process.env, { ANSIBLE_DEVOPS_SPACE: space })
