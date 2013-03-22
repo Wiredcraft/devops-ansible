@@ -17,6 +17,6 @@
 #            -s -e newserver=__ip/host from inventory__ -u ubuntu --private-key=PATH
 
 
-- hosts: ${server}
+- hosts: all
   tasks:
     - include: common/tasks/users.yml

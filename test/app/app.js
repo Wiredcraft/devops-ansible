@@ -7,6 +7,7 @@ var _ = require('underscore');
 
 var root = path.resolve(__dirname, 'files');
 var devops_py = path.resolve(__dirname, '../../bin/inventory/devops.py');
+var devops_playbook_py = path.resolve(__dirname, '../../bin/devops-playbook.py');
 var lxc = require('./lib/lxc');
 
 // Middleware
@@ -95,6 +96,36 @@ app.post('/run/:id', function(req, res, next) {
     run.stderr.on('data', function(data) { output.stderr += data.toString(); });
     run.stdout.on('data', function(data) { output.stdout += data.toString(); });
     run.on('exit', function(code) {
+        output.code = code;
+        res.json(output);
+    });
+});
+
+app.post('/link/:id', function(req, res, next) {
+    var space = req.body.space;
+    var id = req.params.id;
+    
+    if (!space) return next(new Error('missing space'));
+    var link = spawn('python', [
+        devops_playbook_py,
+        '/opt/devops/ansible-devops/playbooks/linkServer.yml',
+        '-i',
+        devops_py,
+        '-u',
+        'ubuntu',
+        '-p',
+        'ubuntu',
+        '--limit',
+        id
+        '-vvv'
+    ], {
+        env: _.extend(process.env, { ANSIBLE_DEVOPS_SPACE: space })
+    });
+    
+    var output = { stderr: '', stdout: ''}
+    link.stderr.on('data', function(data) { output.stderr += data.toString(); });
+    link.stdout.on('data', function(data) { output.stdout += data.toString(); });
+    link.on('exit', function(code) {
         output.code = code;
         res.json(output);
     });
