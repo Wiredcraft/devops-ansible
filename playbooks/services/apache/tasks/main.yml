@@ -1,9 +1,9 @@
 ---
 # file: services/apache/tasks/main.yml
 
-# Ensure packages
-- name: be sure we have apt updated
-  apt: update_cache=yes
+# # Ensure packages
+# - name: be sure we have apt updated
+#   apt: update_cache=yes
 
 - name: be sure apache is installed
   apt: pkg=$item state=present
