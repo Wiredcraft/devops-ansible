@@ -139,7 +139,7 @@ app.post('/link/:id', function(req, res, next) {
     });
 });
 
-app.post('/link/:id', function(req, res, next) {
+app.post('/synk/:id', function(req, res, next) {
     var space = req.body.space;
     var id = req.params.id; 
     
