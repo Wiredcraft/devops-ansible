@@ -37,7 +37,7 @@
         - memcached
         - varnish
   handlers:
-	- include: services/$item/handlers/main.yml
+    - include: services/$item/handlers/main.yml
       with_items:
         - apache
         - php
