@@ -115,7 +115,7 @@ app.post('/link/:id', function(req, res, next) {
     if (!space) return next(new Error('missing space'));
     var link = spawn('python', [
         devops_playbook_py,
-        path.resolve(playbooksPath, 'linkServer.yml'),
+        path.resolve(playbooksPath, 'link.yml'),
         '-i',
         devops_py,
         '-u',
