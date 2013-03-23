@@ -1,5 +1,5 @@
 ---
 # file: services/mysql/handlers/main.yml
 
-- include: mysql-client.yml
-- include: mysql-server.yml
+- include: ${base}/services/mysql/handlers/mysql-client.yml
+- include: ${base}/services/mysql/handlers/mysql-server.yml
