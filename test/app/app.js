@@ -139,12 +139,12 @@ app.post('/link/:id', function(req, res, next) {
     });
 });
 
-app.post('/synk/:id', function(req, res, next) {
+app.post('/sync/:id', function(req, res, next) {
     var space = req.body.space;
     var id = req.params.id; 
     
     if (!space) return next(new Error('missing space'));
-    var link = spawn('ansible-playbook', [
+    var sync = spawn('ansible-playbook', [
         path.resolve(playbooksPath, 'sync.yml'),
         '-i',
         devops_py,
@@ -157,9 +157,9 @@ app.post('/synk/:id', function(req, res, next) {
     });
     
     var output = { stderr: '', stdout: ''}
-    link.stderr.on('data', function(data) { output.stderr += data.toString(); });
-    link.stdout.on('data', function(data) { output.stdout += data.toString(); });
-    link.on('exit', function(code) {
+    sync.stderr.on('data', function(data) { output.stderr += data.toString(); });
+    sync.stdout.on('data', function(data) { output.stdout += data.toString(); });
+    sync.on('exit', function(code) {
         output.code = code;
         res.json(output);
     });
