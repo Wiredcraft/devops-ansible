@@ -25,7 +25,7 @@
     - include: common/tasks/users.yml
     - include: common/tasks/packages.yml
     - include: services/$item/tasks/main.yml
-      when_string: "$item in $group_names"
+      when_string: "'$item' in $group_names"
       with_items:
         - apache
         - php
