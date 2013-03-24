@@ -24,8 +24,7 @@
     - include: common/tasks/dependencies.yml
     - include: common/tasks/users.yml
     - include: common/tasks/packages.yml
-    - include: services/$item/tasks/main.yml
-      when_string: "'$item' in $group_names"
+    - include: services/$item/tasks.yml
       with_items:
         - apache
         - php
@@ -37,7 +36,7 @@
         - memcached
         - varnish
   handlers:
-    - include: services/$item/handlers/main.yml
+    - include: services/$item/handlers.yml
       with_items:
         - apache
         - php
