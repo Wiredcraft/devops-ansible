@@ -7,6 +7,11 @@
 {% set worker = {} if 'worker' not in apache %}
 {% set event = {} if 'event' not in apache %}
 
+{{ apache }}
+{{ prefork }}
+{{ worker }}
+{{ event }}
+
 #
 # Based upon the NCSA server configuration files originally by Rob McCool.
 #
