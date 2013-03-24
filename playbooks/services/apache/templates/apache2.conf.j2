@@ -4,7 +4,7 @@
 {# Define default variables if undefined #}
 {# % set apache = {} if apache is undefined else apache % #}
 {% set apache = apache | default({}) %}
-{% set prefork = {} if 'prefork' not in apache else apache.prefork %}
+{% set prefork = apache.prefork | default({}) %}
 {% set worker = apache.worker | default({}) %}
 {% set event = {} if 'event' not in apache else apache.event %}
 
