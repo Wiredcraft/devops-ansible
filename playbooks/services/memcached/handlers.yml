@@ -1,2 +1,2 @@
 ---
-include: services/memcached/handlers/main.yml
+- include: services/memcached/handlers/main.yml

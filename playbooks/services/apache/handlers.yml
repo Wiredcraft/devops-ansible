@@ -1,2 +1,2 @@
 ---
-include: services/apache/handlers/main.yml
+- include: services/apache/handlers/main.yml

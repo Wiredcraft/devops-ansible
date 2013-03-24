@@ -1,2 +1,2 @@
 ---
-include: services/mongodb/handlers/main.yml
+- include: services/mongodb/handlers/main.yml

@@ -1,3 +1,3 @@
 ---
-include: services/nginx/tasks/main.yml
-when_string: "'nginx' in $group_names"
+- include: services/nginx/tasks/main.yml
+  when_string: "'nginx' in $group_names"

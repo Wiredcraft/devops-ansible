@@ -1,2 +1,2 @@
 ---
-include: services/mysql/handlers/main.yml
+- include: services/mysql/handlers/main.yml
