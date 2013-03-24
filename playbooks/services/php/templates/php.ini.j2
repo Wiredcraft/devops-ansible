@@ -5,9 +5,9 @@
 ; The original file is available for reference at php.ini.orig
 
 {# Define default variables if undefined #}
-{% set php = {} if php is undefined %}
-{% set cgi = php.cgi|default({}) %}
-{% set session = php.session|default({}) %}
+{% set php = php | default({}) %}
+{% set cgi = php.cgi | default({}) %}
+{% set session = php.session | default({}) %}
 
 [PHP]
 
