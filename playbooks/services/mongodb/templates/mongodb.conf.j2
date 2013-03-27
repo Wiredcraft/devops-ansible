@@ -7,10 +7,10 @@
 # mongodb.conf
 
 # Where to store the data.
-dbpath=/var/lib/mongodb
+dbpath={{ mongodb.dbpath | default('/var/lib/mongodb') }}
 
 #where to log
-logpath=/var/log/mongodb/mongodb.log
+logpath={{ mongodb.logpath | default('/var/log/mongodb/mongodb.log') }}
 
 logappend=true
 

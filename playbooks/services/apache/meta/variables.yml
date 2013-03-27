@@ -2,10 +2,10 @@
 apache:
 	user:
 		default: www-data
-		description: Running user for the running servers.
+		description: Apache running user.
 	group:
 		default: www-data
-		description: Running group for the running servers.
+		description: Apache running group.
 	timeout:
 		default: 300
 		description: The number of seconds before receives and sends time out.

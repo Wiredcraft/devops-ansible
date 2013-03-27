@@ -4,6 +4,10 @@
 {# Define default variables if undefined #}
 {% set mysql = mysql | default({}) %}
 {% set tunable = mysql.tunable | default({}) %}
+{% set innodb = mysql.innodb | default({}) %}
+{% set query_cache = mysql.query_cache | default({}) %}
+{% set logs = mysql.logs | default({}) %}
+{% set replication = mysql.replication | default({}) %}
 
 # Local modifications will be overwritten.
 #
@@ -81,14 +85,14 @@ wait_timeout            = {{ tunable.wait_timeout | default('180') }}
 net_read_timeout        = {{ tunable.net_read_timeout | default('30') }}
 net_write_timeout       = {{ tunable.net_write_timeout | default('30') }}
 back_log                = {{ tunable.back_log | default('128') }}
-table_cache             = {{ tunable.table_cache | default('1024') }}
+table_open_cache        = {{ tunable.table_open_cache | default('1024') }}
 max_heap_table_size     = {{ tunable.max_heap_table_size | default('64M') }}
 
 #
 # * Query Cache Configuration
 #
-query_cache_limit       = {{ tunable.query_cache_limit | default('2M') }}
-query_cache_size        = {{ tunable.query_cache_size | default('64M') }}
+query_cache_limit       = {{ query_cache.query_cache_limit | default('2M') }}
+query_cache_size        = {{ query_cache.query_cache_size | default('64M') }}
 #
 # * Logging and Replication
 #
@@ -97,37 +101,37 @@ query_cache_size        = {{ tunable.query_cache_size | default('64M') }}
 #log            = /var/log/mysql/mysql.log
 #
 # Error logging goes to syslog. This is a Debian improvement :)
-{% if tunable.log_error %}
-log-error = {{ tunable.log_error }}
+{% if logs.log_error %}
+log-error = {{ logs.log_error | default('/var/log/mysql/mysql.log') }}
 {% endif %}
 #
 # Here you can see queries with especially long duration
-log_slow_queries        = {{ tunable.log_slow_queries | default('/var/log/mysql/slow.log') }}
-long_query_time         = {{ tunable.long_query_time | default('1') }}
-{% if tunable.log_queries_not_using_index %}
-log-queries-not-using-indexes
-{% endif %}
+slow_query_log			= {{ logs.slow_query_log | default('1') }}
+slow_query_log_file		= {{ logs.slow_query_log_file | default('/var/log/mysql/slow.log') }}
+long_query_time         = {{ logs.long_query_time | default('1') }}
+log_queries_not_using_indexes 	= {{ logs.log_queries_not_using_indexes | default('Off') }}
+
 #
 # The following can be used as easy to replay backup logs or for replication.
 # note: if you are setting up a replication slave, see README.Debian about
 #       other settings you may need to change.
-#server-id              = 1
-{% if tunable.log_bin %}
-log_bin = {{ tunable.log_bin | default('mysql-bin') }}
-log_slave_updates       = {{ tunable.log_slave_updates | default('true') }}
+{% if replication.server_id %}
+server_id              = {{ replication.server_id | default('10') }}
 {% endif %}
-{% if tunable.log_bin_trust_function_creators %}
-log_bin_trust_function_creators
+{% if replication.log_bin %}
+log_bin = {{ replication.log_bin | default('mysql-bin') }}
+log_slave_updates       = {{ replication.log_slave_updates | default('On') }}
 {% endif %}
-expire_logs_days        = {{ tunable.expire_logs_days | default('10') }}
-max_binlog_size         = {{ tunable.max_binlog_size | default('100M') }}
+log_bin_trust_function_creators = {{ replication.log_bin_trust_function_creators | default('Off') }}
+expire_logs_days        = {{ replication.expire_logs_days | default('10') }}
+max_binlog_size         = {{ replication.max_binlog_size | default('100M') }}
 #binlog_do_db           = include_database_name
 #binlog_ignore_db       = include_database_name
-{% if tunable.relay_log %}
-relay-log               = {{ tunable.relay_log | default('relay-bin') }}
+{% if replication.relay_log %}
+relay_log               = {{ replication.relay_log | default('relay-bin') }}
 {% endif %}
-sync_binlog             = {{ tunable.sync_binlog | default('1') }}
-{% if tunable.skip_slave_start %}
+sync_binlog             = {{ replication.sync_binlog | default('1') }}
+{% if replication.skip_slave_start %}
 skip_slave_start
 {% endif %}
 
@@ -138,21 +142,16 @@ skip_slave_start
 # Read the manual for more InnoDB related options. There are many!
 # You might want to disable InnoDB to shrink the mysqld process by circa 100MB.
 #skip-innodb
-innodb_buffer_pool_size = {{ tunable.innodb_buffer_pool_size | default('128M') }}
-innodb_log_file_size    = {{ tunable.innodb_log_file_size | default('5M') }}
-innodb_additional_mem_pool_size = {{ tunable.innodb_additional_mem_pool_size | default('8M') }}
-innodb_data_file_path   = {{ tunable.innodb_data_file_path | default('ibdata1:10M:autoextend:max:500M') }}
+innodb_buffer_pool_size = {{ innodb.innodb_buffer_pool_size | default('128M') }}
+innodb_log_file_size    = {{ innodb.innodb_log_file_size | default('5M') }}
+innodb_additional_mem_pool_size = {{ innodb.innodb_additional_mem_pool_size | default('8M') }}
+innodb_data_file_path   = {{ innodb.innodb_data_file_path | default('ibdata1:10M:autoextend:max:500M') }}
 innodb_file_per_table
-innodb_flush_log_at_trx_commit = {{ tunable.innodb_flush_log_at_trx_commit | default('1') }}
-{% if tunable.innodb_flush_method %}
-innodb_flush_method     = {{ tunable.innodb_flush_method | default('O_DIRECT') }}
-{% endif %}
-innodb_log_buffer_size  = {{ tunable.innodb_log_buffer_size | default('8M') }}
-{% if tunable.innodb_adaptive_flushing %}
-innodb_adaptive_flushing  = {{ tunable.innodb_adaptive_flushing | default('') }}
-{% endif %}
+innodb_flush_log_at_trx_commit = {{ innodb.innodb_flush_log_at_trx_commit | default('1') }}
+innodb_flush_method     = {{ innodb.innodb_flush_method | default('O_DIRECT') }}
+innodb_log_buffer_size  = {{ innodb.innodb_log_buffer_size | default('8M') }}
+innodb_adaptive_flushing  = {{ innodb.innodb_adaptive_flushing | default('On') }}
 
-{% if skip_federated %}
 #
 # * Federated
 #
@@ -160,7 +159,7 @@ innodb_adaptive_flushing  = {{ tunable.innodb_adaptive_flushing | default('') }}
 # shipped with MySQL distributions (my-huge.cnf, my-medium.cnf, and so forth).
 #
 skip-federated
-{% endif %}
+
 #
 # * Security Features
 #
