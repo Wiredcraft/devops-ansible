@@ -11,6 +11,12 @@ var devops_playbook_py = path.resolve(__dirname, '../../bin/devops-playbook.py')
 var playbooksPath = path.resolve(__dirname, '../../playbooks');
 var lxc = require('./lib/lxc');
 
+var config = {
+    'ssh': {
+        'user': 'devops'
+    }
+}
+
 // Middleware
 app.use(express.bodyParser());
 
@@ -104,12 +110,12 @@ app.post('/run/:id', function(req, res, next) {
 
 app.post('/link/:id', function(req, res, next) {
     var space = req.body.space;
-    var id = req.params.id;
+    var id = req.params.id; 
     
     if (!space) return next(new Error('missing space'));
     var link = spawn('python', [
         devops_playbook_py,
-        path.resolve(playbooksPath, 'linkServer.yml'),
+        path.resolve(playbooksPath, 'link.yml'),
         '-i',
         devops_py,
         '-u',
@@ -128,6 +134,32 @@ app.post('/link/:id', function(req, res, next) {
     link.stderr.on('data', function(data) { output.stderr += data.toString(); });
     link.stdout.on('data', function(data) { output.stdout += data.toString(); });
     link.on('exit', function(code) {
+        output.code = code;
+        res.json(output);
+    });
+});
+
+app.post('/sync/:id', function(req, res, next) {
+    var space = req.body.space;
+    var id = req.params.id; 
+    
+    if (!space) return next(new Error('missing space'));
+    var sync = spawn('ansible-playbook', [
+        path.resolve(playbooksPath, 'sync.yml'),
+        '-i',
+        devops_py,
+        '--limit',
+        id,
+        '--sudo',
+        '-vvv'
+    ], {
+        env: _.extend(process.env, { ANSIBLE_DEVOPS_SPACE: space })
+    });
+    
+    var output = { stderr: '', stdout: ''}
+    sync.stderr.on('data', function(data) { output.stderr += data.toString(); });
+    sync.stdout.on('data', function(data) { output.stdout += data.toString(); });
+    sync.on('exit', function(code) {
         output.code = code;
         res.json(output);
     });

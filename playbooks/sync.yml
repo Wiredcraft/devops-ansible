@@ -18,5 +18,32 @@
 
 
 - hosts: all
+  vars_files:
+    - config/global.yml
   tasks:
+    - include: common/tasks/dependencies.yml
     - include: common/tasks/users.yml
+    - include: common/tasks/packages.yml
+    - include: services/$item/tasks.yml
+      with_items:
+        - apache
+        - php
+        - php5-fpm
+        - nginx
+        - mysql
+        - nginx
+        - mongodb
+        - memcached
+        - varnish
+  handlers:
+    - include: services/$item/handlers.yml
+      with_items:
+        - apache
+        - php
+        - php5-fpm
+        - nginx
+        - mysql
+        - nginx
+        - mongodb
+        - memcached
+        - varnish

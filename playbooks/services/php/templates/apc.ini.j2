@@ -5,7 +5,8 @@
 ; The original file is available for reference at apc.ini.orig
 
 {# Define default variables if undefined #}
-{% set apc = {} if apc is undefined %}
+{% set php = php | default({}) %}
+{% set apc = php.apc | default({}) %}
 
 ;[APC]
 ; Enable apc extension module

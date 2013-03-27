@@ -1,0 +1,3 @@
+---
+- include: services/php/tasks/main.yml
+  when_string: "'php' in $group_names"

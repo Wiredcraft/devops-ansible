@@ -1,10 +1,10 @@
 ---
 # file: services/apache/tasks/main.yml
 
-# Ensure packages
-- name: be sure we have apt updated
-  apt: update_cache=yes
-  
+# # Ensure packages
+# - name: be sure we have apt updated
+#   apt: update_cache=yes
+
 - name: be sure apache is installed
   apt: pkg=$item state=present
   with_items:
@@ -36,7 +36,7 @@
 # Ensure config
 - name: backup original config apache2
   command: mv /etc/php5/apache2/php.ini /etc/php5/apache2/php.ini.orig 
-           creates=/etc/php5/apache2/php.ini.orig 
+           creates=/etc/php5/apache2/php.ini.orig
            removes=/etc/php5/apache2/php.ini
 
 - name: ensure php5 confguration apache2

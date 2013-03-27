@@ -2,8 +2,8 @@
 # file: services/mysql/tasks/mysql-server.yml
 
 # Ensure packages
-- name: be sure we have apt updated
-  apt: update_cache=yes
+# - name: be sure we have apt updated
+#   apt: update_cache=yes
   
 - name: be sure mysql-server is installed
   apt: pkg=mysql-server state=present

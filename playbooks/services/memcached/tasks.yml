@@ -1,0 +1,3 @@
+---
+- include: services/memcached/tasks/main.yml
+  when_string: "'memcached' in $group_names"

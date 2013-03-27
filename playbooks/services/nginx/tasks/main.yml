@@ -2,8 +2,8 @@
 # file: services/nginx/tasks/main.yml
 
 # Ensure packages
-- name: be sure we have apt updated
-  apt: update_cache=yes
+# - name: be sure we have apt updated
+#   apt: update_cache=yes
   
 - name: be sure nginx is installed
   apt: pkg=nginx state=present

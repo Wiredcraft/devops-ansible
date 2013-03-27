@@ -1,0 +1,13 @@
+---
+# file: link.yml
+
+# This playbook is only meant to ensure the server get initialized
+# and the devops user get created on the remote host.
+#
+# It should not be used after.
+#
+# It should be replaced from user / pass to SSH key
+
+- hosts: all
+  tasks:
+    - include: common/tasks/users.yml

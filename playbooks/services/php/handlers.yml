@@ -1,0 +1,2 @@
+---
+- include: services/php/handlers/main.yml
