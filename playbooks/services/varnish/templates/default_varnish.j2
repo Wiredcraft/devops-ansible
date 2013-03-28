@@ -56,8 +56,8 @@ VARNISH_THREAD_TIMEOUT={{ varnish.thread_timeout | default('120') }}
 VARNISH_STORAGE_TYPE={{ varnish.storage_type | default('malloc') }}
 VARNISH_STORAGE_FILE={{ varnish.storage_file | default('/var/lib/varnish/$INSTANCE/varnish_storage.bin') }}
 
-# Cache file size: in bytes, optionally using k / M / G / T suffix,
-# or in percentage of available disk space using the % suffix.
+# Cache size: in bytes, optionally using k / M / G / T suffix,
+# or in percentage of available disk space / memory using the % suffix.
 VARNISH_STORAGE_SIZE={{ varnish.storage_size | default('256M') }}
 
 # Backend storage specification
