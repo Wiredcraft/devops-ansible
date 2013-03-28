@@ -1,0 +1,80 @@
+---
+variables:
+    safe_mode:
+        default: Off
+        description: Enable / disable php safe_mode. 
+    safe_mode_gid:
+        default: Off
+        description: Compare GID instead of UID when php safe_mode is enabled. 
+    realpath_cache_size:
+        default: 256k
+        description: Determines the size of the realpath cache to be used.
+    realpath_cache_ttl:
+        default: 3600
+        description: Duration of time, in seconds for which to cache realpath information for a given file or directory.
+    expose_php:
+        default: Off
+        description: Decides whether PHP may expose the fact that it is installed on the server.
+    max_execution_time:
+        default: 60
+        description: Maximum execution time of each script, in seconds.
+    max_input_time:
+        default: 120
+        description: Maximum amount of time each script may spend parsing request data.
+    memory_limit:
+        default: 128M
+        description: Maximum amount of memory a script may consume.
+    error_reporting:
+        default: "E_ALL & ~E_DEPRECATED"
+        description: Define which errors, warnings and notices to report.
+    display_errors:
+        default: Off
+        description: Define whether PHP will output errors, notices and warnings.
+    log_errors:
+        default: On
+        description: Define whether PHP should log errors to locations such as a server-specific log, STDERR, or a location specified by the error_log.
+    error_log:
+        default: syslog
+        description: Log errors to specified file (or syslog).
+    post_max_size:
+        default: 16M
+        description: Maximum size of POST data that PHP will accept.
+    upload_max_filesize:
+        default: 16M
+        description: Maximum allowed size for uploaded files.
+    cgi:
+        fix_pathinfo:
+            default: 1
+            description: cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.
+    session:
+        save_handler:
+            default: files
+            description: Handler used to store/retrieve session data.
+        save_path:
+            default: /var/lib/php/session
+            description: Folder PATH where sessions will be stored (if save_habdler is file).
+    apc:
+        enabled:
+            default: 1
+            description: Enable / disable APC (0 - disabled).
+        enable_cli:
+            default: 0
+            description: Enable / disable APC for the CLI version of PHP (Mostly for testing and debugging).
+        shm_segments:
+            default: 1
+            description: The number of shared memory segments to allocate for the compiler cache.
+        shm_size:
+            default: 128M
+            description: The size of each shared memory segment in MB. (add unit)
+        ttl:
+            default: 14400
+            description: The number of seconds a cache entry is allowed to idle in a slot in case this cache entry slot is needed by another entry.
+        user_ttl:
+            default: 7200
+            description: The number of seconds a user cache entry is allowed to idle in a slot in case this cache entry slot is needed by another entry.
+        gc_ttl:
+            default: 3600
+            description: The number of seconds that a cache entry may remain on the garbage-collection list.
+        max_file_size:
+            default: 1M
+            description: Cache files up to this file size. Prevents large files from being cached.

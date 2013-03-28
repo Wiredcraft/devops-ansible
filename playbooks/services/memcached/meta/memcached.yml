@@ -1,0 +1,23 @@
+---
+variables:
+    user:
+        default: memcache
+        description: Memcached running user.
+    enable:
+        default: yes
+        description: Enable or disable memcached service.
+    logfile:
+        default: /var/log/memcached.log
+        description: Log file path
+    memory:
+        default: 64
+        description: Amount of memory allocated in MB.
+    port:
+        default: 11211
+        description: Connection port.
+    listen:
+        default: 127.0.0.1
+        description: Binding IP address.
+    connection:
+        default: 1024
+        description: Maximumum number of concurrent inbound connections.
