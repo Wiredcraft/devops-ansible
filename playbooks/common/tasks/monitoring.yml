@@ -6,8 +6,11 @@
   notify: enable collectd service
 
 - name: ensure base config for collectd
-  file: src=${base}/common/files/collectd.conf dest=/etc/collectd/collectd.conf owner=root group=root mode=644 backup=yes
+  copy: src=${base}/common/files/collectd.conf dest=/etc/collectd/collectd.conf owner=root group=root mode=644 backup=yes
   notify: restart collectd
+
+- name: ensure plugins.d folder exist
+  file: dest=/etc/collectd/plugins.d owner=root group=root mode=755 state=directory
 
 - name: ensure default collectd config for plugins
   template: src=${base}/common/templates/collectd_plugins-default.conf.j2 dest=/etc/collectd/plugins.d/00_default.conf owner=root group=root mode=644
