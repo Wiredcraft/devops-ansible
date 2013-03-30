@@ -1,0 +1,2 @@
+---
+- include: services/SERVICE/handlers/main.yml
