@@ -1,0 +1,10 @@
+LoadPlugin network
+
+<Plugin network>
+    <Server "collectd.service.devo.ps" "25826">
+        SecurityLevel Encrypt
+        Username "{{ space.web1 }}"
+        Password "secret"
+    </Server>
+    TimeToLive 128
+</Plugin>

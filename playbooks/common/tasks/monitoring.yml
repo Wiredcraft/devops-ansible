@@ -1,0 +1,28 @@
+---
+
+# Ensure monitoring via ...
+- name: be sure collectd is installed
+  apt: pkg=collectd state=installed
+  notify: enable collectd service
+
+- name: ensure base config for collectd
+  file: src=${base}/common/files/collectd.conf dest=/etc/collectd/collectd.conf owner=root group=root mode=644 backup=yes
+  notify: restart collectd
+
+- name: ensure default collectd config for plugins
+  template: src=${base}/common/templates/collectd_plugins-default.conf.j2 dest=/etc/collectd/plugins.d/00_default.conf owner=root group=root mode=644
+  notify: restart collectd
+
+- name: ensure network collectd config for devo.ps
+  template: src=${base}/common/templates/collectd_plugins-network.conf.j2 dest=/etc/collectd/plugins.d/00_network.conf owner=root group=root mode=644
+  notify: restart collectd
+
+- name: ensure collectd routing for devo.ps
+  template: src=${base}/common/templates/collectd_filters.conf.j2 dest=/etc/collectd/filters.conf owner=root group=root mode=644 backup=yes
+  notify: restart collectd
+
+- name: ensure collectd host is set
+  lineinfile: dest=/etc/hosts regex='collectd\.service\.devo\.ps' line='${collectd_host} collectd.service.devo.ps' state=present backup=yes
+
+- name: be sure collectd is started
+  service: name=collectd state=started

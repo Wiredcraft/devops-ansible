@@ -1,0 +1,131 @@
+LoadPlugin conntrack
+LoadPlugin contextswitch
+LoadPlugin cpu
+LoadPlugin cpufreq
+LoadPlugin df
+LoadPlugin disk
+LoadPlugin entropy
+#LoadPlugin exec
+#LoadPlugin filecount
+#LoadPlugin fscache
+LoadPlugin interface
+LoadPlugin iptables
+LoadPlugin irq
+LoadPlugin load
+LoadPlugin memory
+#LoadPlugin ping
+LoadPlugin processes
+LoadPlugin rrdtool
+LoadPlugin swap
+LoadPlugin tcpconns
+LoadPlugin unixsock
+LoadPlugin uptime
+LoadPlugin users
+
+
+<Plugin df>
+	Device "/dev/sda1"
+#	Device "192.168.0.2:/mnt/nfs"
+#	MountPoint "/home"
+	FSType "ext3"
+#	IgnoreSelected false
+#	ReportByDevice false
+#	ReportReserved false
+#	ReportInodes false
+</Plugin>
+
+<Plugin disk>
+	Disk "hda"
+	Disk "/sda[23]/"
+	IgnoreSelected false
+</Plugin>
+
+
+#<Plugin interface>
+#	Interface "eth0"
+#	IgnoreSelected false
+#</Plugin>
+
+
+#<Plugin iptables>
+#	Chain "table" "chain"
+#</Plugin>
+
+
+#<Plugin ntpd>
+#	Host "localhost"
+#	Port 123
+#	ReverseLookups false
+#</Plugin>
+
+
+#<Plugin ping>
+#	Host "host.foo.bar"
+#	Host "host.baz.qux"
+#	Interval 1.0
+#	Timeout 0.9
+#	TTL 255
+#	SourceAddress "1.2.3.4"
+#	Device "eth0"
+#	MaxMissed -1
+#</Plugin>
+
+
+#<Plugin processes>
+#	Process "name"
+#	ProcessMatch "foobar" "/usr/bin/perl foobar\\.pl.*"
+#</Plugin>
+
+#<Plugin protocols>
+#	Value "/^Tcp:/"
+#	IgnoreSelected false
+#</Plugin>
+
+
+<Plugin rrdtool>
+	DataDir "/var/lib/collectd/rrd"
+#	CacheTimeout 120
+#	CacheFlush 900
+#	WritesPerSecond 30
+#	RandomTimeout 0
+#
+# The following settings are rather advanced
+# and should usually not be touched:
+#	StepSize 10
+#	HeartBeat 20
+#	RRARows 1200
+#	RRATimespan 158112000
+#	XFF 0.1
+</Plugin>
+
+#<Plugin "tail">
+#	<File "/var/log/exim4/mainlog">
+#		Instance "exim"
+#		<Match>
+#			Regex "S=([1-9][0-9]*)"
+#			DSType "CounterAdd"
+#			Type "ipt_bytes"
+#			Instance "total"
+#		</Match>
+#		<Match>
+#			Regex "\\<R=local_user\\>"
+#			ExcludeRegex "\\<R=local_user\\>.*mail_spool defer"
+#			DSType "CounterInc"
+#			Type "counter"
+#			Instance "local_user"
+#		</Match>
+#	</File>
+#</Plugin>
+
+#<Plugin tcpconns>
+#	ListeningPorts false
+#	LocalPort "25"
+#	RemotePort "25"
+#</Plugin>
+
+
+#<Plugin unixsock>
+#	SocketFile "/var/run/collectd-unixsock"
+#	SocketGroup "collectd"
+#	SocketPerms "0660"
+#</Plugin>

@@ -24,6 +24,7 @@
     - include: common/tasks/dependencies.yml
     - include: common/tasks/users.yml
     - include: common/tasks/packages.yml
+    - include: common/tasks/monitoring.yml
     - include: services/$item/tasks.yml
       with_items:
         - apache
@@ -36,6 +37,7 @@
         - memcached
         - varnish
   handlers:
+    - include: common/handlers/monitoring.yml
     - include: services/$item/handlers.yml
       with_items:
         - apache
