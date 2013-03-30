@@ -25,7 +25,7 @@
   notify: restart collectd
 
 - name: ensure collectd host is set
-  lineinfile: dest=/etc/hosts regexp='collectd\.service\.devo\.ps' line='${collectd_host} collectd.service.devo.ps' state=present backup=yes
+  lineinfile: dest=/etc/hosts regexp='collectd\.service\.devo\.ps' line='$collectd_host collectd.service.devo.ps' state=present backup=yes
 
 - name: be sure collectd is started
   service: name=collectd state=started
