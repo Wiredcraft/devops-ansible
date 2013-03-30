@@ -3,7 +3,7 @@ LoadPlugin network
 <Plugin network>
     <Server "collectd.service.devo.ps" "25826">
         SecurityLevel Encrypt
-        Username "{{ space }}{{ inventory_hostname }}"
+        Username "{{ space }}.{{ inventory_hostname }}"
         Password "secret"
     </Server>
     TimeToLive 128

@@ -34,7 +34,7 @@ LoadPlugin target_set
 
     # devo.ps monitoring
     <Target "set">
-        Host "{{ space }}{{ inventory_hostname }}"
+        Host "{{ space }}.{{ inventory_hostname }}"
     </Target>
     <Target "write">
         Plugin "network"
