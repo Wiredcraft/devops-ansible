@@ -3,21 +3,41 @@ variables:
     user:
         default: memcache
         description: Memcached running user.
+        type: string
+        required: false
     enable:
         default: yes
         description: Enable or disable memcached service.
+        type: string
+        required: false
+        enum: 
+            - yes
+            - no
     logfile:
         default: /var/log/memcached.log
         description: Log file path
+        type: string
+        required: false
     memory:
         default: 64
         description: Amount of memory allocated in MB.
+        type: integer
+        required: false
+        minimum: 0
     port:
         default: 11211
         description: Connection port.
+        type: integer
+        required: false
+        minimum: 1025
+        maximum: 65536
     listen:
         default: 127.0.0.1
         description: Binding IP address.
+        type: string
+        required: false
     connection:
         default: 1024
         description: Maximumum number of concurrent inbound connections.
+        type: integer
+        required: false
