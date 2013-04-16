@@ -1,2 +1,2 @@
 ---
-- include: services/php/handlers/main.yml
+- include: handlers/main.yml

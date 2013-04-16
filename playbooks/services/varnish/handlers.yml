@@ -1,2 +1,2 @@
 ---
-- include: services/varnish/handlers/main.yml
+- include: handlers/main.yml

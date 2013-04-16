@@ -1,2 +1,2 @@
 ---
-- include: services/php5-fpm/handlers/main.yml
+- include: handlers/main.yml

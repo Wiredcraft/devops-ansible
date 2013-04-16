@@ -1,2 +1,2 @@
 ---
-- include: services/nginx/handlers/main.yml
+- include: handlers/main.yml
