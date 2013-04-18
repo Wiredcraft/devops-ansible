@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Ensure Ec2 server
+      action:
+        module: ec2 
+        group: ${securityGroup}
+        image: ${ami}
+        instance_type: ${flavor}
+        key_name: ${keyName}
+        wait: yes
+        wait_timeout: 500
+      delegate_to: 127.0.0.1
+      when_string: ${type} == 'ec2'
