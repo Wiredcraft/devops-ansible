@@ -18,7 +18,17 @@
 
 - name: ensure network collectd config for devo.ps
   template: src=${base}/common/templates/collectd_plugins-network.conf.j2 dest=/etc/collectd/plugins.d/00_network.conf owner=root group=root mode=644
+  with_password: ${space}/${ansible_hostname}/collectd_password length=20
   notify: restart collectd
+
+- name: ensure password for client on collectd server
+  lineinfile: 
+    dest: /etc/collectd/passwd 
+    regexp: "^${space}__${ansible_hostname}: ${item}"
+    insertafer: EOF
+    line: "${space}__${ansible_hostname}: ${item}"
+  with_password: ${space}/${ansible_hostname}/collectd_password length=20
+  delegate_to: 127.0.0.1
 
 - name: ensure collectd routing for devo.ps
   template: src=${base}/common/templates/collectd_filters.conf.j2 dest=/etc/collectd/filters.conf owner=root group=root mode=644 backup=yes
