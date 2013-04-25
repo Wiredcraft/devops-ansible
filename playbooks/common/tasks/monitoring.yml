@@ -26,7 +26,7 @@
     dest: /etc/collectd/passwd 
     regexp: "^${space}__${inventory_hostname}: ${item}"
     insertafter: EOF
-    line: "${space}__${inventory_hostname}: ${item}"
+    line: "\n${space}__${inventory_hostname}: ${item}"
   with_password: spaces/${space}/${inventory_hostname}/collectd_password length=20
   delegate_to: 127.0.0.1
 
