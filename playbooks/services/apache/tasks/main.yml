@@ -15,7 +15,7 @@
 
 - name: be sure php extension is installed
   apt: pkg=libapache2-mod-php5 state=present
-  when_string: "'php' in $group_names"
+  when_string: '"php" in "$group_names"'
 
 # Ensure config
 - name: ensure the apache modules are enabled
@@ -41,7 +41,7 @@
 
 - name: ensure php5 confguration apache2
   template: src=${base}/services/php/templates/php.ini.j2 dest=/etc/php5/apache2/php.ini owner=root group=root mode=0644
-  when_string: "'php' in $group_names"
+  when_string: '"php" in "$group_names"'
   notify: 
     - restart apache
 
