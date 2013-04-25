@@ -25,17 +25,22 @@
     - include: common/tasks/users.yml
     - include: common/tasks/packages.yml
     - include: common/tasks/monitoring.yml
-    - include: services/$item/tasks.yml
-      with_items:
-        - apache
-        - php
-        - php5-fpm
-        - nginx
-        - mysql
-        - nginx
-        - mongodb
-        - memcached
-        - varnish
+    - include: services/apache/tasks.yml
+      when_string: "'apache' in $group_names"
+    - include: services/php/tasks.yml
+      when_string: "'php' in $group_names"
+    - include: services/php5-fpm/tasks.yml
+      when_string: "'php5-fpm' in $group_names"
+    - include: services/nginx/tasks.yml
+      when_string: "'nginx' in $group_names"
+    - include: services/mysql/tasks.yml
+      when_string: "'mysql' in $group_names"
+    - include: services/mongodb/tasks.yml
+      when_string: "'mongodb' in $group_names"
+    - include: services/memcached/tasks.yml
+      when_string: "'memcached' in $group_names"
+    - include: services/varnish/tasks.yml
+      when_string: "'varnish' in $group_names"
   handlers:
     - include: common/handlers/monitoring.yml
     - include: services/$item/handlers.yml
@@ -45,7 +50,6 @@
         - php5-fpm
         - nginx
         - mysql
-        - nginx
         - mongodb
         - memcached
         - varnish

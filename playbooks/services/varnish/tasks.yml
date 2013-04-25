@@ -1,3 +1,2 @@
 ---
 - include: tasks/main.yml
-  when_string: "'varnish' in $group_names"

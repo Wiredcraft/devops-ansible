@@ -1,3 +1,2 @@
 ---
 - include: tasks/main.yml
-  when_string: "'mysql' in $group_names"

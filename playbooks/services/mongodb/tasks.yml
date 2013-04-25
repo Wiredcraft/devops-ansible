@@ -1,3 +1,2 @@
 ---
 - include: tasks/main.yml
-  when_string: "'mongodb' in $group_names"
