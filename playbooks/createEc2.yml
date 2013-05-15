@@ -8,6 +8,7 @@
         group: ${securityGroup}
         image: ${ami}
         instance_type: ${flavor}
+        region: ${region}
         key_name: ${keyName}
         wait: yes
         wait_timeout: 500
