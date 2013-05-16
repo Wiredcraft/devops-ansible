@@ -7,8 +7,8 @@
   
 - name: restart varnish
   service: name=varnish state=restarted
-  when_string: "'varnish' in $group_names"
+  when_string: '"varnish" in "$group_names"'
 
 - name: reload varnish
   service: name=varnish state=reloaded
-  when_string: "'varnish' in $group_names"
+  when_string: '"varnish" in "$group_names"'
