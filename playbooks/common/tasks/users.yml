@@ -5,8 +5,8 @@
 - name: be sure devops user exists
   user: name=devops state=present comment='Devo.ps admin user' home=/home/devops shell=/bin/bash
 
-- name: be sure devops has the correct authorized_key
-  authorized_key: user=devops state=present key='${ssh.devops}' manage_dir=yes
-
 - name: be sure devops user can sudo
   copy: src=common/files/10-devops dest=/etc/sudoers.d/10-devops owner=root mode=440
+
+- name: be sure devops has the correct authorized_key
+  authorized_key: user=devops state=present key='${ssh.devops}' manage_dir=yes
