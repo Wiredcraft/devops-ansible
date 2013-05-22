@@ -6,7 +6,7 @@ variables:
         type: string
         required: false
     listen_address:
-        default: 
+        default: ''
         description: "Blank address means all IPv4 and IPv6 interfaces, otherwise specify a host name, an IPv4 dotted quad."
         type: string
         required: false
