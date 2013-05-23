@@ -5,7 +5,7 @@
 {% set apache = apache | default({}) %}
 {% set prefork = apache.prefork | default({}) %}
 {% set worker = apache.worker | default({}) %}
-{% set event = apache.worker | default({}) %}
+{% set event = apache.event | default({}) %}
 
 #
 # Based upon the NCSA server configuration files originally by Rob McCool.
