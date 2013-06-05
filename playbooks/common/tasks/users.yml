@@ -16,7 +16,7 @@
   user: name=${space} state=present comment='Devo.ps ${space} user' home=/home/${space} shell=/bin/bash
 
 - name: be sure profile user has the correct authorized_keys
-  authorized_key: user=space state=present key='${item.key}' manage_dir=yes
+  authorized_key: user=${space} state=present key='${item.key}' manage_dir=yes
   with_items:
     - ${keys}
 
