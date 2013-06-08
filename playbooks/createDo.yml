@@ -1,0 +1,27 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Ensure digital-ocean SSH key
+      action:
+        module: dop 
+        command: ssh
+        state: present
+        name: ${space}
+        ssh_pub_key: ${ssh_profile_key}
+      delegate_to: 127.0.0.1
+      when_string: ${type} == 'digital-ocean'
+      register: do_key
+    - name: Ensure digital-ocean server
+      action:
+        module: dop 
+        command: droplet
+        size_id: ${flavor}
+        image_id: ${image}
+        region_id: ${region}
+        ssh_key_ids: ${do_key.id}
+        wait: yes
+        wait_timeout: 500
+      delegate_to: 127.0.0.1
+      when_string: ${type} == 'digital-ocean'
+
