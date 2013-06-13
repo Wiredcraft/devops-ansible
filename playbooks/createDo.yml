@@ -4,7 +4,7 @@
   tasks:
     - name: Ensure digital-ocean SSH key
       action:
-        module: dop 
+        module: do 
         command: ssh
         state: present
         name: ${space}
@@ -14,7 +14,7 @@
       register: do_key
     - name: Ensure digital-ocean server
       action:
-        module: dop 
+        module: do
         command: droplet
         size_id: ${flavor}
         image_id: ${image}
