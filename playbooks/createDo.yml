@@ -20,6 +20,8 @@
         image_id: ${image}
         region_id: ${region}
         ssh_key_ids: ${do_key.id}
+        name: ${name}
+        state: present
         wait: yes
         wait_timeout: 500
       delegate_to: 127.0.0.1
