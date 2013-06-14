@@ -19,7 +19,7 @@
         size_id: ${flavor}
         image_id: ${image}
         region_id: ${region}
-        ssh_key_ids: ${do_key.id}
+        ssh_key_ids: "${do_key.ssh_key.id}"
         name: ${name}
         state: present
         wait: yes
