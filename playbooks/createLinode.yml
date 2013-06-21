@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Ensure linode server
+      action:
+        module: linode
+        plan: ${flavor}
+        datacenter: ${region}
+        distribution: ${image}
+        ssh_pub_key: ${ssh_profile_key}
+        name: ${name}
+        state: present
+        wait: yes
+        wait_timeout: 500
+      delegate_to: 127.0.0.1
+      when_string: ${type} == 'linode'
+
