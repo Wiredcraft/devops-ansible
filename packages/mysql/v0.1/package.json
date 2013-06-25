@@ -1,0 +1,24 @@
+{
+    "version": "0.1",
+    "tasks": {},
+    "handlers": {},
+    "default": {
+        "add": {
+            "description": "Add mysql service",
+            "task": "add.yml"
+        },
+        "remove": {
+            "description": "Remove mysql service",
+            "task": "remove.yml"
+        },
+        "monitoring": {
+            "description": "Monitor mysql service",
+            "task": "monitoring.yml"
+        },
+        "backup": {
+            "description": "Backup mysql service",
+            "task": "backup.yml"
+        }
+    },
+    "meta": "meta/mysql.yml"
+}

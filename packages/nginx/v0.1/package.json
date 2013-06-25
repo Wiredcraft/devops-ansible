@@ -1,0 +1,24 @@
+{
+    "version": "0.1",
+    "tasks": {},
+    "handlers": {},
+    "default": {
+        "add": {
+            "description": "Add nginx service",
+            "task": "add.yml"
+        },
+        "remove": {
+            "description": "Remove nginx service",
+            "task": "remove.yml"
+        },
+        "monitoring": {
+            "description": "Monitor nginx service",
+            "task": "monitoring.yml"
+        },
+        "backup": {
+            "description": "Backup nginx service",
+            "task": "backup.yml"
+        }
+    },
+    "meta": "meta/nginx.yml"
+}
