@@ -1,0 +1,26 @@
+---
+# file: services/varnish/tasks/main.yml
+
+# Ensure packages
+# - name: be sure we have apt updated
+#   apt: update_cache=yes
+
+- name: be sure varnish is installed
+  apt: pkg=varnish state=present
+  notify: enable varnish service
+
+# Ensure config
+- name: ensure the varnish default file
+  template: src=${base}/services/varnish/templates/default_varnish.j2 dest=/etc/default/varnish owner=root group=root mode=0644
+  notify: restart varnish
+
+# 
+# We'll play later with defining the rewrite rules / drupal etc..
+# 
+# - name: ensure the varnish config file
+#   template: src=${base}/services/mysql/templates/varnish.conf.js dest=/etc/varnish.conf user=root group=root mode=0644
+#   notify: restart varnish
+
+# Ensure running
+- name: be sure varnish is running
+  service: name=varnish state=started

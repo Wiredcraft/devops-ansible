@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir /tmp/$1
+mv $1/* /tmp/$1
+mv /tmp/$1 $1/v0.1

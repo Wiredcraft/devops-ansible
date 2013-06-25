@@ -1,0 +1,14 @@
+---
+# file: services/apache/playbook.yml
+
+- hosts: ${server}
+  vars_files:
+    - ../../config/global.yml
+  tasks:
+    # Dependencies first
+    # Self
+    - include: tasks/main.yml
+  handlers:
+    # Dependencies first
+    # Self
+    - include: handlers/main.yml
