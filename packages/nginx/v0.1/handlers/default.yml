@@ -1,0 +1,12 @@
+---
+# Ensure service enabled at boot
+- name: enable nginx
+  service: name=nginx enabled=yes
+
+# Ensure service reloaded
+- name: reload nginx
+  service: name=nginx state=reloaded
+
+# Ensure service restarted
+- name: restart nginx
+  service: name=nginx state=restarted
