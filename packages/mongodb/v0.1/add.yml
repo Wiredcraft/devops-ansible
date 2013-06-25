@@ -1,0 +1,11 @@
+---
+- name: be sure mongodb is installed
+  apt: pkg=mongodb state=present
+  notify: enable mongodb
+
+# Ensure config
+- name: ensure the mongodb config file
+  template: src=${base}/services/mongodb/templates/mongodb.conf.j2
+      dest=/etc/mongodb.conf owner=root group=root mode=0644
+  notify: restart mongodb
+
