@@ -1,4 +1,0 @@
----
-# Ensure running
-- name: be sure apache is running
-  service: name=apache2 state=started

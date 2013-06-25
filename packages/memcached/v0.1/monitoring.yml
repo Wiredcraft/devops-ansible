@@ -1,4 +1,0 @@
----
-# Ensure running
-- name: be sure memcached is running
-  service: name=memcached state=started
