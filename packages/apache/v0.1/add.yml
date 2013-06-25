@@ -1,0 +1,44 @@
+---
+# # Ensure packages
+# - name: be sure we have apt updated
+#   apt: update_cache=yes
+
+- name: be sure apache is installed
+  apt: pkg=$item state=present
+  with_items:
+    - apache2
+    - apache2-mpm-prefork
+    - libapache2-mod-gnutls
+  notify: enable apache service
+
+- name: be sure php extension is installed
+  apt: pkg=libapache2-mod-php5 state=present
+  when_string: '"php" in "$group_names"'
+
+# Ensure config
+- name: ensure the apache modules are enabled
+  command: /usr/sbin/a2enmod $item
+  with_items:
+    - env
+    - rewrite
+    - ssl
+
+- name: ensure the apache config file
+  template: src=${base}/services/apache/templates/apache2.conf.j2 dest=/etc/apache2/apache2.conf owner=root group=root mode=0644
+  notify: reload apache
+
+- name: ensure the apache config file
+  template: src=${base}/services/apache/templates/envvars.j2 dest=/etc/apache2/envvars owner=root group=root mode=0644
+  notify: reload apache
+
+# Ensure config
+- name: backup original config apache2
+  command: mv /etc/php5/apache2/php.ini /etc/php5/apache2/php.ini.orig 
+           creates=/etc/php5/apache2/php.ini.orig
+           removes=/etc/php5/apache2/php.ini
+
+- name: ensure php5 confguration apache2
+  template: src=${base}/services/php/templates/php.ini.j2 dest=/etc/php5/apache2/php.ini owner=root group=root mode=0644
+  when_string: '"php" in "$group_names"'
+  notify: 
+    - restart apache
