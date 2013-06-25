@@ -1,0 +1,9 @@
+---
+# file: services/mongodb/handlers/main.yml
+
+# Ensure service enabled at boot
+- name: enable mongodb
+  service: name=mongodb enabled=yes
+
+- name: restart mongodb
+  service: name=mongodb state=restarted
