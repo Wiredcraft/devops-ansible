@@ -1,5 +1,5 @@
 ---
-- name: be sure varnish is installed
+- name: Ensure varnish is installed
   apt: pkg=varnish state=present
   notify: enable varnish
 
@@ -17,5 +17,5 @@
 #   notify: restart varnish
 
 # Ensure running
-- name: be sure varnish is running
+- name: Ensure varnish is running
   service: name=varnish state=started

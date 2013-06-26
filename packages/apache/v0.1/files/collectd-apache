@@ -1,0 +1,7 @@
+LoadPlugin apache
+<Plugin apache>
+    <Instance "local">
+        URL "http://localhost/server-status?auto"
+        Server "apache"
+    </Instance>
+</Plugin>

@@ -1,1 +1,12 @@
 ---
+# Ensure service enabled at boot
+- name: enable apache
+  service: name=apache2 enabled=yes
+
+# Ensure service reloaded
+- name: reload apache
+  service: name=apache2 state=reloaded
+
+# Ensure service restarted
+- name: restart apache
+  service: name=apache2 state=restarted

@@ -1,5 +1,5 @@
 ---
-- name: be sure php5-fpm is installed
+- name: Ensure php5-fpm is installed
   apt: pkg=php5-fpm state=present
   notify: enable php5-fpm service
 
@@ -16,5 +16,5 @@
     - restart php5-fpm
 
 # Ensure running
-- name: be sure php5-fpm is running
+- name: Ensure php5-fpm is running
   service: name=php5-fpm state=started

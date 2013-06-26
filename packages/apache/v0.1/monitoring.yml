@@ -1,4 +1,27 @@
 ---
-# Ensure running
-- name: be sure apache is running
-  service: name=apache2 state=started
+- name: Ensure apache server-status is installed
+  copy: 
+    src=files/server-status 
+    dest=/etc/apache2/sites-available/server-status
+    owner=root
+    group=root
+    mode=0644
+  notify: reload apache
+
+- name: Ensure apache server-status site is enabled
+  file: 
+    state=link
+    src=../sites-available/server-status 
+    path=/etc/apache2/sites-enabled/server-status 
+    owner=root
+    group=root
+    mode=0644
+
+- name: Ensure apache collectd plugin is enabled
+  copy: 
+    src=files/collectd-apache
+    dest=/etc/collectd/plugins.d/apache
+    owner=root
+    group=root
+    mode=0644
+  notify: reload collectd

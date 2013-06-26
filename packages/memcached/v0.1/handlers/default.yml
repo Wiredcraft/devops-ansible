@@ -2,6 +2,6 @@
 # Ensure service enabled at boot
 - name: enable memcached
   service: name=memcached enabled=yes
-  
+
 - name: restart memcached
   service: name=memcached state=restarted

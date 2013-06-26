@@ -1,5 +1,5 @@
 ---
-- name: be sure memcached is installed
+- name: Ensure memcached is installed
   apt: pkg=memcached state=present
   notify: enable memcached
 
@@ -13,3 +13,7 @@
   template: src=${base}/services/memcached/templates/memcached.conf.j2
       dest=/etc/memcached.conf owner=root group=root mode=0644
   notify: restart memcached
+
+# Ensure running
+- name: Ensure memcached is running
+  service: name=memcached state=started

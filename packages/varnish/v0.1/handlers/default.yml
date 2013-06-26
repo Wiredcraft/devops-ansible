@@ -1,14 +1,10 @@
 ---
-# file: services/varnish/handlers/main.yml
-
 # Ensure service enabled at boot
 - name: enable varnish
   service: name=varnish enabled=yes
-  
+
 - name: restart varnish
   service: name=varnish state=restarted
-  when_string: '"varnish" in "$group_names"'
 
 - name: reload varnish
   service: name=varnish state=reloaded
-  when_string: '"varnish" in "$group_names"'

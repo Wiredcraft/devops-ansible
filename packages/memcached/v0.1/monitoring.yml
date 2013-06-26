@@ -1,4 +1,9 @@
 ---
-# Ensure running
-- name: be sure memcached is running
-  service: name=memcached state=started
+- name: Ensure memcached collectd plugin is enabled
+  templates: 
+    src=templates/collectd-memcached.j2
+    dest=/etc/collectd/plugins.d/memcached
+    owner=root
+    group=root
+    mode=0644
+  notify: reload collectd

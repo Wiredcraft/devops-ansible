@@ -1,9 +1,9 @@
 ---
 # # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
 
-- name: be sure apache is installed
+- name: Ensure apache is installed
   apt: pkg=$item state=present
   with_items:
     - apache2
@@ -11,7 +11,7 @@
     - libapache2-mod-gnutls
   notify: enable apache service
 
-- name: be sure php extension is installed
+- name: Ensure php extension is installed
   apt: pkg=libapache2-mod-php5 state=present
   when_string: '"php" in "$group_names"'
 
@@ -45,3 +45,7 @@
   when_string: '"php" in "$group_names"'
   notify: 
     - restart apache
+
+# Ensure running
+- name: Ensure apache is running
+  service: name=apache2 state=started

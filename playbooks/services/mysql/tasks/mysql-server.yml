@@ -2,13 +2,13 @@
 # file: services/mysql/tasks/mysql-server.yml
 
 # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
   
-- name: be sure mysql-server is installed
+- name: Ensure mysql-server is installed
   apt: pkg=mysql-server state=present
 
-- name: be sure python-mysqldb is installed
+- name: Ensure python-mysqldb is installed
   apt: pkg=python-mysqldb state=present
 
 # Ensure config
@@ -17,7 +17,7 @@
   notify: restart mysql-server
 
 # Ensure running
-- name: be sure mysql-server is running
+- name: Ensure mysql-server is running
   service: name=mysql state=started
 
 # Ensure root password
@@ -29,8 +29,8 @@
 - name: ensure PROXY grant is removed
   shell: creates=/home/devops/.ansible/mysql_root_proxy_grant mysql -e "REVOKE PROXY ON ''@'' FROM 'root'@'localhost';" && touch /home/devops/.ansible/mysql_root_proxy_grant
 
-- name: be sure mysql has a root password
+- name: Ensure mysql has a root password
   mysql_user: name=root password=${mysql_password.stdout} priv=*.*:ALL state=present
   
-- name: be sure we have a .my.cnf in the root folder
+- name: Ensure we have a .my.cnf in the root folder
   template: src=${base}/services/mysql/templates/client.my.cnf.j2 dest=/root/.my.cnf owner=root mode=0400

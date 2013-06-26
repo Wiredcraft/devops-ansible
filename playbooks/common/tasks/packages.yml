@@ -2,10 +2,10 @@
 # file: common/tasks/packages.yml
 
 # Ensure troubleshooting tools
-- name: be sure we have apt updated
+- name: Ensure we have apt updated
   apt: update_cache=yes
 
-- name: be sure troubleshooting tools are installed
+- name: Ensure troubleshooting tools are installed
   apt: pkg=$item state=installed
   with_items:
     - htop
@@ -15,7 +15,7 @@
 
 # Ensure code versionning tools
 
-- name: be sure VCS tools are installed
+- name: Ensure VCS tools are installed
   apt: pkg=$item state=installed
   with_items:
     - subversion

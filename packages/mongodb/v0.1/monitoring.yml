@@ -1,4 +1,1 @@
 ---
-# Ensure running
-- name: be sure mongodb is running
-  service: name=mongodb state=started

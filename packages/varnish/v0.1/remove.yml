@@ -1,1 +1,22 @@
 ---
+- name: Ensure varnish is absent
+  apt: pkg=varnish state=absent
+
+# Later need to add the backup step; or rely on the task system 
+# to schedule the backup task before.
+
+- name: ensure varnish configuration is absent
+  file: 
+    state=absent
+    recurse=yes
+    path=$item
+  with_items:
+    - /etc/varnish
+    - /etc/defaults/varnish
+
+- name: ensure varnish monitoring is absent
+  file: 
+    state=absent
+    path=/etc/collectd/plugins.d/varnish
+  notify: reload collectd
+

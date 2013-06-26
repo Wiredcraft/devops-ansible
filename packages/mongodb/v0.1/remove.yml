@@ -1,1 +1,17 @@
 ---
+- name: Ensure mongodb is absent
+  apt: pkg=mongodb state=absent
+
+# Later need to add the backup step; or rely on the task system 
+# to schedule the backup task before.
+
+- name: ensure mongodb configuration is absent
+  file: 
+    state=absent
+    path=/etc/mongodb.conf
+
+- name: ensure mongodb monitoring is absent
+  file: 
+    state=absent
+    path=/etc/collectd/plugins.d/mongodb
+  notify: reload collectd

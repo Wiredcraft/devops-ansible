@@ -2,15 +2,15 @@
 # file: services/nginx/tasks/main.yml
 
 # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
   
-- name: be sure nginx is installed
+- name: Ensure nginx is installed
   apt: pkg=nginx state=present
   notify: enable nginx service
 
 # Ensure config
 
 # Ensure running
-- name: be sure nginx is running
+- name: Ensure nginx is running
   service: name=nginx state=started

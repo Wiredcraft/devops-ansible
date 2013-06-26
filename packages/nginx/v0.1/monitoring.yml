@@ -1,5 +1,5 @@
 ---
-- name: be sure nginx server-status is installed
+- name: Ensure nginx server-status is installed
   copy: 
     src=files/server-status 
     dest=/etc/nginx/sites-available/server-status
@@ -8,7 +8,7 @@
     mode=0644
   notify: reload nginx
 
-- name: be sure nginx server-status site is enabled
+- name: Ensure nginx server-status site is enabled
   file: 
     state=link
     src=../sites-available/server-status 
@@ -17,10 +17,10 @@
     group=root
     mode=0644
 
-- name: be sure nginx collectd plugin is enabled
-  file: 
-    srv=files/collectd-nginx
-    dest=/etc/collectd.d/plugins/nginx
+- name: Ensure nginx collectd plugin is enabled
+  copy: 
+    src=files/collectd-nginx
+    dest=/etc/collectd/plugins.d/nginx
     owner=root
     group=root
     mode=0644
