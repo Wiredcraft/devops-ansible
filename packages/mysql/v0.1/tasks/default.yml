@@ -1,0 +1,6 @@
+---
+# file: services/mysql/tasks/main.yml
+
+# TODO - run include only for real mysql service, else only do client.
+- include: ${base}/services/mysql/tasks/mysql-client.yml
+- include: ${base}/services/mysql/tasks/mysql-server.yml
