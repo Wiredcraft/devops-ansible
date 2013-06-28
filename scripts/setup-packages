@@ -76,6 +76,22 @@ setup_ansible() {
         rm -f "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
         ln -s "$latest_version" "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
     done
+
+    # Update all the PATH within the files
+    # DEVOPS_PACKAGE
+    # DEVOPS_BASE
+    cd "$DEVOPS_ANSIBLE_ROOT/services/"
+    for package in $(ls -d *); do
+        cd $package
+        for version in $(ls -d * | grep -v latest); do
+            path_package=$(echo "$DEVOPS_ANSIBLE_ROOT/services/$package/$version" | sed -e 's/\//\\\//g')
+            path_base=$(echo "$DEVOPS_ANSIBLE_ROOT" | sed -e 's/\//\\\//g')
+            find $version -type f -print0 | xargs -0 sed -i \
+                -e "s/DEVOPS_PACKAGE/$path_package/g"       \
+                -e "s/DEVOPS_BASE/$path_base/g"
+        done
+        cd ..
+    done
 }
 
 setup_api() {
