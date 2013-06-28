@@ -2,10 +2,10 @@
 # file: services/mongodb/tasks/main.yml
 
 # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
   
-- name: be sure mongodb is installed
+- name: Ensure mongodb is installed
   apt: pkg=mongodb state=present
   notify: enable mongodb service
 
@@ -15,5 +15,5 @@
   notify: restart mongodb
 
 # Ensure running
-- name: be sure mongodb is running
+- name: Ensure mongodb is running
   service: name=mongodb state=started

@@ -1,7 +1,7 @@
 ---
 
 # Ensure monitoring via ...
-- name: be sure collectd is installed
+- name: Ensure collectd is installed
   apt: pkg=collectd state=installed
   notify: enable collectd service
 
@@ -37,5 +37,5 @@
 - name: ensure collectd host is set
   lineinfile: dest=/etc/hosts regexp='collectd\.service\.devo\.ps' line='$collectd_host collectd.service.devo.ps' state=present backup=yes
 
-- name: be sure collectd is started
+- name: Ensure collectd is started
   service: name=collectd state=started

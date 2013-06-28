@@ -2,10 +2,10 @@
 # file: services/php/tasks/main.yml
 
 # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
 
-- name: be sure php is installed
+- name: Ensure php is installed
   apt: pkg=$item state=present
   with_items:
       - php5-common

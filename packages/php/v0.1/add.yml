@@ -1,0 +1,40 @@
+---
+- name: Ensure php is installed
+  apt: pkg=$item state=present
+  with_items:
+    - php5-common
+    - php5-cli
+    - php5-dev
+    - php5-suhosin
+    - php5-mysql
+    - php5-gd
+    - php5-memcache
+    - php-pear
+    - php-apc
+
+- name: backup original config cli
+  command: mv /etc/php5/cli/php.ini /etc/php5/cli/php.ini.orig 
+           creates=/etc/php5/cli/php.ini.orig
+           removes=/etc/php5/cli/php.ini
+
+- name: ensure php5 confguration cli
+  template: 
+    src=DEVOPS_PACKAGE/templates/php.ini.j2
+    dest=/etc/php5/cli/php.ini
+    owner=root
+    group=root
+    mode=0644
+  notify:
+    - restart php5-fpm
+    - restart apache
+
+- name: ensure php5 confguration
+  template: 
+    src=DEVOPS_PACKAGE/templates/apc.ini.j2
+    dest=/etc/php5/conf.d/apc.ini
+    owner=root
+    group=root
+    mode=0644
+  notify: 
+    - restart php5-fpm
+    - restart apache

@@ -1,0 +1,19 @@
+---
+- name: Ensure nginx is absent
+  apt: pkg=nginx state=absent
+
+# Later need to add the backup step; or rely on the task system 
+# to schedule the backup task before.
+
+- name: ensure nginx configuration is absent
+  file: 
+    state=absent
+    recurse=yes
+    path=/etc/nginx
+
+- name: ensure nginx monitoring is absent
+  file: 
+    state=absent
+    path=/etc/collectd/plugins.d/nginx
+  notify: reload collectd
+

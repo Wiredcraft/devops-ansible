@@ -2,10 +2,10 @@
 # file: services/php5-fpm/tasks/main.yml
 
 # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
 
-- name: be sure php5-fpm is installed
+- name: Ensure php5-fpm is installed
   apt: pkg=php5-fpm state=present
   notify: enable php5-fpm service
 
@@ -21,5 +21,5 @@
     - restart php5-fpm
 
 # Ensure running
-- name: be sure php5-fpm is running
+- name: Ensure php5-fpm is running
   service: name=php5-fpm state=started

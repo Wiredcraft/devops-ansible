@@ -2,10 +2,10 @@
 # file: services/memcached/tasks/main.yml
 
 # # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
   
-- name: be sure memcached is installed
+- name: Ensure memcached is installed
   apt: pkg=memcached state=present
   notify: enable memcached service
 
@@ -19,5 +19,5 @@
   notify: restart memcached
 
 # Ensure running
-- name: be sure memcached is running
+- name: Ensure memcached is running
   service: name=memcached state=started
