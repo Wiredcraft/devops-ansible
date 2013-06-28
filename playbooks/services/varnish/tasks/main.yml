@@ -2,10 +2,10 @@
 # file: services/varnish/tasks/main.yml
 
 # Ensure packages
-# - name: be sure we have apt updated
+# - name: Ensure we have apt updated
 #   apt: update_cache=yes
 
-- name: be sure varnish is installed
+- name: Ensure varnish is installed
   apt: pkg=varnish state=present
   notify: enable varnish service
 
@@ -22,5 +22,5 @@
 #   notify: restart varnish
 
 # Ensure running
-- name: be sure varnish is running
+- name: Ensure varnish is running
   service: name=varnish state=started

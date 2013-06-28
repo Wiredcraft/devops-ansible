@@ -1,0 +1,16 @@
+---
+# file: services/mysql/playbook.yml
+
+- hosts: ${server}
+  vars_files:
+    - ../../config/global.yml
+  tasks:
+    # Dependencies first
+    # Self
+    - include: tasks/mysql-client.yml
+    - include: tasks/mysql-server.yml
+  handlers:
+    # Dependencies first
+    # Self
+    - include: handlers/mysql-client.yml
+    - include: handlers/mysql-server.yml

@@ -1,0 +1,9 @@
+---
+# The deault task is only to ensure the service is present and running
+- name: Ensure nginx is installed
+  apt: pkg=nginx state=present
+  notify: enable nginx
+
+# Ensure running
+- name: Ensure nginx is running
+  service: name=nginx state=started

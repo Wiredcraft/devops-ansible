@@ -1,0 +1,25 @@
+{
+    "version": "0.1",
+    "name": "apache",
+    "tasks": {},
+    "handlers": {},
+    "default": {
+        "add": {
+            "description": "Add apache service",
+            "task": "add.yml"
+        },
+        "remove": {
+            "description": "Remove apache service",
+            "task": "remove.yml"
+        },
+        "monitoring": {
+            "description": "Monitor apache service",
+            "task": "monitoring.yml"
+        },
+        "backup": {
+            "description": "Backup apache service",
+            "task": "backup.yml"
+        }
+    },
+    "meta": "meta/apache.yml"
+}

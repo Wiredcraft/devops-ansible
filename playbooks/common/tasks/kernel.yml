@@ -2,8 +2,8 @@
 # file: common/tasks/kernel.yml
 
 # Ensure users
-- name: be sure we set swappiness to 0
+- name: Ensure we set swappiness to 0
   sysctl: name=vm.swappiness value=0 reload=yes state=present
 
-- name: be sure we set nofile to 64K
+- name: Ensure we set nofile to 64K
   file: src=${base}/common/files/limits.nofile.conf dest=/etc/limits.d/nofile.conf owner=root group=root mode=0644

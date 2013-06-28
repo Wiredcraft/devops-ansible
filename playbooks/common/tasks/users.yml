@@ -2,24 +2,24 @@
 # file: common/tasks/users.yml
 
 # Ensure users
-- name: be sure devops user exists
+- name: Ensure devops user exists
   user: name=devops state=present comment='Devo.ps admin user' home=/home/devops shell=/bin/bash
 
-- name: be sure devops has the correct authorized_key
+- name: Ensure devops has the correct authorized_key
   authorized_key: user=devops state=present key='${ssh.devops}' manage_dir=yes
 
-- name: be sure devops user can sudo
+- name: Ensure devops user can sudo
   copy: src=common/files/10-devops dest=/etc/sudoers.d/10-devops owner=root group=root mode=440
 
 # Ensure customer users
-- name: be sure profile user exists
+- name: Ensure profile user exists
   user: name=${space} state=present comment='Devo.ps ${space} user' home=/home/${space} shell=/bin/bash
 
-- name: be sure profile user has the correct authorized_keys
+- name: Ensure profile user has the correct authorized_keys
   authorized_key: user=${space} state=present key='${item.key}' manage_dir=yes
   with_items:
     - ${keys}
 
-- name: be sure profile user can sudo
+- name: Ensure profile user can sudo
   template: src=common/templates/10-customer.j2 dest=/etc/sudoers.d/10-${space} owner=root group=root mode=440
 
