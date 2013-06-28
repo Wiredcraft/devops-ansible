@@ -3,6 +3,8 @@
 # This build script will:
 #  - fetch the latest code
 #  - create tar files for each of the packages version
+#
+# TODO, rely on git tags instead of dedicated folders...
 ###########################
 
 # Doesn't work in MacOS ...

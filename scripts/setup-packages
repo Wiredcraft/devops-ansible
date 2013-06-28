@@ -1,0 +1,78 @@
+#!/bin/bash
+########################
+# Setup all the packages defined
+# in a folder and add them to .. 
+########################
+
+PACKAGE_FOLDER="$1"
+TARGET="$2"
+CONFIG="$3"
+
+DEFAULT_CONFIG=$(basename $0).conf
+
+usage() {
+    echo
+    echo "Usage: $(basename $0) package_folder target [config_file]"
+    echo
+    echo "  - package_folder: PATH to the folder that holds all the"
+    echo "                    packages to install (.tar.gz)"
+    echo "  - target: either 'ansible' or 'api'"
+    echo "     - ansible: will install the package for ansible to use"
+    echo "     - api:     will install the package meta data for api to use"
+    echo "  - config_file (optional): path of the config file to use"
+    echo "                    default - $(basename $0).conf"
+    echo "                    It defines the various destination path"
+    echo "                    see $(basename $0).conf.sample"
+}
+
+setup_ansible() {
+    echo "Setting up ansible"
+}
+
+setup_api() {
+    echo "Setting up api"
+}
+
+# Check arguments
+# TODO - use getopt instead ...
+if [ -z "$PACKAGE_FOLDER" ]; then
+    echo "[ERROR] Missing package folder."
+    usage
+    exit 1
+elif [ ! -d "$PACKAGE_FOLDER" ]; then
+    echo "[ERROR] Package folder does not exist."
+    usage
+    exit 1
+fi
+
+if [ -z "$TARGET" ]; then
+    echo "[ERROR] Missing target [ansible/api]"
+    usage
+    exit 1
+elif [ "$TARGET" != "ansible" -a "$TARGET" != "api" ]; then
+    echo "[ERROR] Wrong target [ansible/api]"
+    usage
+    exit 1
+fi
+
+# Load config file
+[ -z "$CONFIG" ] && CONFIG="$DEFAULT_CONFIG"
+if [ ! -r "$CONFIG" ]; then
+    echo "[ERROR] Config file is missing: $CONFIG"
+    exit 1
+else
+    source "$CONFIG"
+fi
+
+case "$TARGET" in
+    "ansible")
+        setup_ansible
+        ;;
+    "api")
+        setup_api
+        ;;
+    "*")
+        usage
+        exit 1
+        ;;
+esac
