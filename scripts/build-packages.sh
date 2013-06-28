@@ -15,6 +15,9 @@ mkdir -p $BUILD_FOLDER
 # Cleaning folder
 rm -rf $BUILD_FOLDER/*
 
+# Fetch latest code
+git pull
+
 for package in $(ls -d ../packages/*/.); do
     cd $package
     for version in $(ls -d */.); do
