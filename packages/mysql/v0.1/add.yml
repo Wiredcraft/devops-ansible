@@ -10,8 +10,11 @@
 
 # Ensure config
 - name: ensure mysql-server configuration
-  template: src=${base}/services/mysql/templates/my.cnf.j2
-      dest=/etc/mysql/my.cnf owner=root mode=0640
+  template:
+    src=DEVOPS_PACKAGE/templates/my.cnf.j2
+    dest=/etc/mysql/my.cnf
+    owner=root
+    mode=0640
   notify: restart mysql-server
 
 # Ensure running
@@ -31,5 +34,8 @@
   mysql_user: name=root password=${mysql_password.stdout} priv=*.*:ALL state=present
   
 - name: Ensure we have a .my.cnf in the root folder
-  template: src=${base}/services/mysql/templates/client.my.cnf.j2
-      dest=/root/.my.cnf owner=root mode=0400
+  template:
+    src=DEVOPS_PACKAGE/templates/client.my.cnf.j2
+    dest=/root/.my.cnf
+    owner=root
+    mode=0400

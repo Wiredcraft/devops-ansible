@@ -1,7 +1,7 @@
 # ---
 # - name: Ensure php5-fpm is monitored
 #   copy: 
-#     src=files/server-status 
+#     src=DEVOPS_PACKAGE/files/server-status 
 #     dest=/etc/nginx/sites-available/server-status
 #     owner=root
 #     group=root

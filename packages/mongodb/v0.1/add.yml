@@ -5,8 +5,12 @@
 
 # Ensure config
 - name: ensure the mongodb config file
-  template: src=${base}/services/mongodb/templates/mongodb.conf.j2
-      dest=/etc/mongodb.conf owner=root group=root mode=0644
+  template:
+    src=DEVOPS_PACKAGE/templates/mongodb.conf.j2
+    dest=/etc/mongodb.conf
+    owner=root
+    group=root
+    mode=0644
   notify: restart mongodb
 
 # Ensure running

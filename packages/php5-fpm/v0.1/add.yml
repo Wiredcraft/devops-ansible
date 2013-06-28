@@ -10,8 +10,12 @@
            removes=/etc/php5/fpm/php.ini
 
 - name: ensure php5 confguration fpm
-  template: src=${base}/services/php/templates/php.ini.j2
-      dest=/etc/php5/fpm/php.ini owner=root group=root mode=0644
+  template:
+    src=DEVOPS_PACKAGE/templates/php.ini.j2
+    dest=/etc/php5/fpm/php.ini
+    owner=root
+    group=root
+    mode=0644
   notify: 
     - restart php5-fpm
 

@@ -19,7 +19,7 @@
 
 - name: ensure php5 confguration cli
   template: 
-    src=${base}/services/php/templates/php.ini.j2
+    src=DEVOPS_PACKAGE/templates/php.ini.j2
     dest=/etc/php5/cli/php.ini
     owner=root
     group=root
@@ -30,7 +30,7 @@
 
 - name: ensure php5 confguration
   template: 
-    src=${base}/services/php/templates/apc.ini.j2
+    src=DEVOPS_PACKAGE/templates/apc.ini.j2
     dest=/etc/php5/conf.d/apc.ini
     owner=root
     group=root
