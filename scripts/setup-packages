@@ -26,7 +26,58 @@ usage() {
 }
 
 setup_ansible() {
-    echo "Setting up ansible"
+    echo "Setting up packages for ansible"
+    # Check destination folder
+    if [ ! -d "$DEVOPS_ANSIBLE_ROOT" ]; then
+        echo "Creating $DEVOPS_ANSIBLE_ROOT"
+        echo -n "Proceed? [y/N] "
+        read proceed 
+        if [ "$proceed" == 'y' -o "$proceed" == 'Y' ]; then
+            mkdir -p "$DEVOPS_ANSIBLE_ROOT"
+            if [ $? -ne 0 ]; then
+                echo "Error while creating $DEVOPS_ANSIBLE_ROOT. Aborting".
+                exit 1
+            fi
+        else
+            echo "Aborting."
+            exit
+        fi
+    fi
+
+    for package in $(ls $PACKAGE_FOLDER/*.tar.gz); do
+        echo "Starting setup of $package"
+        name=$(echo $(basename $package) | cut -f1 -d'_')
+        version=$(echo ${package/.tar.gz/} | cut -f2 -d'_')
+        # Checking if the package is already present
+        if [ -d "$DEVOPS_ANSIBLE_ROOT/services/$name" -a "$DEVOPS_ANSIBLE_ROOT/services/$name/$version" ]; then
+            echo "Package $name ($version) is already present."
+            echo -n "Overwrite? [y/N] "
+            read overwrite
+            if [ "$overwrite" == 'y' -o "$overwrite" == 'Y' ]; then
+                # Proceed with overwrite
+                :
+            else
+                echo "Skipping..."
+                continue
+            fi
+        fi
+        # Proceed with setup - create folder and do cleanup
+        mkdir -p "$DEVOPS_ANSIBLE_ROOT/services/$name/"
+        rm -rf "$DEVOPS_ANSIBLE_ROOT/services/$name/$version"
+        mkdir -p "$DEVOPS_ANSIBLE_ROOT/services/$name/$version"
+        # Will extract in $name/$version
+        echo "$DEVOPS_ANSIBLE_ROOT/services/$name"
+        echo "$package"
+        tar xzf $package -C "$DEVOPS_ANSIBLE_ROOT/services/$name/$version"
+    done
+
+    # Prepare the link to latest
+    for package in $(ls "$DEVOPS_ANSIBLE_ROOT/services/"); do
+        latest_version=$(ls "$DEVOPS_ANSIBLE_ROOT/services/$package/" | sort | tail -1)
+        echo "Latest version for $package: $latest_version"
+        rm -f "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
+        ln -s "$latest_version" "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
+    done
 }
 
 setup_api() {

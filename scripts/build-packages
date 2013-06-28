@@ -26,13 +26,15 @@ for package in $(ls -d ../packages/*/.); do
         PKG_VERSION=$(dirname $version)
         PKG_FOLDER=$(dirname $package)
         PKG_NAME=$(basename $(dirname $package))
-        tar cvfz ../$BUILD_FOLDER/${PKG_NAME}-${PKG_VERSION}.tar.gz ${PKG_VERSION} \
+        cd "$PKG_VERSION"
+        tar cvfz ../../$BUILD_FOLDER/${PKG_NAME}_${PKG_VERSION}.tar.gz . \
             > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo "[SUCCESS] $PKG_NAME - $PKG_VERSION: package created."
         else
             echo "[ERROR] $PKG_NAME - $PKG_VERSION: package creation failed."
         fi
+        cd ..
     done
     cd ..
 done
