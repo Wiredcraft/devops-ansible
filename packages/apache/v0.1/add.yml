@@ -24,24 +24,37 @@
     - ssl
 
 - name: ensure the apache config file
-  template: src=${base}/services/apache/templates/apache2.conf.j2
-      dest=/etc/apache2/apache2.conf owner=root group=root mode=0644
+  template: 
+    src=DEVOPS_PACKAGE/templates/apache2.conf.j2
+    dest=/etc/apache2/apache2.conf
+    owner=root
+    group=root
+    mode=0644
   notify: reload apache
 
 - name: ensure the apache config file
-  template: src=${base}/services/apache/templates/envvars.j2
-      dest=/etc/apache2/envvars owner=root group=root mode=0644
+  template: 
+    src=DEVOPS_PACKAGE/templates/envvars.j2
+    dest=/etc/apache2/envvars
+    owner=root
+    group=root
+    mode=0644
   notify: reload apache
 
 # Ensure config
 - name: backup original config apache2
-  command: mv /etc/php5/apache2/php.ini /etc/php5/apache2/php.ini.orig 
-           creates=/etc/php5/apache2/php.ini.orig
-           removes=/etc/php5/apache2/php.ini
+  command: 
+    creates=/etc/php5/apache2/php.ini.orig
+    removes=/etc/php5/apache2/php.ini
+    mv /etc/php5/apache2/php.ini /etc/php5/apache2/php.ini.orig 
 
 - name: ensure php5 confguration apache2
-  template: src=${base}/services/php/templates/php.ini.j2
-      dest=/etc/php5/apache2/php.ini owner=root group=root mode=0644
+  template: 
+    src=${base}/services/php/templates/php.ini.j2
+    dest=/etc/php5/apache2/php.ini
+    owner=root
+    group=root
+    mode=0644
   when_string: '"php" in "$group_names"'
   notify: 
     - restart apache

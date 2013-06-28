@@ -1,7 +1,7 @@
 ---
 - name: Ensure apache server-status is installed
   copy: 
-    src=files/server-status 
+    src=DEVOPS_PACKAGE/files/server-status 
     dest=/etc/apache2/sites-available/server-status
     owner=root
     group=root
@@ -19,7 +19,7 @@
 
 - name: Ensure apache collectd plugin is enabled
   copy: 
-    src=files/collectd-apache
+    src=DEVOPS_PACKAGE/files/collectd-apache
     dest=/etc/collectd/plugins.d/apache
     owner=root
     group=root
