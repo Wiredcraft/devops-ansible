@@ -62,20 +62,30 @@ setup_ansible() {
             fi
         fi
         # Proceed with setup - create folder and do cleanup
-        mkdir -p "$DEVOPS_ANSIBLE_ROOT/services/$name/"
-        rm -rf "$DEVOPS_ANSIBLE_ROOT/services/$name/$version"
-        mkdir -p "$DEVOPS_ANSIBLE_ROOT/services/$name/$version"
+        if [ "$name" == 'common' ]; then
+            PACKAGE_ROOT="$DEVOPS_ANSIBLE_ROOT/$name"
+        else
+            PACKAGE_ROOT="$DEVOPS_ANSIBLE_ROOT/services/$name"
+        fi
+        mkdir -p "$PACKAGE_ROOT"
+        rm -rf "$PACKAGE_ROOT/$version"
+        mkdir -p "$PACKAGE_ROOT/$version"
         # Will extract in $name/$version
-        tar xzf $package -C "$DEVOPS_ANSIBLE_ROOT/services/$name/$version"
+        tar xzf $package -C "$PACKAGE_ROOT/$version"
     done
 
-    # Prepare the link to latest
+    # Prepare the link to latest services packages
     for package in $(ls "$DEVOPS_ANSIBLE_ROOT/services/"); do
+        rm -f "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
         latest_version=$(ls "$DEVOPS_ANSIBLE_ROOT/services/$package/" | sort | tail -1)
         echo "Latest version for $package: $latest_version"
-        rm -f "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
         ln -s "$latest_version" "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
     done
+    # Prepare the link to latest services packages
+    rm -f "$DEVOPS_ANSIBLE_ROOT/common/latest"
+    latest_version=$(ls "$DEVOPS_ANSIBLE_ROOT/common/" | sort | tail -1)
+    echo "Latest version for common: $latest_version"
+    ln -s "$latest_version" "$DEVOPS_ANSIBLE_ROOT/common/latest"
 
     # Update all the PATH within the files
     # DEVOPS_PACKAGE
@@ -91,6 +101,15 @@ setup_ansible() {
                 -e "s/DEVOPS_BASE/$path_base/g"
         done
         cd ..
+    done
+    # Update PATH within common
+    cd "$DEVOPS_ANSIBLE_ROOT/common"
+    for version in $(ls -d * | grep -v latest); do
+        path_package=$(echo "$DEVOPS_ANSIBLE_ROOT/common/$version" | sed -e 's/\//\\\//g')
+        path_base=$(echo "$DEVOPS_ANSIBLE_ROOT" | sed -e 's/\//\\\//g')
+        find $version -type f -print0 | xargs -0 sed -i \
+            -e "s/DEVOPS_PACKAGE/$path_package/g"       \
+            -e "s/DEVOPS_BASE/$path_base/g"
     done
 }
 
