@@ -1,3 +1,0 @@
----
-- include: services/SERVICE/tasks/main.yml
-  when_string: '"SERVICE" in "$group_names"'
