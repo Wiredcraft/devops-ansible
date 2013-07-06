@@ -1,0 +1,13 @@
+---
+# NOTE - not tested !
+- name: Ensure Rackspace server
+  action:
+    module: rax 
+    image: ${image}
+    flavor: ${size}
+    region: ${region}
+    name: "${inventory_hostname}"
+    # key_name:
+    wait: yes
+    wait_timeout: 500
+  delegate_to: 127.0.0.1

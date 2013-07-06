@@ -1,0 +1,10 @@
+---
+# NOTE - not tested !
+- name: Delete Rackspace server
+  action:
+    module: rax 
+    region: ${region}
+    name: "${inventory_hostname}"
+    # key_name:
+    state: absent
+  delegate_to: 127.0.0.1

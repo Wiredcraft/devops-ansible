@@ -1,3 +1,10 @@
 ---
-- include: DEVOPS_PACKAGE/handlers/mysql-client.yml
-- include: DEVOPS_PACKAGE/handlers/mysql-server.yml
+# Ensure service enabled at boot
+- name: enable mysql-server
+  service: name=mysql enabled=yes
+
+- name: restart mysql-server
+  service: name=mysql state=restarted
+
+- name: reload mysql-server
+  service: name=mysql state=reloaded

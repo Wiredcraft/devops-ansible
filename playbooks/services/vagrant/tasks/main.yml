@@ -1,6 +1,0 @@
-- name: Ensure the build tools are present
-  apt: pkg=make state=present
-
-- name: Ensure vagrant is installed
-  gem: name=vagrant state=present
-
