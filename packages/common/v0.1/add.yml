@@ -1,0 +1,4 @@
+---
+- include: DEVOPS_PACKAGE/tasks/dependencies.yml
+- include: DEVOPS_PACKAGE/tasks/users.yml
+- include: DEVOPS_PACKAGE/tasks/packages.yml

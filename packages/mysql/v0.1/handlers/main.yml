@@ -1,5 +1,3 @@
 ---
-# file: services/mysql/handlers/main.yml
-
-- include: ${base}/services/mysql/handlers/mysql-client.yml
-- include: ${base}/services/mysql/handlers/mysql-server.yml
+- include: DEVOPS_PACKAGE/handlers/mysql-client.yml
+- include: DEVOPS_PACKAGE/handlers/mysql-server.yml

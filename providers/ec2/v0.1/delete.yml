@@ -1,0 +1,8 @@
+---
+- name: Delete Ec2 server
+  action:
+    module: ec2 
+    key_name: ${keyName}
+    state: absent
+    id: ${provider_id}
+  delegate_to: 127.0.0.1

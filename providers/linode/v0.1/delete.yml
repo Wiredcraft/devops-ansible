@@ -1,0 +1,7 @@
+---
+- name: Delete Linode server
+  action:
+    module: linode
+    state: absent
+    linode_id: ${provider_id}
+  delegate_to: 127.0.0.1
