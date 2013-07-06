@@ -13,13 +13,15 @@
 BUILD_FOLDER='../builds'
 
 cd $(dirname $0)
-mkdir -p $BUILD_FOLDER
+mkdir -p $BUILD_FOLDER/{packages,providers}
 # Cleaning folder
 rm -rf $BUILD_FOLDER/*
+mkdir -p $BUILD_FOLDER/{packages,providers}
 
 # Fetch latest code
 git pull
 
+# Prepare packages archives
 for package in $(ls -d ../packages/*/.); do
     cd $package
     for version in $(ls -d */.); do
@@ -27,12 +29,32 @@ for package in $(ls -d ../packages/*/.); do
         PKG_FOLDER=$(dirname $package)
         PKG_NAME=$(basename $(dirname $package))
         cd "$PKG_VERSION"
-        tar cvfz ../../$BUILD_FOLDER/${PKG_NAME}_${PKG_VERSION}.tar.gz . \
+        tar cvfz ../../$BUILD_FOLDER/packages/${PKG_NAME}_${PKG_VERSION}.tar.gz . \
             > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo "[SUCCESS] $PKG_NAME - $PKG_VERSION: package created."
         else
             echo "[ERROR] $PKG_NAME - $PKG_VERSION: package creation failed."
+        fi
+        cd ..
+    done
+    cd ..
+done
+
+# Prepare provider archives
+for provider in $(ls -d ../providers/*/.); do
+    cd $provider
+    for version in $(ls -d */.); do
+        PKG_VERSION=$(dirname $version)
+        PKG_FOLDER=$(dirname $provider)
+        PKG_NAME=$(basename $(dirname $provider))
+        cd "$PKG_VERSION"
+        tar cvfz ../../$BUILD_FOLDER/providers/${PKG_NAME}_${PKG_VERSION}.tar.gz . \
+            > /dev/null 2>&1
+        if [ $? -eq 0 ]; then
+            echo "[SUCCESS] $PKG_NAME - $PKG_VERSION: provider created."
+        else
+            echo "[ERROR] $PKG_NAME - $PKG_VERSION: provider creation failed."
         fi
         cd ..
     done
