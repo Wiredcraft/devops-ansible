@@ -22,6 +22,7 @@ mkdir -p $BUILD_FOLDER/{packages,providers}
 git pull
 
 # Prepare packages archives
+echo "************** Packages **************"
 for package in $(ls -d ../packages/*/.); do
     cd $package
     for version in $(ls -d */.); do
@@ -42,6 +43,7 @@ for package in $(ls -d ../packages/*/.); do
 done
 
 # Prepare provider archives
+echo "************** Providers **************"
 for provider in $(ls -d ../providers/*/.); do
     cd $provider
     for version in $(ls -d */.); do
