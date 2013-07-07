@@ -217,6 +217,9 @@ setup_api() {
         cp package.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
         cp tasks/tasks.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
         cp handlers/handlers.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
+
+        # Return to base folder .. to proceed to the next
+        cd $CURRENT_FOLDER
     done
 
     # Handle providers
@@ -232,6 +235,9 @@ setup_api() {
         cd "$TMP_DIR/providers/$name/$version"
         mkdir -p "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
         cp provider.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
+
+        # Return to base folder .. to proceed to the next
+        cd $CURRENT_FOLDER
     done
 
     # Prepare the link to latest services packages
