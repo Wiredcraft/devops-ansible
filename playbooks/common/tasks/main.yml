@@ -1,8 +1,0 @@
----
-# file: common/tasks/main.yml
-
-- include: dependencies.yml
-- include: kernel.yml
-- include: users.yml tags=devops
-- include: packages.yml tags=devops
-- include: monitoring.yml

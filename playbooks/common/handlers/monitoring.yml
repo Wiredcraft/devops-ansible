@@ -1,9 +1,0 @@
----
-- name: enable collectd service
-  service: name=collectd enabled=yes
-  
-- name: restart collectd
-  service: name=collectd state=restarted
-
-- name: reload collectd
-  service: name=collectd state=reloaded

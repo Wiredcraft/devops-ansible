@@ -1,3 +1,0 @@
----
-base: BASE_FOLDER
-collectd_host: COLLECTD_HOST

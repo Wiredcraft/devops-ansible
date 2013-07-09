@@ -1,5 +1,10 @@
 ---
-# file: services/mysql/handlers/main.yml
+# Ensure service enabled at boot
+- name: enable mysql-server
+  service: name=mysql enabled=yes
 
-- include: ${base}/services/mysql/handlers/mysql-client.yml
-- include: ${base}/services/mysql/handlers/mysql-server.yml
+- name: restart mysql-server
+  service: name=mysql state=restarted
+
+- name: reload mysql-server
+  service: name=mysql state=reloaded
