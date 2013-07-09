@@ -1,9 +1,0 @@
----
-# file: common/tasks/dependencies.yml
-
-# Ensure troubleshooting tools
-
-- name: install python-apt
-  shell: creates=/home/devops/.ansible/python-apt /usr/bin/apt-get install -y python-apt && touch /home/devops/.ansible/python-apt
-
-# Ensure more...

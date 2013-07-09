@@ -1,1 +1,13 @@
 ---
+# TODO
+#
+# Define which database we want to enable monitoring for
+#
+# We may have to create / add a user for every single database
+# existing on the server. 
+# Meaning; we need to know / manage the databases names and loop
+# through them to have an updated collectd plugin setup
+#
+# Sample config:
+#  https://collectd.org/wiki/index.php/Plugin:MongoDB
+#

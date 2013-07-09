@@ -9,6 +9,7 @@ TARGET="$2"
 CONFIG="$3"
 
 DEFAULT_CONFIG=$(basename $0).conf
+CURRENT_FOLDER=$(readlink -m .)
 
 usage() {
     echo
@@ -26,7 +27,7 @@ usage() {
 }
 
 setup_ansible() {
-    echo "Setting up packages for ansible"
+    echo "Setting up packages and providers for ansible"
     # Check destination folder
     if [ ! -d "$DEVOPS_ANSIBLE_ROOT" ]; then
         echo "Creating $DEVOPS_ANSIBLE_ROOT"
@@ -44,11 +45,13 @@ setup_ansible() {
         fi
     fi
 
-    for package in $(ls $PACKAGE_FOLDER/*.tar.gz); do
+    # Handle packages
+    for package in $(ls $PACKAGE_FOLDER/packages/*.tar.gz); do
         echo "Starting setup of $package"
         name=$(echo $(basename $package) | cut -f1 -d'_')
         version=$(echo ${package/.tar.gz/} | cut -f2 -d'_')
         # Checking if the package is already present
+        # Missing the check for common package .. whatever for now ..
         if [ -d "$DEVOPS_ANSIBLE_ROOT/services/$name" -a -d "$DEVOPS_ANSIBLE_ROOT/services/$name/$version" ]; then
             echo "Package $name ($version) is already present."
             echo -n "Overwrite? [y/N] "
@@ -74,6 +77,31 @@ setup_ansible() {
         tar xzf $package -C "$PACKAGE_ROOT/$version"
     done
 
+    # Handle providers
+    for provider in $(ls $PACKAGE_FOLDER/providers/*.tar.gz); do
+        echo "Starting setup of $provider"
+        name=$(echo $(basename $provider) | cut -f1 -d'_')
+        version=$(echo ${provider/.tar.gz/} | cut -f2 -d'_')
+        # Checking if the provider is already present
+        if [ -d "$DEVOPS_ANSIBLE_ROOT/providers/$name" -a -d "$DEVOPS_ANSIBLE_ROOT/providers/$name/$version" ]; then
+            echo "Provider $name ($version) is already present."
+            echo -n "Overwrite? [y/N] "
+            read overwrite
+            if [ "$overwrite" == 'y' -o "$overwrite" == 'Y' ]; then
+                # Proceed with overwrite
+                :
+            else
+                echo "Skipping..."
+                continue
+            fi
+        fi
+        mkdir -p "$DEVOPS_ANSIBLE_ROOT/providers/$name"
+        rm -rf "$DEVOPS_ANSIBLE_ROOT/providers/$name/$version"
+        mkdir -p "$DEVOPS_ANSIBLE_ROOT/providers/$name/$version"
+        # Will extract in $name/$version
+        tar xzf $provider -C "$DEVOPS_ANSIBLE_ROOT/providers/$name/$version"
+    done
+
     # Prepare the link to latest services packages
     for package in $(ls "$DEVOPS_ANSIBLE_ROOT/services/"); do
         rm -f "$DEVOPS_ANSIBLE_ROOT/services/$package/latest"
@@ -86,6 +114,14 @@ setup_ansible() {
     latest_version=$(ls "$DEVOPS_ANSIBLE_ROOT/common/" | sort | tail -1)
     echo "Latest version for common: $latest_version"
     ln -s "$latest_version" "$DEVOPS_ANSIBLE_ROOT/common/latest"
+
+    # Prepare the link to latest providers packages
+    for provider in $(ls "$DEVOPS_ANSIBLE_ROOT/providers/"); do
+        rm -f "$DEVOPS_ANSIBLE_ROOT/providers/$provider/latest"
+        latest_version=$(ls "$DEVOPS_ANSIBLE_ROOT/providers/$provider/" | sort | tail -1)
+        echo "Latest version for $provider: $latest_version"
+        ln -s "$latest_version" "$DEVOPS_ANSIBLE_ROOT/providers/$provider/latest"
+    done
 
     # Update all the PATH within the files
     # DEVOPS_PACKAGE
@@ -111,10 +147,118 @@ setup_ansible() {
             -e "s/DEVOPS_PACKAGE/$path_package/g"       \
             -e "s/DEVOPS_BASE/$path_base/g"
     done
+    # Update PATH within providers
+    cd "$DEVOPS_ANSIBLE_ROOT/providers/"
+    for provider in $(ls -d *); do
+        cd $provider
+        for version in $(ls -d * | grep -v latest); do
+            path_package=$(echo "$DEVOPS_ANSIBLE_ROOT/providers/$provider/$version" | sed -e 's/\//\\\//g')
+            path_base=$(echo "$DEVOPS_ANSIBLE_ROOT" | sed -e 's/\//\\\//g')
+            find $version -type f -print0 | xargs -0 sed -i \
+                -e "s/DEVOPS_PACKAGE/$path_package/g"       \
+                -e "s/DEVOPS_BASE/$path_base/g"
+        done
+        cd ..
+    done
 }
 
 setup_api() {
-    echo "Setting up api"
+    # The api doesn't need the full packages, only the meta data and various
+    # JSON files available in the packages.
+    # Setup is made of 2 steps:
+    #  - untar the packages in temp folders
+    #  - fetch data from the temp folders and populate the api working folders
+
+    echo "Setting up packages and providers for api.devo.ps"
+    # Check destination folder
+    if [ ! -d "$DEVOPS_API_ROOT" ]; then
+        echo "Creating $DEVOPS_API_ROOT"
+        echo -n "Proceed? [y/N] "
+        read proceed 
+        if [ "$proceed" == 'y' -o "$proceed" == 'Y' ]; then
+            mkdir -p "$DEVOPS_API_ROOT"
+            if [ $? -ne 0 ]; then
+                echo "Error while creating $DEVOPS_API_ROOT. Aborting".
+                exit 1
+            fi
+        else
+            echo "Aborting."
+            exit
+        fi
+    fi
+
+    # Prepare temporary folders
+    TMP_DIR=$(mktemp -d)
+    TMP_PACKAGES=$TMP_DIR/packages
+    mkdir -p $TMP_PACKAGES
+    # Handle packages
+    for package in $(ls $PACKAGE_FOLDER/packages/*.tar.gz); do
+        echo "Starting setup of $package"
+        name=$(echo $(basename $package) | cut -f1 -d'_')
+        version=$(echo ${package/.tar.gz/} | cut -f2 -d'_')
+
+        # Proceed with setup - create folder and do cleanup
+        if [ "$name" == 'common' ]; then
+            PACKAGE_ROOT="$TMP_PACKAGES/$name"
+        else
+            PACKAGE_ROOT="$TMP_PACKAGES/services/$name"
+        fi
+        mkdir -p "$PACKAGE_ROOT"
+        rm -rf "$PACKAGE_ROOT/$version"
+        mkdir -p "$PACKAGE_ROOT/$version"
+        # Will extract in $name/$version
+        tar xzf $package -C "$PACKAGE_ROOT/$version"
+
+        # Proceed meta / package.json and tasks/handlers.json
+        cd "$PACKAGE_ROOT/$version/"
+        mkdir -p "$DEVOPS_API_ROOT/mock/services/$name/$version/meta/"
+        cat "meta/$name.yml" | python $CURRENT_FOLDER/yaml2json.py \
+            > "$DEVOPS_API_ROOT/mock/services/$name/$version/meta/$name.json"
+        cp package.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
+        cp tasks/tasks.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
+        cp handlers/handlers.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
+
+        # Return to base folder .. to proceed to the next
+        cd $CURRENT_FOLDER
+    done
+
+    # Handle providers
+    for provider in $(ls $PACKAGE_FOLDER/providers/*.tar.gz); do
+        echo "Starting setup of $provider"
+        name=$(echo $(basename $provider) | cut -f1 -d'_')
+        version=$(echo ${provider/.tar.gz/} | cut -f2 -d'_')
+        mkdir -p "$TMP_DIR/providers/$name/$version"
+        # Will extract in $name/$version
+        tar xzf $provider -C "$TMP_DIR/providers/$name/$version"
+
+        # Proceed meta / package.json and tasks/handlers.json
+        cd "$TMP_DIR/providers/$name/$version"
+        mkdir -p "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
+        cp provider.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
+
+        # Return to base folder .. to proceed to the next
+        cd $CURRENT_FOLDER
+    done
+
+    # Prepare the link to latest services packages
+    for package in $(ls "$DEVOPS_API_ROOT/mock/services"); do
+        rm -f "$DEVOPS_API_ROOT/mock/services/$package/latest"
+        latest_version=$(ls "$DEVOPS_API_ROOT/mock/services/$package/" | sort | tail -1)
+        echo "Latest version for $package: $latest_version"
+        ln -s "$latest_version" "$DEVOPS_API_ROOT/mock/services/$package/latest"
+    done
+
+    # Prepare the link to latest providers packages
+    for provider in $(ls "$DEVOPS_API_ROOT/mock/providers"); do
+        rm -f "$DEVOPS_API_ROOT/mock/providers/$provider/latest"
+        latest_version=$(ls "$DEVOPS_API_ROOT/mock/providers/$provider/" | sort | tail -1)
+        echo "Latest version for $provider: $latest_version"
+        ln -s "$latest_version" "$DEVOPS_API_ROOT/mock/providers/$provider/latest"
+    done
+
+    # Cleanup the temp folder
+    cd $CURRENT_FOLDER
+    rm -rf $TMP_DIR
 }
 
 # Check arguments
