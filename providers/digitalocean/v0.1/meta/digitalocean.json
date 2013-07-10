@@ -1,1 +1,24 @@
-{}
+{
+    "sizes": [
+        { "XXX": "512MB (1 Core - 512 MB - 20GB SSD - 1TB)" },
+        { "XXX": "1GB (2 Cores- 1GB - 30GB SSD - 2TB)" },
+        { "XXX": "2GB (2 Cores- 2GB - 40GB SSD - 3TB)" },
+        { "XXX": "4GB (2 Cores- 4GB - 60GB SSD - 4TB)" },
+        { "XXX": "8GB (4 Cores- 8GB - 80GB SSD - 5TB)" },
+        { "XXX": "16GB (8 Cores- 16GB - 160GB SSD - 6TB)" },
+        { "XXX": "32GB (12 Cores- 32GB - 320GB SSD - 7TB)" },
+        { "XXX": "48GB (16 Cores- 48GB - 480GB SSD - 8TB)" },
+        { "XXX": "64GB (20 Cores- 64GB - 640GB SSD - 9TB)" },
+        { "XXX": "96GB (24 Cores- 96GB - 960GB SSD - 10TB)" }
+    ],
+    "regions": [
+        { "XXX": "New York" },
+        { "XXX": "San Francisco" },
+        { "XXX": "Amsterdam" }
+    ],  
+    "images": { 
+        "ubuntu12.04": {    
+            "default": "xxx"
+        }
+    }
+}

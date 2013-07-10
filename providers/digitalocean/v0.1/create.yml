@@ -9,7 +9,6 @@
     name: ${space}
     ssh_pub_key: ${ssh_profile_key}
   delegate_to: 127.0.0.1
-  when_string: ${type} == 'digital-ocean'
   register: do_key
 - name: Ensure digital-ocean server
   action:

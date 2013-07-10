@@ -1,1 +1,41 @@
-{}
+{
+    "sizes": [
+        { "t1.micro": "T1 Micro (up to 2 ECUs - 1 Core - 613 MiB)" },
+        { "m1.small": "M1 Small (1 ECU - 1 Core - 1.7 GiB)" },
+        { "m1.medium": "M1 Medium (2 ECUs - 1 Core - 3.7 GiB)" },
+        { "m1.large": "M1 Large (4 ECUs - 2 Cores - 7.5 GiB)" },
+        { "m1.xlarge": "M1 Extra Large (8 ECUs - 4 Cores - 15 GiB)" },
+        { "m3.xlarge": "M3 Extra Large (13 ECUs - 4 Cores - 15 GiB)" },
+        { "m3.2xlarge": "M3 Double Extra Large (26 ECUs - 8 Cores - 30 GiB)" },
+        { "m2.xlarge": "M2 High-Memory Extra Large (6.5 ECUs - 2 Cores - 17.1 GiB)" },
+        { "m2.2xlarge": "M2 High-Memory Double Extra Large (13 ECUs - 4 Cores - 34.2 GiB)" },
+        { "m2.4xlarge": "M2 High-Memory Quadruple Extra Large (26 ECUs - 8 Cores - 68.4 GiB)" },
+        { "c1.medium": "C1 High-CPU Medium (5 ECUs - 2 Cores - 1.7 GiB)" },
+        { "c1.xlarge": "C1 High-CPU Extra Large (20 ECUs - 8 Cores - 7 GiB)" },
+        { "hi1.4xlarge": "High I/O Quadruple Extra Large (35 ECUs - 16 Cores - 60.5 GiB)" },
+        { "hs1.8xlarge": "High Storage Eight Extra Large (26 ECUs - 16 Cores - 117 GiB)" }
+    ],
+    "regions": [
+        { "ap-northeast-1": "Asia Pacific (Tokyo)" },
+        { "ap-southeast-1": "Asia Pacific (Singapore)" },
+        { "ap-southeast-2": "Asia Pacific (Sydney)" },
+        { "eu-west-1": "EU (Ireland)" },
+        { "us-east-1": "US East (N. Virginia)" },
+        { "us-west-1": "US West (N. California)" },
+        { "us-west-2": "US West (Oregon)" },
+        { "sa-east-1": "South America (São Paulo)" }
+    ],  
+    "images": { 
+        "ubuntu12.04": {    
+            "ap-northeast-1": "ami-5b0a865a",
+            "ap-southeast-1": "ami-4093dc12",
+            "ap-southeast-2": "ami-9d4bdba7",
+            "eu-west-1": "ami-35acbb41",
+            "us-east-1": "ami-856f02ec",
+            "us-west-1": "ami-2928076c",
+            "us-west-2": "ami-09e27439",
+            "sa-east-1": "ami-da3de7c7",
+            "default": ""
+        }
+    }
+}

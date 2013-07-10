@@ -8,4 +8,3 @@
     state: absent
     id: ${provider_id}
   delegate_to: 127.0.0.1
-  when_string: ${type} == 'digital-ocean'
