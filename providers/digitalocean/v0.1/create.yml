@@ -2,6 +2,8 @@
 - name: Ensure digital-ocean SSH key
   action:
     module: digital_ocean
+    client_id: ${client_id}
+    api_key: ${api_key}
     command: ssh
     state: present
     name: ${space}
@@ -12,6 +14,8 @@
 - name: Ensure digital-ocean server
   action:
     module: digital_ocean
+    client_id: ${client_id}
+    api_key: ${api_key}
     command: droplet
     size_id: ${flavor}
     image_id: ${image}

@@ -2,6 +2,7 @@
 - name: Delete Linode server
   action:
     module: linode
+    api_key: ${api_key}
     state: absent
     linode_id: ${provider_id}
   delegate_to: 127.0.0.1
