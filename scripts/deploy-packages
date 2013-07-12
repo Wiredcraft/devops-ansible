@@ -233,8 +233,8 @@ setup_api() {
 
         # Proceed meta / package.json and tasks/handlers.json
         cd "$TMP_DIR/providers/$name/$version"
-        mkdir -p "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
-        cp provider.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
+        mkdir -p "$DEVOPS_API_ROOT/mock/providers/$name/$version/meta"
+        cp "$name".json "$DEVOPS_API_ROOT/mock/providers/$name/$version/meta"
 
         # Return to base folder .. to proceed to the next
         cd $CURRENT_FOLDER
