@@ -19,5 +19,5 @@
             "description": "Backup virtualbox service",
             "task": "backup.yml"
         }
-    },
+    }
 }
