@@ -37,5 +37,9 @@
             "sa-east-1": "ami-da3de7c7",
             "default": ""
         }
+    },
+    "credentials": {
+        "accessKeyId": "Amazon EC2 access key ID",
+        "secretKeyId": "Amazon EC2 secret key ID"
     }
 }

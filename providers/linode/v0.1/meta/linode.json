@@ -21,5 +21,8 @@
         "ubuntu12.04": {    
             "default": "XXX"
         }
+    },
+    "credentials": {
+        "apiKey": "Linode API key"
     }
 }

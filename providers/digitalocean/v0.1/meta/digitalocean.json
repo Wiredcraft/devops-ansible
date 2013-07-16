@@ -20,5 +20,9 @@
         "ubuntu12.04": {    
             "default": "284203"
         }
+    },
+    "credentials": {
+        "clientId": "DigitalOcean client ID",
+        "apiKey": "DigitalOcean API key"
     }
 }
