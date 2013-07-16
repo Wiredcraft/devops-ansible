@@ -19,5 +19,5 @@
             "description": "Backup vagrant service",
             "task": "backup.yml"
         }
-    },
+    }
 }
