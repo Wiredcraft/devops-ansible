@@ -22,7 +22,7 @@
         }
     },
     "credentials": {
-        "clientId": "DigitalOcean client ID",
-        "apiKey": "DigitalOcean API key"
+        "clientId": "Digital Ocean client ID",
+        "apiKey": "Digital Ocean API key"
     }
 }

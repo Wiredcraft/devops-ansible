@@ -1,5 +1,5 @@
 ---
-- name: Delete digital-ocean server
+- name: Delete Digital Ocean server
   action:
     module: digital_ocean
     client_id: ${client_id}

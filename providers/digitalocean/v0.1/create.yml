@@ -1,5 +1,5 @@
 ---
-- name: Ensure digital-ocean SSH key
+- name: Ensure Digital Ocean SSH key
   action:
     module: digital_ocean
     client_id: ${client_id}
@@ -10,7 +10,7 @@
     ssh_pub_key: ${ssh_profile_key}
   delegate_to: 127.0.0.1
   register: do_key
-- name: Ensure digital-ocean server
+- name: Ensure Digital Ocean server
   action:
     module: digital_ocean
     client_id: ${client_id}
@@ -26,7 +26,7 @@
     wait_timeout: 500
   delegate_to: 127.0.0.1
   register: response
-- name: Register new IP address for digital-ocean server
+- name: Register new IP address for Digital Ocean server
   action:
     module: set_facts
     ansible_ssh_host: {{ response.droplet.ip_address }}
