@@ -211,9 +211,8 @@ setup_api() {
 
         # Proceed meta / package.json and tasks/handlers.json
         cd "$PACKAGE_ROOT/$version/"
-        mkdir -p "$DEVOPS_API_ROOT/mock/services/$name/$version/meta/"
         cat "meta/$name.yml" | python $CURRENT_FOLDER/yaml2json.py \
-            > "$DEVOPS_API_ROOT/mock/services/$name/$version/meta/$name.json"
+            > "$DEVOPS_API_ROOT/mock/services/$name/$version/meta.json"
         cp package.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
         cp tasks/tasks.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
         cp handlers/handlers.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
@@ -233,8 +232,8 @@ setup_api() {
 
         # Proceed meta / package.json and tasks/handlers.json
         cd "$TMP_DIR/providers/$name/$version"
-        mkdir -p "$DEVOPS_API_ROOT/mock/providers/$name/$version/meta"
-        cp "$name".json "$DEVOPS_API_ROOT/mock/providers/$name/$version/meta"
+        [ -e "meta.json" ] && cp meta.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
+        [ -e "provider.json" ] && cp provider.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
 
         # Return to base folder .. to proceed to the next
         cd $CURRENT_FOLDER
