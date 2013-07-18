@@ -16,7 +16,7 @@
     client_id: ${client_id}
     api_key: ${api_key}
     command: droplet
-    size_id: ${flavor}
+    size_id: ${size}
     image_id: ${image}
     region_id: ${region}
     ssh_key_ids: "${do_key.ssh_key.id}"

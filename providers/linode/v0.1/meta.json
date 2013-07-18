@@ -17,7 +17,10 @@
         { "7": "London, England, UK" },
         { "8": "Tokyo, Japan, JP" }
     ],  
-    "images": { 
+    "images": [
+        { "ubuntu12.04": "Ubuntu 12.04 LTS 64bit" }
+    ],
+    "image_ids": { 
         "ubuntu12.04": {    
             "default": "99"
         }

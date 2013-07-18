@@ -15,8 +15,11 @@
         { "1": "New York" },
         { "3": "San Francisco" },
         { "2": "Amsterdam" }
-    ],  
-    "images": { 
+    ],
+    "images": [
+        { "ubuntu12.04": "Ubuntu 12.04 LTS 64bit" }
+    ],
+    "image_ids": { 
         "ubuntu12.04": {    
             "default": "284203"
         }

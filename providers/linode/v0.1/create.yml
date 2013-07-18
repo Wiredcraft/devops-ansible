@@ -3,7 +3,7 @@
   action:
     module: linode
     api_key: ${api_key}
-    plan: ${flavor}
+    plan: ${size}
     datacenter: ${region}
     distribution: ${image}
     ssh_pub_key: ${ssh_profile_key}
