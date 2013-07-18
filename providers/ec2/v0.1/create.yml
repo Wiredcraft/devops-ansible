@@ -17,13 +17,13 @@
 - name: Register new IP address for ec2 server
   action:
     module: set_facts
-    ansible_ssh_host: {{ response.instances[0].public_ip }}
+    ansible_ssh_host: "${response.instances[0].public_ip}"
   delegate_to: 127.0.0.1
 - name: Wait for SSH to be reachable
   action:
     module: wait_for
     delay: 60
-    host: {{ ansible_ssh_host }}
+    host: "${response.instances[0].public_ip}"
     port: 22
     timeout: 300
   delegate_to: 127.0.0.1

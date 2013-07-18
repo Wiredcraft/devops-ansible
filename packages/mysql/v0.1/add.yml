@@ -28,7 +28,7 @@
     mysql -e "REVOKE PROXY ON ''@'' FROM 'root'@'localhost';" \
     && touch /home/devops/.ansible/mysql_root_proxy_grant
 
-- name: Ensure mysql root password:
+- name: Ensure mysql root password
   mysql_user: 
     name=root
     password=${item}

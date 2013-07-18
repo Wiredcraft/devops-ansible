@@ -23,19 +23,19 @@
     name: ${name}
     state: present
     wait: yes
-    wait_timeout: 500
+    wait_timeout: 600
   delegate_to: 127.0.0.1
   register: response
 - name: Register new IP address for Digital Ocean server
   action:
     module: set_facts
-    ansible_ssh_host: {{ response.droplet.ip_address }}
+    ansible_ssh_host: "${response.droplet.ip_address}"
   delegate_to: 127.0.0.1
 - name: Wait for SSH to be reachable
   action:
     module: wait_for
     delay: 60
-    host: {{ ansible_ssh_host }}
+    host: "${response.droplet.ip_address}"
     port: 22
     timeout: 300
   delegate_to: 127.0.0.1
