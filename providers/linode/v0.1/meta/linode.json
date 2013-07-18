@@ -1,25 +1,25 @@
 {
     "sizes": [
-        { "XXX": "Linode 1024 (8 Cores - 1024 MB - 24GB - 2TB)" },
-        { "XXX": "Linode 2048 (8 Cores - 2048 MB - 48GB - 4TB)" },
-        { "XXX": "Linode 4096 (8 Cores - 4096 MB - 96GB - 8TB)" },
-        { "XXX": "Linode 8192 (8 Cores - 8192 MB - 192GB - 16TB)" },
-        { "XXX": "Linode 16384 (8 Cores - 16384 MB - 384GB - 20TB)" },
-        { "XXX": "Linode 24576 (8 Cores - 24576 MB - 576GB - 20TB)" },
-        { "XXX": "Linode 32768 (8 Cores - 32768 MB - 768GB - 20TB)" },
-        { "XXX": "Linode 40960 (8 Cores - 40960 MB - 960GB - 20TB)" }
+        { "1": "Linode 1024 (8 Cores - 1024 MB - 24GB - 2TB)" },
+        { "3": "Linode 2048 (8 Cores - 2048 MB - 48GB - 4TB)" },
+        { "5": "Linode 4096 (8 Cores - 4096 MB - 96GB - 8TB)" },
+        { "6": "Linode 8192 (8 Cores - 8192 MB - 192GB - 16TB)" },
+        { "7": "Linode 16384 (8 Cores - 16384 MB - 384GB - 20TB)" },
+        { "8": "Linode 24576 (8 Cores - 24576 MB - 576GB - 20TB)" },
+        { "9": "Linode 32768 (8 Cores - 32768 MB - 768GB - 20TB)" },
+        { "10": "Linode 40960 (8 Cores - 40960 MB - 960GB - 20TB)" }
     ],
     "regions": [
         { "2": "Dallas, TX, USA" },
         { "3": "Fremont, CA, USA" },
         { "4": "Atlanta, GA, USA" },
-        { "5": "Newark, NJ, USA" },
-        { "6": "London, England, UK" },
-        { "7": "Tokyo, Japan, JP" }
+        { "6": "Newark, NJ, USA" },
+        { "7": "London, England, UK" },
+        { "8": "Tokyo, Japan, JP" }
     ],  
     "images": { 
         "ubuntu12.04": {    
-            "default": "XXX"
+            "default": "99"
         }
     },
     "credentials": {
