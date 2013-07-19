@@ -1,32 +1,111 @@
 {
     "sizes": [
-        { "t1.micro": "T1 Micro (up to 2 ECUs - 1 Core - 613 MiB)" },
-        { "m1.small": "M1 Small (1 ECU - 1 Core - 1.7 GiB)" },
-        { "m1.medium": "M1 Medium (2 ECUs - 1 Core - 3.7 GiB)" },
-        { "m1.large": "M1 Large (4 ECUs - 2 Cores - 7.5 GiB)" },
-        { "m1.xlarge": "M1 Extra Large (8 ECUs - 4 Cores - 15 GiB)" },
-        { "m3.xlarge": "M3 Extra Large (13 ECUs - 4 Cores - 15 GiB)" },
-        { "m3.2xlarge": "M3 Double Extra Large (26 ECUs - 8 Cores - 30 GiB)" },
-        { "m2.xlarge": "M2 High-Memory Extra Large (6.5 ECUs - 2 Cores - 17.1 GiB)" },
-        { "m2.2xlarge": "M2 High-Memory Double Extra Large (13 ECUs - 4 Cores - 34.2 GiB)" },
-        { "m2.4xlarge": "M2 High-Memory Quadruple Extra Large (26 ECUs - 8 Cores - 68.4 GiB)" },
-        { "c1.medium": "C1 High-CPU Medium (5 ECUs - 2 Cores - 1.7 GiB)" },
-        { "c1.xlarge": "C1 High-CPU Extra Large (20 ECUs - 8 Cores - 7 GiB)" },
-        { "hi1.4xlarge": "High I/O Quadruple Extra Large (35 ECUs - 16 Cores - 60.5 GiB)" },
-        { "hs1.8xlarge": "High Storage Eight Extra Large (26 ECUs - 16 Cores - 117 GiB)" }
+        { 
+            "id": "t1.micro",
+            "label": "T1 Micro (up to 2 ECUs - 1 Core - 613 MiB)" 
+        },
+        { 
+            "id": "m1.small",
+            "label": "M1 Small (1 ECU - 1 Core - 1.7 GiB)" 
+        },
+        { 
+            "id": "m1.medium",
+            "label": "M1 Medium (2 ECUs - 1 Core - 3.7 GiB)" 
+        },
+        { 
+            "id": "m1.large",
+            "label": "M1 Large (4 ECUs - 2 Cores - 7.5 GiB)" 
+        },
+        { 
+            "id": "m1.xlarge",
+            "label": "M1 Extra Large (8 ECUs - 4 Cores - 15 GiB)" 
+        },
+        { 
+            "id": "m3.xlarge",
+            "label": "M3 Extra Large (13 ECUs - 4 Cores - 15 GiB)" 
+        },
+        { 
+            "id": "m3.2xlarge",
+            "label": "M3 Double Extra Large (26 ECUs - 8 Cores - 30 GiB)" 
+        },
+        { 
+            "id": "m2.xlarge",
+            "label": "M2 High-Memory Extra Large (6.5 ECUs - 2 Cores - 17.1 GiB)" 
+        },
+        { 
+            "id": "m2.2xlarge",
+            "label": "M2 High-Memory Double Extra Large (13 ECUs - 4 Cores - 34.2 GiB)" 
+        },
+        { 
+            "id": "m2.4xlarge",
+            "label": "M2 High-Memory Quadruple Extra Large (26 ECUs - 8 Cores - 68.4 GiB)" 
+        },
+        { 
+            "id": "c1.medium",
+            "label": "C1 High-CPU Medium (5 ECUs - 2 Cores - 1.7 GiB)" 
+        },
+        { 
+            "id": "c1.xlarge",
+            "label": "C1 High-CPU Extra Large (20 ECUs - 8 Cores - 7 GiB)" 
+        },
+        { 
+            "id": "hi1.4xlarge",
+            "label": "High I/O Quadruple Extra Large (35 ECUs - 16 Cores - 60.5 GiB)" 
+        },
+        { 
+            "id": "hs1.8xlarge",
+            "label": "High Storage Eight Extra Large (26 ECUs - 16 Cores - 117 GiB)"
+         }
     ],
     "regions": [
-        { "ap-northeast-1": "Asia Pacific (Tokyo)" },
-        { "ap-southeast-1": "Asia Pacific (Singapore)" },
-        { "ap-southeast-2": "Asia Pacific (Sydney)" },
-        { "eu-west-1": "EU (Ireland)" },
-        { "us-east-1": "US East (N. Virginia)" },
-        { "us-west-1": "US West (N. California)" },
-        { "us-west-2": "US West (Oregon)" },
-        { "sa-east-1": "South America (São Paulo)" }
+        { 
+            "id": "ap-northeast-1", 
+            "label": "Asia Pacific (Tokyo)" 
+        },
+        { 
+            "id": "ap-southeast-1", 
+            "label": "Asia Pacific (Singapore)" 
+        },
+        { 
+            "id": "ap-southeast-2", 
+            "label": "Asia Pacific (Sydney)" 
+        },
+        { 
+            "id": "eu-west-1", 
+            "label": "EU (Ireland)" 
+        },
+        { 
+            "id": "us-east-1", 
+            "label": "US East (N. Virginia)" 
+        },
+        { 
+            "id": "us-west-1", 
+            "label": "US West (N. California)" 
+        },
+        { 
+            "id": "us-west-2", 
+            "label": "US West (Oregon)" 
+        },
+        { 
+            "id": "sa-east-1", 
+            "label": "South America (São Paulo)"
+         }
     ],
     "images": [
-        { "ubuntu12.04": "Ubuntu 12.04 LTS 64bit" }
+        { 
+            "id": "ubuntu12.04",
+            "label": "Ubuntu 12.04 LTS 64bit" 
+        }
+    ],
+    "credentials": [
+        {
+            "id": "accessKeyId",
+            "label": "Amazon EC2 access key ID"
+        },
+        {
+            "id": "secretKeyId",
+            "label": "Amazon EC2 secret key ID"
+        }
     ],
     "image_ids": { 
         "ubuntu12.04": {    
@@ -40,9 +119,5 @@
             "sa-east-1": "ami-da3de7c7",
             "default": ""
         }
-    },
-    "credentials": {
-        "accessKeyId": "Amazon EC2 access key ID",
-        "secretKeyId": "Amazon EC2 secret key ID"
     }
 }
