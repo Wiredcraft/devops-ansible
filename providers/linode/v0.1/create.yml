@@ -1,6 +1,6 @@
 ---
 - name: Ensure linode server
-  action:
+  local_action:
     module: linode
     api_key: ${api_key}
     plan: ${size}
@@ -11,18 +11,15 @@
     state: present
     wait: yes
     wait_timeout: 500
-  delegate_to: 127.0.0.1
   register: response
 - name: Register new IP address for Linode server
-  action:
-    module: set_facts
+  local_action:
+    module: set_fact
     ansible_ssh_host: "${response.instance.ipv4}"
-  delegate_to: 127.0.0.1
 - name: Wait for SSH to be reachable
-  action:
+  local_action:
     module: wait_for
     delay: 60
     host: "${response.instance.ipv4}"
     port: 22
     timeout: 300
-  delegate_to: 127.0.0.1

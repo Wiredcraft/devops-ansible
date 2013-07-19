@@ -1,6 +1,6 @@
 ---
 - name: Ensure Digital Ocean SSH key
-  action:
+  local_action:
     module: digital_ocean
     client_id: ${client_id}
     api_key: ${api_key}
@@ -8,10 +8,9 @@
     state: present
     name: ${space}
     ssh_pub_key: ${ssh_profile_key}
-  delegate_to: 127.0.0.1
   register: do_key
 - name: Ensure Digital Ocean server
-  action:
+  local_action:
     module: digital_ocean
     client_id: ${client_id}
     api_key: ${api_key}
@@ -24,18 +23,15 @@
     state: present
     wait: yes
     wait_timeout: 600
-  delegate_to: 127.0.0.1
   register: response
 - name: Register new IP address for Digital Ocean server
-  action:
-    module: set_facts
+  local_action:
+    module: set_fact
     ansible_ssh_host: "${response.droplet.ip_address}"
-  delegate_to: 127.0.0.1
 - name: Wait for SSH to be reachable
-  action:
+  local_action:
     module: wait_for
     delay: 60
     host: "${response.droplet.ip_address}"
     port: 22
     timeout: 300
-  delegate_to: 127.0.0.1
