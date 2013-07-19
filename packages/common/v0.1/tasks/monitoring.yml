@@ -53,7 +53,7 @@
   with_password: 
     DEVOPS_BASE/spaces/${space}/${inventory_hostname}/collectd_password
     length=20
-  delegate_to: 127.0.0.1
+  delegate_to: devops_server_collectd
 
 - name: ensure collectd routing for devo.ps
   template: 
