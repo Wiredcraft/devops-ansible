@@ -18,5 +18,5 @@
   file: 
     state=absent
     path=/etc/collectd/plugins.d/varnish
-  notify: reload collectd
+  notify: restart collectd
 

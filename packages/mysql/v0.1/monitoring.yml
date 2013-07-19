@@ -19,4 +19,4 @@
   with_password:
     DEVOPS_BASE/spaces/${space}/${inventory_hostname}/mysql_monitoring_password
     length=20
-  notify: reload collectd
+  notify: restart collectd

@@ -15,4 +15,4 @@
   file: 
     state=absent
     path=/etc/collectd/plugins.d/apache
-  notify: reload collectd
+  notify: restart collectd

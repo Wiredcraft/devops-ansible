@@ -17,5 +17,5 @@
   file: 
     state=absent
     path=/etc/collectd/plugins.d/php5-fpm
-  notify: reload collectd
+  notify: restart collectd
 

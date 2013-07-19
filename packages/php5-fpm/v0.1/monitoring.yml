@@ -24,4 +24,4 @@
 #     owner=root
 #     group=root
 #     mode=0644
-#   notify: reload collectd
+#   notify: restart collectd

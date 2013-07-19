@@ -14,4 +14,4 @@
   file: 
     state=absent
     path=/etc/collectd/plugins.d/mongodb
-  notify: reload collectd
+  notify: restart collectd
