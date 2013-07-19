@@ -3,7 +3,7 @@
 # Ensure monitoring via ...
 - name: Ensure collectd is installed
   apt: pkg=collectd state=installed
-  notify: enable collectd service
+  notify: enable collectd
 
 - name: ensure base config for collectd
   copy: 
