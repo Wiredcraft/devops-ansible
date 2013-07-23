@@ -21,5 +21,4 @@
 #   notify: restart varnish
 
 # Ensure running
-- name: Ensure varnish is running
-  service: name=varnish state=started
+- include: DEVOPS_PACKAGE/tasks/start.yml

@@ -14,5 +14,4 @@
     mode=0644
 
 # Ensure running
-- name: Ensure nginx is running
-  service: name=nginx state=started
+- include: DEVOPS_PACKAGE/tasks/start.yml

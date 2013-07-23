@@ -1,12 +1,9 @@
 ---
 # Ensure service enabled at boot
-- name: enable php5-fpm
-  service: name=php5-fpm enabled=yes
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
-- name: restart php5-fpm
-  service: name=php5-fpm state=restarted
-  when_string: '"php5-fpm" in "$group_names"'
+# Ensure service reloaded
+- include: DEVOPS_PACKAGE/tasks/reload.yml
 
-- name: reload php5-fpm
-  service: name=php5-fpm state=reloaded
-  when_string: '"php5-fpm" in "$group_names"'
+# Ensure service restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml

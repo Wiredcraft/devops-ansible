@@ -23,5 +23,4 @@
   notify: restart memcached
 
 # Ensure running
-- name: Ensure memcached is running
-  service: name=memcached state=started
+- include: DEVOPS_PACKAGE/tasks/start.yml

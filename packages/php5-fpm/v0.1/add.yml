@@ -20,5 +20,4 @@
     - restart php5-fpm
 
 # Ensure running
-- name: Ensure php5-fpm is running
-  service: name=php5-fpm state=started
+- include: DEVOPS_PACKAGE/tasks/start.yml

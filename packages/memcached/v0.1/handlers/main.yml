@@ -1,7 +1,6 @@
 ---
 # Ensure service enabled at boot
-- name: enable memcached
-  service: name=memcached enabled=yes
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
-- name: restart memcached
-  service: name=memcached state=restarted
+# Ensure service restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml

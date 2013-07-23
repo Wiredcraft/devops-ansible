@@ -1,12 +1,9 @@
 ---
 # Ensure service enabled at boot
-- name: enable nginx
-  service: name=nginx enabled=yes
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
 # Ensure service reloaded
-- name: reload nginx
-  service: name=nginx state=reloaded
+- include: DEVOPS_PACKAGE/tasks/reload.yml
 
 # Ensure service restarted
-- name: restart nginx
-  service: name=nginx state=restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml

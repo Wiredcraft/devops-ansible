@@ -1,10 +1,9 @@
 ---
 # Ensure service enabled at boot
-- name: enable varnish
-  service: name=varnish enabled=yes
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
-- name: restart varnish
-  service: name=varnish state=restarted
+# Ensure service reloaded
+- include: DEVOPS_PACKAGE/tasks/reload.yml
 
-- name: reload varnish
-  service: name=varnish state=reloaded
+# Ensure service restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml

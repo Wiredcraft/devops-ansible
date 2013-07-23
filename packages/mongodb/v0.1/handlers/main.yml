@@ -1,9 +1,6 @@
 ---
-# file: services/mongodb/handlers/main.yml
-
 # Ensure service enabled at boot
-- name: enable mongodb
-  service: name=mongodb enabled=yes
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
-- name: restart mongodb
-  service: name=mongodb state=restarted
+# Ensure service restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml

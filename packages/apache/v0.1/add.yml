@@ -60,5 +60,4 @@
     - restart apache
 
 # Ensure running
-- name: Ensure apache is running
-  service: name=apache2 state=started
+- include: DEVOPS_PACKAGE/tasks/start.yml

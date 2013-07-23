@@ -1,10 +1,9 @@
 ---
 # Ensure service enabled at boot
-- name: enable mysql-server
-  service: name=mysql enabled=yes
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
-- name: restart mysql-server
-  service: name=mysql state=restarted
+# Ensure service reloaded
+- include: DEVOPS_PACKAGE/tasks/reload.yml
 
-- name: reload mysql-server
-  service: name=mysql state=reloaded
+# Ensure service restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml
