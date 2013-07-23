@@ -1,12 +1,9 @@
 ---
 # Ensure service enabled at boot
-- name: enable apache
-  service: name=apache2 enabled=yes
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
 # Ensure service reloaded
-- name: reload apache
-  service: name=apache2 state=reloaded
+- include: DEVOPS_PACKAGE/tasks/reload.yml
 
 # Ensure service restarted
-- name: restart apache
-  service: name=apache2 state=restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml
