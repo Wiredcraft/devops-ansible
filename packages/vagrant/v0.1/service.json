@@ -1,24 +1,22 @@
 {
     "version": "0.1",
-    "tasks": {},
-    "handlers": {},
+    "tasks": [],
     "default": {
         "add": {
-            "description": "Add mongodb service",
+            "description": "Add vagrant service",
             "task": "add.yml"
         },
         "remove": {
-            "description": "Remove mongodb service",
+            "description": "Remove vagrant service",
             "task": "remove.yml"
         },
         "monitoring": {
-            "description": "Monitor mongodb service",
+            "description": "Monitor vagrant service",
             "task": "monitoring.yml"
         },
         "backup": {
-            "description": "Backup mongodb service",
+            "description": "Backup vagrant service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/mongodb.yml"
+    }
 }

@@ -1,7 +1,27 @@
 {
     "version": "0.1",
-    "tasks": {},
-    "handlers": {},
+    "tasks": [
+        {
+            "id": "restart",
+            "label": "Restart Nginx",
+            "options": []
+        },
+        {
+            "id": "reload",
+            "label": "Reload Nginx config",
+            "options": []
+        },
+        {
+            "id": "stop",
+            "label": "Stop Nginx",
+            "options": []
+        },
+        {
+            "id": "start",
+            "label": "Start Nginx",
+            "options": []
+        }
+    ],
     "default": {
         "add": {
             "description": "Add nginx service",

@@ -209,14 +209,12 @@ setup_api() {
         # Will extract in $name/$version
         tar xzf $package -C "$PACKAGE_ROOT/$version"
 
-        # Proceed meta / package.json and tasks/handlers.json
+        # Proceed meta / service.json and tasks/handlers.json
         cd "$PACKAGE_ROOT/$version/"
         mkdir -p "$DEVOPS_API_ROOT/mock/services/$name/$version/"
         cat "meta/$name.yml" | python $CURRENT_FOLDER/yaml2json.py \
             > "$DEVOPS_API_ROOT/mock/services/$name/$version/meta.json"
-        cp package.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
-        cp tasks/tasks.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
-        cp handlers/handlers.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
+        cp service.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
 
         # Return to base folder .. to proceed to the next
         cd $CURRENT_FOLDER
@@ -231,7 +229,7 @@ setup_api() {
         # Will extract in $name/$version
         tar xzf $provider -C "$TMP_DIR/providers/$name/$version"
 
-        # Proceed meta / package.json and tasks/handlers.json
+        # Proceed meta / provider.json
         cd "$TMP_DIR/providers/$name/$version"
         mkdir -p "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
         [ -e "meta.json" ] && cp meta.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"

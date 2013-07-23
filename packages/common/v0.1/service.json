@@ -1,23 +1,24 @@
 {
     "version": "0.1",
-    "tasks": {},
-    "handlers": {},
+    "name": "common",
+    "tasks": [],
     "default": {
         "add": {
-            "description": "Add virtualbox service",
+            "description": "Add common service",
             "task": "add.yml"
         },
         "remove": {
-            "description": "Remove virtualbox service",
+            "description": "Remove common service",
             "task": "remove.yml"
         },
         "monitoring": {
-            "description": "Monitor virtualbox service",
+            "description": "Monitor common service",
             "task": "monitoring.yml"
         },
         "backup": {
-            "description": "Backup virtualbox service",
+            "description": "Backup common service",
             "task": "backup.yml"
         }
-    }
+    },
+    "meta": "meta/common.yml"
 }

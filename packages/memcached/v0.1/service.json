@@ -1,7 +1,22 @@
 {
     "version": "0.1",
-    "tasks": {},
-    "handlers": {},
+    "tasks": [
+        {
+            "id": "restart",
+            "label": "Restart Memcached",
+            "options": []
+        },
+        {
+            "id": "stop",
+            "label": "Stop Memcached",
+            "options": []
+        },
+        {
+            "id": "start",
+            "label": "Start Memcached",
+            "options": []
+        }
+    ],
     "default": {
         "add": {
             "description": "Add memcached service",

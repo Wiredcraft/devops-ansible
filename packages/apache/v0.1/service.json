@@ -1,8 +1,28 @@
 {
     "version": "0.1",
     "name": "apache",
-    "tasks": {},
-    "handlers": {},
+    "tasks": [
+        {
+            "id": "restart",
+            "label": "Restart Apache",
+            "options": []
+        },
+        {
+            "id": "reload",
+            "label": "Reload Apache config",
+            "options": []
+        },
+        {
+            "id": "stop",
+            "label": "Stop Apache",
+            "options": []
+        },
+        {
+            "id": "start",
+            "label": "Start Apache",
+            "options": []
+        }
+    ],
     "default": {
         "add": {
             "description": "Add apache service",
