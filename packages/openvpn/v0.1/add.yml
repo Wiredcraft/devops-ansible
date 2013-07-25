@@ -1,0 +1,70 @@
+---
+- name: Ensure openvpn is installed
+  apt: pkg=openvpn state=present
+  notify: enable openvpn
+
+- name: Ensure easy-rsa folder
+  file:
+    state=directory
+    recurse=yes
+    path=/etc/openvpn/easy-rsa
+    owner=root
+    group=root
+
+- name: Prepare easy-rsa
+  command: 
+    creates=/etc/openvpn/easy-rsa
+    cp -a /usr/share/doc/openvpn/examples/easy-rsa/2.0/* /etc/openvpn/easy-rsa
+
+- name: Configure easy-rsa vars
+  template:
+    src=DEVOPS_PACKAGE/templates/easy-rsa_vars.j2
+    dest=/etc/openvpn/easy-rsa/vars
+    owner=root
+    group=root
+    mode=0644
+
+- name: Handle openssl config
+  file:
+    state=link
+    src=/etc/openvpn/easy-rsa/openssl-1.0.0.cnf
+    dest=/etc/openvpn/easy-rsa/openssl.cnf
+    owner=root
+    group=root
+
+- name: Copy script to generate openvpn server key
+  copy:
+    src=DEVOPS_PACKAGE/files/create_openvpn_server_key.sh
+    dest=/root/create_openvpn_server_key.sh
+    owner=root
+    group=root
+    mode=0644
+
+- name: Ensure openvpn server key
+  command:
+    creates=/etc/openvpn/easy-rsa/keys/server.key
+    bash /root/create_openvpn_server_key.sh
+
+# Ensure config
+- name: ensure the openvpn config file
+  template:
+    src=DEVOPS_PACKAGE/templates/openvpn.conf.j2
+    dest=/etc/openvpn.conf
+    owner=root
+    group=root
+    mode=0644
+  notify: restart openvpn
+
+# Ensure running
+- include: DEVOPS_PACKAGE/tasks/start.yml
+
+- name: Allow kernel forwarding
+  sysctl:
+    name=net.ipv4.ip_forward
+    value=1
+    state=present
+
+# Need improve
+- name: Masquerade via iptables
+  command:
+    iptables -t nat -A POSTROUTING -s {{ openvpn.network | 10.8.0.0 }}/{{ openvpn.netmask | 24 }} -o eth0 -j MASQUERADE 

@@ -1,0 +1,39 @@
+{
+    "version": "0.1",
+    "tasks": [
+        {
+            "id": "restart",
+            "label": "Restart Redis Server",
+            "options": []
+        },
+        {
+            "id": "stop",
+            "label": "Stop Redis Server",
+            "options": []
+        },
+        {
+            "id": "start",
+            "label": "Start Redis Server",
+            "options": []
+        }
+    ],
+    "default": {
+        "add": {
+            "description": "Add redis service",
+            "task": "add.yml"
+        },
+        "remove": {
+            "description": "Remove redis service",
+            "task": "remove.yml"
+        },
+        "monitoring": {
+            "description": "Monitor redis service",
+            "task": "monitoring.yml"
+        },
+        "backup": {
+            "description": "Backup redis service",
+            "task": "backup.yml"
+        }
+    },
+    "meta": "meta/redis.yml"
+}

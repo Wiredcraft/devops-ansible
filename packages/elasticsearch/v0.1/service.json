@@ -1,0 +1,39 @@
+{
+    "version": "0.1",
+    "tasks": [
+        {
+            "id": "restart",
+            "label": "Restart ElasticSearch",
+            "options": []
+        },
+        {
+            "id": "stop",
+            "label": "Stop ElasticSearch",
+            "options": []
+        },
+        {
+            "id": "start",
+            "label": "Start ElasticSearch",
+            "options": []
+        }
+    ],
+    "default": {
+        "add": {
+            "description": "Add elasticsearch service",
+            "task": "add.yml"
+        },
+        "remove": {
+            "description": "Remove elasticsearch service",
+            "task": "remove.yml"
+        },
+        "monitoring": {
+            "description": "Monitor elasticsearch service",
+            "task": "monitoring.yml"
+        },
+        "backup": {
+            "description": "Backup elasticsearch service",
+            "task": "backup.yml"
+        }
+    },
+    "meta": "meta/elasticsearch.yml"
+}

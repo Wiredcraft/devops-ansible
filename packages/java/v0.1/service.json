@@ -1,0 +1,23 @@
+{
+    "version": "0.1",
+    "tasks": [],
+    "default": {
+        "add": {
+            "description": "Add java service",
+            "task": "add.yml"
+        },
+        "remove": {
+            "description": "Remove java service",
+            "task": "remove.yml"
+        },
+        "monitoring": {
+            "description": "Monitor java service",
+            "task": "monitoring.yml"
+        },
+        "backup": {
+            "description": "Backup java service",
+            "task": "backup.yml"
+        }
+    },
+    "meta": "meta/java.yml"
+}
