@@ -29,7 +29,7 @@ variables:
         required: false
     enable:
         default: 1
-        description: Define whether CouchDB should start at bood time (0: no - 1: yes)
+        description: Define whether CouchDB should start at bood time
         type: integer
         required: false
     running_user:
