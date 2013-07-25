@@ -67,4 +67,4 @@
 # Need improve
 - name: Masquerade via iptables
   command:
-    iptables -t nat -A POSTROUTING -s {{ openvpn.network | 10.8.0.0 }}/{{ openvpn.netmask | 24 }} -o eth0 -j MASQUERADE 
+    iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE 
