@@ -34,12 +34,12 @@ variables:
         type: string
         required: false
     dns1:
-        default: 75.127.97.6
+        default: 208.67.222.222
         description: DNS to propagate to the clients (default to OpenDNS)
         type: string
         required: false
     dns2:
-        default: 75.127.97.7
+        default: 208.67.220.220
         description: DNS to propagate to the clients (default to OpenDNS)
         type: string
         required: false

@@ -23,8 +23,8 @@ server {{ openvpn.network | default('10.8.0.0') }} {{ openvpn.netmask | default(
 
 ifconfig-pool-persist ipp.txt
 push "redirect-gateway def1 bypass-dhcp"
-push "dhcp-option DNS {{ openvpn.dns1 | default('75.127.97.6') }}"
-push "dhcp-option DNS {{ openvpn.dns2 | default('75.127.97.7') }}"
+push "dhcp-option DNS {{ openvpn.dns1 | default('208.67.222.222') }}"
+push "dhcp-option DNS {{ openvpn.dns2 | default('208.67.220.220') }}"
 
 keepalive 10 120
 
