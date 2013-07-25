@@ -7,7 +7,7 @@ fi
 
 mkdir -p "/etc/openvpn/clients/$USER"
 cp /etc/openvpn/ta.key "/etc/openvpn/clients/$USER"
-cp /etc/openvpn/server.crt "/etc/openvpn/clients/$USER"
+cp /etc/openvpn/ca.crt "/etc/openvpn/clients/$USER"
 
 cd /etc/openvpn/easy-rsa
 if [ ! -e "keys/$USER.key" ]; then
