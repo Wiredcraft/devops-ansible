@@ -54,12 +54,10 @@ setup_ansible() {
         # Missing the check for common package .. whatever for now ..
         if [ -d "$DEVOPS_ANSIBLE_ROOT/services/$name" -a -d "$DEVOPS_ANSIBLE_ROOT/services/$name/$version" ]; then
             echo "Package $name ($version) is already present."
-            echo -n "Overwrite? [y/N] "
+            echo -n "Overwrite? [Y/n] "
             read overwrite
-            if [ "$overwrite" == 'y' -o "$overwrite" == 'Y' ]; then
+            if [ "$overwrite" == 'n' -o "$overwrite" == 'N' ]; then
                 # Proceed with overwrite
-                :
-            else
                 echo "Skipping..."
                 continue
             fi
