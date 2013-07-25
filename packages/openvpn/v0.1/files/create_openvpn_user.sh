@@ -12,7 +12,7 @@ cp /etc/openvpn/server.crt "/etc/openvpn/clients/$USER"
 cd /etc/openvpn/easy-rsa
 if [ ! -e "keys/$USER.key" ]; then
     source ./vars
-    ./pkitool $USER
+    KEY_CN=$USER ./pkitool $USER
     cp -a keys/$USER.* "/etc/openvpn/clients/$USER"
 fi
 

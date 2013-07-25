@@ -31,7 +31,7 @@ persist-key
 persist-tun
 
 # SSL/TLS parameters - files created previously
-ca ca.crt
+ca server.crt
 cert {{ openvpn_user | default('client') }}.crt
 key {{ openvpn_user | default('client') }}.key
 
