@@ -16,6 +16,7 @@ dev {{ openvpn.dev | default('tun') }}
 # Host name and port for the server (default port is 1194)
 # note: replace with the correct values your server set up
 remote {{ ansible_ssh_host }} {{ openvpn.port | default('1194') }}
+proto {{ openvpn.proto | default('udp') }}
 
 # Client does not need to bind to a specific local port
 nobind

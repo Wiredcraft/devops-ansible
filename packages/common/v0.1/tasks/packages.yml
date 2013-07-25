@@ -22,3 +22,5 @@
     - git
 
 # Ensure more... 
+- name: Ensure postfix is installed
+  apt: pkg=postfix state=installed
