@@ -13,7 +13,6 @@
 
 - name: Prepare easy-rsa
   command: 
-    creates=/etc/openvpn/easy-rsa
     cp -a /usr/share/doc/openvpn/examples/easy-rsa/2.0/* /etc/openvpn/easy-rsa
 
 - name: Configure easy-rsa vars

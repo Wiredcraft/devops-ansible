@@ -29,7 +29,7 @@
 
 - name: Sends email with credentials
   mail:
-    subject="[{{ ansible_hostname }}] Your openvpn access"
+    subject="[${ ansible_hostname }] Your openvpn access"
     body="Please find attached your openvpn access"
-    attach="/etc/openvpn/clients/{{ openvpn_user }}.tar.gz"
-    to={{ openvpn_user_email | profile_email }}
+    attach="/etc/openvpn/clients/${ openvpn_user }.tar.gz"
+    to={{ openvpn_user_email }}
