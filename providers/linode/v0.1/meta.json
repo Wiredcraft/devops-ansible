@@ -1,4 +1,8 @@
 {
+    "provider": {
+        "id": "linode",
+        "label": "Linode"
+    },
     "sizes": [
         { 
             "id": "1",

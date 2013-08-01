@@ -1,4 +1,7 @@
 ---
+service:
+    id: mongodb
+    label: MongoDB
 variables:
     dbpath:
         default: /var/lib/mongodb

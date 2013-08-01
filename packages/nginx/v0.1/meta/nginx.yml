@@ -1,3 +1,6 @@
 ---
+service:
+    id: nginx
+    label: Nginx
 variables: 
     {}

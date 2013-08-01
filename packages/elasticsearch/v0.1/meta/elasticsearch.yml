@@ -1,4 +1,7 @@
 ---
+service:
+    id: elasticsearch
+    label: ElasticSearch
 variables:
     bind_host:
         default: '127.0.0.1'

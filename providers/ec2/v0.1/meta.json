@@ -1,4 +1,8 @@
 {
+    "provider": {
+        "id": "ec2",
+        "label": "Amazon EC2"
+    },
     "sizes": [
         { 
             "id": "t1.micro",

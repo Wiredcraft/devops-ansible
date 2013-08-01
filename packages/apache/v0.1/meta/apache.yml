@@ -1,8 +1,11 @@
 ---
+service:
+    id: apache
+    label: Apache
 variables:
     user:
-        default: "www-data"
-        description: "Apache running user."
+        default: www-data
+        description: Apache running user.
         type: string
         required: false
     group:

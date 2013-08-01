@@ -1,2 +1,5 @@
 ---
+service:
+    id: vagrant
+    label: Vagrant
 variables: {}

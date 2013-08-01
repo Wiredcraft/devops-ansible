@@ -1,4 +1,7 @@
 ---
+service:
+    id: memcached
+    label: Memcached
 variables:
     user:
         default: memcache

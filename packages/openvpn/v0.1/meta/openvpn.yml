@@ -1,4 +1,7 @@
 ---
+service:
+    id: openvpn
+    label: OpenVPN
 variables:
     port: 
         default: 1194

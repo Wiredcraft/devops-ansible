@@ -1,4 +1,7 @@
 ---
+service:
+    id: varnish
+    label: Varnish
 variables:
     vcl_conf:
         default: /etc/varnish/default.vcl

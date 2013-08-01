@@ -1,4 +1,7 @@
 ---
+service:
+    id: mysql
+    label: MySQL
 variables:
     port:
         default: 3306

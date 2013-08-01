@@ -1,4 +1,7 @@
 ---
+service:
+    id: couchdb
+    label: CouchDB
 variables:
     max_document_size:
         default: 4294967296

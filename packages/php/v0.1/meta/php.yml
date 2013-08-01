@@ -1,4 +1,7 @@
 ---
+service:
+    id: php
+    label: PHP
 variables:
     safe_mode:
         default: Off

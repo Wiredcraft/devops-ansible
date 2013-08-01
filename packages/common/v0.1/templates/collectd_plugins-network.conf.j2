@@ -1,7 +1,7 @@
 LoadPlugin network
 
 <Plugin network>
-    <Server "collectd.service.devo.ps" "25826">
+    <Server "monitoring.devo.ps" "25826">
         SecurityLevel Sign
         Username "{{ space }}__{{ inventory_hostname }}"
         Password "{{ item }}"
