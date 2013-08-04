@@ -4,19 +4,17 @@
 # in a folder and add them to .. 
 ########################
 
-PACKAGE_FOLDER="$1"
-TARGET="$2"
-CONFIG="$3"
+PACKAGE_FOLDER="../builds"
+TARGET="$1"
+CONFIG="$2"
 
 DEFAULT_CONFIG=$(basename $0).conf
 CURRENT_FOLDER=$(readlink -m .)
 
 usage() {
     echo
-    echo "Usage: $(basename $0) package_folder target [config_file]"
+    echo "Usage: $(basename $0) target [config_file]"
     echo
-    echo "  - package_folder: PATH to the folder that holds all the"
-    echo "                    packages to install (.tar.gz)"
     echo "  - target: either 'ansible' or 'api'"
     echo "     - ansible: will install the package for ansible to use"
     echo "     - api:     will install the package meta data for api to use"

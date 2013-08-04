@@ -46,10 +46,10 @@ Go in `scripts` and run:
 
 ```
 # For ansible
-./deploy-packages ../builds ansible
+./deploy-packages ansible
 
 # For api
-./deploy-packages ../builds api
+./deploy-packages api
 ```
 
 It will deploy the meta data and other related information in the respective folders.
