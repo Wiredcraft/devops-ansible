@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "mysql",
+    "label": "MySQL",
     "tasks": [
         {
             "id": "restart",
@@ -34,6 +36,5 @@
             "description": "Backup mysql service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/mysql.yml"
+    }
 }

@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "openvpn",
+    "label": "OpenVPN",
     "tasks": [
         {
             "id": "restart",
@@ -53,6 +55,5 @@
             "description": "Backup openvpn service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/openvpn.yml"
+    }
 }

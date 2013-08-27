@@ -1,5 +1,0 @@
----
-service:
-    id: zeromq
-    label: ZeroMQ
-variables: {}

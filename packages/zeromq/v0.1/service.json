@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "zeromq",
+    "label": "ZeroMQ/0MQ",
     "tasks": [],
     "default": {
         "add": {
@@ -18,6 +20,5 @@
             "description": "Backup zeromq",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/zeromq.yml"
+    }
 }

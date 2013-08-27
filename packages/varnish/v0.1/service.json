@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "varnish",
+    "label": "Varnish",
     "tasks": [
         {
             "id": "restart",
@@ -51,6 +53,5 @@
             "description": "Backup varnish service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/varnish.yml"
+    }
 }

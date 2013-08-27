@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "java",
+    "label": "Java",
     "tasks": [],
     "default": {
         "add": {
@@ -18,6 +20,5 @@
             "description": "Backup java service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/java.yml"
+    }
 }

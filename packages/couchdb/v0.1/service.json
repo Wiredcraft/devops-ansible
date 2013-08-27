@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "couchdb",
+    "label": "CouchDB",
     "tasks": [
         {
             "id": "restart",
@@ -34,6 +36,5 @@
             "description": "Backup couchdb service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/couchdb.yml"
+    }
 }

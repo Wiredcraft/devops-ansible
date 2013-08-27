@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "php5-fpm",
+    "label": "php5-fpm",
     "tasks": [
         {
             "id": "restart",
@@ -39,6 +41,5 @@
             "description": "Backup php5-fpm service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/php5-fpm.yml"
+    }
 }

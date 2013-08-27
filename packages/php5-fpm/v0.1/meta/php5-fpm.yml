@@ -1,5 +1,0 @@
----
-service:
-    id: php5-fpm
-    label: PHP5 FPM
-variables: 

@@ -1,6 +1,7 @@
 {
     "version": "0.1",
-    "name": "apache",
+    "id": "apache",
+    "label": "Apache",
     "tasks": [
         {
             "id": "restart",
@@ -40,6 +41,5 @@
             "description": "Backup apache service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/apache.yml"
+    }
 }

@@ -1,5 +1,0 @@
----
-service:
-    id: virtualbox
-    label: VirtualBox
-variables: {}

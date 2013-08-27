@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "nginx",
+    "label": "Nginx",
     "tasks": [
         {
             "id": "restart",
@@ -39,6 +41,5 @@
             "description": "Backup nginx service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/nginx.yml"
+    }
 }

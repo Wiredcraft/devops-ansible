@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "elasticsearch",
+    "label": "ElasticSearch",
     "tasks": [
         {
             "id": "restart",
@@ -34,6 +36,5 @@
             "description": "Backup elasticsearch service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/elasticsearch.yml"
+    }
 }

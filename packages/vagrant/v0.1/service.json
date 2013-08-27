@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "vagrant",
+    "label": "Vagrant",
     "tasks": [],
     "default": {
         "add": {

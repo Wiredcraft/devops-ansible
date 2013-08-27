@@ -1,5 +1,7 @@
 {
     "version": "0.1",
+    "id": "memcached",
+    "label": "Memcached",
     "tasks": [
         {
             "id": "restart",
@@ -34,6 +36,5 @@
             "description": "Backup memcached service",
             "task": "backup.yml"
         }
-    },
-    "meta": "meta/memcached.yml"
+    }
 }
