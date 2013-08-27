@@ -1,6 +1,7 @@
 {
     "version": "0.1",
-    "name": "common",
+    "id": "common",
+    "label": "Common",
     "tasks": [],
     "default": {
         "add": {
