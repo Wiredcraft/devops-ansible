@@ -1,40 +1,5 @@
 {
     "version": "0.1",
     "id": "couchdb",
-    "label": "CouchDB",
-    "tasks": [
-        {
-            "id": "restart",
-            "label": "Restart CouchDB",
-            "options": []
-        },
-        {
-            "id": "stop",
-            "label": "Stop CouchDB",
-            "options": []
-        },
-        {
-            "id": "start",
-            "label": "Start CouchDB",
-            "options": []
-        }
-    ],
-    "default": {
-        "add": {
-            "description": "Add couchdb service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove couchdb service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor couchdb service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup couchdb service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "CouchDB"
 }

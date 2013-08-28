@@ -1,0 +1,17 @@
+[{
+    "id": "restart",
+    "label": "Restart Nginx",
+    "options": []
+}, {
+    "id": "reload",
+    "label": "Reload Nginx config",
+    "options": []
+}, {
+    "id": "stop",
+    "label": "Stop Nginx",
+    "options": []
+}, {
+    "id": "start",
+    "label": "Start Nginx",
+    "options": []
+}]

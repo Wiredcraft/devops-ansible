@@ -1,1 +1,5 @@
-{}
+{
+    "id": "linode",
+    "label": "Linode",
+    "version": "0.1"
+}

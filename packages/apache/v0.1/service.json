@@ -1,45 +1,5 @@
 {
     "version": "0.1",
     "id": "apache",
-    "label": "Apache",
-    "tasks": [
-        {
-            "id": "restart",
-            "label": "Restart Apache",
-            "options": []
-        },
-        {
-            "id": "reload",
-            "label": "Reload Apache config",
-            "options": []
-        },
-        {
-            "id": "stop",
-            "label": "Stop Apache",
-            "options": []
-        },
-        {
-            "id": "start",
-            "label": "Start Apache",
-            "options": []
-        }
-    ],
-    "default": {
-        "add": {
-            "description": "Add apache service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove apache service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor apache service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup apache service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "Apache"
 }

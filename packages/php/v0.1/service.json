@@ -1,24 +1,5 @@
 {
     "version": "0.1",
     "id": "php",
-    "label": "PHP",
-    "tasks": [],
-    "default": {
-        "add": {
-            "description": "Add php service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove php service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor php service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup php service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "PHP"
 }

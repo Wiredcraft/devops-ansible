@@ -1,40 +1,5 @@
 {
     "version": "0.1",
     "id": "mongodb",
-    "label": "MongoDB",
-    "tasks": [
-        {
-            "id": "restart",
-            "label": "Restart MongoDB",
-            "options": []
-        },
-        {
-            "id": "stop",
-            "label": "Stop MongoDB",
-            "options": []
-        },
-        {
-            "id": "start",
-            "label": "Start MongoDB",
-            "options": []
-        }
-    ],
-    "default": {
-        "add": {
-            "description": "Add mongodb service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove mongodb service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor mongodb service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup mongodb service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "MongoDB"
 }

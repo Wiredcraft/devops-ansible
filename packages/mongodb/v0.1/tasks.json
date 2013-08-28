@@ -1,0 +1,13 @@
+[{
+    "id": "restart",
+    "label": "Restart MongoDB",
+    "options": []
+}, {
+    "id": "stop",
+    "label": "Stop MongoDB",
+    "options": []
+}, {
+    "id": "start",
+    "label": "Start MongoDB",
+    "options": []
+}]

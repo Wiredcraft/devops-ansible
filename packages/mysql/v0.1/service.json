@@ -1,40 +1,5 @@
 {
     "version": "0.1",
     "id": "mysql",
-    "label": "MySQL",
-    "tasks": [
-        {
-            "id": "restart",
-            "label": "Restart MySQL",
-            "options": []
-        },
-        {
-            "id": "stop",
-            "label": "Stop MySQL",
-            "options": []
-        },
-        {
-            "id": "start",
-            "label": "Start MySQL",
-            "options": []
-        }
-    ],
-    "default": {
-        "add": {
-            "description": "Add mysql service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove mysql service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor mysql service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup mysql service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "MySQL"
 }

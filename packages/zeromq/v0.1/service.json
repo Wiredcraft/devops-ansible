@@ -1,24 +1,5 @@
 {
     "version": "0.1",
     "id": "zeromq",
-    "label": "ZeroMQ/0MQ",
-    "tasks": [],
-    "default": {
-        "add": {
-            "description": "Add zeromq",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove zeromq",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor zeromq",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup zeromq",
-            "task": "backup.yml"
-        }
-    }
+    "label": "ZeroMQ/0MQ"
 }

@@ -1,1 +1,5 @@
-{}
+{
+    "id": "vagrant",
+    "label": "Vagrant",
+    "version": "0.1"
+}

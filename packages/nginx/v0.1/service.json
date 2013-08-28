@@ -1,45 +1,5 @@
 {
     "version": "0.1",
     "id": "nginx",
-    "label": "Nginx",
-    "tasks": [
-        {
-            "id": "restart",
-            "label": "Restart Nginx",
-            "options": []
-        },
-        {
-            "id": "reload",
-            "label": "Reload Nginx config",
-            "options": []
-        },
-        {
-            "id": "stop",
-            "label": "Stop Nginx",
-            "options": []
-        },
-        {
-            "id": "start",
-            "label": "Start Nginx",
-            "options": []
-        }
-    ],
-    "default": {
-        "add": {
-            "description": "Add nginx service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove nginx service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor nginx service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup nginx service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "Nginx"
 }

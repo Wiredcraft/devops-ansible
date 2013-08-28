@@ -1,40 +1,5 @@
 {
     "version": "0.1",
     "id": "memcached",
-    "label": "Memcached",
-    "tasks": [
-        {
-            "id": "restart",
-            "label": "Restart Memcached",
-            "options": []
-        },
-        {
-            "id": "stop",
-            "label": "Stop Memcached",
-            "options": []
-        },
-        {
-            "id": "start",
-            "label": "Start Memcached",
-            "options": []
-        }
-    ],
-    "default": {
-        "add": {
-            "description": "Add memcached service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove memcached service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor memcached service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup memcached service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "Memcached"
 }

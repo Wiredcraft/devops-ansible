@@ -1,24 +1,5 @@
 {
     "version": "0.1",
     "id": "virtualbox",
-    "label": "VirtualBox",
-    "tasks": [],
-    "default": {
-        "add": {
-            "description": "Add virtualbox service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove virtualbox service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor virtualbox service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup virtualbox service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "VirtualBox"
 }

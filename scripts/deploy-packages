@@ -211,6 +211,7 @@ setup_api() {
         cat "meta/variables.yml" | python $CURRENT_FOLDER/yaml2json.py \
             > "$DEVOPS_API_ROOT/mock/services/$name/$version/variables.json"
         cp service.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
+        cp tasks.json "$DEVOPS_API_ROOT/mock/services/$name/$version/"
 
         # Return to base folder .. to proceed to the next
         cd $CURRENT_FOLDER
@@ -228,7 +229,7 @@ setup_api() {
         # Proceed meta / provider.json
         cd "$TMP_DIR/providers/$name/$version"
         mkdir -p "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
-        [ -e "meta.json" ] && cp meta.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
+        [ -e "meta.json" ] && cp meta.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/variables.json"
         [ -e "provider.json" ] && cp provider.json "$DEVOPS_API_ROOT/mock/providers/$name/$version/"
 
         # Return to base folder .. to proceed to the next

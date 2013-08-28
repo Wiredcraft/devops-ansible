@@ -1,24 +1,5 @@
 {
     "version": "0.1",
     "id": "vagrant",
-    "label": "Vagrant",
-    "tasks": [],
-    "default": {
-        "add": {
-            "description": "Add vagrant service",
-            "task": "add.yml"
-        },
-        "remove": {
-            "description": "Remove vagrant service",
-            "task": "remove.yml"
-        },
-        "monitoring": {
-            "description": "Monitor vagrant service",
-            "task": "monitoring.yml"
-        },
-        "backup": {
-            "description": "Backup vagrant service",
-            "task": "backup.yml"
-        }
-    }
+    "label": "Vagrant"
 }
