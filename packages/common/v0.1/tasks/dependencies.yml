@@ -8,4 +8,8 @@
     creates=/home/devops/.ansible/python-apt
     /usr/bin/apt-get install -y python-apt && touch /home/devops/.ansible/python-apt
 
+- name: install dependencies for apt_repositoriy
+  apt: 
+    name=python-software-properties
+    state=present
 # Ensure more...

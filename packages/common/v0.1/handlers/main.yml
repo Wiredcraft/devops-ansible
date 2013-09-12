@@ -4,3 +4,6 @@
 
 - name: restart collectd
   service: name=collectd state=restarted
+
+- name: restart devops-etcd
+  service: name=devops-etcd state=restarted
