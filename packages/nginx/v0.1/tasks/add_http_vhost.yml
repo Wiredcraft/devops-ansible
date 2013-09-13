@@ -3,7 +3,7 @@
 
 - name: Add HTTP vhost
   template: 
-    src=DEVOPS_PACKAGES/templates/vhost_http.j2
+    src=DEVOPS_PACKAGE/templates/vhost_http.j2
     dest=/etc/nginx/sites-available/{{ nginx_vhost_domain }}
     owner=root
     group=root
@@ -18,4 +18,4 @@
     group=root
     mode=644
 
-- include: DEVOPS_PACKAGES/tasks/restart.yml
+- include: DEVOPS_PACKAGE/tasks/restart.yml
