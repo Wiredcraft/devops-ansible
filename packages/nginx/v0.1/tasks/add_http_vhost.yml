@@ -18,4 +18,12 @@
     group=root
     mode=644
 
+- name: Ensure the root folder exists
+  file:
+    state=directory
+    path=/var/www/{{ nginx_vhost_domain }}
+    owner=devops
+    group=devops
+    mode=755
+
 - include: DEVOPS_PACKAGE/tasks/restart.yml
