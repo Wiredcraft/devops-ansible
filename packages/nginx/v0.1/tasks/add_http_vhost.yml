@@ -12,7 +12,7 @@
 - name: Enable HTTP vhost
   file:
     state=link
-    src=../sites-available/{{ nginx_vhost_domain }}
+    src=/etc/nginx/sites-available/{{ nginx_vhost_domain }}
     dest=/etc/nginx/sites-enabled/{{ nginx_vhost_domain }}
     owner=root
     group=root
