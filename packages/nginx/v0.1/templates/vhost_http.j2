@@ -1,5 +1,5 @@
 server {
-    listen   {{ nginx_vhost_port | default('80') }}
+    listen   {{ nginx_vhost_port | default('80') }};
 
     root /var/www/{{ nginx_vhost_domain | default('') }};
     index index.html index.htm;
