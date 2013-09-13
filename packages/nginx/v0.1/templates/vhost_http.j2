@@ -1,0 +1,28 @@
+server {
+    listen   {{ nginx_vhost_port | default('80') }}
+
+    root /var/www/{{ nginx_vhost_domain | default('') }};
+    index index.html index.htm;
+
+    # Make site accessible from http://localhost/
+    server_name {{ nginx_vhost_domain | default('_') }};
+
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to index.html
+        try_files $uri $uri/ /index.html;
+    }
+
+{% set php = nginx_vhost_php | default('off') %}
+{% if php == 'on' %}    
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+{% endif %}
+}

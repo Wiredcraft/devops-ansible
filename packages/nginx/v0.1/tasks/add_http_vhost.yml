@@ -1,0 +1,21 @@
+---
+# Expects to be triggerd via task with
+
+- name: Add HTTP vhost
+  template: 
+    src=DEVOPS_PACKAGES/templates/vhost_http.j2
+    dest=/etc/nginx/sites-available/{{ nginx_vhost_domain }}
+    owner=root
+    group=root
+    mode=644
+
+- name: Enable HTTP vhost
+  file:
+    state=link
+    src=../sites-available/{{ nginx_vhost_domain }}
+    dest=/etc/nginx/sites-enabled/{{ nginx_vhost_domain }}
+    owner=root
+    group=root
+    mode=644
+
+- include: DEVOPS_PACKAGES/tasks/restart.yml
