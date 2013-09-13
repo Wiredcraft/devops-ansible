@@ -14,4 +14,24 @@
     "id": "start",
     "label": "Start Nginx",
     "options": []
+}, {
+    "id": "add_http_vhost",
+    "label": "Add a new HTTP virtual host",
+    "options": [{
+            "id": "nginx_vhost_domain",
+            "label": "Domain Name of the virtual host",
+            "required": true,
+            "default": "_"
+        }, {
+            "id": "nginx_vhost_port",
+            "label": "Listening TCP port for the virtual host",
+            "required": false,
+            "default": "80"
+        }, {
+            "id": "nginx_vhost_php",
+            "label": "Enable php (on/off)",
+            "required": false,
+            "default": "off"
+        }
+    ]
 }]
