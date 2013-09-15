@@ -28,6 +28,14 @@
     - restart php5-fpm
     - restart apache
 
+- name: ensure log folders for php5-fpm
+  file:
+    state=directory
+    path=/var/log/php-fpm
+    owner=root
+    group=root
+    mode=755
+
 - name: ensure php5 confguration
   template: 
     src=DEVOPS_PACKAGE/templates/apc.ini.j2
