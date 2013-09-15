@@ -207,12 +207,12 @@ fpm:
         required: false
     emergency_restart_interval:
         default: 0
-        description: Time within which an emergency graceful restart should be initiated (along with the threshold) - Available Units: s(econds) default, m(inutes), h(ours), or d(ays)
+        description: Time within which an emergency graceful restart should be initiated (along with the threshold) - Available Units s(econds) default, m(inutes), h(ours), or d(ays)
         type: string
         required: false
     process_control_timeout:
         default: 0
-        description: Time limit for child processes to wait for a reaction on signals from master. Available Units: s(econds) default, m(inutes), h(ours), or d(ays)
+        description: Time limit for child processes to wait for a reaction on signals from master. Available Units; s(econds) default, m(inutes), h(ours), or d(ays)
         type: string
         required: false
     process_max:
@@ -238,7 +238,7 @@ fpm:
             required: false
         listen:
             default: 127.0.0.1:9000
-            description: The address on which to accept FastCGI requests (ip.add.re.ss:port, port, sock path)
+            description: The address on which to accept FastCGI requests (ip.add.re.ss;port, port, sock path)
             type: string
             required: false
         bind:
@@ -325,12 +325,12 @@ fpm:
             required: false
         request_slowlog_timeout:
             default: 0
-            description: Time after which a backtrace is sent to the slowlogs (0: disabled); Available Units: s(econds) default, m(inutes), h(ours), or d(ays)
+            description: Time after which a backtrace is sent to the slowlogs (0; disabled); Available Units; s(econds) default, m(inutes), h(ours), or d(ays)
             type: string
             required: false
         request_terminate_timeout:
             default: 0
-            description: Time after which a the process gets terminated (0: disabled); Available Units: s(econds) default, m(inutes), h(ours), or d(ays)
+            description: Time after which a the process gets terminated (0; disabled); Available Units; s(econds) default, m(inutes), h(ours), or d(ays)
             type: string
             required: false
 
