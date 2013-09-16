@@ -1,1 +1,11 @@
-[]
+[{
+    "id": "git_clone",
+    "label": "Clone git repository",
+    "options": [{
+            "id": "git_repo_address",
+            "label": "Git repository address",
+            "required": true,
+            "default": "_"
+        }
+    ]
+}]
