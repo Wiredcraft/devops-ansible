@@ -6,6 +6,12 @@
             "label": "Git repository address",
             "required": true,
             "default": "_"
+        },
+        {
+            "id": "git_repo_dest",
+            "label": "Directory where repo is cloned",
+            "required": false,
+            "default": "/opt/devops"
         }
     ]
 }]
