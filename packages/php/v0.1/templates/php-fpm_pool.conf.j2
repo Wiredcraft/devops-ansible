@@ -10,6 +10,7 @@
 {% set pool = fpm.pool | default({}) %}
 {% set bind = pool.bind | default({}) %}
 {% set pm = pool.pm | default({}) %}
+{% set ping = pool.ping | default({}) %}
 
 [{{ pool.name | default('www') }}]
 
