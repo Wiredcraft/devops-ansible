@@ -1,7 +1,7 @@
 ---
 - name: Install pecl extension
   command:
-    pecl -q -y install {{ php_pecl_extenstion_name }}
+    pecl -q install {{ php_pecl_extenstion_name }}
 
 - name: Add php extension to php config
   template:
