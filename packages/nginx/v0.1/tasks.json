@@ -23,6 +23,11 @@
             "required": true,
             "default": "_"
         }, {
+            "id": "nginx_vhost_webroot",
+            "label": "Webroot within the vhost folder",
+            "required": true,
+            "default": "/"
+        },{
             "id": "nginx_vhost_port",
             "label": "Listening TCP port for the virtual host",
             "required": false,

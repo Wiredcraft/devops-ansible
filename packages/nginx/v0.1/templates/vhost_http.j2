@@ -1,8 +1,8 @@
 server {
     listen   {{ nginx_vhost_port | default('80') }};
 
-    root /var/www/{{ nginx_vhost_domain | default('') }};
-    index index.html index.htm;
+    root /var/www/{{ nginx_vhost_domain | default('') }}/{{ nginx_vhost_webroot | default('') }};
+    index {% if php == 'on' %}index.php{% endif %} index.html index.htm;
 
     # Make site accessible from http://localhost/
     server_name {{ nginx_vhost_domain | default('_') }};

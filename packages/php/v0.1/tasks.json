@@ -1,1 +1,25 @@
-[]
+[{
+    "id": "restart",
+    "label": "Restart php-fpm",
+    "options": []
+}, {
+    "id": "reload",
+    "label": "Reload php-fpm config",
+    "options": []
+}, {
+    "id": "stop",
+    "label": "Stop php-fpm",
+    "options": []
+}, {
+    "id": "start",
+    "label": "Start php-fpm",
+    "options": []
+}, {
+    "id": "enable",
+    "label": "Enable php-fpm service",
+    "options": []
+}, {
+    "id": "disable",
+    "label": "Disable php-fpm service",
+    "options": []
+}]

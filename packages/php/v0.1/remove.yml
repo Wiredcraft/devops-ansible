@@ -7,6 +7,7 @@
       - php5-dev
       - php5-suhosin
       - php5-mysql
+      - php5-fpm
       - php5-gd
       - php5-memcache
       - php-pear
@@ -30,4 +31,3 @@
     state=absent
     path=/etc/collectd/plugins.d/php5-fpm
   notify: restart collectd
-
