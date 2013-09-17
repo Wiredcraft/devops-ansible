@@ -3,4 +3,4 @@
   service: name=php5-fpm state=restarted
 
 # Also reload apache
-- include: DEVOPS_BASE/services/apache/tasks/restart.yml
+# - include: DEVOPS_BASE/services/apache/latest/tasks/restart.yml
