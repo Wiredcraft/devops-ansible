@@ -9,24 +9,19 @@
     - php5-mysql
     - php5-gd
     - php5-memcache
+    - php5-fpm
     - php-pear
     - php-apc
 
+# Backup config
 - name: backup original config cli
   command: mv /etc/php5/cli/php.ini /etc/php5/cli/php.ini.orig 
            creates=/etc/php5/cli/php.ini.orig
            removes=/etc/php5/cli/php.ini
-
-- name: ensure php5 confguration cli
-  template: 
-    src=DEVOPS_PACKAGE/templates/php.ini.j2
-    dest=/etc/php5/cli/php.ini
-    owner=root
-    group=root
-    mode=0644
-  notify:
-    - restart php5-fpm
-    - restart apache
+- name: backup original config fpm
+  command: mv /etc/php5/fpm/php.ini /etc/php5/fpm/php.ini.orig 
+           creates=/etc/php5/fpm/php.ini.orig 
+           removes=/etc/php5/fpm/php.ini
 
 - name: ensure log folders for php5-fpm
   file:
@@ -36,7 +31,40 @@
     group=root
     mode=755
 
-- name: ensure php5 confguration
+- name: ensure php.ini confguration
+  template: 
+    src=DEVOPS_PACKAGE/templates/php.ini.j2
+    dest=$item
+    owner=root
+    group=root
+    mode=0644
+  with_items:
+    - /etc/php5/cli/php.ini
+    - /etc/php5/fpm/php.ini
+  notify:
+    - restart php5-fpm
+
+- name: ensure php5-fpm configuration
+  template:
+    src=DEVOPS_PACKAGE/templates/php-fpm.conf.j2
+    dest=/etc/php5/fpm/php-fpm.conf
+    owner=root
+    group=root
+    mode=0644
+  notify:
+    - restart php5-fpm
+
+- name: ensure php5-fpm pool configuration
+  template:
+    src=DEVOPS_PACKAGE/templates/php-fpm_pool.conf.j2
+    dest=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name | default('www') }}.conf
+    owner=root
+    group=root
+    mode=0644
+  notify:
+    - restart php5-fpm
+
+- name: ensure php-apc confguration
   template: 
     src=DEVOPS_PACKAGE/templates/apc.ini.j2
     dest=/etc/php5/conf.d/apc.ini
@@ -45,4 +73,4 @@
     mode=0644
   notify: 
     - restart php5-fpm
-    - restart apache
+
