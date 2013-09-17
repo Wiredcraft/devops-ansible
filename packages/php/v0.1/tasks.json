@@ -22,4 +22,15 @@
     "id": "disable",
     "label": "Disable php-fpm service",
     "options": []
+}, {
+    "id": "add_pecl_extension",
+    "label": "Add pecl extension",
+    "options": [
+        {
+            "id": "php_pecl_extension_name",
+            "label": "Name of the PECL extension",
+            "required": true,
+            "default": ""
+        }
+    ]
 }]
