@@ -24,3 +24,13 @@
 # Ensure more... 
 - name: Ensure postfix is installed
   apt: pkg=postfix state=installed
+
+# Ensure some of the dev tools are present
+- name: Ensure dev tools
+  apt:
+    pkg=$item
+    state=present
+  with_items:
+    - make
+    - gcc
+    - g++
