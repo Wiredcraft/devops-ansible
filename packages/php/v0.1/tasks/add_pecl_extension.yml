@@ -14,5 +14,5 @@
     - /etc/php5/fpm/conf.d/
     - /etc/php5/cli/conf.d/
   notify:
-    - restart php-fpm
+    - restart php5-fpm
     #- restart apache
