@@ -1,6 +1,6 @@
 ---
 safe_mode:
-    default: Off
+    default: "Off"
     description: Enable / disable php safe_mode.
     type: string
     required: false
@@ -8,7 +8,7 @@ safe_mode:
         - On
         - Off
 safe_mode_gid:
-    default: Off
+    default: "Off"
     description: Compare GID instead of UID when php safe_mode is enabled. 
     type: string
     required: false
@@ -28,7 +28,7 @@ realpath_cache_ttl:
     required: false
     minimum: 1
 expose_php:
-    default: Off
+    default: "Off"
     description: Decides whether PHP may expose the fact that it is installed on the server.
     type: string
     required: false
@@ -59,7 +59,7 @@ error_reporting:
     type: string
     required: false
 display_errors:
-    default: Off
+    default: "Off"
     description: Define whether PHP will output errors, notices and warnings.
     type: string
     required: false
@@ -67,7 +67,7 @@ display_errors:
         - On
         - Off
 log_errors:
-    default: On
+    default: "On"
     description: Define whether PHP should log errors to locations such as a server-specific log, STDERR, or a location specified by the error_log.
     type: string
     required: false
@@ -93,7 +93,7 @@ upload_max_filesize:
     regex: '/^\d+[kmgKMG]$/'
 cgi:
     fix_pathinfo:
-        default: 1
+        default: "1"
         description: cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.
         type: integer
         required: false
@@ -116,7 +116,7 @@ session:
         required: false
 apc:
     enabled:
-        default: 1
+        default: "1"
         description: Enable / disable APC (0 - disabled).
         type: integer
         required: false
@@ -124,7 +124,7 @@ apc:
             - 0
             - 1
     enable_cli:
-        default: 0
+        default: "0"
         description: Enable / disable APC for the CLI version of PHP (Mostly for testing and debugging).
         type: integer
         required: false
@@ -132,7 +132,7 @@ apc:
             - 0
             - 1
     shm_segments:
-        default: 1
+        default: "1"
         description: The number of shared memory segments to allocate for the compiler cache.
         type: integer
         required: false
@@ -201,22 +201,22 @@ fpm:
             - notice
             - debug
     emergency_restart_threshold:
-        default: 0
+        default: "0"
         description: If more than X processes restart with SIGSEGV or SIGBUS within the emergency restart interval, php-fpm will restart
         type: integer
         required: false
     emergency_restart_interval:
-        default: 0
+        default: "0"
         description: Time within which an emergency graceful restart should be initiated (along with the threshold) - Available Units s(econds) default, m(inutes), h(ours), or d(ays)
         type: string
         required: false
     process_control_timeout:
-        default: 0
+        default: "0"
         description: Time limit for child processes to wait for a reaction on signals from master. Available Units; s(econds) default, m(inutes), h(ours), or d(ays)
         type: string
         required: false
     process_max:
-        default: 0
+        default: "0"
         description: The maximum number of processes FPM will fork across all the pools. 0 means no limit.
         type: integer
         required: false
@@ -298,7 +298,7 @@ fpm:
                 type: string
                 required: false
             max_requests:
-                default: 0
+                default: "0"
                 description: Maximum number of requests processed by a single process before being respawned
                 type: integer
                 required: false
@@ -324,12 +324,12 @@ fpm:
             type: string
             required: false
         request_slowlog_timeout:
-            default: 0
+            default: "0"
             description: Time after which a backtrace is sent to the slowlogs (0; disabled); Available Units; s(econds) default, m(inutes), h(ours), or d(ays)
             type: string
             required: false
         request_terminate_timeout:
-            default: 0
+            default: "0"
             description: Time after which a the process gets terminated (0; disabled); Available Units; s(econds) default, m(inutes), h(ours), or d(ays)
             type: string
             required: false

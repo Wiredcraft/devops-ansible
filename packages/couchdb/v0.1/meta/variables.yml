@@ -27,7 +27,7 @@ admin_pass:
     type: string
     required: false
 enable:
-    default: 1
+    default: "1"
     description: Define whether CouchDB should start at bood time
     type: integer
     required: false
