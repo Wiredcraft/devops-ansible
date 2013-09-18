@@ -253,7 +253,7 @@ fpm:
                 type: string
                 required: false
             mode:
-                default: 0666
+                default: "0666"
                 description: Permission of the socket file (only relevant if listen is a path)
                 type: string
                 required: false
