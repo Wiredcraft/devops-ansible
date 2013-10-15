@@ -9,7 +9,7 @@
     - apache2
     - apache2-mpm-prefork
     - libapache2-mod-gnutls
-  notify: enable apache service
+  notify: enable apache
 
 - name: Ensure php extension is installed
   apt: pkg=libapache2-mod-php5 state=present
