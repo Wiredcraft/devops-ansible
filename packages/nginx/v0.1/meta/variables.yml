@@ -24,17 +24,17 @@ events:
         minimum: 1
 http:
     sendfile:
-        default: on
+        default: "on"
         description: Enable sendfile
         type: string
         required: false
     tcp_nopush:
-        default: on
+        default: "on"
         description: Enable tcp_nopush
         type: string
         required: false
     tcp_nodelay:
-        default: on
+        default: "on"
         description: Enable tcp_nodelay
         type: string
         required: false
@@ -61,7 +61,7 @@ http:
         type: string
         required: false
     gzip:
-        default: on
+        default: "on"
         description: Enable gzip compression
         type: string
         required: false

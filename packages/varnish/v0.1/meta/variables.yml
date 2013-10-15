@@ -34,7 +34,7 @@ secret_file:
     type: string
     required: false
 min_threads:
-    default: 1
+    default: "1"
     description: The minimum number of worker threads to start.
     type: integer
     required: false
