@@ -3,7 +3,7 @@
 #
 
 # Location of the devops ansible packages
-DEVOPS_ANSIBLE_ROOT=/opt/data/services
+DEVOPS_ANSIBLE_ROOT=/opt/data/ansible
 
 # Location of the devops API
-DEVOPS_API_ROOT=/opt/devops/api
+DEVOPS_API_ROOT=/opt/data/api
