@@ -1,3 +1,5 @@
+{% set php = nginx_vhost_php | default('off') %}
+
 server {
     listen   {{ nginx_vhost_port | default('80') }};
 
@@ -13,7 +15,6 @@ server {
         try_files $uri $uri/ {% if php == 'on' %}/index.php?$args{% else %}/index.html{% endif %};
     }
 
-{% set php = nginx_vhost_php | default('off') %}
 {% if php == 'on' %}    
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     location ~ \.php$ {
