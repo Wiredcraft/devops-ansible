@@ -5,3 +5,4 @@
 *.swp
 spaces
 node_modules
+deploy-packages.conf

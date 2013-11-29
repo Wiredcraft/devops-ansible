@@ -19,7 +19,7 @@ rm -rf $BUILD_FOLDER/*
 mkdir -p $BUILD_FOLDER/{packages,providers}
 
 # Fetch latest code
-git pull
+#git pull
 
 # Prepare packages archives
 echo "************** Packages **************"

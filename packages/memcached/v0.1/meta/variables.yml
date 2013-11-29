@@ -5,13 +5,13 @@ user:
     type: string
     required: false
 enable:
-    default: yes
+    default: "yes"
     description: Enable or disable memcached service.
     type: string
     required: false
     enum: 
-        - yes
-        - no
+        - "yes"
+        - "no"
 logfile:
     default: /var/log/memcached.log
     description: Log file path
