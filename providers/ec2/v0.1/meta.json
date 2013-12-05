@@ -94,7 +94,19 @@
     "images": [
         { 
             "id": "ubuntu12.04",
-            "label": "Ubuntu 12.04 LTS 64bit" 
+            "label": "Ubuntu 12.04.3 LTS 64bit (EBS)" 
+        },
+        { 
+            "id": "ubuntu12.10",
+            "label": "Ubuntu 12.10 64bit (EBS)" 
+        },
+        { 
+            "id": "ubuntu13.04",
+            "label": "Ubuntu 13.04 64bit (EBS)" 
+        },
+        { 
+            "id": "ubuntu13.10",
+            "label": "Ubuntu 13.10 64bit (EBS)" 
         }
     ],
     "credentials": [
@@ -109,14 +121,47 @@
     ],
     "image_ids": { 
         "ubuntu12.04": {    
-            "ap-northeast-1": "ami-5b0a865a",
-            "ap-southeast-1": "ami-4093dc12",
-            "ap-southeast-2": "ami-9d4bdba7",
-            "eu-west-1": "ami-35acbb41",
-            "us-east-1": "ami-856f02ec",
-            "us-west-1": "ami-2928076c",
-            "us-west-2": "ami-09e27439",
-            "sa-east-1": "ami-da3de7c7",
+            "ap-northeast-1": "ami-df0a6dde",
+            "ap-southeast-1": "ami-a0de8bf2",
+            "ap-southeast-2": "ami-c90498f3",
+            "eu-west-1": "ami-07cb2670",
+            "us-east-1": "ami-d9a98cb0",
+            "us-west-1": "ami-0ca99f49",
+            "us-west-2": "ami-50b22960",
+            "sa-east-1": "ami-e53492f8",
+            "default": ""
+        },
+        "ubuntu12.10": {    
+            "ap-northeast-1": "ami-e52f48e4",
+            "ap-southeast-1": "ami-70d18422",
+            "ap-southeast-2": "ami-570f936d",
+            "eu-west-1": "ami-a3e805d4",
+            "us-east-1": "ami-ef1f3a86",
+            "us-west-1": "ami-daa7919f",
+            "us-west-2": "ami-10891220",
+            "sa-east-1": "ami-a92a8cb4",
+            "default": ""
+        },
+        "ubuntu13.04": {    
+            "ap-northeast-1": "ami-cb3959ca",
+            "ap-southeast-1": "ami-a47a2ef6",
+            "ap-southeast-2": "ami-03950a39",
+            "eu-west-1": "ami-4654bb31",
+            "us-east-1": "ami-b53012dc",
+            "us-west-1": "ami-b6ac9df3",
+            "us-west-2": "ami-8c0663bc",
+            "sa-east-1": "ami-e1a203fc",
+            "default": ""
+        },
+        "ubuntu13.10": {    
+            "ap-northeast-1": "ami-51274050",
+            "ap-southeast-1": "ami-a0d782f2",
+            "ap-southeast-2": "ami-4d0e9277",
+            "eu-west-1": "ami-d5ec01a2",
+            "us-east-1": "ami-4b143122",
+            "us-west-1": "ami-24a69061",
+            "us-west-2": "ami-ee940fde",
+            "sa-east-1": "ami-232a8c3e",
             "default": ""
         }
     }

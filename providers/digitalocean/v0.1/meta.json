@@ -58,7 +58,19 @@
     "images": [
         { 
             "id": "ubuntu12.04",
-            "label": "Ubuntu 12.04 LTS 64bit" 
+            "label": "Ubuntu 12.04.3 LTS 64bit" 
+        },
+        { 
+            "id": "ubuntu12.10",
+            "label": "Ubuntu 12.10 64bit" 
+        },
+        { 
+            "id": "ubuntu13.04",
+            "label": "Ubuntu 13.04 64bit" 
+        },
+        { 
+            "id": "ubuntu13.10",
+            "label": "Ubuntu 13.10 64bit" 
         }
     ],
     "credentials": [
@@ -73,7 +85,16 @@
     ],
     "image_ids": { 
         "ubuntu12.04": {    
-            "default": "284203"
+            "default": "1015253"
+        },
+        "ubuntu12.10": {    
+            "default": "473123"
+        },
+        "ubuntu13.04": {    
+            "default": "350076"
+        },
+        "ubuntu13.10": {    
+            "default": "961965"
         }
     }
 }
