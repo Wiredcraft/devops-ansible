@@ -57,24 +57,24 @@ export PKCS11_PIN="dummy"
 # down TLS negotiation performance
 # as well as the one-time DH parms
 # generation process.
-export KEY_SIZE={{ key.key_size | default('1024') }}
+export KEY_SIZE={{ key.key_size }}
 
 # In how many days should the root CA key expire?
-export CA_EXPIRE={{ key.ca_expire | default('3650') }}
+export CA_EXPIRE={{ key.ca_expire }}
 
 # In how many days should certificates expire?
-export KEY_EXPIRE={{ key.key_expire | default('3650') }}
+export KEY_EXPIRE={{ key.key_expire }}
 
 # These are the default values for fields
 # which will be placed in the certificate.
 # Don't leave any of these fields blank.
-export KEY_COUNTRY="{{ key.country | default('US') }}"
-export KEY_PROVINCE="{{ key.province | default('CA') }}"
-export KEY_CITY="{{ key.city | default('SanFrancisco') }}"
-export KEY_ORG="{{ key.org | default('Fort-Funston') }}"
-export KEY_EMAIL="{{ key.email | default('admin@'+ ansible_hostname) }}"
-export KEY_CN={{ key.common_name | default(ansible_hostname) }}
-export KEY_NAME={{ key.name | default(ansible_hostname) }}
-export KEY_OU={{ key.org_unit | default(ansible_hostname) }}
+export KEY_COUNTRY="{{ key.country }}"
+export KEY_PROVINCE="{{ key.province }}"
+export KEY_CITY="{{ key.city }}"
+export KEY_ORG="{{ key.org }}"
+export KEY_EMAIL="{{ key.email }}"
+export KEY_CN={{ key.common_name }}
+export KEY_NAME={{ key.name }}
+export KEY_OU={{ key.org_unit }}
 export PKCS11_MODULE_PATH=changeme
 export PKCS11_PIN=1234

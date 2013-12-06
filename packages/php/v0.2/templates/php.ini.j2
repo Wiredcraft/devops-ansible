@@ -54,11 +54,11 @@ serialize_precision = 100
 allow_call_time_pass_reference = Off
 
 ; Safe Mode
-safe_mode = {{ php.safe_mode | default('Off') }}
+safe_mode = {{ php.safe_mode }}
 
 ; By default, Safe Mode does a UID compare check when
 ; opening files.
-safe_mode_gid = {{ php.safe_mode_gid | default('Off') }}
+safe_mode_gid = {{ php.safe_mode_gid }}
 
 ; When safe_mode is on, UID/GID checks are bypassed when
 ; including files from this directory and its subdirectories.
@@ -83,18 +83,18 @@ disable_functions =
 disable_classes =
 
 ; Determines the size of the realpath cache to be used by PHP.
-realpath_cache_size = {{ php.realpath_cache_size | default('256k') }}
+realpath_cache_size = {{ php.realpath_cache_size }}
 
 ; Duration of time, in seconds for which to cache realpath information for a given
 ; file or directory.
-realpath_cache_ttl = {{ php.realpath_cache_ttl | default('3600') }}
+realpath_cache_ttl = {{ php.realpath_cache_ttl }}
 
 ;;;;;;;;;;;;;;;;;
 ; Miscellaneous ;
 ;;;;;;;;;;;;;;;;;
 
 ; Decides whether PHP may expose the fact that it is installed on the server.
-expose_php = {{ php.expose_php | default('Off') }}
+expose_php = {{ php.expose_php }}
 
 ;;;;;;;;;;;;;;;;;;;
 ; Resource Limits ;
@@ -102,14 +102,14 @@ expose_php = {{ php.expose_php | default('Off') }}
 
 ; Maximum execution time of each script, in seconds.
 ; Note: This directive is hardcoded to 0 for the CLI SAPI
-max_execution_time = {{ php.max_execution_time | default('60') }}
+max_execution_time = {{ php.max_execution_time }}
 
 ; Maximum amount of time each script may spend parsing request data.
 ; Note: This directive is hardcoded to -1 for the CLI SAPI
-max_input_time = {{ php.max_input_time | default('120') }}
+max_input_time = {{ php.max_input_time }}
 
 ; Maximum amount of memory a script may consume (128MB)
-memory_limit = {{ php.memory_limit | default('128M') }}
+memory_limit = {{ php.memory_limit }}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Error handling and logging ;
@@ -117,11 +117,11 @@ memory_limit = {{ php.memory_limit | default('128M') }}
 
 ; This directive informs PHP of which errors, warnings and notices you would like
 ; it to take action for.
-error_reporting = {{ php.error_reporting | default('"E_ALL & ~E_DEPRECATED"') }}
+error_reporting = {{ php.error_reporting }}
 
 ; This directive controls whether or not and where PHP will output errors,
 ; notices and warnings too.
-display_errors = {{ php.display_errors | default('Off') }}
+display_errors = {{ php.display_errors }}
 
 ; The display of errors which occur during PHP's startup sequence are handled
 ; separately from display_errors.
@@ -130,7 +130,7 @@ display_startup_errors = Off
 ; Besides displaying errors, PHP can also log errors to locations such as a
 ; server-specific log, STDERR, or a location specified by the error_log
 ; directive found below.
-log_errors = {{ php.log_errors | default('On') }}
+log_errors = {{ php.log_errors }}
 
 ; Set maximum length of log_errors.
 log_errors_max_len = 1024
@@ -152,7 +152,7 @@ track_errors = Off
 html_errors = Off
 
 ; Log errors to specified file.
-error_log = {{ php.error_log | default('syslog') }}
+error_log = {{ php.error_log }}
 
 ;;;;;;;;;;;;;;;;;
 ; Data Handling ;
@@ -182,7 +182,7 @@ register_argc_argv = Off
 auto_globals_jit = On
 
 ; Maximum size of POST data that PHP will accept.
-post_max_size = {{ php.post_max_size | default('16M') }}
+post_max_size = {{ php.post_max_size }}
 
 ; Magic quotes are a preprocessing feature of PHP where PHP will attempt to
 ; escape any character sequences in GET, POST, COOKIE and ENV data which might
@@ -221,7 +221,7 @@ user_dir =
 enable_dl = Off
 
 ; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.
-cgi.fix_pathinfo={{ cgi.fix_pathinfo | default('1') }}
+cgi.fix_pathinfo={{ cgi.fix_pathinfo }}
 
 ;;;;;;;;;;;;;;;;
 ; File Uploads ;
@@ -231,7 +231,7 @@ cgi.fix_pathinfo={{ cgi.fix_pathinfo | default('1') }}
 file_uploads = On
 
 ; Maximum allowed size for uploaded files.
-upload_max_filesize = {{ php.upload_max_filesize | default('16M') }}
+upload_max_filesize = {{ php.upload_max_filesize }}
 
 ; Maximum number of files that can be uploaded via a single request
 max_file_uploads = 20
@@ -409,10 +409,10 @@ bcmath.scale = 0
 
 [Session]
 ; Handler used to store/retrieve data.
-session.save_handler = {{ session.save_handler | default('files') }}
+session.save_handler = {{ session.save_handler }}
 
 ; Argument passed to save_handler.
-session.save_path = {{ session.save_path | default('/var/lib/php/session') }}
+session.save_path = {{ session.save_path }}
 
 ; Whether to use cookies.
 session.use_cookies = 1
