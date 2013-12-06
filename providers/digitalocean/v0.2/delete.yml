@@ -1,0 +1,9 @@
+---
+- name: Delete Digital Ocean server
+  local_action:
+    module: digital_ocean
+    client_id: {{ client_id }}
+    api_key: {{ api_key }}
+    command: droplet
+    state: absent
+    id: {{ provider_id }}
