@@ -1,0 +1,36 @@
+---
+# file: common/tasks/packages.yml
+
+# Ensure troubleshooting tools
+- name: Ensure we have apt updated
+  apt: update_cache=yes
+
+- name: Ensure troubleshooting tools are installed
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - htop
+    - iftop
+    - sysstat
+    - dstat
+
+# Ensure code versionning tools
+
+- name: Ensure VCS tools are installed
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - subversion
+    - git
+
+# Ensure more... 
+- name: Ensure postfix is installed
+  apt: pkg=postfix state=installed
+
+# Ensure some of the dev tools are present
+- name: Ensure dev tools
+  apt:
+    pkg={{ item }}
+    state=present
+  with_items:
+    - make
+    - gcc
+    - g++

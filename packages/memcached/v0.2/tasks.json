@@ -1,0 +1,17 @@
+[
+    {
+        "id": "restart",
+        "label": "Restart Memcached",
+        "options": []
+    },
+    {
+        "id": "stop",
+        "label": "Stop Memcached",
+        "options": []
+    },
+    {
+        "id": "start",
+        "label": "Start Memcached",
+        "options": []
+    }
+]

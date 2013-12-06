@@ -1,0 +1,3 @@
+- name: 
+  script:
+    common/files/fetch_etcd_var.sh {{ etcd_host }} {{ etcd_key }}

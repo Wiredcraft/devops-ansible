@@ -1,0 +1,3 @@
+---
+- name: restart devops-etcd
+  service: name=devops-etcd state=restarted
