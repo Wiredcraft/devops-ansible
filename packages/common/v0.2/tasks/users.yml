@@ -20,8 +20,10 @@
   authorized_key: 
     user=devops
     state=present
-    key='{{ ssh.devops }}'
+    key='{{ item }}'
     manage_dir=yes
+  with_items:
+    ssh.devops
 
 - name: Ensure devops user can sudo
   copy: 
@@ -34,7 +36,7 @@
 # Ensure customer users
 - name: Ensure profile user exists
   user: 
-    name={{ space }}
+    name='{{ space }}'
     state=present
     comment='Devo.ps {{ space }} user'
     home=/home/{{ space }}

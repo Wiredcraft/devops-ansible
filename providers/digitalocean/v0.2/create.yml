@@ -15,9 +15,9 @@
     client_id: "{{ client_id }}"
     api_key: "{{ api_key }}"
     command: droplet
-    size_id: {{ size | int }}
-    image_id: {{ image | int }}
-    region_id: {{ region | int }}
+    size_id: "{{ size }}"
+    image_id: "{{ image }}"
+    region_id: "{{ region }}"
     ssh_key_ids: "{{ do_key.ssh_key.id }}"
     name: "{{ name }}"
     state: present
