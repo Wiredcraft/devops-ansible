@@ -2,6 +2,6 @@
 - name: Delete Linode server
   local_action:
     module: linode
-    api_key: {{ api_key }}
+    api_key: "{{ api_key }}"
     state: absent
-    linode_id: {{ provider_id }}
+    linode_id: "{{ provider_id }}"
