@@ -13,12 +13,24 @@
     mode=0644
   notify: restart couchdb
 
+# Note - beware that couchdb will re-hash the pass in the config on start
+# hence changing the file...
+#
+# - name: ensure couchdb admin users
+#   lineinfile:
+#     create=yes
+#     dest=/home/devops/.couchdb_admin
+#     state=present
+#     regexp='^({{ couchdb.admin_user }}) '
+#     line='\1 {{ couchdb.admin_pass }}'
+#     backrefs=yes
+
 - name: ensure the couchdb config file
   template:
     src=DEVOPS_PACKAGE/templates/local.ini.j2
     dest=/etc/couchdb/local.ini
-    owner=root
-    group=root
+    owner={{ couchdb.running_user }}
+    group={{ couchdb.running_user }}
     mode=0644
   notify: restart couchdb
 
