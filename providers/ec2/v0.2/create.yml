@@ -1,4 +1,61 @@
 ---
+# Ensure SSH key
+- name: Ensure Ec2 Key pair
+  local_action:
+    module: ec2_key
+    ec2_access_key: "{{ ec2_access_key }}"
+    ec2_secret_key: "{{ ec2_secret_key }}"
+    name: "{{ ec2_key_name }}"
+    region: "{{ region }}"
+    key_material: "{{ ssh_profile_key }}"
+
+# Prepare EC2 group
+- name: Ensure Ec2 group
+  local_action:
+    module: ec2_group
+    ec2_access_key: "{{ ec2_access_key }}"
+    ec2_secret_key: "{{ ec2_secret_key }}"
+    name: "{{ ec2_security_group }}"
+    region: "{{ region }}"
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+      - proto: all
+        from_port: 0
+        to_port: 65536
+        cidr_ip: 0.0.0.0/0
+      - proto: icmp
+        from_port: -1
+        to_port: -1
+        cidr_ip: 0.0.0.0/0
+    state: present
+  register: resp_group
+# Add self EC2 group rules
+- name: Ensure Ec2 group - self rules
+  local_action:
+    module: ec2_group
+    ec2_access_key: "{{ ec2_access_key }}"
+    ec2_secret_key: "{{ ec2_secret_key }}"
+    name: "{{ ec2_security_group }}"
+    region: "{{ region }}"
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        group_id: "{{ resp_group.group_id }}"
+      - proto: all
+        from_port: 0
+        to_port: 65536
+        group_id: "{{ resp_group.group_id }}"
+      - proto: icmp
+        from_port: -1
+        to_port: -1
+        group_id: "{{ resp_group.group_id }}"
+    state: present
+
+# Add server
 - name: Ensure Ec2 server
   local_action:
     module: ec2 
@@ -12,15 +69,15 @@
     instance_tags: '{"name": "{{ inventory_hostname }}"}'
     wait: yes
     wait_timeout: 500
-  register: response
+  register: resp_instance
 - name: Register new IP address for ec2 server
   local_action:
     module: set_fact
-    ansible_ssh_host: "{{ response.instances[0].public_ip }}"
+    ansible_ssh_host: "{{ resp_instance.instances[0].public_ip }}"
 - name: Wait for SSH to be reachable
   local_action:
     module: wait_for
     delay: 60
-    host: "{{ response.instances[0].public_ip }}"
+    host: "{{ resp_instance.instances[0].public_ip }}"
     port: 22
     timeout: 300

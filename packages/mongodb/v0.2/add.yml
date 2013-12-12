@@ -6,6 +6,16 @@
 # Ensure config
 - name: ensure the mongodb config file
   template:
+    src=DEVOPS_PACKAGE/templates/default_mongodb.j2
+    dest=/etc/default/mongodb
+    owner=root
+    group=root
+    mode=0644
+  notify: restart mongodb
+
+# Ensure config
+- name: ensure the mongodb config file
+  template:
     src=DEVOPS_PACKAGE/templates/mongodb.conf.j2
     dest=/etc/mongodb.conf
     owner=root
