@@ -5,6 +5,9 @@
 - name: Ensure we have apt updated
   apt: update_cache=yes
 
+- name: Ensure we have the latest installed packages
+  apt: upgrade=safe
+
 - name: Ensure troubleshooting tools are installed
   apt: pkg={{ item }} state=installed
   with_items:
