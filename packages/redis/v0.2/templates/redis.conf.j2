@@ -7,6 +7,7 @@
 {% set snap = redis.snapshotting | default({}) %}
 {% set repl = redis.replication | default({}) %}
 {% set security = redis.security | default({}) %}
+{% set limits = redis.limits | default({}) %}
 {% set aom = redis.aom | default({}) %}
 {% set lua = redis.lua | default({}) %}
 {% set slowlog = redis.slowlog | default({}) %}
@@ -103,8 +104,8 @@ databases {{ redis.databases }}
 #   save ""
 
 {% for f in snap.save %}
-save {{ f.seconds }} {{ f.count }}
-{% enfor %}
+save {{ f.seconds }} {{ f.changes }}
+{% endfor %}
 
 # By default Redis will stop accepting writes if RDB snapshots are enabled
 # (at least one save point) and the latest background save failed.
