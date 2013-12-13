@@ -20,13 +20,6 @@
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml
 
-# Need to remove PROXY options...
-- name: ensure PROXY grant is removed
-  shell: 
-    creates=/home/devops/.ansible/mysql_root_proxy_grant
-    mysql -e "REVOKE PROXY ON ''@'' FROM 'root'@'localhost';" \
-    && touch /home/devops/.ansible/mysql_root_proxy_grant
-
 - name: Ensure mysql root password
   mysql_user: 
     name=root

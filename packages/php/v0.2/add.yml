@@ -49,9 +49,9 @@
            creates=/etc/php5/fpm/php-fpm.conf.orig 
            removes=/etc/php5/fpm/php-fpm.conf
 - name: backup original config fpm
-  command: mv /etc/php5/fpm/pool.d/{{ php.fpm.pool.name | default('www') }}.conf /etc/php5/fpm/pool.d/{{ php.fpm.pool.name | default('www') }}.conf.orig 
-           creates=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name | default('www') }}.conf.orig 
-           removes=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name | default('www') }}.conf
+  command: mv /etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf /etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf.orig
+           creates=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf.orig
+           removes=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf
 
 - name: ensure php5-fpm configuration
   template:
@@ -66,7 +66,7 @@
 - name: ensure php5-fpm pool configuration
   template:
     src=DEVOPS_PACKAGE/templates/php-fpm_pool.conf.j2
-    dest=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name | default('www') }}.conf
+    dest=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf
     owner=root
     group=root
     mode=0644

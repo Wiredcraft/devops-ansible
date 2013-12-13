@@ -4,5 +4,5 @@
 
 [client]
 host = localhost
-user = {{ mysql_user }}
+user = {{ mysql_user | default('root') }}
 password = {{ item }}

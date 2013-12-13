@@ -5,7 +5,7 @@
 
 - name: backup original nginx config
   command: mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
-           creates=/etc/nginx/nginx.conf.orig 
+           creates=/etc/nginx/nginx.conf.orig
            removes=/etc/nginx/nginx.conf
 
 - name: Ensure nginx default config is installed
@@ -15,6 +15,26 @@
     owner=root
     group=root
     mode=0644
+  notify: restart nginx
+
+- name: Ensure nginx server-status page is present
+  copy:
+    src=DEVOPS_PACKAGE/files/server-status
+    dest=/etc/nginx/sites-available/server-status
+    owner=root
+    group=root
+    mode=0644
+  notify: restart nginx
+
+- name: Ensure nginx server-status page is enabled
+  file:
+    src=/etc/nginx/sites-available/server-status
+    dest=/etc/nginx/sites-enabled/server-status
+    owner=root
+    group=root
+    mode=0644
+    state=link
+  notify: restart nginx
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml

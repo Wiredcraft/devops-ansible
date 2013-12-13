@@ -155,7 +155,7 @@ logs:
         description: Increment slow_queries variable and log if a query takes longer than this many seconds.
         type: number
         required: false
-    log_queries_not_using_index:
+    log_queries_not_using_indexes:
         default: Off
         description: If you are using this option with the slow query log enabled then queries that are expected to retrieve all rows are logged.
         type: string
