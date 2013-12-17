@@ -1,0 +1,57 @@
+---
+credentials:
+    - label: Linode API key
+      id: apiKey
+
+sizes:
+    - label: Linode 1024 (8 Cores - 1024 MB - 24GB - 2TB)
+      id: 1
+    - label: Linode 2048 (8 Cores - 2048 MB - 48GB - 4TB)
+      id: 3
+    - label: Linode 4096 (8 Cores - 4096 MB - 96GB - 8TB)
+      id: 5
+    - label: Linode 8192 (8 Cores - 8192 MB - 192GB - 16TB)
+      id: 6
+    - label: Linode 16384 (8 Cores - 16384 MB - 384GB - 20TB)
+      id: 7
+    - label: Linode 24576 (8 Cores - 24576 MB - 576GB - 20TB)
+      id: 8
+    - label: Linode 32768 (8 Cores - 32768 MB - 768GB - 20TB)
+      id: 9
+    - label: Linode 40960 (8 Cores - 40960 MB - 960GB - 20TB)
+      id: 10
+
+regions:
+    - label: Dallas, TX, USA
+      id: 2
+    - label: Fremont, CA, USA
+      id: 3
+    - label: Atlanta, GA, USA
+      id: 4
+    - label: Newark, NJ, USA
+      id: 6
+    - label: London, England, UK
+      id: 7
+    - label: Tokyo, Japan, JP
+      id: 8
+
+images:
+    - label: Ubuntu 12.04 LTS 64bit
+      id: ubuntu12.04
+    - label: Ubuntu 12.10 64bit
+      id: ubuntu12.10
+    - label: Ubuntu 13.04 64bit
+      id: ubuntu13.04
+    - label: Ubuntu 13.10 64bit
+      id: ubuntu13.10
+
+image_ids:
+    ubuntu12.04:
+        default: 99
+    ubuntu12.10":
+        default: 107
+    ubuntu13.04:
+        default: 111
+    ubuntu13.10:
+        default: 116
+
