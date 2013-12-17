@@ -36,15 +36,15 @@
 # Ensure customer users
 - name: Ensure profile user exists
   user: 
-    name='{{ space }}'
+    name='{{ user }}'
     state=present
-    comment='Devo.ps {{ space }} user'
-    home=/home/{{ space }}
+    comment='Devo.ps {{ user }} user'
+    home=/home/{{ user }}
     shell=/bin/bash
 
 - name: Ensure profile user has the correct authorized_keys
   authorized_key: 
-    user={{ space }}
+    user={{ user }}
     state=present
     key='{{ item.key }}'
     manage_dir=yes
@@ -54,7 +54,7 @@
 - name: Ensure profile user can sudo
   template: 
     src=DEVOPS_PACKAGE/templates/10-customer.j2 
-    dest=/etc/sudoers.d/10-{{ space }}
+    dest=/etc/sudoers.d/10-{{ user }}
     owner=root
     group=root
     mode=440

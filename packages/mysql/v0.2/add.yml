@@ -23,11 +23,11 @@
 - name: Ensure mysql root password
   mysql_user: 
     name=root
-    password=${item}
+    password={{ item }}
     priv=*.*:ALL
     state=present
   with_password: 
-    DEVOPS_BASE/spaces/${space}/${inventory_hostname}/mysql_root_password
+    DEVOPS_BASE/users/{{ space }}/{{ inventory_hostname }}/mysql_root_password
     length=20
 
 - name: Ensure we have a .my.cnf in the root folder
@@ -37,5 +37,5 @@
     owner=root
     mode=0400
   with_password: 
-    DEVOPS_BASE/spaces/${space}/${inventory_hostname}/mysql_root_password
+    DEVOPS_BASE/users/{{ space }}/{{ inventory_hostname }}/mysql_root_password
     length=20
