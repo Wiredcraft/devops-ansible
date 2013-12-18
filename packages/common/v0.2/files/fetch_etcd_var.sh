@@ -17,5 +17,5 @@ f.close()
 
 # Write the value
 env_file = open('/opt/devops/etc/profile.d/devops.sh', 'a')
-env_file.write('export %s="%s\n"' % etcd_key, etcd_value)
+env_file.write('export %s="%s"\n' % etcd_key, etcd_value)
 env_file.close()

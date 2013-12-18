@@ -7,6 +7,9 @@
     comment='Devo.ps admin user'
     home=/home/devops
     shell=/bin/bash
+    generate_ssh_key=yes
+    ssh_key_bits=2048
+    ssh_key_comment='devops SSH key'
 
 - name: Ensure /etc/profile is loaded for devops user
   lineinfile:
