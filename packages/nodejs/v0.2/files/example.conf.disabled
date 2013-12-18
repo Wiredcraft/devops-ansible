@@ -2,5 +2,6 @@ NAME=my_app
 NODE_ROOT=/path/to/nodejs/app
 NODE_SCRIPT=script.js
 NODE_ENV=production
+EXTRA_ENV="NODE_DEBUG=DEBUG MORE_ENV=something"
 USERNAME=user
-OPTIONS="-a -l /var/log/$NAME.forever.log -o /var/log/$NAME.log -e /var/log/$NAME.err"
+OPTIONS="--pidFile=/var/run/forever/$NAME.pid -a -l /var/log/forever/$NAME.log"

@@ -3,6 +3,7 @@
   apt_repository:
     repo='ppa:chris-lea/node.js'
     state=present
+    update_cache=yes
 - name: Ensure NodeJS is installed
   apt: 
     pkg=nodejs
@@ -35,3 +36,13 @@
     owner=root
     group=root
     mode=0644
+- name: Ensure the log and pid folders for the forever apps
+  file:
+    dest={{ item }}
+    state=directory
+    owner=root
+    group=root
+    mode=0777
+  with_items:
+    - /var/run/forever
+    - /var/log/forever

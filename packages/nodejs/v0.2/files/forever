@@ -54,7 +54,7 @@ cmd () {
 }
 
 setup () {
-  CMD="cd $NODE_ROOT; NODE_ENV=$NODE_ENV forever $ACTION $OPTIONS $NODE_SCRIPT"
+  CMD="cd $NODE_ROOT; NODE_ENV=$NODE_ENV $EXTRA_ENV forever $ACTION $OPTIONS $NODE_SCRIPT"
 }
 
 start_stop () {

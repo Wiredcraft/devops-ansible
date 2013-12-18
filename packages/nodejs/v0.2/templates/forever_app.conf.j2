@@ -6,4 +6,5 @@ NODE_ROOT={{ item.root }}
 NODE_SCRIPT={{ item.script }}
 NODE_ENV={{ item.node_env }}
 USERNAME={{ item.user }}
-OPTIONS="-a -l /var/log/$NAME.forever.log -o /var/log/$NAME.log -e /var/log/$NAME.err"
+EXTRA_ENV={{ item.extra_env }}
+OPTIONS="--pidFile=/var/run/forever/$NAME.pid -a -l /var/log/forever/$NAME.log"

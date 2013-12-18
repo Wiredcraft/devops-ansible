@@ -7,6 +7,6 @@
     group=root
     mode=0644
   with_items:
-    # - { name: myapp, root: /var/www/myapp, script: app.js, node_env: production, user: nobody }
+    # - { name: myapp, root: /var/www/myapp, script: app.js, node_env: production, user: nobody, extra_env: "NODE_DEBUG=DEBUG SOME_ENV=OTHER" }
   notify:
     - start forever
