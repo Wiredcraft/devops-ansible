@@ -1,0 +1,4 @@
+---
+# Ensure users
+- name: Script
+  script: "{{ file }}"
