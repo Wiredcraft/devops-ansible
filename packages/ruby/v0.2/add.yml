@@ -10,6 +10,7 @@
   gem:
     name={{ item }}
     state=present
+    user_install=no
   with_items:
     ruby.gems
   ignore_errors: yes
