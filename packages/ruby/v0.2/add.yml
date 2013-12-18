@@ -7,7 +7,7 @@
     - rubygems
 
 - name: Ensure custom gem modules are installed
-  npm:
+  gem:
     name={{ item }}
     state=present
   with_items:
