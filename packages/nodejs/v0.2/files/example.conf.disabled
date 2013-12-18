@@ -1,0 +1,6 @@
+NAME=my_app
+NODE_ROOT=/path/to/nodejs/app
+NODE_SCRIPT=script.js
+NODE_ENV=production
+USERNAME=user
+OPTIONS="-a -l /var/log/$NAME.forever.log -o /var/log/$NAME.log -e /var/log/$NAME.err"

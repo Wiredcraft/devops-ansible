@@ -1,0 +1,37 @@
+---
+- name: Ensure NodeJS ppa is present
+  apt_repository:
+    repo='ppa:chris-lea/node.js'
+    state=present
+- name: Ensure NodeJS is installed
+  apt: 
+    pkg=nodejs
+    state=present
+- name: Ensure NodeJS forever is installed
+  npm:
+    name=forever
+    global=yes
+# Init script from: https://github.com/akuznecov/forever-initscript
+- name: Ensure NodeJS forever init script is installed
+  copy:
+    src=DEVOPS_PACKAGE/files/forever
+    dest=/etc/init.d/forever
+    owner=root
+    group=root
+    mode=0755
+  notify:
+    - enable forever
+- name: Ensure forever.d config script
+  file:
+    dest=/etc/forever.d
+    state=directory
+    owner=root
+    group=root
+    mode=0755
+- name: Ensure NodeJS forever example config file
+  copy:
+    src=DEVOPS_PACKAGE/files/example.conf.disabled
+    dest=/etc/forever.d/example.conf.disabled
+    owner=root
+    group=root
+    mode=0644

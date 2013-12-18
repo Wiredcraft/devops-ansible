@@ -1,0 +1,9 @@
+#
+# Created by devo.ps for {{ ansible_hostname }}
+#
+NAME={{ item.name }}
+NODE_ROOT={{ item.root }}
+NODE_SCRIPT={{ item.script }}
+NODE_ENV={{ item.node_env }}
+USERNAME={{ item.user }}
+OPTIONS="-a -l /var/log/$NAME.forever.log -o /var/log/$NAME.log -e /var/log/$NAME.err"
