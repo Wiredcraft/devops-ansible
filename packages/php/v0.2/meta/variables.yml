@@ -1,4 +1,6 @@
 ---
+extensions: []
+pecl_extenstions: []
 safe_mode:
     default: "Off"
     description: Enable / disable php safe_mode.

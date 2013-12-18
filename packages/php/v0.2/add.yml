@@ -13,6 +13,23 @@
     - php-pear
     - php-apc
 
+- name: Ensure extra php extensions via yum
+  apt:
+    name={{ item }}
+    state=present
+  with_items:
+    php.extensions
+  notify:
+    - restart php-fpm
+- name: Ensure extra php extensions via pecl
+  shell:
+    creates=/root/.php_{{ item }}
+    printf "\n" | pecl install {{ item }} | tee -a /root/.php_{{ item }} && echo 'extension = {{ item }}.so' > /etc/php.d/{{ item }}.ini
+  with_items:
+    php.pecl_extensions
+  notify:
+    - restart php-fpm
+
 # Backup config
 - name: backup original config cli
   command: mv /etc/php5/cli/php.ini /etc/php5/cli/php.ini.orig 

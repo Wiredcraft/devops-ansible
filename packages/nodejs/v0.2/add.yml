@@ -12,6 +12,13 @@
   npm:
     name=forever
     global=yes
+- name: Ensure custom npm modules are installed
+  npm:
+    name={{ item }}
+    global=yes
+  with_items:
+    nodejs.packages
+  ignore_errors: yes
 # Init script from: https://github.com/akuznecov/forever-initscript
 - name: Ensure NodeJS forever init script is installed
   copy:

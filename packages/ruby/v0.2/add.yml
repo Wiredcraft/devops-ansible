@@ -1,0 +1,15 @@
+---
+- name: Ensure Ruby is installed
+  apt: 
+    pkg={{ item }}
+    state=present
+  with_items:
+    - rubygems
+
+- name: Ensure custom gem modules are installed
+  npm:
+    name={{ item }}
+    state=present
+  with_items:
+    ruby.gems
+  ignore_errors: yes
