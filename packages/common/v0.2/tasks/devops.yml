@@ -60,3 +60,7 @@
   service:
     name=devops-etcd
     state=running
+
+- name: Register inventory to etcd
+  script: 
+    DEVOPS_PACKAGE/files/register_inventory_to_etcd.py {{ hostvars[inventory_hostname] | b64encode }}
