@@ -62,10 +62,10 @@
     state=running
 
 - name: Ensure python requests module is installed
-  pip:
-    name=requests
+  apt:
+    name=python-requests
     state=present
-    
+
 - name: Register inventory to etcd
   script: 
     DEVOPS_PACKAGE/files/register_inventory_to_etcd.py {{ hostvars[inventory_hostname] | to_json | b64encode }}
