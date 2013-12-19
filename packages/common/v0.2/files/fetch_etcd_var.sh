@@ -8,7 +8,7 @@ etcd_host = sys.argv[1]
 etcd_key = sys.argv[2]
 
 # Read the value
-f = urllib2.urlopen('http://' + etcd_host + ':4001/v1/keys/' + etcd_key)
+f = urllib2.urlopen('http://' + etcd_host + ':4001/v2/keys/' + etcd_key)
 result = json.load(f)
 if 'value' not in keys:
     raise RuntimeError('Could not find the etcd item for key: %s' % etcd_key)
