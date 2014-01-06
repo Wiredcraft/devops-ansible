@@ -38,12 +38,14 @@ def save_key(path, value):
     '''
     Save key to etcd, using path as key
     '''
+    print path
     payload = {'value': value}
     r = requests.put('http://localhost:4001/v2/keys/'+ path, data=payload)
     # Do some extra checks with the performed requests
     if r.status_code == 200:
         return True
     else:
+        print r.content
         return False
 
 def process(key, value):
