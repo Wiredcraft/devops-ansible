@@ -43,7 +43,7 @@ def save_key(path, value):
     # Do some extra checks with the performed requests
     if r.status_code == 200:
         return True
-    else
+    else:
         return False
 
 def process(key, value):
@@ -51,14 +51,14 @@ def process(key, value):
     Process a key
     '''
     if isinstance(key, basestring):
-        key = [KEY_PREFIX, re.sub('[^A-Z0-9]', '_', key.upper()]
+        key = [KEY_PREFIX, re.sub('[^A-Z0-9]', '_', key.upper())]
     if isinstance(value, basestring):
         save_key('__'.join(key), value)
     # Only care about dict
     if isinstance(value, dict):
         for k, v in value.iteritems():
             inner_key = list(key)
-            inner_key.append(re.sub('[^A-Z0-9]', '_', k.upper())
+            inner_key.append(re.sub('[^A-Z0-9]', '_', k.upper()))
             process(inner_key, v)
 
 for k, v in inventory.iteritems():
