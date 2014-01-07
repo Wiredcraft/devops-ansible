@@ -1,7 +1,12 @@
 ---
+- name: Ensure devops repo GPG key
+  apt_key:
+    url=http://repo.devo.ps:8889/apt/ubuntu/conf/devops.gpg.key
+    state=present
+
 - name: Ensure devops repo
   apt_repository:
-    repo='deb http://repo.devo.ps/ amd64/'
+    repo='deb http://repo.devo.ps:8889/apt/ubuntu raring main'
     state=present
 
 - name: Remove deb-src for devops repo
@@ -15,7 +20,7 @@
     name=devops-etcd
     state=present
     update_cache=yes
-    force=yes
+    # force=yes
 
 - name: Ensure devops folders
   file:
