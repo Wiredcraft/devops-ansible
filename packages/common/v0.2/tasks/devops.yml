@@ -20,7 +20,6 @@
     name=devops-etcd
     state=present
     update_cache=yes
-    # force=yes
 
 - name: Ensure devops folders
   file:

@@ -5,7 +5,10 @@
     state=present
 
 - name: Ensure nginx is installed
-  apt: pkg=nginx state=present
+  apt: 
+    name=nginx
+    state=present
+    update_cache=yes
   notify: enable nginx
 
 - name: backup original nginx config
