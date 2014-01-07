@@ -1,6 +1,6 @@
-- name: 
+- name: Fetch and set
   script:
-    common/files/fetch_etcd_var.sh {{ data.host }} {{ data.keys }}
+    fetch_etcd_var.sh {{ item.host }} {{ item.keylist }}
   with_items:
     to_be_fetched
 
