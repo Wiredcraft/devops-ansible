@@ -5,7 +5,7 @@ import json
 import urllib2
 
 etcd_host = sys.argv[1]
-etcd_key = sys.argv[2]
+etcd_keys = sys.argv[2]
 
 # Read the value
 f = urllib2.urlopen('http://' + etcd_host + ':4001/v2/keys/' + etcd_key)

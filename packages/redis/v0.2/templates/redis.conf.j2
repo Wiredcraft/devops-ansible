@@ -331,7 +331,7 @@ maxmemory-policy {{ limits.policy }}
 # pick the one that was used less recently, you can change the sample size
 # using the following configuration directive.
 #
-maxmemory-samples 3 {{ limits.samples }}
+maxmemory-samples {{ limits.samples }}
 
 ############################## APPEND ONLY MODE ###############################
 

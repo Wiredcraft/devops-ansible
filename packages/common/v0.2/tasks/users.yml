@@ -10,6 +10,13 @@
     generate_ssh_key=yes
     ssh_key_bits=2048
     ssh_key_comment='devops SSH key'
+  # register: bob
+
+# - name: Register SSH pub key
+#   local_action:
+#     module: set_facts
+#     pub_key={{ bob.ssh_public_key }}
+#   only_if: {{ bob.ssh_public_key }}
 
 - name: Ensure /etc/profile is loaded for devops user
   lineinfile:
