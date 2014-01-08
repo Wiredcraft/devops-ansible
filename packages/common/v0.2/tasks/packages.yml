@@ -14,7 +14,7 @@
   apt: 
     name={{ item }}
     state=installed
-  with:
+  with_items:
     - htop
     - iftop
     - sysstat
@@ -26,7 +26,7 @@
   apt: 
     name={{ item }} 
     state=installed
-  with:
+  with_items:
     - subversion
     - git
 
@@ -41,7 +41,7 @@
   apt:
     name={{ item }}
     state=present
-  with:
+  with_items:
     - make
     - gcc
     - g++
@@ -51,5 +51,5 @@
   apt: 
     name={{ item }}
     state=present
-  with:
+  with_items:
     server.packages | default([])
