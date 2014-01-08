@@ -52,4 +52,4 @@
     name={{ item }}
     state=present
   with_items:
-    server.packages | default([])
+    set server = server | default({}); server.packages | default([])
