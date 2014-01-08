@@ -10,8 +10,9 @@
 
 - name: install dependencies for apt_repository
   apt: 
-    name='{{ item }}'
+    name={{ item }}
     state=present
+    update_cache=yes
   with_items:
     - python-software-properties
     # should use pip for pycurl?
