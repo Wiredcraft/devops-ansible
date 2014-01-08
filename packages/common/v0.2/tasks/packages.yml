@@ -3,14 +3,18 @@
 
 # Ensure troubleshooting tools
 - name: Ensure we have apt updated
-  apt: update_cache=yes
+  apt: 
+    update_cache=yes
 
 - name: Ensure we have the latest installed packages
-  apt: upgrade=safe
+  apt:
+    upgrade=safe
 
 - name: Ensure troubleshooting tools are installed
-  apt: pkg={{ item }} state=installed
-  with_items:
+  apt: 
+    name={{ item }}
+    state=installed
+  with:
     - htop
     - iftop
     - sysstat
@@ -19,21 +23,33 @@
 # Ensure code versionning tools
 
 - name: Ensure VCS tools are installed
-  apt: pkg={{ item }} state=installed
-  with_items:
+  apt: 
+    name={{ item }} 
+    state=installed
+  with:
     - subversion
     - git
 
 # Ensure more... 
 - name: Ensure postfix is installed
-  apt: pkg=postfix state=installed
+  apt: 
+    name=postfix
+    state=installed
 
 # Ensure some of the dev tools are present
 - name: Ensure dev tools
   apt:
-    pkg={{ item }}
+    name={{ item }}
     state=present
-  with_items:
+  with:
     - make
     - gcc
     - g++
+
+# Ensure custom packages
+- name: Ensure custom packages
+  apt: 
+    name={{ item }}
+    state=present
+  with:
+    server.packages | default([])
