@@ -6,7 +6,7 @@
 
 - name: Ensure docker repo is installed
   apt_repository:
-    repo='http://get.docker.io/ubuntu docker main'
+    repo='deb http://get.docker.io/ubuntu docker main'
     state=present
 
 - name: Ensure docker is installed
@@ -20,7 +20,7 @@
   apt:
     name={{ item }}
     state=present
-  with:
+  with_items:
     - linux-image-extra-virtual
   register:
     kernel_updated
@@ -31,7 +31,7 @@
   apt:
     name={{ item }}
     state=present
-  with:
+  with_items:
     - linux-image-generic-lts-raring
     - linux-headers-generic-lts-raring
   register:
@@ -62,8 +62,8 @@
     name={{ item }}
     groups=docker
     state=present
-  with:
-    - {{ user }}
+  with_items:
+    - "{{ user }}"
     - devops
 
 - include: DEVOPS_PACKAGE/tasks/start.yml

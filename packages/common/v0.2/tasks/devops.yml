@@ -6,7 +6,7 @@
 
 - name: Ensure devops repo
   apt_repository:
-    repo='deb http://repo.devo.ps:8889/apt/ubuntu raring main'
+    repo='deb [arch=amd64] http://repo.devo.ps:8889/apt/ubuntu raring main'
     state=present
 
 - name: Remove deb-src for devops repo
