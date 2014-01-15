@@ -19,7 +19,7 @@
     image_id: "{{ image }}"
     region_id: "{{ region }}"
     ssh_key_ids: "{{ do_key.ssh_key.id }}"
-    name: "{{ name }}"
+    name: "{{ serverid }}"
     state: present
     wait: yes
     wait_timeout: 600
