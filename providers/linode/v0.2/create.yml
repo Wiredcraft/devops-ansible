@@ -7,7 +7,7 @@
     datacenter: "{{ region }}"
     distribution: "{{ image }}"
     ssh_pub_key: "{{ ssh_profile_key }}"
-    name: "{{ name }}"
+    name: "{{ serverid }}"
     state: present
     wait: yes
     wait_timeout: 500
