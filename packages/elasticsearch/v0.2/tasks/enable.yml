@@ -1,3 +1,5 @@
 ---
 - name: enable elasticsearch
-  service: name=elasticsearch enabled=yes
+  service: 
+    name=elasticsearch
+    enabled=yes

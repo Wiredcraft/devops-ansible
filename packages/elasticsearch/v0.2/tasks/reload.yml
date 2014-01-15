@@ -1,3 +1,5 @@
 ---
 - name: reload elasticsearch
-  service: name=elasticsearch state=reloaded
+  service: 
+    name=elasticsearch
+    state=reloaded
