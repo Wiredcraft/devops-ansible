@@ -37,6 +37,11 @@
             "label": "Enable php (on/off)",
             "required": false,
             "default": "off"
+        }, {
+            "id": "nginx_vhost_proxy_pass",
+            "label": "Proxy pass URL",
+            "required": false,
+            "default": ""
         }
     ]
 }]
