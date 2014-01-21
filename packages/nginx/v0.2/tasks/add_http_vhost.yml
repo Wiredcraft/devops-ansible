@@ -2,6 +2,7 @@
 # Expects to be triggerd via task with
 
 - name: Add HTTP vhost
+  sudo: yes
   template: 
     src=DEVOPS_PACKAGE/templates/vhost_http.j2
     dest=/etc/nginx/sites-available/{{ nginx_vhost_domain }}
@@ -10,6 +11,7 @@
     mode=644
 
 - name: Enable HTTP vhost
+  sudo: yes
   file:
     state=link
     src=/etc/nginx/sites-available/{{ nginx_vhost_domain }}
@@ -19,6 +21,7 @@
     mode=644
 
 - name: Ensure the root folder exists
+  sudo: yes
   file:
     state=directory
     path=/var/www/{{ nginx_vhost_domain }}

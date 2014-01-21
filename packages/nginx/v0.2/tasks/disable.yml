@@ -1,3 +1,4 @@
 ---
 - name: disable nginx
+  sudo: yes
   service: name=nginx enabled=no
