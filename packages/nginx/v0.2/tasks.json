@@ -42,6 +42,16 @@
             "label": "Proxy pass URL",
             "required": false,
             "default": ""
+        }, {
+            "id": "nginx_websocket_path",
+            "label": "Websocket path in the domain",
+            "required": false,
+            "default": ""
+        }, {
+            "id": "nginx_websocket_proxy_pass",
+            "label": "Websocket Proxy pass URL",
+            "required": false,
+            "default": ""
         }
     ]
 }]
