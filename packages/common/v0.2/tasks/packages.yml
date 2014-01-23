@@ -45,6 +45,7 @@
     - make
     - gcc
     - g++
+    - python-pip
 
 # Ensure custom packages
 - name: Ensure custom packages
@@ -53,3 +54,11 @@
     state=present
   with_items:
     server.packages | default([])
+
+# Ensure custom python packages
+- name: Ensure custom python packages
+  pip: 
+    name={{ item }}
+    state=present
+  with_items:
+    python.packages | default([])
