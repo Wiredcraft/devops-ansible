@@ -11,7 +11,7 @@ server {
 
     # Make site accessible from http://localhost/
     # server_name {{ nginx_vhost_domain }};
-    server_name _;
+    server_name {{ nginx_vhost_domain }};
 
 {% if nginx_websocket_path %}
     location {{ nginx_websocket_path }} {
