@@ -1,0 +1,10 @@
+---
+- name: Uninstall couchbase
+  command:
+    removes=/opt/couchbase
+    dpkg --purge couchbase-server
+
+- name: Remove couchbase data
+  command:
+    removes=/opt/couchbase
+    rm -rf /opt/couchbase
