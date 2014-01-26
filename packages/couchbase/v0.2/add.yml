@@ -12,7 +12,7 @@
 - name: Install couchbase package
   command:
     creates=/opt/couchbase
-    dpkg -i /root/couchbase-server-community_x86_64_2.1.1.deb
+    dpkg -i /opt/couchbase-server-community_x86_64_2.1.1.deb
 
 - include: DEVOPS_PACKAGE/tasks/enable.yml
 - include: DEVOPS_PACKAGE/tasks/start.yml
