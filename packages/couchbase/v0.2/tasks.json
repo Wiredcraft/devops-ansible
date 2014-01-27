@@ -1,0 +1,17 @@
+[
+    {
+        "id": "restart",
+        "label": "Restart CouchBase",
+        "options": []
+    },
+    {
+        "id": "stop",
+        "label": "Stop CouchBase",
+        "options": []
+    },
+    {
+        "id": "start",
+        "label": "Start CouchBase",
+        "options": []
+    }
+]

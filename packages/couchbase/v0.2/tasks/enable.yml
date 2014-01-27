@@ -1,0 +1,5 @@
+---
+- name: enable couchbase
+  service: 
+    name=couchbase-server
+    enabled=yes
