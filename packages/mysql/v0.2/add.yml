@@ -24,7 +24,7 @@
   mysql_user: 
     name=root
     password={{ item }}
-    priv=*.*:ALL
+    priv=*.*:ALL,GRANT
     state=present
   with_password: 
     DEVOPS_BASE/users/{{ user }}/{{ inventory_hostname }}/mysql_root_password
