@@ -18,5 +18,14 @@
     # should use pip for pycurl?
     - python-pycurl
 
+- name: Ensure proper locales
+  shell:
+    locale-gen en_US.UTF-8
+
+- name: Ensure locales are being used
+  lineinfile:
+    dest=/etc/default/locale
+    regexp='^LC_ALL="en_US.UTF-8"'
+    state=present
 
 # Ensure more...
