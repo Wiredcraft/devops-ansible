@@ -25,7 +25,7 @@
 - name: Ensure locales are being used
   lineinfile:
     dest=/etc/default/locale
-    regexp='^LC_ALL="en_US.UTF-8"'
+    line='LC_ALL="en_US.UTF-8"'
     state=present
 
 # Ensure more...
