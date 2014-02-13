@@ -1,19 +1,14 @@
 ---
 - name: Ensure devops repo GPG key
   apt_key:
-    url=http://repo.devo.ps:8889/apt/ubuntu/conf/devops.gpg.key
+    url=http://repo.devo.ps/ubuntu/repo.devo.ps.gpg.key
     state=present
 
 - name: Ensure devops repo
-  apt_repository:
-    repo='deb [arch=amd64] http://repo.devo.ps:8889/apt/ubuntu raring main'
-    state=present
-
-- name: Remove deb-src for devops repo
-  lineinfile:
-    dest=/etc/apt/sources.list
-    regexp='^deb-src http://repo.devo.ps'
-    state=absent
+  get_url:
+    dest=/etc/apt/sources.list.d/
+    url=http://repo.devo.ps/ubuntu/repo_devo_ps_{{ ansible_distribution_release }}.list
+    mode=644
 
 - name: Ensure devops-etcd
   apt:
