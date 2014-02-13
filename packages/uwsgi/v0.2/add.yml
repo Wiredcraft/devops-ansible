@@ -1,0 +1,39 @@
+---
+- name: Ensure python-dev
+  apt: 
+    pkg=python-dev
+    state=present
+
+- name: Ensure uWSGI is installed
+  pip:
+    name=uwsgi
+    state=present
+
+- name: Ensure uwsgi_apps folder
+  file: 
+    dest=/etc/uwsgi
+    owner=root
+    group=root
+    state=directory
+    mode=0755
+
+- name: ensure the upstart script
+  copy:
+    src=DEVOPS_PACKAGE/files/emperor.conf
+    dest=/etc/init/emperor.conf
+    owner=root
+    group=root
+    mode=0644
+
+- name: Ensure the log folder for the uwsgi apps
+  file:
+    dest={{ item }}
+    state=directory
+    owner=root
+    group=root
+    mode=0777
+  with_items:
+    - /var/log/uwsgi
+
+- include: DEVOPS_PACKAGE/tasks/start.yml
+
