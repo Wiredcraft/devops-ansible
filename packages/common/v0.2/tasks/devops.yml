@@ -47,7 +47,7 @@
     state=present
     regexp='^NODE_NAME={{ inventory_hostname }}'
     line='NODE_NAME={{ inventory_hostname }}'
-    insertafter='^NODE_NAME='
+    insertafter='# NODE_NAME='
   notify: restart devops-etcd
 
 - name: Enable devops-etcd script
