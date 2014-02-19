@@ -1,13 +1,13 @@
 ---
 - name: Ensure devops repo GPG key
   apt_key:
-    url=http://repo.devo.ps/ubuntu/repo.devo.ps.gpg.key
+    url=http://repo.wiredcraft.com/ubuntu/repo.wiredcraft.com.gpg.key
     state=present
 
 - name: Ensure devops repo
   get_url:
     dest=/etc/apt/sources.list.d/
-    url=http://repo.devo.ps/ubuntu/repo_devo_ps_{{ ansible_distribution_release }}.list
+    url=http://repo.wiredcraft.com/ubuntu/repo_wiredcraft_com_{{ ansible_distribution_release }}.list
     mode=644
 
 - name: Ensure devops-etcd
