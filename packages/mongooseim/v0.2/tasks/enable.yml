@@ -1,0 +1,3 @@
+---
+- name: enable mongooseim
+  service: name=mongooseim enabled=yes

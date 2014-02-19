@@ -1,0 +1,3 @@
+---
+- name: reload mongooseim
+  service: name=mongooseim state=reloaded
