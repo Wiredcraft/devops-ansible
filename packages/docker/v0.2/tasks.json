@@ -1,1 +1,17 @@
-add.yml
+[
+    {
+        "id": "restart",
+        "label": "Restart Docker",
+        "options": []
+    },
+    {
+        "id": "stop",
+        "label": "Stop Docker",
+        "options": []
+    },
+    {
+        "id": "start",
+        "label": "Start Docker",
+        "options": []
+    }
+]
