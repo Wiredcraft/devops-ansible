@@ -2,10 +2,10 @@
 #
 # We install nginx from devops repo
 #
-# - name: Ensure nginx repo is installed from PPA
-#   apt_repository:
-#     repo='ppa:nginx/stable'
-#     state=present
+- name: Ensure nginx repo is installed from PPA
+  apt_repository:
+    repo='ppa:nginx/stable'
+    state=present
 
 - name: Ensure nginx is installed
   apt: 
