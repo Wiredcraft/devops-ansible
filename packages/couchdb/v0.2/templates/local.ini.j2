@@ -47,5 +47,6 @@ bind_address = {{ couchdb.bind_address }}
 ; around in plain-text files). You can add more admin accounts with more
 ; 'username = password' lines. Don't forget to restart CouchDB after
 ; changing this.
-[admins]
-{{ couchdb.admin_user | default('; admin') }} = {{ couchdb.admin_pass | default('admin') }}
+;
+; For admins check /etc/couchdb/local.d
+
