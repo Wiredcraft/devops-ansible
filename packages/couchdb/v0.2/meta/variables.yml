@@ -17,13 +17,13 @@ bind_address:
     type: string
     required: false
 admin_user:
-    default: ''
-    description: Define the admin username (by default no admin)
+    default: 'admin'
+    description: Define the admin username
     type: string
     required: false
 admin_pass:
     default: 'admin'
-    description: Define the admin password (by default no admin)
+    description: Define the admin password
     type: string
     required: false
 enable:
