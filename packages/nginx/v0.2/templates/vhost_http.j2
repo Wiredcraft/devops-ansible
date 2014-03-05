@@ -7,7 +7,8 @@
 
 {% set task_options = task.nginx.add_http_vhost | default({}) %}
 
-{% if task_options.upstreams %}
+{# optional upstreams parameter #}
+{% if task_options.upstreams is defined %}
 {% for upstream in task.nginx.add_http_vhost.upstreams %}
 upstream {{ upstream.name }} {
     {% for backend in upstream.backends %}
@@ -53,7 +54,7 @@ server {
         include uwsgi_params;
 {% else %}
 {# It covers anything else - including route.type == 'static' #}
-    {% if route.to %}
+    {% if route.to is defined %}
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
         try_files $uri $uri/ {% if nginx_vhost_php == 'on' %}/index.php?$args {% else %}/index.html{% endif %};
