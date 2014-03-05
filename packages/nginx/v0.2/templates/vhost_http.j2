@@ -63,7 +63,7 @@ server {
         alias {{ route.to }};
     {% endif %}
 {% endif %}
-{% if route.custom %}
+{% if route.custom is defined %}
         {{ route.custom }}
 {% endif %}
     }
