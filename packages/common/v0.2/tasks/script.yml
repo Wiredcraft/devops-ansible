@@ -2,7 +2,7 @@
 # Execute inline / scripts in tasks
 - name: Copy task's script over
   template:
-    src="{{ devops_script_file }}"
+    src="{{ task.devops_script_file }}"
     dest=/tmp/devops_task
     mode=0777
 
