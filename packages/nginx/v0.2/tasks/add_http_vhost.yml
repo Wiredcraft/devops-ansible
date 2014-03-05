@@ -5,7 +5,7 @@
   sudo: yes
   template: 
     src=DEVOPS_PACKAGE/templates/vhost_http.j2
-    dest=/etc/nginx/sites-available/{{ nginx.add_http_vhost.domain }}
+    dest=/etc/nginx/sites-available/{{ task.nginx.add_http_vhost.domain }}
     owner=root
     group=root
     mode=644
@@ -14,8 +14,8 @@
   sudo: yes
   file:
     state=link
-    src=/etc/nginx/sites-available/{{ nginx.add_http_vhost.domain }}
-    dest=/etc/nginx/sites-enabled/{{ nginx.add_http_vhost.domain }}
+    src=/etc/nginx/sites-available/{{ task.nginx.add_http_vhost.domain }}
+    dest=/etc/nginx/sites-enabled/{{ task.nginx.add_http_vhost.domain }}
     owner=root
     group=root
     mode=644
@@ -24,7 +24,7 @@
   sudo: yes
   file:
     state=directory
-    path=/var/www/{{ nginx.add_http_vhost.domain }}
+    path=/var/www/{{ task.nginx.add_http_vhost.domain }}
     owner=devops
     group=devops
     mode=755
