@@ -3,14 +3,14 @@
   file:
     state=directory
     recurse=yes
-    path=/etc/openvpn/clients/{{ openvpn_user }}
+    path=/etc/openvpn/clients/{{ task.openvpn.add_user.user }}
     owner=root
     group=root
 
 - name: Prepare openvpn client config
   template:
     src=DEVOPS_PACKAGE/templates/client.ovpn.j2
-    dest=/etc/openvpn/clients/{{ openvpn_user }}/{{ openvpn_user }}.ovpn
+    dest=/etc/openvpn/clients/{{ task.openvpn.add_user.user }}/{{ task.openvpn.add_user.user }}.ovpn
     owner=root
     group=root
     mode=0644
@@ -25,11 +25,11 @@
 
 - name: Create OpenVPN user
   command:
-    bash /root/create_openvpn_user.sh {{ openvpn_user }}
+    bash /root/create_openvpn_user.sh {{ task.openvpn.add_user.user }}
 
 - name: Sends email with credentials
   mail:
     subject="["{{ ansible_hostname }}"] Your openvpn access"
     body="Please find attached your openvpn access"
-    attach="/etc/openvpn/clients/"{{ openvpn_user }}".tar.gz"
-    to={{ openvpn_user_email }}
+    attach="/etc/openvpn/clients/"{{ task.openvpn.add_user.user }}".tar.gz"
+    to={{ task.openvpn.add_user.email }}

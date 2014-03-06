@@ -3,19 +3,19 @@
 - name: Ensure mysql db
   sudo: yes
   mysql_db:
-    name={{ mysql_user_db.db }} 
+    name={{ task.mysql.add_user_db.db }} 
     state=present
 
 - name: Prepare mysql password
   shell:
-    if [ -f {{ mysql_user_db.user }}.passwd ]; then cat {{ mysql_user_db.user }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee {{ mysql_user_db.user }}.passwd ; fi
+    if [ -f {{ task.mysql.add_user_db.user }}.passwd ]; then cat {{ task.mysql.add_user_db.user }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee {{ task.mysql.add_user_db.user }}.passwd ; fi
   register:
     mysql_pass
 
 - name: Ensure mysql user
   sudo: yes
   mysql_user: 
-    name={{ mysql_user_db.user }}
+    name={{ task.mysql.add_user_db.user }}
     password={{ mysql_pass.stdout }}
-    priv={{ mysql_user_db.db }}.*:ALL
+    priv={{ task.mysql.add_user_db.db }}.*:ALL
     state=present

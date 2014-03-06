@@ -1,12 +1,12 @@
 ---
 - name: Install pecl extension
   command:
-    pecl -q install {{ php_pecl_extension_name }}
+    pecl -q install {{ task.php.add_pecl_extension.name }}
 
 - name: Add php extension to php config
   template:
     src=DEVOPS_PACKAGE/templates/pecl_extension.ini.j2
-    dest={{ item }}/{{ php_pecl_extension_name }}.ini
+    dest={{ item }}/{{ task.php.add_pecl_extension.name }}.ini
     owner=root
     group=root
     mode=0644

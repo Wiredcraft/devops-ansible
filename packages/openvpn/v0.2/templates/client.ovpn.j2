@@ -32,8 +32,8 @@ persist-tun
 
 # SSL/TLS parameters - files created previously
 ca ca.crt
-cert {{ openvpn_user }}.crt
-key {{ openvpn_user }}.key
+cert {{ task.openvpn.add_user.user }}.crt
+key {{ task.openvpn.add_user.user }}.key
 
 # Since we specified the tls-auth for server, we need it for the client
 # note: 0 = server, 1 = client
