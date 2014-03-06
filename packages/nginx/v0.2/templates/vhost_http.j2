@@ -30,7 +30,7 @@ server {
 
     # Make site accessible from http://localhost/
     # server_name _;
-    server_name {{ task_options.domain }};
+    server_name {{ task_options.domain }} {% if task_options.aliases is defined %}{% if task_options.aliases is sequence %}{{ task_options.aliases | join(' ') }}{% else %}{{ task_options.aliases }}{% endif %}{% endif %};
 
 {% for route in task_options.routes %}
     location {{ route.uri }} {
