@@ -1,0 +1,7 @@
+---
+- name: Ensure custom python packages
+  pip: 
+    name={{ item }}
+    state=present
+  with_items:
+    python.packages | default([])

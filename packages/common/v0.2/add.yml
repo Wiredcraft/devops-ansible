@@ -4,5 +4,6 @@
 - include: DEVOPS_PACKAGE/tasks/users.yml
 - include: DEVOPS_PACKAGE/tasks/packages.yml
 - include: DEVOPS_PACKAGE/tasks/devops.yml
+- include: DEVOPS_PACKAGE/tasks/custom_packages.yml
 # - include: DEVOPS_PACKAGE/tasks/env.yml
 
