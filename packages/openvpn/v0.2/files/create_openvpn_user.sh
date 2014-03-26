@@ -17,4 +17,4 @@ if [ ! -e "keys/$USER.key" ]; then
 fi
 
 cd "/etc/openvpn/clients/"
-tar cvfz $USER.tar.gz $USER
+tar cvfz --exclude="$USER.csr" $USER.tar.gz $USER
