@@ -1,5 +1,6 @@
 ---
 - name: Prepare client folder
+  sudo: yes
   file:
     state=directory
     recurse=yes
@@ -8,6 +9,7 @@
     group=root
 
 - name: Prepare openvpn client config
+  sudo: yes
   template:
     src=DEVOPS_PACKAGE/templates/client.ovpn.j2
     dest=/etc/openvpn/clients/{{ task.openvpn.add_user.user }}/{{ task.openvpn.add_user.user }}.ovpn
@@ -16,6 +18,7 @@
     mode=0644
 
 - name: Copy script to generate openvpn server key
+  sudo: yes
   copy:
     src=DEVOPS_PACKAGE/files/create_openvpn_user.sh
     dest=/root/create_openvpn_user.sh
@@ -24,10 +27,12 @@
     mode=0644
 
 - name: Create OpenVPN user
+  sudo: yes
   command:
     bash /root/create_openvpn_user.sh {{ task.openvpn.add_user.user }}
 
 - name: Sends email with credentials
+  sudo: yes
   mail:
     subject="["{{ ansible_hostname }}"] Your openvpn access"
     body="Please find attached your openvpn access"
