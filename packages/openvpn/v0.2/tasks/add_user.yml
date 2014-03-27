@@ -4,18 +4,22 @@
   file:
     state=directory
     recurse=yes
-    path=/etc/openvpn/clients/{{ task.openvpn.add_user.user }}
+    path=/etc/openvpn/clients/{{ item.name }}
     owner=root
     group=root
+  with_items:
+    task.openvpn.add_user.users
 
 - name: Prepare openvpn client config
   sudo: yes
   template:
     src=DEVOPS_PACKAGE/templates/client.ovpn.j2
-    dest=/etc/openvpn/clients/{{ task.openvpn.add_user.user }}/{{ task.openvpn.add_user.user }}.ovpn
+    dest=/etc/openvpn/clients/{{ item.name }}/{{ item.name }}.ovpn
     owner=root
     group=root
     mode=0644
+  with_items:
+    task.openvpn.add_user.users
 
 - name: Copy script to generate openvpn server key
   sudo: yes
@@ -29,12 +33,17 @@
 - name: Create OpenVPN user
   sudo: yes
   command:
-    bash /root/create_openvpn_user.sh {{ task.openvpn.add_user.user }}
+    bash /root/create_openvpn_user.sh {{ item.name }}
+  with_items:
+    task.openvpn.add_user.users
 
 - name: Sends email with credentials
   sudo: yes
   mail:
     subject="["{{ ansible_hostname }}"] Your openvpn access"
     body="Please find attached your openvpn access"
-    attach="/etc/openvpn/clients/"{{ task.openvpn.add_user.user }}".tar.gz"
-    to={{ task.openvpn.add_user.email }}
+    attach="/etc/openvpn/clients/"{{ item.name }}".tar.gz"
+    to={{ item.email }}
+  with_items:
+    task.openvpn.add_user.users
+
