@@ -1,0 +1,77 @@
+---
+
+# Ensure monitoring via ...
+- name: Ensure collectd is installed
+  apt: pkg=collectd state=installed
+  notify: enable collectd
+
+- name: ensure base config for collectd
+  copy: 
+    src=DEVOPS_PACKAGE/files/collectd.conf
+    dest=/etc/collectd/collectd.conf
+    owner=root
+    group=root
+    mode=644
+    backup=yes
+  notify: restart collectd
+
+- name: ensure plugins.d folder exist
+  file: 
+    dest=/etc/collectd/plugins.d
+    owner=root
+    group=root
+    mode=755
+    state=directory
+
+- name: ensure default collectd config for plugins
+  template: 
+    src=DEVOPS_PACKAGE/templates/collectd_plugins-default.conf.j2
+    dest=/etc/collectd/plugins.d/00_default.conf
+    owner=root
+    group=root
+    mode=644
+  notify: restart collectd
+
+- name: ensure network collectd config for devo.ps
+  template: 
+    src=DEVOPS_PACKAGE/templates/collectd_plugins-network.conf.j2
+    dest=/etc/collectd/plugins.d/00_network.conf
+    owner=root
+    group=root
+    mode=644
+  with_password: 
+    DEVOPS_BASE/spaces/${space}/${inventory_hostname}/collectd_password
+    length=20
+  notify: restart collectd
+
+- name: ensure password for client on collectd server
+  lineinfile: 
+    dest: /etc/collectd/passwd 
+    regexp: "^${space}__${inventory_hostname}: ${item}"
+    insertafter: EOF
+    line: "\n${space}__${inventory_hostname}: ${item}"
+  with_password: 
+    DEVOPS_BASE/spaces/${space}/${inventory_hostname}/collectd_password
+    length=20
+  delegate_to: devops_server_collectd
+
+- name: ensure collectd routing for devo.ps
+  template: 
+    src=DEVOPS_PACKAGE/templates/collectd_filters.conf.j2
+    dest=/etc/collectd/filters.conf
+    owner=root
+    group=root
+    mode=644
+    backup=yes
+  notify: restart collectd
+
+- name: ensure collectd host is set
+  lineinfile: 
+    dest=/etc/hosts
+    regexp='collectd\.service\.devo\.ps'
+    line='$collectd_host collectd.service.devo.ps'
+    state=present
+    backup=yes
+
+- name: Ensure collectd is started
+  service: name=collectd state=started

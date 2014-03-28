@@ -1,0 +1,6 @@
+LoadPlugin memcached
+{% set memcached = memcached | default({}) %}
+<Plugin memcached>
+    Host {{ memcached.listen | default('127.0.0.1') }}
+    Port {{ memcached.port | default('11211') }}
+</Plugin>

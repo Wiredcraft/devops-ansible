@@ -1,0 +1,48 @@
+---
+- name: Ensure nginx repo is installed from PPA
+  apt_repository:
+    repo='ppa:nginx/stable'
+    state=present
+
+- name: Ensure nginx is installed
+  apt: 
+    name=nginx
+    state=present
+    update_cache=yes
+  notify: enable nginx
+
+- name: backup original nginx config
+  command: mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
+           creates=/etc/nginx/nginx.conf.orig
+           removes=/etc/nginx/nginx.conf
+
+- name: Ensure nginx default config is installed
+  template: 
+    src=DEVOPS_PACKAGE/templates/nginx.conf.j2
+    dest=/etc/nginx/nginx.conf
+    owner=root
+    group=root
+    mode=0644
+  notify: restart nginx
+
+- name: Ensure nginx server-status page is present
+  copy:
+    src=DEVOPS_PACKAGE/files/server-status
+    dest=/etc/nginx/sites-available/server-status
+    owner=root
+    group=root
+    mode=0644
+  notify: restart nginx
+
+- name: Ensure nginx server-status page is enabled
+  file:
+    src=/etc/nginx/sites-available/server-status
+    dest=/etc/nginx/sites-enabled/server-status
+    owner=root
+    group=root
+    mode=0644
+    state=link
+  notify: restart nginx
+
+# Ensure running
+- include: DEVOPS_PACKAGE/tasks/start.yml

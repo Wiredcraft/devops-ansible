@@ -1,0 +1,3 @@
+---
+- name: stop varnish
+  service: name=varnish state=stopped

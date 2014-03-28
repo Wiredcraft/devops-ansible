@@ -1,0 +1,5 @@
+---
+- name: start couchbase
+  service: 
+    name=couchbase-server
+    state=started

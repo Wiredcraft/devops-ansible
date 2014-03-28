@@ -1,0 +1,13 @@
+[{
+    "id": "start",
+    "label": "Start emperor service",
+    "options": []
+}, {
+    "id": "restart",
+    "label": "Restart emperor service",
+    "options": []
+},{
+    "id": "stop",
+    "label": "Stop emperor service",
+    "options": []
+}]

@@ -1,0 +1,3 @@
+---
+- name: enable zeromq
+  service: name=zeromq enabled=yes

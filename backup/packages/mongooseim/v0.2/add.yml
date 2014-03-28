@@ -1,0 +1,8 @@
+---
+- name: Ensure mongooseim is installed
+  apt: 
+    pkg=mongooseim 
+    state=present
+
+# Ensure running
+- include: DEVOPS_PACKAGE/tasks/start.yml

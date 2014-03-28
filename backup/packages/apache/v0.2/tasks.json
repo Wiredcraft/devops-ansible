@@ -1,0 +1,22 @@
+[
+    {
+        "id": "restart",
+        "label": "Restart Apache",
+        "options": []
+    },
+    {
+        "id": "reload",
+        "label": "Reload Apache config",
+        "options": []
+    },
+    {
+        "id": "stop",
+        "label": "Stop Apache",
+        "options": []
+    },
+    {
+        "id": "start",
+        "label": "Start Apache",
+        "options": []
+    }
+]

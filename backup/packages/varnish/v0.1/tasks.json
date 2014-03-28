@@ -1,0 +1,26 @@
+[{
+    "id": "restart",
+    "label": "Restart Varnish",
+    "options": []
+}, {
+    "id": "reload",
+    "label": "Reload Varnish config",
+    "options": []
+}, {
+    "id": "stop",
+    "label": "Stop Varnish",
+    "options": []
+}, {
+    "id": "start",
+    "label": "Start Varnish",
+    "options": []
+}, {
+    "id": "purge",
+    "label": "Purge Varnish Cache",
+    "options": [{
+        "id": "url",
+        "label": "URL to purge from cache",
+        "required": false,
+        "default": "*"
+    }]
+}]

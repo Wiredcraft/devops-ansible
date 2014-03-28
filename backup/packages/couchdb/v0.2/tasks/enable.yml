@@ -1,0 +1,3 @@
+---
+- name: enable couchdb
+  service: name=couchdb enabled=yes

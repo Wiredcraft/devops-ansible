@@ -1,0 +1,3 @@
+---
+- name: enable openvpn
+  service: name=openvpn enabled=yes

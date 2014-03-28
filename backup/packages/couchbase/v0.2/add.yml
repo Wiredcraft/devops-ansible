@@ -1,0 +1,18 @@
+---
+- name: Retrieve couchbase debian package
+  get_url:
+    url=http://packages.couchbase.com/releases/2.1.1/couchbase-server-community_x86_64_2.1.1.deb
+    dest=/opt/
+
+- name: Install couchbase dependencies
+  apt:
+    name=libssl0.9.8
+    state=present
+
+- name: Install couchbase package
+  command:
+    creates=/opt/couchbase
+    dpkg -i /opt/couchbase-server-community_x86_64_2.1.1.deb
+
+- include: DEVOPS_PACKAGE/tasks/enable.yml
+- include: DEVOPS_PACKAGE/tasks/start.yml

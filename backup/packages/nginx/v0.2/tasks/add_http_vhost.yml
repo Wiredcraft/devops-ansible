@@ -1,0 +1,32 @@
+---
+# Expects to be triggerd via task with
+
+- name: Add HTTP vhost
+  sudo: yes
+  template: 
+    src=DEVOPS_PACKAGE/templates/vhost_http.j2
+    dest=/etc/nginx/sites-available/{{ task.nginx.add_http_vhost.domain }}
+    owner=root
+    group=root
+    mode=644
+
+- name: Enable HTTP vhost
+  sudo: yes
+  file:
+    state=link
+    src=/etc/nginx/sites-available/{{ task.nginx.add_http_vhost.domain }}
+    dest=/etc/nginx/sites-enabled/{{ task.nginx.add_http_vhost.domain }}
+    owner=root
+    group=root
+    mode=644
+
+- name: Ensure the root folder exists
+  sudo: yes
+  file:
+    state=directory
+    path=/var/www/{{ task.nginx.add_http_vhost.domain }}
+    owner=devops
+    group=devops
+    mode=755
+
+- include: DEVOPS_PACKAGE/tasks/restart.yml

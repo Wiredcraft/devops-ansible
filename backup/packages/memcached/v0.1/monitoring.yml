@@ -1,0 +1,9 @@
+---
+- name: Ensure memcached collectd plugin is enabled
+  template: 
+    src=DEVOPS_PACKAGE/templates/collectd-memcached.j2
+    dest=/etc/collectd/plugins.d/memcached
+    owner=root
+    group=root
+    mode=0644
+  notify: restart collectd

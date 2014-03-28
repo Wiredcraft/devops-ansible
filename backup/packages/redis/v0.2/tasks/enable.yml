@@ -1,0 +1,3 @@
+---
+- name: enable redis
+  service: name=redis-server enabled=yes

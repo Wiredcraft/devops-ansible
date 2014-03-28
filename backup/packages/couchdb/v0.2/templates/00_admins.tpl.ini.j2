@@ -1,0 +1,10 @@
+#
+# Created by devo.ps for {{ ansible_hostname }}
+#
+# Add your admin users here in the format
+# user = password
+#
+# Then restart couchdb - the pass will be hashed in 
+# admins.ini
+[admins]
+{{ couchdb.admin_user }} = {{ couchdb.admin_pass }}

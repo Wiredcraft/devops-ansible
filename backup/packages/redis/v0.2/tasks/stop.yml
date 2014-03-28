@@ -1,0 +1,3 @@
+---
+- name: stop redis
+  service: name=redis-server state=stopped
