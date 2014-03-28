@@ -59,8 +59,20 @@ module.exports = function (options) {
                    console.log('**********************************');
                }
                if (taskObj.options && taskObj.options.length > 0) {
+                   taskYaml = '---\n';
                    taskObj.options.forEach(function(o) {
+                       var keys = Object.keys(o);
+                       keys.forEach(function(k) {
+                           if (k === keys[0]) {
+                           taskYaml += ('- ' + k + ':  ' + o[k] + '\n');
+                           } else {
+                           taskYaml += ('  ' + k + ':  ' + o[k] + '\n');
+                           }
+                       });
+
+                       taskYaml += '\n';
                    });
+                   taskYaml += '---'
                }
 
                file.contents = new Buffer(taskTitle + '\n\n' + tasklabel + '\n\n' + taskYaml);
