@@ -27,32 +27,43 @@ module.exports = function (options) {
        var taskName = dirs[3].split('.')[0];
 
        var taskTitle = util.format('# Task %s', capitaliseFirstLetter(taskName));
-       var taskLable = '';
+       var tasklabel = '';
        var taskYaml = '---\n{}\n---';
 
-       var taskspath = path.join(dirs[0], dirs[1], 'tasks.json');
+       var taskspath = path.join(file.base, dirs[0], dirs[1], 'tasks.json');
 
        if (fs.existsSync(taskspath)) tasks = require(taskspath);
 
        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+       console.log(taskspath);
        console.log(tasks);
        console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
 
        if (!tasks) {
            file.contents = new Buffer(util.format('# Task %s\n\n---\n{}\n---', capitaliseFirstLetter(taskName)));
        } else {
-           var taskObj = tasks.filter(function(t) { return t.id === taskName });
+           var taskObjs = tasks.filter(function(t) { 
+               console.log(t.id);
+               return t.id === taskName
+           });
 
-           if (!taskObj) {
+           if (!taskObjs[0]) {
            file.contents = new Buffer(util.format('# Task %s\n\n---\n{}\n---', capitaliseFirstLetter(taskName)));
            } else {
-               if (taskObj.lable) taskLable = taskObj.lable + '';
+               var taskObj = taskObjs[0];
+
+               if (taskObj.label) {
+                   console.log('**********************************');
+                   tasklabel = taskObj.label + '';
+                   console.log(tasklabel);
+                   console.log('**********************************');
+               }
                if (taskObj.options && taskObj.options.length > 0) {
                    taskObj.options.forEach(function(o) {
                    });
                }
 
-               file.contents = new Buffer(taskTitle + '\n\n' + taskLable + '\n\n' + taskYaml);
+               file.contents = new Buffer(taskTitle + '\n\n' + tasklabel + '\n\n' + taskYaml);
            }
        }
 

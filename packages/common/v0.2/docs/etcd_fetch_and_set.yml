@@ -1,5 +1,7 @@
 # Task Etcd_fetch_and_set
 
+Fetch value from etcd server and set it up as env var
+
 ---
 {}
 ---
