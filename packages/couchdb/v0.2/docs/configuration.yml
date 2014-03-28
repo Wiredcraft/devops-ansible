@@ -1,0 +1,55 @@
+# Couchdb 
+
+  Some text doc
+
+---
+max_document_size:
+    default: 4294967296
+    description: Maximum document size
+    type: integer
+    required: false
+port:
+    default: 5984
+    description: Listening port
+    type: integer
+    required: false
+    minimum: 1025
+    maximum: 65536
+bind_address:
+    default: '127.0.0.1'
+    description: The IP address to bind to.
+    type: string
+    required: false
+admin_user:
+    default: 'admin'
+    description: Define the admin username
+    type: string
+    required: false
+admin_pass:
+    default: 'admin'
+    description: Define the admin password
+    type: string
+    required: false
+enable:
+    default: "1"
+    description: Define whether CouchDB should start at bood time
+    type: integer
+    required: false
+running_user:
+    default: 'couchdb'
+    description: Define the running user for the CouchDB process (it needs to exist)
+    type: string
+    required: false
+stdout_file:
+    default: '/dev/null'
+    description: Where to send the process STDOUT
+    type: string
+    required: false
+stderr_file:
+    default: '/dev/null'
+    description: Where to send the process STDERR
+    type: string
+    required: false
+
+
+---
