@@ -1,0 +1,7 @@
+node_modules
+_site/
+.sass-cache
+vendor
+public
+assets/css/*.css
+.DS_Store
