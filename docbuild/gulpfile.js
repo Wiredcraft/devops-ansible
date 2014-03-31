@@ -17,7 +17,7 @@ var colors = gutil.colors;
 var frontMatter = require('gulp-front-matter');
 var rename = require('gulp-rename');
 var marked = require('gulp-marked');
-var template = require('gulp-template');
+var template = require('gulp-inplace-template');
 var convert = require('./lib/gulp-convert');
 var convertTasks = require('./lib/gulp-convert-tasks');
 
@@ -180,7 +180,3 @@ gulp.task('watch', function() {
     gulp.watch(siteCSS, ['concat-css']);
     gulp.watch(['./public/**/*', './assets/**/*.{png}', './templates/**/*', './source/**/*'], ['metalsmith']);
 });
-
-// The default task (called when you run `gulp` from cli)
-gulp.task('default', ['sass', 'concat-js', 'concat-css', 'metalsmith']);
-gulp.task('development', ['sass', 'concat-js', 'concat-css', 'metalsmith', 'server']);
