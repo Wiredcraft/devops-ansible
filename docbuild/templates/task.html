@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= package %> document</title>
+</head>
+<body>
+<h1><%= task %></h1>
+<%= contents %>
+<h2>options</h2>
+<% _(options).forEach(function(o, i) { %>
+<ul>
+<% _(o).forEach(function(v, k) { %>
+<li><%= k %>: <%= v %></li>
+<% }); %>
+</ul>
+<% }); %>
+</body>
+</html>

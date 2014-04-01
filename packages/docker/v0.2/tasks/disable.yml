@@ -1,5 +1,0 @@
----
-- name: disable docker
-  service: 
-    name=docker
-    enabled=no

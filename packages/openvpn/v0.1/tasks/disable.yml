@@ -1,3 +1,0 @@
----
-- name: disable openvpn
-  service: name=openvpn enabled=no

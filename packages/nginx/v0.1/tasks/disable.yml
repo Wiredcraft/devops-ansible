@@ -1,3 +1,0 @@
----
-- name: disable nginx
-  service: name=nginx enabled=no

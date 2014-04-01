@@ -1,5 +1,0 @@
----
-- name: reload couchbase
-  service: 
-    name=couchbase-server
-    state=reloaded

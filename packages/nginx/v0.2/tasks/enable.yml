@@ -1,4 +1,0 @@
----
-- name: enable nginx
-  sudo: yes
-  service: name=nginx enabled=yes

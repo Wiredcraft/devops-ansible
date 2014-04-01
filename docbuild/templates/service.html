@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><%= service %> document</title>
+<title><%= package %> document</title>
 </head>
 <body>
-<%= html %>
-<ul>
+<h1><% package %></h1>
+<%= contents %>
+<h1>Configuration</h1>
 <% function render(item, obj) { %>
 <% var pivot = 0; %>
-<% var heads = ['h2', 'h3', 'h4', 'h5', 'h6']; %>
+<% var heads = ['h2', 'h3', 'h3', 'h3', 'h3', 'h3']; %>
 <% function _render(item, obj, head) { %>
-<% pivot = pivot + 1; %>
 <<%= head %>><%= item %></<%= head %>>
 <ul>
 <% var keys = _(obj).keys(); %>
-<% _(keys).forEach(function(k) { %>
+<% _(keys).forEach(function(k, i) { %>
 <% if (_(obj[k]).isObject()) { %>
-<% _render(k, obj[k], heads[1]); %>
+<% if (i === 0) ++pivot %>
+<% _render(k, obj[k], heads[pivot]); %>
 <% } else { %>
 <li><%= k %>: <%= obj[k] %></li>
 <% } %>
@@ -27,10 +28,10 @@
 <% _render(item, obj, heads[pivot]); %>
 
 <% } %>
-<% var itemKeys = _(frontMatter).keys(); %>
+<% var itemKeys = _(configuration).keys(); %>
 <%  _(itemKeys).forEach(function(ik) { %>
-<h1><%= ik %></h1>
-<% var item1 = frontMatter[ik]; %>
+<h2><%= ik %></h2>
+<% var item1 = configuration[ik]; %>
 <% if (_(item1).isObject()) { %>
 <% var keys = _(item1).keys(); %>
 <% _(keys).forEach(function(k) { %>
@@ -41,11 +42,12 @@
 <% } %>
 <% }); %> 
 <% } else { %>
-<% _(frontMatter).forEach(function(f) { %>
-<li><%= f %>: <%= frontMatter[f] %></li>
-<% }); %>
-<% } %>
+<ul>
+<% _(configuration).forEach(function(f) { %>
+<li><%= f %>: <%= configuration[f] %></li>
 <% }); %>
 </ul>
+<% } %>
+<% }); %>
 </body>
 </html>

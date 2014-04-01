@@ -23,6 +23,7 @@ module.exports = function (options) {
         console.log(file.relative);
         var dirs = file.relative.split('/');
         data.package = dirs[0];
+        data.task = dirs[4].split('.')[0];
         console.log(data);
 
         if (file.isNull()) {

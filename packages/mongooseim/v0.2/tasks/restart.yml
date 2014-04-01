@@ -1,3 +1,0 @@
----
-- name: restart mongooseim
-  service: name=mongooseim state=restarted

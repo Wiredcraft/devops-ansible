@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>apache document</title>
+</head>
+<body>
+<h1></h1>
+<h1 id="apache">Apache</h1>
+<p>  Some text doc</p>
+
+<h1>Configuration</h1>
+
+
+
+<h2>user</h2>
+
+
+
+
+
+<li>default: www-data</li>
+
+
+
+<li>description: Apache running user.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+
+<h2>group</h2>
+
+
+
+
+
+<li>default: www-data</li>
+
+
+
+<li>description: Apache running group.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+
+<h2>timeout</h2>
+
+
+
+
+
+<li>default: 300</li>
+
+
+
+<li>description: The number of seconds before receives and sends time out.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+ 
+
+
+<h2>keepalive</h2>
+
+
+
+
+
+<li>default: true</li>
+
+
+
+<li>description: Whether or not to allow persistent connections.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+
+
+
+
+
+
+
+<h2>enum</h2>
+<ul>
+
+
+
+<li>0: true</li>
+
+
+
+<li>1: false</li>
+
+
+
+<li>2: true</li>
+
+
+
+<li>3: false</li>
+
+
+</ul>
+
+
+
+
+ 
+
+
+<h2>maxkeepaliverequests</h2>
+
+
+
+
+
+<li>default: 100</li>
+
+
+
+<li>description: The maximum number of requests to allow during a persistent connection.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+ 
+
+
+<h2>keepalivetimout</h2>
+
+
+
+
+
+<li>default: 5</li>
+
+
+
+<li>description: Number of seconds to wait for the next request from the same client on the same connection.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+ 
+
+
+<h2>prefork</h2>
+
+
+
+
+
+
+
+
+
+
+
+<h2>startservers</h2>
+<ul>
+
+
+
+<li>default: 5</li>
+
+
+
+<li>description: Number of server processes to start.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>minspareservers</h2>
+<ul>
+
+
+
+<li>default: 2</li>
+
+
+
+<li>description: Minimum number of server processes which are kept spare.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxspareservers</h2>
+<ul>
+
+
+
+<li>default: 10</li>
+
+
+
+<li>description: Maximum number of server processes which are kept spare.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxclients</h2>
+<ul>
+
+
+
+<li>default: 150</li>
+
+
+
+<li>description: Maximum number of server processes allowed to start.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxrequestsperchild</h2>
+<ul>
+
+
+
+<li>default: 4000</li>
+
+
+
+<li>description: Maximum number of requests a server process serves.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+ 
+
+
+<h2>worker</h2>
+
+
+
+
+
+
+
+
+
+
+
+<h2>startservers</h2>
+<ul>
+
+
+
+<li>default: 5</li>
+
+
+
+<li>description: Initial number of server processes to start.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>minsparethreads</h2>
+<ul>
+
+
+
+<li>default: 25</li>
+
+
+
+<li>description: Minimum number of worker threads which are kept spare,</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxsparethreads</h2>
+<ul>
+
+
+
+<li>default: 75</li>
+
+
+
+<li>description: Maximum number of worker threads which are kept spare.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>threadlimit</h2>
+<ul>
+
+
+
+<li>default: 64</li>
+
+
+
+<li>description: ThreadsPerChild can be changed to this maximum value during a graceful restart. ThreadLimit can only be changed by stopping and starting Apache.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>threadsperchild</h2>
+<ul>
+
+
+
+<li>default: 25</li>
+
+
+
+<li>description: Constant number of worker threads in each server process.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxclients</h2>
+<ul>
+
+
+
+<li>default: 150</li>
+
+
+
+<li>description: Maximum number of simultaneous client connections</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxrequestsperchild</h2>
+<ul>
+
+
+
+<li>default: 0</li>
+
+
+
+<li>description: Maximum number of requests a server process serves.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+ 
+
+
+<h2>event</h2>
+
+
+
+
+
+
+
+
+
+
+
+<h2>startservers</h2>
+<ul>
+
+
+
+<li>default: 5</li>
+
+
+
+<li>description: Initial number of server processes to start.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>minsparethreads</h2>
+<ul>
+
+
+
+<li>default: 25</li>
+
+
+
+<li>description: Minimum number of worker threads which are kept spare,</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxsparethreads</h2>
+<ul>
+
+
+
+<li>default: 75</li>
+
+
+
+<li>description: Maximum number of worker threads which are kept spare.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>threadlimit</h2>
+<ul>
+
+
+
+<li>default: 64</li>
+
+
+
+<li>description: ThreadsPerChild can be changed to this maximum value during a graceful restart. ThreadLimit can only be changed by stopping and starting Apache.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>threadsperchild</h2>
+<ul>
+
+
+
+<li>default: 25</li>
+
+
+
+<li>description: Constant number of worker threads in each server process.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxclients</h2>
+<ul>
+
+
+
+<li>default: 150</li>
+
+
+
+<li>description: Maximum number of simultaneous client connections</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>maxrequestsperchild</h2>
+<ul>
+
+
+
+<li>default: 0</li>
+
+
+
+<li>description: Maximum number of requests a server process serves.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+ 
+
+
+</body>
+</html>

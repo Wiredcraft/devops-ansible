@@ -1,5 +1,0 @@
----
-- name: disable elasticsearch
-  service: 
-    name=elasticsearch
-    enabled=no

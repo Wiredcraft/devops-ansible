@@ -17,6 +17,7 @@ var colors = gutil.colors;
 var frontMatter = require('gulp-front-matter');
 var rename = require('gulp-rename');
 var marked = require('gulp-marked');
+var taskTemp = require('./lib/task-inplace-template');
 var serviceTemp = require('./lib/service-inplace-template');
 var convert = require('./lib/gulp-convert');
 var convertTasks = require('./lib/gulp-convert-tasks');
@@ -25,18 +26,37 @@ var site = require(path.resolve(__dirname, 'site.json'));
 var siteJS = site.assets.vendor.js.concat(site.assets.custom.js);
 var siteCSS = site.assets.vendor.css.concat(site.assets.custom.css);
 
-gulp.task('service-doc', function() {
-    gulp.src('../packages/*/v0.2/docs/configuration.yml')
+gulp.task('task-doc', function() {
+    gulp.src('../packages/*/v0.2/docs/tasks/*.yml')
     .pipe(frontMatter({ // optional configuration
-        property: 'frontMatter', // property added to file object
+        property: 'options', // property added to file object
         remove: true // should we remove front-matter header?
     }))
     .pipe(marked())
-    .pipe(serviceTemp({template: './templates/service.html', dataProperty: 'frontMatter'}))
+    .pipe(taskTemp({template: './templates/task.html', dataProperty: 'options'}))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        fpath.dirname = "./packages";
-        fpath.basename = dirs[0];
+        fpath.dirname = dirs[0] + '/tasks'
+        fpath.extname = ".html"
+        console.log('==========================');
+        console.log(fpath);
+        console.log('==========================');
+    }))
+    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
+});
+
+gulp.task('package-doc', function() {
+    gulp.src('../packages/*/v0.2/docs/configuration.yml')
+    .pipe(frontMatter({ // optional configuration
+        property: 'configuration', // property added to file object
+        remove: true // should we remove front-matter header?
+    }))
+    .pipe(marked())
+    .pipe(serviceTemp({template: './templates/service.html', dataProperty: 'configuration'}))
+    .pipe(rename(function(fpath) {
+        var dirs = fpath.dirname.split('/');
+        fpath.dirname = dirs[0];
+        fpath.basename = "index";
         fpath.extname = ".html"
         console.log('==========================');
         console.log(fpath);
@@ -51,6 +71,7 @@ gulp.task('convert-tasks', function() {
  .pipe(rename(function(fpath) {
  var dirs = fpath.dirname.split('/');
  dirs[2] = 'docs';
+ dirs.push('tasks');
 
  fpath.dirname = dirs.join('/');
         console.log('==========================');
@@ -63,7 +84,7 @@ gulp.task('convert-tasks', function() {
 //      }))  
         .pipe(gulp.dest('../packages'))
 }); 
-gulp.task('convert-services', function() {
+gulp.task('convert-packages', function() {
     gulp.src('../backup/packages/**/*/variables.yml')
         .pipe(convert({}))
  .pipe(rename(function(fpath) {
@@ -177,3 +198,5 @@ gulp.task('watch', function() {
     gulp.watch(siteCSS, ['concat-css']);
     gulp.watch(['./public/**/*', './assets/**/*.{png}', './templates/**/*', './source/**/*'], ['metalsmith']);
 });
+
+gulp.task('default', ['package-doc', 'task-doc']);

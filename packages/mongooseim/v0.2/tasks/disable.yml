@@ -1,3 +1,0 @@
----
-- name: disable mongooseim
-  service: name=mongooseim enabled=no
