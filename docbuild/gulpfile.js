@@ -17,7 +17,7 @@ var colors = gutil.colors;
 var frontMatter = require('gulp-front-matter');
 var rename = require('gulp-rename');
 var marked = require('gulp-marked');
-var template = require('gulp-inplace-template');
+var serviceTemp = require('./lib/service-inplace-template');
 var convert = require('./lib/gulp-convert');
 var convertTasks = require('./lib/gulp-convert-tasks');
 
@@ -25,28 +25,25 @@ var site = require(path.resolve(__dirname, 'site.json'));
 var siteJS = site.assets.vendor.js.concat(site.assets.custom.js);
 var siteCSS = site.assets.vendor.css.concat(site.assets.custom.css);
 
-// gulp.task('service', function() {
-//     gulp.src('./source/variables.yml')
-//     .pipe(frontMatter({ // optional configuration
-//         property: 'frontMatter', // property added to file object
-//         remove: true // should we remove front-matter header?
-//     }))
-//     .pipe(template({template: './templates/default.html', dataProperty: 'frontMatter'}))
-//     // .pipe(rename(function(fpath) {
-//     //     var dirs = fpath.dirname.split('/');
-//     //     fpath.dirname = "./";
-//     //     fpath.basename = dirs[0] + '-' + dirs[1];
-//     //     fpath.extname = ".md"
-//     //     console.log('==========================');
-//     //     console.log(fpath);
-//     //     console.log('==========================');
-//     // }))
-//     //.pipe(marked({}))
-//     .pipe(rename(function(fpath) {
-//         fpath.extname = '.html';
-//     }))
-//     .pipe(gulp.dest('./_site/')) // you may want to take a look at gulp-marked at this point
-// });
+gulp.task('service-doc', function() {
+    gulp.src('../packages/*/v0.2/docs/configuration.yml')
+    .pipe(frontMatter({ // optional configuration
+        property: 'frontMatter', // property added to file object
+        remove: true // should we remove front-matter header?
+    }))
+    .pipe(marked())
+    .pipe(serviceTemp({template: './templates/service.html', dataProperty: 'frontMatter'}))
+    .pipe(rename(function(fpath) {
+        var dirs = fpath.dirname.split('/');
+        fpath.dirname = "./packages";
+        fpath.basename = dirs[0];
+        fpath.extname = ".html"
+        console.log('==========================');
+        console.log(fpath);
+        console.log('==========================');
+    }))
+    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
+});
 
 gulp.task('convert-tasks', function() {
     gulp.src('../backup/packages/**/tasks/*.yml')

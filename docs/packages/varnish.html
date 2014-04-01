@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>varnish document</title>
+</head>
+<body>
+<h1 id="varnish">Varnish</h1>
+<p>  Some text doc</p>
+
+<ul>
+
+
+
+<h1>vcl_conf</h1>
+
+
+
+
+
+<li>default: /etc/varnish/default.vcl</li>
+
+
+
+<li>description: Main configuration file.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+
+<h1>listen_address</h1>
+
+
+
+
+
+<li>default: </li>
+
+
+
+<li>description: Blank address means all IPv4 and IPv6 interfaces, otherwise specify a host name, an IPv4 dotted quad.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+
+<h1>listen_port</h1>
+
+
+
+
+
+<li>default: 6081</li>
+
+
+
+<li>description: Listen port.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+
+
+<li>maximum: 65536</li>
+
+ 
+
+
+<h1>admin_listen_address</h1>
+
+
+
+
+
+<li>default: 127.0.0.1</li>
+
+
+
+<li>description: Telnet admin interface listen address, usually only bind localhost IP address for the admin interface.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+
+<h1>admin_listen_port</h1>
+
+
+
+
+
+<li>default: 6082</li>
+
+
+
+<li>description: Telnet admin interface listen port.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+
+
+<li>maximum: 65536</li>
+
+ 
+
+
+<h1>secret_file</h1>
+
+
+
+
+
+<li>default: /etc/varnish/secret</li>
+
+
+
+<li>description: File containing administration secret.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+
+<h1>min_threads</h1>
+
+
+
+
+
+<li>default: 1</li>
+
+
+
+<li>description: The minimum number of worker threads to start.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+ 
+
+
+<h1>max_threads</h1>
+
+
+
+
+
+<li>default: 1000</li>
+
+
+
+<li>description: The maximum number of worker threads to start.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+ 
+
+
+<h1>thread_timeout</h1>
+
+
+
+
+
+<li>default: 120</li>
+
+
+
+<li>description: Idle timeout for worker threads.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+ 
+
+
+<h1>storage_type</h1>
+
+
+
+
+
+<li>default: malloc</li>
+
+
+
+<li>description: Store objects either in memory (malloc), on in a file (file).</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+
+
+
+
+
+
+
+
+<h2>enum</h2>
+<ul>
+
+
+
+<li>0: malloc</li>
+
+
+
+<li>1: file</li>
+
+
+</ul>
+
+
+
+
+ 
+
+
+<h1>storage_file</h1>
+
+
+
+
+
+<li>default: /var/lib/varnish/$INSTANCE/varnish_storage.bin</li>
+
+
+
+<li>description: Storage file, only used if storage_type is file.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+
+<h1>storage_size</h1>
+
+
+
+
+
+<li>default: 256M</li>
+
+
+
+<li>description: Cache size: in bytes, optionally using k / M / G / T suffix.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>regex: /^\d+[kMGT]$/</li>
+
+ 
+
+
+<h1>ttl</h1>
+
+
+
+
+
+<li>default: 120</li>
+
+
+
+<li>description: Default TTL used when the backend does not specify one.</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+ 
+
+
+</ul>
+</body>
+</html>

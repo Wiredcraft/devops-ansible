@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= service %> document</title>
+</head>
+<body>
+<%= html %>
+<ul>
+<% function render(item, obj) { %>
+<% var pivot = 0; %>
+<% var heads = ['h2', 'h3', 'h4', 'h5', 'h6']; %>
+<% function _render(item, obj, head) { %>
+<% pivot = pivot + 1; %>
+<<%= head %>><%= item %></<%= head %>>
+<ul>
+<% var keys = _(obj).keys(); %>
+<% _(keys).forEach(function(k) { %>
+<% if (_(obj[k]).isObject()) { %>
+<% _render(k, obj[k], heads[1]); %>
+<% } else { %>
+<li><%= k %>: <%= obj[k] %></li>
+<% } %>
+<% }); %>
+</ul>
+<% } %>
+
+<% _render(item, obj, heads[pivot]); %>
+
+<% } %>
+<% var itemKeys = _(frontMatter).keys(); %>
+<%  _(itemKeys).forEach(function(ik) { %>
+<h1><%= ik %></h1>
+<% var item1 = frontMatter[ik]; %>
+<% if (_(item1).isObject()) { %>
+<% var keys = _(item1).keys(); %>
+<% _(keys).forEach(function(k) { %>
+<% if (!_(item1[k]).isObject()) { %>
+<li><%= k %>: <%= item1[k] %></li>
+<% } else { %>
+<% render(k, item1[k]); %>
+<% } %>
+<% }); %> 
+<% } else { %>
+<% _(frontMatter).forEach(function(f) { %>
+<li><%= f %>: <%= frontMatter[f] %></li>
+<% }); %>
+<% } %>
+<% }); %>
+</ul>
+</body>
+</html>
