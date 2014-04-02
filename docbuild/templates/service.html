@@ -31,6 +31,7 @@
 <% var itemKeys = _(configuration).keys(); %>
 <%  _(itemKeys).forEach(function(ik) { %>
 <h2><%= ik %></h2>
+<ul>
 <% var item1 = configuration[ik]; %>
 <% if (_(item1).isObject()) { %>
 <% var keys = _(item1).keys(); %>
@@ -42,12 +43,11 @@
 <% } %>
 <% }); %> 
 <% } else { %>
-<ul>
 <% _(configuration).forEach(function(f) { %>
 <li><%= f %>: <%= configuration[f] %></li>
 <% }); %>
-</ul>
 <% } %>
+</ul>
 <% }); %>
 </body>
 </html>
