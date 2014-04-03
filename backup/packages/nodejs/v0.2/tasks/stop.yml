@@ -1,5 +1,0 @@
----
-- name: stop forever
-  service: 
-    name=forever
-    state=stopped

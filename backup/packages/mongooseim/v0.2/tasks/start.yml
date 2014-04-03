@@ -1,3 +1,0 @@
----
-- name: start mongooseim
-  service: name=mongooseim state=started

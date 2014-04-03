@@ -1,9 +1,0 @@
----
-- name: enable collectd
-  service: name=collectd enabled=yes
-
-- name: restart collectd
-  service: name=collectd state=restarted
-
-- name: restart devops-etcd
-  service: name=devops-etcd state=restarted

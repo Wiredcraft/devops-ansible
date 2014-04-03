@@ -1,8 +1,0 @@
----
-- name: Add uwsgi app
-  template:
-    src=DEVOPS_PACKAGE/templates/uwsgi.ini.j2
-    dest=/etc/uwsgi/{{ uwsgi_appname }}.ini
-    owner=root
-    group=root
-    mode=0755

@@ -1,5 +1,0 @@
----
-packages:
-    default: []
-    description: List of pip packages to install globally
-    type: array

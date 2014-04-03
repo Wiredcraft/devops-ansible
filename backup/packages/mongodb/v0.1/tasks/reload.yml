@@ -1,3 +1,0 @@
----
-- name: reload mongodb
-  service: name=mongodb state=reloaded

@@ -1,3 +1,0 @@
----
-- name: enable memcached
-  service: name=memcached enabled=yes

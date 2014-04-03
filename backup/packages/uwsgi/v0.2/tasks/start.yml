@@ -1,5 +1,0 @@
----
-- name: start emperor
-  service: 
-    name=emperor
-    state=started

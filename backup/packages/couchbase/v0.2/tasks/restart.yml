@@ -1,5 +1,0 @@
----
-- name: restart couchbase
-  service: 
-    name=couchbase-server
-    state=restarted

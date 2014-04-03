@@ -1,5 +1,0 @@
----
-- name: enable emperor
-  service:
-    name=emperpr
-    enabled=yes
