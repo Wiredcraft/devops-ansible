@@ -17,6 +17,7 @@ var colors = gutil.colors;
 var frontMatter = require('gulp-front-matter');
 var rename = require('gulp-rename');
 var marked = require('gulp-marked');
+var indexTemp = require('./lib/index-inplace-template');
 var taskTemp = require('./lib/task-inplace-template');
 var serviceTemp = require('./lib/service-inplace-template');
 var convert = require('./lib/gulp-convert');
@@ -25,6 +26,22 @@ var convertTasks = require('./lib/gulp-convert-tasks');
 var site = require(path.resolve(__dirname, 'site.json'));
 var siteJS = site.assets.vendor.js.concat(site.assets.custom.js);
 var siteCSS = site.assets.vendor.css.concat(site.assets.custom.css);
+
+gulp.task('index-doc', function() {
+ gulp.src('./templates/index.html')
+    .pipe(indexTemp({
+        packages: '../packages',
+        template: './templates/index.html',
+        dataProperty: 'options'
+    }))
+    .pipe(rename(function(fpath) {
+        var dirs = fpath.dirname.split('/');
+        console.log('==========================');
+        console.log(fpath);
+        console.log('==========================');
+    }))
+    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point 
+});
 
 gulp.task('task-doc', function() {
     gulp.src('../packages/*/v0.2/docs/tasks/*.yml')
@@ -159,12 +176,12 @@ gulp.task('metalsmith', function(callback) {
 });
 
 //
-gulp.task('server', ['prepare', 'watch'], function(callback) {
+gulp.task('server', function(callback) {
     var devApp, devServer, devAddress, devHost, url;
 
     devApp = connect()
     .use(connect.logger('dev'))
-    .use(connect.static(site.destination));
+    .use(connect.static('../docs'));
 
     // change port and hostname to something static if you prefer
     devServer = http.createServer(devApp).listen(gutil.env.port || 0 /*, hostname*/);
@@ -199,4 +216,5 @@ gulp.task('watch', function() {
     gulp.watch(['./public/**/*', './assets/**/*.{png}', './templates/**/*', './source/**/*'], ['metalsmith']);
 });
 
-gulp.task('default', ['package-doc', 'task-doc']);
+gulp.task('default', ['index-doc', 'package-doc', 'task-doc']);
+gulp.task('development', ['index-doc', 'package-doc', 'task-doc', 'server']);
