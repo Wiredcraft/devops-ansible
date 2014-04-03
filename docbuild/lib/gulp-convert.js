@@ -11,15 +11,15 @@ function capitaliseFirstLetter(string)
 module.exports = function (options) {
   return es.map(function (file, callback) {
       
-      console.log('=======================');
-      console.log(file);
-      console.log(file.base);
-      console.log(file.path);
-      console.log(file.stat);
-      console.log(file.relative);
-      console.log(file.inspect());
-      console.log(file.contents);
-      console.log('=======================');
+      //console.log('=======================');
+      //console.log(file);
+      //console.log(file.base);
+      //console.log(file.path);
+      //console.log(file.stat);
+      //console.log(file.relative);
+      //console.log(file.inspect());
+      //console.log(file.contents);
+      //console.log('=======================');
 
       var dirs = file.relative.split('/');
       dirs[2] = 'docs'

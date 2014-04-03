@@ -18,7 +18,7 @@ module.exports = function (options) {
             return cb();
         }
 
-        console.log(options);
+        //console.log(options);
 
         var data = {};
         data.packages = [];
@@ -39,11 +39,11 @@ module.exports = function (options) {
                 return t.split('.')[0];
             });
 
-            console.log(tasks);
+            //console.log(tasks);
             data.packages.push({configuration: p, tasks: tasks});
         });
 
-        console.log(data);
+        //console.log(data);
         if (file.isNull()) {
             this.push(file);
             return cb();

@@ -19,11 +19,11 @@ module.exports = function (options) {
         var data = {};
         data[dataProperty] = file[dataProperty];
         data.contents = String(file.contents);
-        console.log(file.base);
-        console.log(file.relative);
+        //console.log(file.base);
+        //console.log(file.relative);
         var dirs = file.relative.split('/');
         data.package = dirs[0];
-        console.log(data);
+        //console.log(data);
 
         if (file.isNull()) {
             this.push(file);

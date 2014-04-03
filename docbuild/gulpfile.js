@@ -19,7 +19,7 @@ var rename = require('gulp-rename');
 var marked = require('gulp-marked');
 var indexTemp = require('./lib/index-inplace-template');
 var taskTemp = require('./lib/task-inplace-template');
-var serviceTemp = require('./lib/service-inplace-template');
+var packageTemp = require('./lib/package-inplace-template');
 var convert = require('./lib/gulp-convert');
 var convertTasks = require('./lib/gulp-convert-tasks');
 
@@ -36,11 +36,11 @@ gulp.task('index-doc', function() {
     }))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        ////console.log('==========================');
+        ////console.log(fpath);
+        ////console.log('==========================');
     }))
-    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point 
+    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
 });
 
 gulp.task('task-doc', function() {
@@ -55,9 +55,9 @@ gulp.task('task-doc', function() {
         var dirs = fpath.dirname.split('/');
         fpath.dirname = dirs[0] + '/tasks'
         fpath.extname = ".html"
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        //console.log('==========================');
+        //console.log(fpath);
+        //console.log('==========================');
     }))
     .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
 });
@@ -69,15 +69,15 @@ gulp.task('package-doc', function() {
         remove: true // should we remove front-matter header?
     }))
     .pipe(marked())
-    .pipe(serviceTemp({template: './templates/service.html', dataProperty: 'configuration'}))
+    .pipe(packageTemp({template: './templates/package.html', dataProperty: 'configuration'}))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
         fpath.dirname = dirs[0];
         fpath.basename = "index";
         fpath.extname = ".html"
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        //console.log('==========================');
+        //console.log(fpath);
+        //console.log('==========================');
     }))
     .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
 });
@@ -91,16 +91,17 @@ gulp.task('convert-tasks', function() {
  dirs.push('tasks');
 
  fpath.dirname = dirs.join('/');
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        //console.log('==========================');
+        //console.log(fpath);
+        //console.log('==========================');
     }))
 //  .pipe(frontMatter({ // optional configuration
 //          property: 'frontMatter', // property added to file object
 //          remove: true // should we remove front-matter header?
-//      }))  
+//      }))
         .pipe(gulp.dest('../packages'))
-}); 
+});
+
 gulp.task('convert-packages', function() {
     gulp.src('../backup/packages/**/*/variables.yml')
         .pipe(convert({}))
@@ -109,14 +110,14 @@ gulp.task('convert-packages', function() {
         dirs[2] = 'docs';
         fpath.dirname = dirs.join('/');
         fpath.basename = 'configuration'
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        //console.log('==========================');
+        //console.log(fpath);
+        //console.log('==========================');
     }))
 //  .pipe(frontMatter({ // optional configuration
 //          property: 'frontMatter', // property added to file object
 //          remove: true // should we remove front-matter header?
-//      }))  
+//      }))
         .pipe(gulp.dest('../packages'))
 });
 
