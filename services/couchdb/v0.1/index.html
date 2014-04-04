@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>couchdb document</title>
+</head>
+<body>
+<h1></h1>
+<h1 id="couchdb">Couchdb</h1>
+<p>  Some text doc</p>
+<h1>Configuration</h1>
+<h2>max_document_size</h2>
+<ul>
+<li>default: 4294967296</li>
+<li>description: Maximum document size</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h2>port</h2>
+<ul>
+<li>default: 5984</li>
+<li>description: Listening port</li>
+<li>type: integer</li>
+<li>required: false</li>
+<li>minimum: 1025</li>
+<li>maximum: 65536</li>
+</ul>
+<h2>bind_address</h2>
+<ul>
+<li>default: 127.0.0.1</li>
+<li>description: The IP address to bind to.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>admin_user</h2>
+<ul>
+<li>default: </li>
+<li>description: Define the admin username (by default no admin)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>admin_pass</h2>
+<ul>
+<li>default: admin</li>
+<li>description: Define the admin password (by default no admin)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>enable</h2>
+<ul>
+<li>default: 1</li>
+<li>description: Define whether CouchDB should start at bood time</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h2>running_user</h2>
+<ul>
+<li>default: couchdb</li>
+<li>description: Define the running user for the CouchDB process (it needs to exist)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>stdout_file</h2>
+<ul>
+<li>default: /dev/null</li>
+<li>description: Where to send the process STDOUT</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>stderr_file</h2>
+<ul>
+<li>default: /dev/null</li>
+<li>description: Where to send the process STDERR</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<a href="./tasks/index.html"><h1>Tasks</h1></a>
+</body>
+</html>

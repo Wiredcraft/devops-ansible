@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>memcached document</title>
+</head>
+<body>
+<h1></h1>
+<h1 id="memcached">Memcached</h1>
+<p>  Some text doc</p>
+<h1>Configuration</h1>
+<h2>user</h2>
+<ul>
+<li>default: memcache</li>
+<li>description: Memcached running user.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>enable</h2>
+<ul>
+<li>default: yes</li>
+<li>description: Enable or disable memcached service.</li>
+<li>type: string</li>
+<li>required: false</li>
+<h3>enum</h3>
+<ul>
+<li>0: yes</li>
+<li>1: no</li>
+</ul>
+</ul>
+<h2>logfile</h2>
+<ul>
+<li>default: /var/log/memcached.log</li>
+<li>description: Log file path</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>memory</h2>
+<ul>
+<li>default: 64</li>
+<li>description: Amount of memory allocated in MB.</li>
+<li>type: integer</li>
+<li>required: false</li>
+<li>minimum: 0</li>
+</ul>
+<h2>port</h2>
+<ul>
+<li>default: 11211</li>
+<li>description: Connection port.</li>
+<li>type: integer</li>
+<li>required: false</li>
+<li>minimum: 1025</li>
+<li>maximum: 65536</li>
+</ul>
+<h2>listen</h2>
+<ul>
+<li>default: 127.0.0.1</li>
+<li>description: Binding IP address.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>connection</h2>
+<ul>
+<li>default: 1024</li>
+<li>description: Maximumum number of concurrent inbound connections.</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<a href="./tasks/index.html"><h1>Tasks</h1></a>
+</body>
+</html>

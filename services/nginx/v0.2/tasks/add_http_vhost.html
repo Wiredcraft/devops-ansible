@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document for task add_http_vhost of package nginx</title>
+</head>
+<body>
+<h1>add_http_vhost</h1>
+<h1 id="task-add_http_vhost">Task Add_http_vhost</h1>
+<p>Add a new HTTP virtual host</p>
+<h2>options</h2>
+<ul>
+<li>id: nginx_vhost_domain</li>
+<li>label: Domain Name of the virtual host</li>
+<li>required: true</li>
+<li>default: _</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_webroot</li>
+<li>label: Webroot within the vhost folder</li>
+<li>required: true</li>
+<li>default: /</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_port</li>
+<li>label: Listening TCP port for the virtual host</li>
+<li>required: false</li>
+<li>default: 80</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_php</li>
+<li>label: Enable php (on/off)</li>
+<li>required: false</li>
+<li>default: false</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_proxy_pass</li>
+<li>label: Proxy pass URL</li>
+<li>required: false</li>
+<li>default: </li>
+</ul>
+<ul>
+<li>id: nginx_websocket_path</li>
+<li>label: Websocket path in the domain</li>
+<li>required: false</li>
+<li>default: </li>
+</ul>
+<ul>
+<li>id: nginx_websocket_proxy_pass</li>
+<li>label: Websocket Proxy pass URL</li>
+<li>required: false</li>
+<li>default: </li>
+</ul>
+</body>
+</html>
