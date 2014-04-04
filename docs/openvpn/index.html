@@ -11,744 +11,181 @@
 <p>This is an awesome service, that lets you do a lot of things.</p>
 <h2 id="some-other-title">Some other title</h2>
 <p>Pretty cool stuff nevertheless...</p>
-
 <h1>Configuration</h1>
-
-
-
 <h2>port</h2>
 <ul>
-
-
-
-
-
 <li>default: 1194</li>
-
-
-
 <li>description: Listening port</li>
-
-
-
 <li>type: integer</li>
-
-
-
 <li>required: false</li>
-
-
-
 <li>minimum: 1025</li>
-
-
-
 <li>maximum: 65536</li>
-
- 
-
 </ul>
-
 <h2>proto</h2>
 <ul>
-
-
-
-
-
 <li>default: udp</li>
-
-
-
 <li>description: Protocol</li>
-
-
-
 <li>type: string</li>
-
-
-
-
-
-
-
-
-
 <h3>enum</h3>
 <ul>
-
-
-
 <li>0: udp</li>
-
-
-
 <li>1: tcp</li>
-
-
 </ul>
-
-
-
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>dev</h2>
 <ul>
-
-
-
-
-
 <li>default: tun</li>
-
-
-
 <li>description: Device type</li>
-
-
-
 <li>type: string</li>
-
-
-
-
-
-
-
-
-
 <h3>enum</h3>
 <ul>
-
-
-
 <li>0: tun</li>
-
-
-
 <li>1: tap</li>
-
-
 </ul>
-
-
-
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>network</h2>
 <ul>
-
-
-
-
-
 <li>default: 10.8.0.0</li>
-
-
-
 <li>description: Network IP range for clients</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>netmask</h2>
 <ul>
-
-
-
-
-
 <li>default: 255.255.255.0</li>
-
-
-
 <li>description: Netmask to apply on IP range for clients</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>dns1</h2>
 <ul>
-
-
-
-
-
 <li>default: 208.67.222.222</li>
-
-
-
 <li>description: DNS to propagate to the clients (default to OpenDNS)</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>dns2</h2>
 <ul>
-
-
-
-
-
 <li>default: 208.67.220.220</li>
-
-
-
 <li>description: DNS to propagate to the clients (default to OpenDNS)</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>cipher</h2>
 <ul>
-
-
-
-
-
 <li>default: BF-CBC</li>
-
-
-
 <li>description: cipher</li>
-
-
-
 <li>type: string</li>
-
-
-
-
-
-
-
-
-
 <h3>enum</h3>
 <ul>
-
-
-
 <li>0: BF-CBC</li>
-
-
-
 <li>1: AES-128-CBC</li>
-
-
-
 <li>2: DES-EDE3-CBC</li>
-
-
 </ul>
-
-
-
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>max_client</h2>
 <ul>
-
-
-
-
-
 <li>default: 100</li>
-
-
-
 <li>description: Maximum number of simultaneous clients</li>
-
-
-
 <li>type: integer</li>
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>user</h2>
 <ul>
-
-
-
-
-
 <li>default: nobody</li>
-
-
-
 <li>description: Running user of openvpn (must exist)</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>group</h2>
 <ul>
-
-
-
-
-
 <li>default: nogroup</li>
-
-
-
 <li>description: Running group of openvpn (must exist)</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
- 
-
 </ul>
-
 <h2>key</h2>
 <ul>
-
-
-
-
-
-
-
-
-
-
-
 <h3>key_size</h3>
 <ul>
-
-
-
 <li>default: 1024</li>
-
-
-
 <li>description: Increase key size if you are paranoid; it will slow down TLS negociation</li>
-
-
-
 <li>type: integer</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>ca_expire</h3>
 <ul>
-
-
-
 <li>default: 3650</li>
-
-
-
 <li>description: CA validity period (in days)</li>
-
-
-
 <li>type: integer</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>key_expire</h3>
 <ul>
-
-
-
 <li>default: 3650</li>
-
-
-
 <li>description: Key validity period (in days)</li>
-
-
-
 <li>type: integer</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>country</h3>
 <ul>
-
-
-
 <li>default: US</li>
-
-
-
 <li>description: Key country</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>province</h3>
 <ul>
-
-
-
 <li>default: CA</li>
-
-
-
 <li>description: Key province</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>city</h3>
 <ul>
-
-
-
 <li>default: SanFrancisco</li>
-
-
-
 <li>description: Key city</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>org</h3>
 <ul>
-
-
-
 <li>default: Fort-Funston</li>
-
-
-
 <li>description: Key Organization</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>email</h3>
 <ul>
-
-
-
 <li>default: admin@server</li>
-
-
-
 <li>description: Key email</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>common_name</h3>
 <ul>
-
-
-
 <li>default: server</li>
-
-
-
 <li>description: Key Common Name (CN)</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>name</h3>
 <ul>
-
-
-
 <li>default: server</li>
-
-
-
 <li>description: Key name</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>org_unit</h3>
 <ul>
-
-
-
 <li>default: server</li>
-
-
-
 <li>description: Key Organization Unit (OU)</li>
-
-
-
 <li>type: string</li>
-
-
-
 <li>required: false</li>
-
-
 </ul>
-
-
-
-
- 
-
 </ul>
-
 </body>
 </html>

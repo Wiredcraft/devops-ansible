@@ -17,6 +17,7 @@ var colors = gutil.colors;
 var frontMatter = require('gulp-front-matter');
 var rename = require('gulp-rename');
 var marked = require('./lib/gulp-marked');
+var cleaner = require('./lib/cleaner');
 var indexTemp = require('./lib/index-inplace-template');
 var taskTemp = require('./lib/task-inplace-template');
 var packageTemp = require('./lib/package-inplace-template');
@@ -40,6 +41,7 @@ gulp.task('index-doc', function() {
         ////console.log(fpath);
         ////console.log('==========================');
     }))
+    .pipe(cleaner())
     .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
 });
 
@@ -59,6 +61,7 @@ gulp.task('task-doc', function() {
         //console.log(fpath);
         //console.log('==========================');
     }))
+    .pipe(cleaner())
     .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
 });
 
@@ -79,6 +82,7 @@ gulp.task('package-doc', function() {
         //console.log(fpath);
         //console.log('==========================');
     }))
+    .pipe(cleaner())
     .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
 });
 
