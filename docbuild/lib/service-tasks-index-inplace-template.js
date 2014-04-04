@@ -19,11 +19,11 @@ module.exports = function (options) {
 
         var data = {};
         var tasks = [];
-        console.log(file.base);
-        console.log(file.relative);
+        //console.log(file.base);
+        //console.log(file.relative);
         var dirs = file.relative.split('/');
         var tasksDir = path.resolve(file.base, dirs[0], dirs[1], dirs[2], 'tasks');
-        console.log(tasksDir);
+        //console.log(tasksDir);
 
         if (fs.existsSync(tasksDir)) {
             tasks = fs.readdirSync(tasksDir).map(function(t) {
@@ -33,7 +33,7 @@ module.exports = function (options) {
 
         data.service = dirs[0];
         data.tasks = tasks;
-        console.log(data);
+        //console.log(data);
 
         if (file.isNull()) {
             this.push(file);

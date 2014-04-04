@@ -18,12 +18,12 @@ var frontMatter = require('gulp-front-matter');
 var rename = require('gulp-rename');
 var marked = require('./lib/gulp-marked');
 var cleaner = require('./lib/cleaner');
-var siTemp = require('./lib/service-index-inplace-template');
+var siTemp = require('./lib/services-index-inplace-template');
 var svTemp = require('./lib/service-versions-index-inplace-template');
 var stiTemp = require('./lib/service-tasks-index-inplace-template');
 var indexTemp = require('./lib/index-inplace-template');
 var taskTemp = require('./lib/task-inplace-template');
-var packageTemp = require('./lib/package-inplace-template');
+var serviceTemp = require('./lib/service-inplace-template');
 var convert = require('./lib/gulp-convert');
 var convertTasks = require('./lib/gulp-convert-tasks');
 
@@ -38,20 +38,20 @@ gulp.task('index-doc', function() {
 });
 
 gulp.task('services-index-doc', function() {
- gulp.src('./templates/sindex.html')
+ gulp.src('./templates/services-index.html')
     .pipe(siTemp({
         packages: '../packages',
-        template: './templates/sindex.html'
+        template: './templates/services-index.html'
     }))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        console.log('###############');
-        console.log(dirs);
+        //console.log('###############');
+        //console.log(dirs);
         fpath.basename = 'index';
         fpath.extname = '.html';
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        //console.log('==========================');
+        //console.log(fpath);
+        //console.log('==========================');
     }))
     .pipe(cleaner())
     .pipe(gulp.dest('../docs/services/')) // you may want to take a look at gulp-marked at this point
@@ -61,18 +61,18 @@ gulp.task('service-versions-index-doc', function() {
  gulp.src('../packages/**/**/configuration.yml')
     .pipe(svTemp({
         packages: '../packages',
-        template: './templates/svindex.html'
+        template: './templates/service-versions-index.html'
     }))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        console.log('###############');
-        console.log(dirs);
+        //console.log('###############');
+        //console.log(dirs);
         fpath.dirname = dirs[0];
         fpath.basename = 'index';
         fpath.extname = '.html';
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        //console.log('==========================');
+        //console.log(fpath);
+        //console.log('==========================');
     }))
     .pipe(cleaner())
     .pipe(gulp.dest('../docs/services/')) // you may want to take a look at gulp-marked at this point
@@ -85,16 +85,16 @@ gulp.task('service-index-doc', function() {
         remove: true // should we remove front-matter header?
     }))
     .pipe(marked())
-    .pipe(packageTemp({template: './templates/package.html', dataProperty: 'configuration'}))
+    .pipe(serviceTemp({template: './templates/service-index.html', dataProperty: 'configuration'}))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        console.log(dirs);
+        //console.log(dirs);
         fpath.dirname = path.join('services', dirs[0], dirs[1]);
         fpath.basename = "index";
         fpath.extname = ".html"
-        //console.log('==========================');
-        console.log(fpath);
-       //console.log('==========================');
+        ////console.log('==========================');
+        //console.log(fpath);
+       ////console.log('==========================');
     }))
     .pipe(cleaner())
     .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point 
@@ -103,16 +103,16 @@ gulp.task('service-index-doc', function() {
 gulp.task('service-tasks-index-doc', function() {
  gulp.src('../packages/*/*/docs/configuration.yml')
     .pipe(stiTemp({
-        template: './templates/stindex.html'
+        template: './templates/service-tasks-index.html'
     }))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
         fpath.basename = 'index';
         fpath.extname = '.html';
         fpath.dirname = path.join(dirs[0], dirs[1], 'tasks');
-        console.log('==========================');
-        console.log(fpath);
-        console.log('==========================');
+        //console.log('==========================');
+        //console.log(fpath);
+        //console.log('==========================');
     }))
     .pipe(cleaner())
     .pipe(gulp.dest('../docs/services/')) // you may want to take a look at gulp-marked at this point
@@ -128,37 +128,15 @@ gulp.task('task-doc', function() {
     .pipe(taskTemp({template: './templates/task.html', dataProperty: 'options'}))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        console.log(dirs);
+        //console.log(dirs);
         fpath.dirname = 'services/' + '/' + dirs[0] + '/' + dirs[1] + '/tasks';
         fpath.extname = ".html"
-        //console.log('==========================');
-        console.log(fpath);
-        //console.log('==========================');
+        ////console.log('==========================');
+        //console.log(fpath);
+        ////console.log('==========================');
     }))
     .pipe(cleaner())
     .pipe(gulp.dest('../docs/')) // you may want to take a look at gulp-marked at this point
-});
-
-gulp.task('service-doc', function() {
-    gulp.src('../packages/*/*/docs/configuration.yml')
-    .pipe(frontMatter({ // optional configuration
-        property: 'configuration', // property added to file object
-        remove: true // should we remove front-matter header?
-    }))
-    .pipe(marked())
-    .pipe(packageTemp({template: './templates/package.html', dataProperty: 'configuration'}))
-    .pipe(rename(function(fpath) {
-        var dirs = fpath.dirname.split('/');
-        //console.log(dirs);
-        fpath.dirname = path.join('services', dirs[0], dirs[1]);
-        fpath.basename = "index";
-        fpath.extname = ".html"
-        //console.log('==========================');
-        //console.log(fpath);
-       //console.log('==========================');
-    }))
-    .pipe(cleaner())
-    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
 });
 
 gulp.task('convert-tasks', function() {
@@ -170,9 +148,9 @@ gulp.task('convert-tasks', function() {
  dirs.push('tasks');
 
  fpath.dirname = dirs.join('/');
-        //console.log('==========================');
-        //console.log(fpath);
-        //console.log('==========================');
+        ////console.log('==========================');
+        ////console.log(fpath);
+        ////console.log('==========================');
     }))
 //  .pipe(frontMatter({ // optional configuration
 //          property: 'frontMatter', // property added to file object
@@ -189,9 +167,9 @@ gulp.task('convert-packages', function() {
         dirs[2] = 'docs';
         fpath.dirname = dirs.join('/');
         fpath.basename = 'configuration'
-        //console.log('==========================');
-        //console.log(fpath);
-        //console.log('==========================');
+        ////console.log('==========================');
+        ////console.log(fpath);
+        ////console.log('==========================');
     }))
 //  .pipe(frontMatter({ // optional configuration
 //          property: 'frontMatter', // property added to file object
@@ -296,5 +274,5 @@ gulp.task('watch', function() {
     gulp.watch(['./public/**/*', './assets/**/*.{png}', './templates/**/*', './source/**/*'], ['metalsmith']);
 });
 
-gulp.task('default', ['index-doc', 'services-index-doc', 'service-versions-index-doc', 'service-index-doc', 'service-tasks-index-doc', 'service-doc', 'task-doc']);
+gulp.task('default', ['index-doc', 'services-index-doc', 'service-versions-index-doc', 'service-index-doc', 'service-tasks-index-doc', 'task-doc']);
 gulp.task('development', ['index-doc', 'package-doc', 'task-doc', 'server']);

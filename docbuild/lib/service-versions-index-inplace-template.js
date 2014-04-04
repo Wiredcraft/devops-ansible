@@ -19,11 +19,11 @@ module.exports = function (options) {
 
         var data = {};
         var versions = [];
-        console.log(file.base);
-        console.log(file.relative);
+        //console.log(file.base);
+        //console.log(file.relative);
         var dirs = file.relative.split('/');
         var serviceDir = path.resolve(file.base, dirs[0]);
-        console.log(serviceDir);
+        //console.log(serviceDir);
 
         if (fs.existsSync(serviceDir)) {
             versions = fs.readdirSync(serviceDir).map(function(v) {
@@ -33,9 +33,8 @@ module.exports = function (options) {
 
         data.service = dirs[0];
         data.versions = versions;
-        console.log(data);
+        //console.log(data);
 
-        console.log('!!!!!!!!!!!!!!!!!! ');
         if (file.isStream()) {
             this.emit('error', new gutil.PluginError('gulp-inplace-template', 'Streaming not supported'));
             return cb();

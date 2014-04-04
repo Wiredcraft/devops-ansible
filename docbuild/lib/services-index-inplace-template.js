@@ -21,7 +21,7 @@ module.exports = function (options) {
         var services = [];
         var realDir = path.resolve(__dirname, '..', pkgsDir); 
 
-        console.log(realDir);
+        //console.log(realDir);
 
         if (fs.existsSync(realDir)) {
             services = fs.readdirSync(realDir).map(function(s) {
@@ -30,7 +30,7 @@ module.exports = function (options) {
         }
 
         data.services = services;
-        console.log(data);
+        //console.log(data);
 
         if (file.isNull()) {
             this.push(file);
