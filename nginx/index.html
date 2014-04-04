@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>nginx document</title>
+</head>
+<body>
+<h1></h1>
+<h1 id="nginx">Nginx</h1>
+<p>High performance HTTP server. </p>
+
+<h1>Configuration</h1>
+
+
+
+<h2>user</h2>
+<ul>
+
+
+
+
+
+<li>default: www-data</li>
+
+
+
+<li>description: Nginx running user.</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+</ul>
+
+<h2>worker_processes</h2>
+<ul>
+
+
+
+
+
+<li>default: 4</li>
+
+
+
+<li>description: Number of Nginx processes</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+ 
+
+</ul>
+
+<h2>pid</h2>
+<ul>
+
+
+
+
+
+<li>default: /var/run/nginx.pid</li>
+
+
+
+<li>description: Pid file path</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+ 
+
+</ul>
+
+<h2>events</h2>
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>worker_connections</h3>
+<ul>
+
+
+
+<li>default: 1024</li>
+
+
+
+<li>description: Number of concurrent http connection handled per nginx process</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 1</li>
+
+
+</ul>
+
+
+
+
+ 
+
+</ul>
+
+<h2>http</h2>
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+<h3>sendfile</h3>
+<ul>
+
+
+
+<li>default: on</li>
+
+
+
+<li>description: Enable sendfile</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>tcp_nopush</h3>
+<ul>
+
+
+
+<li>default: on</li>
+
+
+
+<li>description: Enable tcp_nopush</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>tcp_nodelay</h3>
+<ul>
+
+
+
+<li>default: on</li>
+
+
+
+<li>description: Enable tcp_nodelay</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>keepalive_timeout</h3>
+<ul>
+
+
+
+<li>default: 65</li>
+
+
+
+<li>description: Keepalive timeout (sec) - 0 to disable</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>types_hash_max_size</h3>
+<ul>
+
+
+
+<li>default: 2048</li>
+
+
+
+<li>description: Maximum size of hash tables</li>
+
+
+
+<li>type: integer</li>
+
+
+
+<li>required: false</li>
+
+
+
+<li>minimum: 0</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>access_log</h3>
+<ul>
+
+
+
+<li>default: /var/log/nginx/access.log</li>
+
+
+
+<li>description: Global access log file path</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>error_log</h3>
+<ul>
+
+
+
+<li>default: /var/log/nginx/error.log</li>
+
+
+
+<li>description: Global error log file path</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>gzip</h3>
+<ul>
+
+
+
+<li>default: on</li>
+
+
+
+<li>description: Enable gzip compression</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>gzip_disable</h3>
+<ul>
+
+
+
+<li>default: msie6</li>
+
+
+
+<li>description: Space separated list of browser to disable gzip compression for</li>
+
+
+
+<li>type: string</li>
+
+
+
+<li>required: false</li>
+
+
+</ul>
+
+
+
+
+ 
+
+</ul>
+
+</body>
+</html>
