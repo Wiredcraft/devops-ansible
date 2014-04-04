@@ -9,7 +9,7 @@
 <h1>Configuration</h1>
 <% function render(item, obj) { %>
 <% var pivot = 0; %>
-<% var heads = ['h3', 'h3', 'h3', 'h3', 'h3', 'h3']; %>
+<% var heads = ['h3', 'h4', 'h5', 'h6', 'h7', 'h8']; %>
 <% function _render(item, obj, head) { %>
 <<%= head %>><%= item %></<%= head %>>
 <ul>
@@ -41,7 +41,7 @@
 <% } else { %>
 <% render(k, item1[k]); %>
 <% } %>
-<% }); %> 
+<% }); %>
 <% } else { %>
 <% _(configuration).forEach(function(f) { %>
 <li><%= f %>: <%= configuration[f] %></li>
@@ -49,5 +49,6 @@
 <% } %>
 </ul>
 <% }); %>
+<a href="./tasks/index.html"><h1>Tasks</h1></a>
 </body>
 </html>

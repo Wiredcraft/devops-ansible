@@ -2,19 +2,11 @@
 <html>
 <head>
 </head>
-<title>Devops ansible document</title>
+<title>Devops documents</title>
 <body>
-<h1>Packages</h1>
-<ul>
-<% _(packages).forEach(function(p) { %>
-<li><a href="./<%= p.configuration %>/index.html"><h2><%= p.configuration %></h2></a></li>
-<h3>Tasks</h3>
-<ul>
-<% _(p.tasks).forEach(function(t) { %>
-<li><a href="./<%= p.configuration %>/tasks/<%= t %>.html"><%= t %></a></li>
-<% }); %>
-</ul>
-<% }); %>
-</ul>
+<a href="./services/index.html"><h1>Services</h1></a>
+<!--
+<a href="./provides/index.html"><h1>Providers</h1></a>
+-->
 </body>
 </html>

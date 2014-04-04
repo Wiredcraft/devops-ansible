@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<title>Services documents</title>
+<body>
+<h1>Services</h1>
+<ul>
+<% _(services).forEach(function(s) { %>
+<li><a href="./<%= s %>/index.html"><h2><%= s %></h2></a></li>
+<% }); %>
+</ul>
+</body>
+</html>

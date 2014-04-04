@@ -18,6 +18,9 @@ var frontMatter = require('gulp-front-matter');
 var rename = require('gulp-rename');
 var marked = require('./lib/gulp-marked');
 var cleaner = require('./lib/cleaner');
+var siTemp = require('./lib/service-index-inplace-template');
+var svTemp = require('./lib/service-versions-index-inplace-template');
+var stiTemp = require('./lib/service-tasks-index-inplace-template');
 var indexTemp = require('./lib/index-inplace-template');
 var taskTemp = require('./lib/task-inplace-template');
 var packageTemp = require('./lib/package-inplace-template');
@@ -30,43 +33,53 @@ var siteCSS = site.assets.vendor.css.concat(site.assets.custom.css);
 
 gulp.task('index-doc', function() {
  gulp.src('./templates/index.html')
-    .pipe(indexTemp({
+    .pipe(cleaner())
+    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
+});
+
+gulp.task('services-index-doc', function() {
+ gulp.src('./templates/sindex.html')
+    .pipe(siTemp({
         packages: '../packages',
-        template: './templates/index.html',
-        dataProperty: 'options'
+        template: './templates/sindex.html'
     }))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        ////console.log('==========================');
-        ////console.log(fpath);
-        ////console.log('==========================');
+        console.log('###############');
+        console.log(dirs);
+        fpath.basename = 'index';
+        fpath.extname = '.html';
+        console.log('==========================');
+        console.log(fpath);
+        console.log('==========================');
     }))
     .pipe(cleaner())
-    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
+    .pipe(gulp.dest('../docs/services/')) // you may want to take a look at gulp-marked at this point
 });
 
-gulp.task('task-doc', function() {
-    gulp.src('../packages/*/v0.2/docs/tasks/*.yml')
-    .pipe(frontMatter({ // optional configuration
-        property: 'options', // property added to file object
-        remove: true // should we remove front-matter header?
+gulp.task('service-versions-index-doc', function() {
+ gulp.src('../packages/**/**/configuration.yml')
+    .pipe(svTemp({
+        packages: '../packages',
+        template: './templates/svindex.html'
     }))
-    .pipe(marked())
-    .pipe(taskTemp({template: './templates/task.html', dataProperty: 'options'}))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        fpath.dirname = dirs[0] + '/tasks'
-        fpath.extname = ".html"
-        //console.log('==========================');
-        //console.log(fpath);
-        //console.log('==========================');
+        console.log('###############');
+        console.log(dirs);
+        fpath.dirname = dirs[0];
+        fpath.basename = 'index';
+        fpath.extname = '.html';
+        console.log('==========================');
+        console.log(fpath);
+        console.log('==========================');
     }))
     .pipe(cleaner())
-    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
-});
+    .pipe(gulp.dest('../docs/services/')) // you may want to take a look at gulp-marked at this point
+}); 
 
-gulp.task('package-doc', function() {
-    gulp.src('../packages/*/v0.2/docs/configuration.yml')
+gulp.task('service-index-doc', function() {
+ gulp.src('../packages/*/*/docs/configuration.yml')
     .pipe(frontMatter({ // optional configuration
         property: 'configuration', // property added to file object
         remove: true // should we remove front-matter header?
@@ -75,12 +88,74 @@ gulp.task('package-doc', function() {
     .pipe(packageTemp({template: './templates/package.html', dataProperty: 'configuration'}))
     .pipe(rename(function(fpath) {
         var dirs = fpath.dirname.split('/');
-        fpath.dirname = dirs[0];
+        console.log(dirs);
+        fpath.dirname = path.join('services', dirs[0], dirs[1]);
+        fpath.basename = "index";
+        fpath.extname = ".html"
+        //console.log('==========================');
+        console.log(fpath);
+       //console.log('==========================');
+    }))
+    .pipe(cleaner())
+    .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point 
+});
+
+gulp.task('service-tasks-index-doc', function() {
+ gulp.src('../packages/*/*/docs/configuration.yml')
+    .pipe(stiTemp({
+        template: './templates/stindex.html'
+    }))
+    .pipe(rename(function(fpath) {
+        var dirs = fpath.dirname.split('/');
+        fpath.basename = 'index';
+        fpath.extname = '.html';
+        fpath.dirname = path.join(dirs[0], dirs[1], 'tasks');
+        console.log('==========================');
+        console.log(fpath);
+        console.log('==========================');
+    }))
+    .pipe(cleaner())
+    .pipe(gulp.dest('../docs/services/')) // you may want to take a look at gulp-marked at this point
+});
+
+gulp.task('task-doc', function() {
+    gulp.src('../packages/*/*/docs/tasks/*.yml')
+    .pipe(frontMatter({ // optional configuration
+        property: 'options', // property added to file object
+        remove: true // should we remove front-matter header?
+    }))
+    .pipe(marked())
+    .pipe(taskTemp({template: './templates/task.html', dataProperty: 'options'}))
+    .pipe(rename(function(fpath) {
+        var dirs = fpath.dirname.split('/');
+        console.log(dirs);
+        fpath.dirname = 'services/' + '/' + dirs[0] + '/' + dirs[1] + '/tasks';
+        fpath.extname = ".html"
+        //console.log('==========================');
+        console.log(fpath);
+        //console.log('==========================');
+    }))
+    .pipe(cleaner())
+    .pipe(gulp.dest('../docs/')) // you may want to take a look at gulp-marked at this point
+});
+
+gulp.task('service-doc', function() {
+    gulp.src('../packages/*/*/docs/configuration.yml')
+    .pipe(frontMatter({ // optional configuration
+        property: 'configuration', // property added to file object
+        remove: true // should we remove front-matter header?
+    }))
+    .pipe(marked())
+    .pipe(packageTemp({template: './templates/package.html', dataProperty: 'configuration'}))
+    .pipe(rename(function(fpath) {
+        var dirs = fpath.dirname.split('/');
+        //console.log(dirs);
+        fpath.dirname = path.join('services', dirs[0], dirs[1]);
         fpath.basename = "index";
         fpath.extname = ".html"
         //console.log('==========================');
         //console.log(fpath);
-        //console.log('==========================');
+       //console.log('==========================');
     }))
     .pipe(cleaner())
     .pipe(gulp.dest('../docs')) // you may want to take a look at gulp-marked at this point
@@ -221,5 +296,5 @@ gulp.task('watch', function() {
     gulp.watch(['./public/**/*', './assets/**/*.{png}', './templates/**/*', './source/**/*'], ['metalsmith']);
 });
 
-gulp.task('default', ['index-doc', 'package-doc', 'task-doc']);
+gulp.task('default', ['index-doc', 'services-index-doc', 'service-versions-index-doc', 'service-index-doc', 'service-tasks-index-doc', 'service-doc', 'task-doc']);
 gulp.task('development', ['index-doc', 'package-doc', 'task-doc', 'server']);
