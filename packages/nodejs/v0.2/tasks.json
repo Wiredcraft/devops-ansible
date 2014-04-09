@@ -1,0 +1,13 @@
+[{
+    "id": "restart",
+    "label": "Restart node.js forever service",
+    "options": []
+}, {
+    "id": "stop",
+    "label": "Stop node.js forever service",
+    "options": []
+}, {
+    "id": "start",
+    "label": "Start node.js forever service",
+    "options": []
+}]

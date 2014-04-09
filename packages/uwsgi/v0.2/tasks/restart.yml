@@ -1,0 +1,6 @@
+---
+- name: restart emperor
+  service:
+    name=emperor
+    state=restarted
+

@@ -1,0 +1,9 @@
+---
+# Ensure service enabled at boot
+- include: DEVOPS_PACKAGE/tasks/enable.yml
+
+# Ensure service reloaded
+- include: DEVOPS_PACKAGE/tasks/reload.yml
+
+# Ensure service restarted
+- include: DEVOPS_PACKAGE/tasks/restart.yml

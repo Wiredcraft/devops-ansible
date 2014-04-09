@@ -1,0 +1,3 @@
+---
+- name: start varnish
+  service: name=varnish state=started

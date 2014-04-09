@@ -1,0 +1,5 @@
+---
+- name: enable forever
+  service:
+    name=forever
+    enabled=yes

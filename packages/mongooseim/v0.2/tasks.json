@@ -1,0 +1,13 @@
+[{
+    "id": "restart",
+    "label": "Restart MongooseIM",
+    "options": []
+}, {
+    "id": "stop",
+    "label": "Stop MongooseIM",
+    "options": []
+}, {
+    "id": "start",
+    "label": "Start MongooseIM",
+    "options": []
+}]

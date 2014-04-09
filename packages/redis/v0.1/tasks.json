@@ -1,0 +1,13 @@
+[{
+    "id": "restart",
+    "label": "Restart Redis Server",
+    "options": []
+}, {
+    "id": "stop",
+    "label": "Stop Redis Server",
+    "options": []
+}, {
+    "id": "start",
+    "label": "Start Redis Server",
+    "options": []
+}]

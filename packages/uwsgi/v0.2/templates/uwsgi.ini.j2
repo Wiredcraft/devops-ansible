@@ -1,0 +1,29 @@
+[uwsgi]
+
+# App-related settings
+
+# the base directory (full path)
+chdir           = {{ uwsgi_prj_root | mandatory}}
+
+# Django's wsgi application
+module          = {{ uwsgi_module | mandatory}}
+
+# the virtualenv (full path)
+home            = {{ uwsgi_prj_root | mandatory}}
+
+# process-related settings
+
+# master
+master          = true
+
+# maximum number of worker processes
+processes       = 4
+
+# socket          = /etc/uwsgi/{{ uwsgi_appname }}.sock
+http-socket      = :{{ uwsgi_port }}
+
+# ... with appropriate permissions - may be needed
+# chmod-socket    = 664
+
+# clear environment on exit
+vacuum          = true

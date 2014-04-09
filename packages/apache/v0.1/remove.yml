@@ -1,0 +1,18 @@
+---
+- name: Ensure apache is absent
+  apt: pkg=apache2 state=absent
+
+# Later need to add the backup step; or rely on the task system 
+# to schedule the backup task before.
+
+- name: ensure apache configuration is absent
+  file: 
+    state=absent
+    recurse=yes
+    path=/etc/apache2
+
+- name: ensure apache monitoring is absent
+  file: 
+    state=absent
+    path=/etc/collectd/plugins.d/apache
+  notify: restart collectd

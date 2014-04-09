@@ -1,0 +1,3 @@
+---
+- name: stop zeromq
+  service: name=zeromq state=stopped

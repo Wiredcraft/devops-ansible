@@ -1,0 +1,3 @@
+---
+- name: Run a script
+  action: script {script_file}

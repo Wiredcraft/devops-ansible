@@ -1,0 +1,10 @@
+LoadPlugin network
+
+<Plugin network>
+    <Server "monitoring.devo.ps" "25826">
+        SecurityLevel Sign
+        Username "{{ space }}__{{ inventory_hostname }}"
+        Password "{{ item }}"
+    </Server>
+    TimeToLive 128
+</Plugin>

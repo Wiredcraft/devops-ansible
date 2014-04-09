@@ -1,0 +1,48 @@
+---
+- name: Ensure mysql-client is installed
+  apt: pkg=mysql-client state=present
+
+- name: Ensure mysql-server is installed
+  apt: pkg=mysql-server state=present
+
+- name: Ensure python-mysqldb is installed
+  apt: pkg=python-mysqldb state=present
+
+# Ensure config
+- name: ensure mysql-server configuration
+  template:
+    src=DEVOPS_PACKAGE/templates/my.cnf.j2
+    dest=/etc/mysql/my.cnf
+    owner=root
+    mode=0640
+  notify: restart mysql
+
+# Ensure running
+- include: DEVOPS_PACKAGE/tasks/start.yml
+
+# Need to remove PROXY options...
+- name: ensure PROXY grant is removed
+  shell: 
+    creates=/home/devops/.ansible/mysql_root_proxy_grant
+    mysql -e "REVOKE PROXY ON ''@'' FROM 'root'@'localhost';" \
+    && touch /home/devops/.ansible/mysql_root_proxy_grant
+
+- name: Ensure mysql root password
+  mysql_user: 
+    name=root
+    password=${item}
+    priv=*.*:ALL
+    state=present
+  with_password: 
+    DEVOPS_BASE/spaces/${space}/${inventory_hostname}/mysql_root_password
+    length=20
+
+- name: Ensure we have a .my.cnf in the root folder
+  template:
+    src=DEVOPS_PACKAGE/templates/client.my.cnf.j2
+    dest=/root/.my.cnf
+    owner=root
+    mode=0400
+  with_password: 
+    DEVOPS_BASE/spaces/${space}/${inventory_hostname}/mysql_root_password
+    length=20

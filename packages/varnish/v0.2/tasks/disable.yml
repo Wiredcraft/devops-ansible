@@ -1,0 +1,3 @@
+---
+- name: disable varnish
+  service: name=varnish enabled=no

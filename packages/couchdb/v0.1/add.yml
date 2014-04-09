@@ -1,0 +1,26 @@
+---
+- name: Ensure couchdb is installed
+  apt: pkg=couchdb state=present
+  notify: enable couchdb
+
+# Ensure config
+- name: ensure the couchdb default file
+  template:
+    src=DEVOPS_PACKAGE/templates/default_couchdb.j2
+    dest=/etc/default/couchdb
+    owner=root
+    group=root
+    mode=0644
+  notify: restart couchdb
+
+- name: ensure the couchdb config file
+  template:
+    src=DEVOPS_PACKAGE/templates/local.ini.j2
+    dest=/etc/couchdb/local.ini
+    owner=root
+    group=root
+    mode=0644
+  notify: restart couchdb
+
+# Ensure running
+- include: DEVOPS_PACKAGE/tasks/start.yml

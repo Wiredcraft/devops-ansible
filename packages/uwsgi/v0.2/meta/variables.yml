@@ -1,0 +1,6 @@
+---
+user:
+    default: mongodb
+    description: Mongodb running user.
+    type: string
+    required: false
