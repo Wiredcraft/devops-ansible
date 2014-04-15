@@ -5,4 +5,4 @@
   git: 
     repo={{ git_repo_address }}
     dest={{ git_repo_dest }}
-    branch={{ git_repo_version | default('HEAD') }}
+    version={{ git_repo_version | default('HEAD') }}
