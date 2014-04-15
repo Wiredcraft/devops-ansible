@@ -24,8 +24,9 @@ module.exports = function (options) {
         //console.log(realDir);
 
         if (fs.existsSync(realDir)) {
-            services = fs.readdirSync(realDir).map(function(s) {
-                return s;
+            services = fs.readdirSync(realDir).filter(function(s) {
+                // Filter readme
+                return !(/readme/i).test(s);
             });
         }
 
