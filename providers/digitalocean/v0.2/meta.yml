@@ -30,9 +30,9 @@ sizes:
 regions:
     - label: New York
       id: 1
-    - label: Amsterdam (unavailable ATM)
+    - label: Amsterdam
       id: 2
-    - label: San Francisco (unavailable ATM)
+    - label: San Francisco
       id: 3
     - label: New York 2
       id: 4
@@ -44,8 +44,6 @@ images:
       id: ubuntu12.04
     - label: Ubuntu 12.10 64bit
       id: ubuntu12.10
-    - label: Ubuntu 13.04 64bit
-      id: ubuntu13.04
     - label: Ubuntu 13.10 64bit
       id: ubuntu13.10
 
@@ -53,10 +51,8 @@ images:
 # or get a proper way to capture errors in the logs
 image_ids:
     ubuntu12.04:
-        default: 1505447
+        default: 3101045
     ubuntu12.10:
-        default: 473123
-    ubuntu13.04:
-        default: 350076
+        default: 3101891
     ubuntu13.10:
-        default: 1505699
+        default: 3101918

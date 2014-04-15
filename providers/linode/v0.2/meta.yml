@@ -22,17 +22,17 @@ sizes:
       id: 10
 
 regions:
-    - label: Dallas, TX, USA
+    - label: "Dallas, TX, USA"
       id: 2
-    - label: Fremont, CA, USA
+    - label: "Fremont, CA, USA"
       id: 3
-    - label: Atlanta, GA, USA
+    - label: "Atlanta, GA, USA"
       id: 4
-    - label: Newark, NJ, USA
+    - label: "Newark, NJ, USA"
       id: 6
-    - label: London, England, UK
+    - label: "London, England, UK"
       id: 7
-    - label: Tokyo, Japan, JP
+    - label: "Tokyo, Japan, JP"
       id: 8
 
 images:
