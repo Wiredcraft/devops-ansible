@@ -158,5 +158,3 @@ event:
         type: integer
         required: false
         minimum: 0
-
----

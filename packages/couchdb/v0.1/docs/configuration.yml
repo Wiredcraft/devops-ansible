@@ -50,6 +50,3 @@ stderr_file:
     description: Where to send the process STDERR
     type: string
     required: false
-
-
----

@@ -44,6 +44,3 @@ connection:
     description: Maximumum number of concurrent inbound connections.
     type: integer
     required: false
-
-
----

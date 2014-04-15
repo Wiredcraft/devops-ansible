@@ -51,6 +51,3 @@ enable_rest:
     description: Enable REST over the HTTP interface
     type: boolean
     required: false
-
-
----

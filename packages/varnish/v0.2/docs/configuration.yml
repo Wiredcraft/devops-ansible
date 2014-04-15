@@ -80,6 +80,3 @@ ttl:
     type: integer
     required: false
     minimum: 1
-
-
----

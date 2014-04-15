@@ -74,6 +74,3 @@ http:
         description: Space separated list of browser to disable gzip compression for
         type: string
         required: false
-
-
----
