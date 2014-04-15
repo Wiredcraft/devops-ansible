@@ -8,5 +8,3 @@ user:
     description: Mongodb running user.
     type: string
     required: false
-
----

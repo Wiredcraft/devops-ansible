@@ -37,5 +37,3 @@ Add a new HTTP virtual host
   label:  Websocket Proxy pass URL
   required:  false
   default:  
-
----

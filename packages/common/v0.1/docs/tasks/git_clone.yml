@@ -12,5 +12,3 @@ Clone git repository
   label:  Directory where repo is cloned
   required:  false
   default:  /opt/devops
-
----

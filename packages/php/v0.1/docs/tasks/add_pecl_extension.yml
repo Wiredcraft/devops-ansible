@@ -7,5 +7,3 @@ Add pecl extension
   label:  Name of the PECL extension
   required:  true
   default:  
-
----
