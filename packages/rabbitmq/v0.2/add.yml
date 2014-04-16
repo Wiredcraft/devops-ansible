@@ -22,6 +22,7 @@
     state=enabled
   with_items:
     - rabbitmq_management
+  notify: restart rabbitmq
 
 - name: Fetch rabbitmq_management plugin script
   get_url:
