@@ -1,0 +1,34 @@
+---
+- name: Ensure rabbitmq repo GPG key
+  apt_key:
+    url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+    state=present
+
+- name: Ensure rabbitmq repo is installed
+  apt_repository:
+    repo='deb http://www.rabbitmq.com/debian/ testing main'
+    state=present
+
+- name: Ensure rabbitmq is installed
+  apt:
+    name=rabbitmq-server
+    state=present
+    update_cache=yes
+  notify: enable rabbitmq
+
+- name: Ensure rabbitmq plugins
+  rabbitmq_plugin:
+    names={{ item }}
+    state=enabled
+  with_items:
+    - rabbitmq_management
+
+- name: Fetch rabbitmq_management plugin script
+  get_url:
+    url=http://hg.rabbitmq.com/rabbitmq-management/raw-file/rabbitmq_v3_2_3/bin/rabbitmqadmin
+    dest=/usr/bin/rabbitmqadmin
+    mode=0775
+    owner=root
+    group=root
+
+- include: DEVOPS_PACKAGE/tasks/start.yml

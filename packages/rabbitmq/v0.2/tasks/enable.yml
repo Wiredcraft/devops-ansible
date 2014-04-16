@@ -1,0 +1,5 @@
+---
+- name: enable rabbitmq
+  service: 
+    name=rabbitmq-server
+    enabled=yes

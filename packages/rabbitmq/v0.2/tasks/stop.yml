@@ -1,0 +1,5 @@
+---
+- name: stop rabbitmq
+  service:
+    name=rabbitmq-server
+    state=stopped
