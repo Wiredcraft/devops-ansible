@@ -7,390 +7,266 @@
 <h1></h1>
 <h1 id="redis">Redis</h1>
 <p>  Some text doc</p>
+<hr>
+<p>port:
+    default: 6379
+    description: Connection port.
+    type: integer
+    required: false
+    minimum: 1025
+    maximum: 65536
+bind:
+    default: 127.0.0.1
+    description: Binding IP address.
+    type: string
+    required: false
+timeout:
+    default: 0
+    description: Close the connection after a client is idle for N seconds (0 to disable)
+    type: integer
+    required: false
+databases:
+    default: 1
+    description: Number of databases within the redis server
+    type: integer
+    required: false
+    minimum: 1
+    maximum: 16
+loglevel:
+    default: notice
+    description: Server log verbosity
+    type: string
+    required: false
+    enum:</p>
+<pre><code>    - debug
+    - verbose
+    - notice
+    - warning
+</code></pre><p>logfile:
+    default: /var/log/redis/redis-server.log
+    description: Server log file
+    type: string
+    required: false
+syslog:
+    enable:
+        default: &quot;no&quot;
+        description: Send log to syslog
+        type: string
+        required: false
+        enum:</p>
+<pre><code>        - &quot;no&quot;
+        - &quot;yes&quot;
+ident:
+    default: redis
+    description: Syslog identity
+    type: string
+    required: false
+facility:
+    default: local0
+    description: Syslog facility
+    type: string
+    required: false
+    enum:
+        - user
+        - local0
+        - local1
+        - local2
+        - local3
+        - local4
+        - local5
+        - local6
+        - local7
+</code></pre><p>snapshotting:
+    save:
+        default: </p>
+<pre><code>        - seconds: 900
+          changes: 1
+        - seconds: 300
+          changes: 10
+        - seconds: 60
+          changes: 10000
+    description: Array of save rules including seconds and number of changes that trigger a save
+    type: array
+    required: false
+rdbcompression:
+    default: &quot;yes&quot;
+    description: Enable database compression
+    type: string
+    required: false
+    enum:
+        - &quot;yes&quot;
+        - &quot;no&quot;
+rdbchecksum:
+    default: &quot;yes&quot;
+    description: Enable database checksum (use ~10% extra CPU)
+    type: string
+    required: false
+    enum:
+        - &quot;yes&quot;
+        - &quot;no&quot;
+dbfilename:
+    default: dump.rdb
+    description: Filename where to dump the DB
+    type: string
+    required: false
+dir:
+    default: /var/lib/redis
+    description: Folder where to store the snapshots
+    type: string
+    required: false
+</code></pre><p>replication:
+    is_slave:
+        default: no
+        description: Is this redis instance a slave?
+        type: string
+        required: false
+        enum:</p>
+<pre><code>        - no
+        - yes
+masterip:
+    default: &#39;&#39;
+    description: IP or host of the master server
+    type: string
+    required: false
+masterport:
+    default: 6379
+    description: Redis port of the master server
+    type: integer
+    required: false
+masterauth:
+    default: null
+    description: Redis master auth password (if required)
+    type: string
+    required: false
+serve_stale_data:
+    default: &#39;yes&#39;
+    description: Slave redis serves stale data if the connection is lost with the master
+    type: string
+    required: false
+    enum:
+        - &#39;yes&#39;
+        - &#39;no&#39;
+read_only:
+    default: &#39;yes&#39;
+    description: Make the slave server read-only (preferred option)
+    type: string
+    required: false
+    enum:
+        - &#39;yes&#39;
+        - &#39;no&#39;
+ping_slave_period:
+    default: 10
+    description: Frequency (in sec) to ping the master server as health check
+    type: integer
+    required: false
+    minimum: 1
+timeout:
+    default: 60
+    description: Timeout to Bulk IO transfer and ping response to mark the master as unreachable
+    type: integer
+    required: false
+    minimum: 1
+priority:
+    default: 100
+    description: Slave priority
+    type: integer
+    required: false
+    minimum: 1
+</code></pre><p>security:
+    requirepass:
+        default: null
+        description: Require a password to connect (either client or slave)
+        type: string
+        required: false
+limits:
+    maxclients:
+        default: 10000
+        description: Max number of clients connected
+        type: integer
+        required: false
+    maxmemory:
+        default: null
+        description: Maximum RAM used by Redis to store data (no limit by default) in bytes
+        type: integer
+        required: false
+    policy:
+        default: volatile-lru
+        description: Define how Redis will remove keys when maxmemory is reached
+        type: string
+        required: false
+        enum: </p>
+<pre><code>        - volatile-lru
+        - allkeys-lru
+        - volatile-random
+        - allkeys-random
+        - volatile-ttl
+        - noeviction
+samples:
+    default: 3
+    description: Sample size to use to base the policy eviction for LRU and TTL policy algorithms
+    type: integer
+    required: false
+</code></pre><p>aom:
+    enable:
+        default: &#39;no&#39;
+        description: Enable Append Only Mode
+        type: string
+        required: false
+        enum:</p>
+<pre><code>        - &#39;no&#39;
+        - &#39;yes&#39;
+filename:
+    default: appendonly.aof
+    description: Name of the append only file
+    type: string
+    required: false
+fsync:
+    default: everysec
+    description: Fsync mode to sync the append only file
+    type: string
+    required: false
+    enum:
+        - everysec
+        - always
+        - no
+no_appendfsync_on_rewrite:
+    default: &#39;no&#39;
+    description: Define whether to (not) append fsync operations if another fsync op is already in progress
+    type: string
+    required: false
+    enum:
+        - &#39;no&#39;
+        - &#39;yes&#39;
+aof_rewrite_percentage:
+    default: 100
+    description: Automatically trigger AOF rewrite if the AOF grows by more of the specified percentage (0 to disable)
+    type: integer
+    minimum: 0
+    maximum: 100
+aof_rewrite_min_size:
+    default: 64mb
+    description: Minimum size of the AOF to consider auto rewrite of the AOF based on the percentage
+    type: string
+    required: false
+</code></pre><p>lua:
+    time_limit:
+        default: 5000
+        description: Time limit (in ms) for the execution of a LUA script
+        type: integer
+        minimum: 1
+slowlog:
+    log_slower_than:
+        default: 10000
+        description: Execution time in microsecond to catpure the slow logs; negative value to disable; 0 to log all queries
+        type: integer
+        required: false
+    max_len:
+        default: 128
+        description: Length of the slow log to capture (FIFO based)
+        type: integer
+        required: false
+        minimum: 1</p>
 <h1>Configuration</h1>
-<h2>port</h2>
-<ul>
-<li>default: 6379</li>
-<li>description: Connection port.</li>
-<li>type: integer</li>
-<li>required: false</li>
-<li>minimum: 1025</li>
-<li>maximum: 65536</li>
-</ul>
-<h2>bind</h2>
-<ul>
-<li>default: 127.0.0.1</li>
-<li>description: Binding IP address.</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-<h2>timeout</h2>
-<ul>
-<li>default: 0</li>
-<li>description: Close the connection after a client is idle for N seconds (0 to disable)</li>
-<li>type: integer</li>
-<li>required: false</li>
-</ul>
-<h2>databases</h2>
-<ul>
-<li>default: 1</li>
-<li>description: Number of databases within the redis server</li>
-<li>type: integer</li>
-<li>required: false</li>
-<li>minimum: 1</li>
-<li>maximum: 16</li>
-</ul>
-<h2>loglevel</h2>
-<ul>
-<li>default: notice</li>
-<li>description: Server log verbosity</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: debug</li>
-<li>1: verbose</li>
-<li>2: notice</li>
-<li>3: warning</li>
-</ul>
-</ul>
-<h2>logfile</h2>
-<ul>
-<li>default: /var/log/redis/redis-server.log</li>
-<li>description: Server log file</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-<h2>syslog</h2>
-<ul>
-<h3>enable</h3>
-<ul>
-<li>default: no</li>
-<li>description: Send log to syslog</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: no</li>
-<li>1: yes</li>
-</ul>
-</ul>
-<h3>ident</h3>
-<ul>
-<li>default: redis</li>
-<li>description: Syslog identity</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-<h3>facility</h3>
-<ul>
-<li>default: local0</li>
-<li>description: Syslog facility</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: user</li>
-<li>1: local0</li>
-<li>2: local1</li>
-<li>3: local2</li>
-<li>4: local3</li>
-<li>5: local4</li>
-<li>6: local5</li>
-<li>7: local6</li>
-<li>8: local7</li>
-</ul>
-</ul>
-</ul>
-<h2>snapshotting</h2>
-<ul>
-<h3>save</h3>
-<ul>
-<h4>default</h4>
-<ul>
-<h5>0</h5>
-<ul>
-<li>seconds: 900</li>
-<li>changes: 1</li>
-</ul>
-<h5>1</h5>
-<ul>
-<li>seconds: 300</li>
-<li>changes: 10</li>
-</ul>
-<h5>2</h5>
-<ul>
-<li>seconds: 60</li>
-<li>changes: 10000</li>
-</ul>
-</ul>
-<li>description: Array of save rules including seconds and number of changes that trigger a save</li>
-<li>type: array</li>
-<li>required: false</li>
-</ul>
-<h3>rdbcompression</h3>
-<ul>
-<li>default: yes</li>
-<li>description: Enable database compression</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: yes</li>
-<li>1: no</li>
-</ul>
-</ul>
-<h3>rdbchecksum</h3>
-<ul>
-<li>default: yes</li>
-<li>description: Enable database checksum (use ~10% extra CPU)</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: yes</li>
-<li>1: no</li>
-</ul>
-</ul>
-<h3>dbfilename</h3>
-<ul>
-<li>default: dump.rdb</li>
-<li>description: Filename where to dump the DB</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-<h3>dir</h3>
-<ul>
-<li>default: /var/lib/redis</li>
-<li>description: Folder where to store the snapshots</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-</ul>
-<h2>replication</h2>
-<ul>
-<h3>is_slave</h3>
-<ul>
-<li>default: false</li>
-<li>description: Is this redis instance a slave?</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: false</li>
-<li>1: true</li>
-</ul>
-</ul>
-<h3>masterip</h3>
-<ul>
-<li>default: </li>
-<li>description: IP or host of the master server</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-<h3>masterport</h3>
-<ul>
-<li>default: 6379</li>
-<li>description: Redis port of the master server</li>
-<li>type: integer</li>
-<li>required: false</li>
-</ul>
-<h3>masterauth</h3>
-<ul>
-<li>default: </li>
-<li>description: Redis master auth password (if required)</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-<h3>serve_stale_data</h3>
-<ul>
-<li>default: yes</li>
-<li>description: Slave redis serves stale data if the connection is lost with the master</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: yes</li>
-<li>1: no</li>
-</ul>
-</ul>
-<h3>read_only</h3>
-<ul>
-<li>default: yes</li>
-<li>description: Make the slave server read-only (preferred option)</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: yes</li>
-<li>1: no</li>
-</ul>
-</ul>
-<h3>ping_slave_period</h3>
-<ul>
-<li>default: 10</li>
-<li>description: Frequency (in sec) to ping the master server as health check</li>
-<li>type: integer</li>
-<li>required: false</li>
-<li>minimum: 1</li>
-</ul>
-<h3>timeout</h3>
-<ul>
-<li>default: 60</li>
-<li>description: Timeout to Bulk IO transfer and ping response to mark the master as unreachable</li>
-<li>type: integer</li>
-<li>required: false</li>
-<li>minimum: 1</li>
-</ul>
-<h3>priority</h3>
-<ul>
-<li>default: 100</li>
-<li>description: Slave priority</li>
-<li>type: integer</li>
-<li>required: false</li>
-<li>minimum: 1</li>
-</ul>
-</ul>
-<h2>security</h2>
-<ul>
-<h3>requirepass</h3>
-<ul>
-<li>default: </li>
-<li>description: Require a password to connect (either client or slave)</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-</ul>
-<h2>limits</h2>
-<ul>
-<h3>maxclients</h3>
-<ul>
-<li>default: 10000</li>
-<li>description: Max number of clients connected</li>
-<li>type: integer</li>
-<li>required: false</li>
-</ul>
-<h3>maxmemory</h3>
-<ul>
-<li>default: </li>
-<li>description: Maximum RAM used by Redis to store data (no limit by default) in bytes</li>
-<li>type: integer</li>
-<li>required: false</li>
-</ul>
-<h3>policy</h3>
-<ul>
-<li>default: volatile-lru</li>
-<li>description: Define how Redis will remove keys when maxmemory is reached</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: volatile-lru</li>
-<li>1: allkeys-lru</li>
-<li>2: volatile-random</li>
-<li>3: allkeys-random</li>
-<li>4: volatile-ttl</li>
-<li>5: noeviction</li>
-</ul>
-</ul>
-<h3>samples</h3>
-<ul>
-<li>default: 3</li>
-<li>description: Sample size to use to base the policy eviction for LRU and TTL policy algorithms</li>
-<li>type: integer</li>
-<li>required: false</li>
-</ul>
-</ul>
-<h2>aom</h2>
-<ul>
-<h3>enable</h3>
-<ul>
-<li>default: no</li>
-<li>description: Enable Append Only Mode</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: no</li>
-<li>1: yes</li>
-</ul>
-</ul>
-<h3>filename</h3>
-<ul>
-<li>default: appendonly.aof</li>
-<li>description: Name of the append only file</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-<h3>fsync</h3>
-<ul>
-<li>default: everysec</li>
-<li>description: Fsync mode to sync the append only file</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: everysec</li>
-<li>1: always</li>
-<li>2: false</li>
-</ul>
-</ul>
-<h3>no_appendfsync_on_rewrite</h3>
-<ul>
-<li>default: no</li>
-<li>description: Define whether to (not) append fsync operations if another fsync op is already in progress</li>
-<li>type: string</li>
-<li>required: false</li>
-<h3>enum</h3>
-<ul>
-<li>0: no</li>
-<li>1: yes</li>
-</ul>
-</ul>
-<h3>aof_rewrite_percentage</h3>
-<ul>
-<li>default: 100</li>
-<li>description: Automatically trigger AOF rewrite if the AOF grows by more of the specified percentage (0 to disable)</li>
-<li>type: integer</li>
-<li>minimum: 0</li>
-<li>maximum: 100</li>
-</ul>
-<h3>aof_rewrite_min_size</h3>
-<ul>
-<li>default: 64mb</li>
-<li>description: Minimum size of the AOF to consider auto rewrite of the AOF based on the percentage</li>
-<li>type: string</li>
-<li>required: false</li>
-</ul>
-</ul>
-<h2>lua</h2>
-<ul>
-<h3>time_limit</h3>
-<ul>
-<li>default: 5000</li>
-<li>description: Time limit (in ms) for the execution of a LUA script</li>
-<li>type: integer</li>
-<li>minimum: 1</li>
-</ul>
-</ul>
-<h2>slowlog</h2>
-<ul>
-<h3>log_slower_than</h3>
-<ul>
-<li>default: 10000</li>
-<li>description: Execution time in microsecond to catpure the slow logs; negative value to disable; 0 to log all queries</li>
-<li>type: integer</li>
-<li>required: false</li>
-</ul>
-<h3>max_len</h3>
-<ul>
-<li>default: 128</li>
-<li>description: Length of the slow log to capture (FIFO based)</li>
-<li>type: integer</li>
-<li>required: false</li>
-<li>minimum: 1</li>
-</ul>
-</ul>
 <a href="./tasks/index.html"><h1>Tasks</h1></a>
 </body>
 </html>
