@@ -1,19 +1,20 @@
 ---
-# Java requirements
-- name: Ensure java 
-  apt: name=openjdk-7-jre-headless state=present
+- name: Ensure Elasticsearch repo GPG key
+  apt_key:
+    url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+    state=present
 
-# Elasticsearch
-- name: Retrieve Elasticsearch
-  get_url: 
-    url=https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.deb
-    dest=/opt/elasticsearch.deb
+- name: Ensure Elasticsearch repo is installed
+  apt_repository:
+    repo='deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main'
+    state=present
 
-# Install java from the java service
-- include: DEVOPS_BASE/services/java/latest/add.yml
-
-- name: Install Elasticsearch
-  command: dpkg -i /opt/elasticsearch.deb
+- name: Ensure Elasticsearch is installed
+  apt:
+    name=elasticsearch
+    state=present
+    update_cache=yes
+  notify: enable elasticsearch
 
 - name: ensure the elasticsearch default file
   template:
