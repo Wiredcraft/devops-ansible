@@ -17,7 +17,7 @@
     manage_dir=yes
   with_subelements:
    - linux_users
-   - keys
+   - ssh_keys
 
 - name: Ensure profile user can sudo
   template: 
