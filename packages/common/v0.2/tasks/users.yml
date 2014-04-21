@@ -13,7 +13,7 @@
   authorized_key: 
     user={{ item.0.user_id }}
     state=present
-    key='{{ item.1.key }}'
+    key='{{ item.1 }}'
     manage_dir=yes
   with_subelements:
    - linux_users
