@@ -2,16 +2,16 @@
 # Ensure customer users
 - name: Ensure user exists
   user: 
-    name="{{ item.user }}"
+    name="{{ item.user_id }}"
     state=present
-    comment="Devo.ps {{ item.user }} user"
-    home="/home/{{ item.user }}"
+    comment="Devo.ps {{ item.user_name }} user"
+    home="/home/{{ item.user_id }}"
     shell=/bin/bash
   with_items: linux_users
 
 - name: Ensure profile user has the correct authorized_keys
   authorized_key: 
-    user={{ item.0.user }}
+    user={{ item.0.user_id }}
     state=present
     key='{{ item.1.key }}'
     manage_dir=yes
@@ -22,7 +22,7 @@
 - name: Ensure profile user can sudo
   template: 
     src=DEVOPS_PACKAGE/templates/10-customer.j2 
-    dest=/etc/sudoers.d/10-{{ item.user }}
+    dest=/etc/sudoers.d/10-{{ item.user_id }}
     owner=root
     group=root
     mode=440

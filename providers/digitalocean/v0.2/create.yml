@@ -6,7 +6,7 @@
     api_key: "{{ api_key }}"
     command: ssh
     state: present
-    name: "{{ user }}"
+    name: "{{ user_id }}"
     ssh_pub_key: "{{ ssh_profile_key }}"
   register: do_key
 - name: Ensure Digital Ocean server
