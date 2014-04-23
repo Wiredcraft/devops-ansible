@@ -282,3 +282,4 @@ innodb:
         enum: 
             - On
             - Off
+---

@@ -12,3 +12,5 @@ Fetch value from etcd server and set it up as env var
   label:  Key name (without leading slash) of an etcd item
   required:  true
   default:  _
+
+---

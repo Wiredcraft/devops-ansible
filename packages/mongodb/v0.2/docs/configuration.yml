@@ -1,6 +1,48 @@
-# Mongodb 
+# Mongodb
 
-  Some text doc
+[Official site](https://www.mongodb.org/)
+
+MongoDB (from "humongous") is an open-source document database, and the leading NoSQL database. Written in C++, MongoDB features:
+
+* Document-Oriented Storage
+
+  JSON-style documents with dynamic schemas offer simplicity and power.
+
+* Full Index Support
+
+  Index on any attribute, just like you're used to.
+
+* Replication & High Availability
+
+  Mirror across LANs and WANs for scale and peace of mind.
+
+* Auto-Sharding
+
+  Scale horizontally without compromising functionality.
+
+* Querying
+
+  Rich, document-based queries.
+
+* Fast In-Place Updates
+
+  Atomic modifiers for contention-free performance.
+
+* Map/Reduce
+
+  Flexible aggregation and data processing.
+
+* GridFS
+
+  Store files of any size without complicating your stack.
+
+* MongoDB Management Service
+
+  Monitoring and backup designed for MongoDB.
+
+* Professional Support by MongoDB
+
+  Enterprise class support, training, and consulting available.
 
 ---
 user:
@@ -13,7 +55,7 @@ enable:
     description: Enable or disable mongodb service.
     type: string
     required: false
-    enum: 
+    enum:
         - "yes"
         - "no"
 dbpath:
@@ -43,7 +85,7 @@ nohttp:
     description: Disable entirely the HTTP interface.
     type: string
     required: false
-    enum: 
+    enum:
         - "true"
         - "false"
 enable_rest:
@@ -51,3 +93,4 @@ enable_rest:
     description: Enable REST over the HTTP interface
     type: boolean
     required: false
+---

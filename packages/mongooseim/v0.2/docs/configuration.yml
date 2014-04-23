@@ -1,6 +1,13 @@
-# Mongooseim 
+# Mongooseim
 
-  Some text doc
+[Official site](https://www.erlang-solutions.com/products/mongooseim-massively-scalable-ejabberd-platform)
+
+MongooseIM is a base platform for building high performance messaging systems leveraging XMPP. It is designed to provide communication for millions of concurrent online users in high growth sectors such as Social Media, Gaming and Telecommunications. It is highly customisable due to its clean and modular design allowing easy integration with pre-existing solutions within a company.
+
+MongooseIM is truly innovative for building high volume scalable instant messaging solutions, having features specifically designed for enterprise and business purposes.  Being distributed in nature, it allows for high performance messaging. As an open source technology based on industry-standards, it can be used to build bespoke solutions very cost effectively.
+
+In summary, MongooseIM provides high availability, ease of deployment, development, and reliability in production. Our solution is aimed at large, complex enterprise level deployments where real-time communication is critical for business success.
 
 ---
 {}
+---

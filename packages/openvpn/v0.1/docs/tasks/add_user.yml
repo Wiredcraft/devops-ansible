@@ -12,3 +12,5 @@ Add a new OpenVPN client
   label:  Email of the user (the credential will be sent to this address)
   required:  false
   default:  Sent to your profile email
+
+---

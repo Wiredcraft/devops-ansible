@@ -1,16 +1,11 @@
-# Openvpn 
+# Openvpn
 
-  Some text doc
+[Official site](http://openvpn.net/)
 
-# OpenVPN
+SSL/TLS based user-space VPN. Supports Linux, Solaris, OpenBSD, FreeBSD, NetBSD, Mac OS X, and Windows 2000/XP.
 
-This is an awesome service, that lets you do a lot of things.
-
-## Some other title
-
-Pretty cool stuff nevertheless...
 ---
-port: 
+port:
     default: 1194
     description: Listening port
     type: integer

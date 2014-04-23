@@ -1,6 +1,8 @@
-# Varnish 
+# Varnish
 
-  Some text doc
+[Official site](https://www.varnish-cache.org/)
+
+Varnish is a web application accelerator. You install it in front of your web application and it will speed it up significantly.
 
 ---
 vcl_conf:
@@ -60,7 +62,7 @@ storage_type:
     description: "Store objects either in memory (malloc), on in a file (file)."
     type: string
     required: false
-    enum: 
+    enum:
         - malloc
         - file
 storage_file:
@@ -80,3 +82,4 @@ ttl:
     type: integer
     required: false
     minimum: 1
+---

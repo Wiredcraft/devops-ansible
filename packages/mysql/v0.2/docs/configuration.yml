@@ -1,6 +1,8 @@
-# Mysql 
+# Mysql
 
-  Some text doc
+[Official site](http://www.mysql.com/)
+
+The world's most popular open source database
 
 ---
 port:
@@ -47,7 +49,7 @@ auto_increment_offset:
     type: integer
     required: false
     minimum: 1
-old_passwords: 
+old_passwords:
     default: 0
     description: Allow old (non-secure) passwords.
     type: integer
@@ -146,7 +148,7 @@ logs:
         description: Whether the slow query log is enabled.
         type: integer
         required: false
-        enum: 
+        enum:
             - 0
             - 1
     slow_query_log_file:
@@ -164,7 +166,7 @@ logs:
         description: If you are using this option with the slow query log enabled then queries that are expected to retrieve all rows are logged.
         type: string
         required: false
-        enum: 
+        enum:
             - On
             - Off
 replication:
@@ -184,7 +186,7 @@ replication:
         description: This option tells the slave to log the updates performed by its SQL thread to its own binary log.
         type: string
         required: false
-        enum: 
+        enum:
             - On
             - Off
     log_bin_trust_function_creators:
@@ -192,7 +194,7 @@ replication:
         description: Controls whether stored function creators can be trusted not to create stored functions that will cause unsafe events to be written to the binary log.
         type: string
         required: false
-        enum: 
+        enum:
             - On
             - Off
     expire_logs_days:
@@ -255,7 +257,7 @@ innodb:
         description: If 0 the log buffer is written out to the log file once per second. If 1 the log buffer is written out to the log file at each transaction commit and the flush to disk operation is performed on the log file. If 2 the log buffer is written out to the file at each commit but the flush to disk operation is not performed on it.
         type: integer
         required: false
-        enum: 
+        enum:
             - 0
             - 1
             - 2
@@ -264,7 +266,7 @@ innodb:
         description: Flush method for InnoDB, either of fdatasync, O_DSYNC or O_DIRECT
         type: string
         required: false
-        enum: 
+        enum:
             - O_DIRECT
             - O_DSYNC
             - fdatasync
@@ -279,6 +281,7 @@ innodb:
         description: Specifies whether to dynamically adjust the rate of flushing dirty pages in the InnoDB buffer pool based on the workload.
         type: string
         required: false
-        enum: 
+        enum:
             - On
             - Off
+---

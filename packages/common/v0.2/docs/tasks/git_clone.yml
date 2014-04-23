@@ -15,3 +15,4 @@ Clone git repository
   label: "Version of the repository to checkout (HEAD, SHA-1, branch or tag name)"
   required: false
   default: HEAD
+---

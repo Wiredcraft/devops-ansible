@@ -1,9 +1,12 @@
-# Python 
+# Python
 
-  Some text doc
+[Official site](https://www.python.org/)
+
+Python is a programming language that lets you work quickly and integrate systems more effectively.
 
 ---
 packages:
     default: []
     description: List of pip packages to install globally
     type: array
+---
