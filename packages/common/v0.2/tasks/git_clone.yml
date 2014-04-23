@@ -1,5 +1,9 @@
 ---
 # Expects to be triggerd via task with
+- name: Ensure github.com ssh key is known
+  sudo: true
+  shell:
+    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
 
 - name: Clone git repository
   git: 
