@@ -7,44 +7,48 @@
 <h1>add_http_vhost</h1>
 <h1 id="task-add_http_vhost">Task Add_http_vhost</h1>
 <p>Add a new HTTP virtual host</p>
-<hr>
-<ul>
-<li><p>id:  nginx<em>vhost_domain
-label:  Domain Name of the virtual host
-required:  true
-default:  </em></p>
-</li>
-<li><p>id:  nginx_vhost_webroot
-label:  Webroot within the vhost folder
-required:  true
-default:  /</p>
-</li>
-<li><p>id:  nginx_vhost_port
-label:  Listening TCP port for the virtual host
-required:  false
-default:  80</p>
-</li>
-<li><p>id:  nginx_vhost_php
-label:  Enable php (on/off)
-required:  false
-default:  off</p>
-</li>
-<li><p>id:  nginx_vhost_proxy_pass
-label:  Proxy pass URL
-required:  false
-default:  </p>
-</li>
-<li><p>id:  nginx_websocket_path
-label:  Websocket path in the domain
-required:  false
-default:  </p>
-</li>
-<li><p>id:  nginx_websocket_proxy_pass
-label:  Websocket Proxy pass URL
-required:  false
-default:  </p>
-</li>
-</ul>
 <h2>options</h2>
+<ul>
+<li>id: nginx_vhost_domain</li>
+<li>label: Domain Name of the virtual host</li>
+<li>required: true</li>
+<li>default: _</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_webroot</li>
+<li>label: Webroot within the vhost folder</li>
+<li>required: true</li>
+<li>default: /</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_port</li>
+<li>label: Listening TCP port for the virtual host</li>
+<li>required: false</li>
+<li>default: 80</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_php</li>
+<li>label: Enable php (on/off)</li>
+<li>required: false</li>
+<li>default: false</li>
+</ul>
+<ul>
+<li>id: nginx_vhost_proxy_pass</li>
+<li>label: Proxy pass URL</li>
+<li>required: false</li>
+<li>default: </li>
+</ul>
+<ul>
+<li>id: nginx_websocket_path</li>
+<li>label: Websocket path in the domain</li>
+<li>required: false</li>
+<li>default: </li>
+</ul>
+<ul>
+<li>id: nginx_websocket_proxy_pass</li>
+<li>label: Websocket Proxy pass URL</li>
+<li>required: false</li>
+<li>default: </li>
+</ul>
 </body>
 </html>

@@ -6,57 +6,101 @@
 <body>
 <h1></h1>
 <h1 id="mongodb">Mongodb</h1>
-<p>  Some text doc</p>
-<hr>
-<p>user:
-    default: mongodb
-    description: Mongodb running user.
-    type: string
-    required: false
-enable:
-    default: &quot;yes&quot;
-    description: Enable or disable mongodb service.
-    type: string
-    required: false
-    enum: </p>
-<pre><code>    - &quot;yes&quot;
-    - &quot;no&quot;
-</code></pre><p>dbpath:
-    default: /var/lib/mongodb
-    description: Database files path.
-    type: string
-    required: false
-logpath:
-    default: /var/log/mongodb/mongodb.log
-    description: Database log file path.
-    type: string
-    required: false
-bindip:
-    default: 127.0.0.1
-    description: Binding IP address.
-    type: string
-    required: false
-port:
-    default: 27017
-    description: Connection port.
-    type: integer
-    required: false
-    minimum: 1025
-    maximum: 65536
-nohttp:
-    default: &quot;false&quot;
-    description: Disable entirely the HTTP interface.
-    type: string
-    required: false
-    enum: </p>
-<pre><code>    - &quot;true&quot;
-    - &quot;false&quot;
-</code></pre><p>enable_rest:
-    default: false
-    description: Enable REST over the HTTP interface
-    type: boolean
-    required: false</p>
+<p><a href="https://www.mongodb.org/">Official site</a></p>
+<p>MongoDB (from &quot;humongous&quot;) is an open-source document database, and the leading NoSQL database. Written in C++, MongoDB features:</p>
+<ul>
+<li><p>Document-Oriented Storage</p>
+<p>JSON-style documents with dynamic schemas offer simplicity and power.</p>
+</li>
+<li><p>Full Index Support</p>
+<p>Index on any attribute, just like you&#39;re used to.</p>
+</li>
+<li><p>Replication &amp; High Availability</p>
+<p>Mirror across LANs and WANs for scale and peace of mind.</p>
+</li>
+<li><p>Auto-Sharding</p>
+<p>Scale horizontally without compromising functionality.</p>
+</li>
+<li><p>Querying</p>
+<p>Rich, document-based queries.</p>
+</li>
+<li><p>Fast In-Place Updates</p>
+<p>Atomic modifiers for contention-free performance.</p>
+</li>
+<li><p>Map/Reduce</p>
+<p>Flexible aggregation and data processing.</p>
+</li>
+<li><p>GridFS</p>
+<p>Store files of any size without complicating your stack.</p>
+</li>
+<li><p>MongoDB Management Service</p>
+<p>Monitoring and backup designed for MongoDB.</p>
+</li>
+<li><p>Professional Support by MongoDB</p>
+<p>Enterprise class support, training, and consulting available.</p>
+</li>
+</ul>
 <h1>Configuration</h1>
+<h2>user</h2>
+<ul>
+<li>default: mongodb</li>
+<li>description: Mongodb running user.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>enable</h2>
+<ul>
+<li>default: yes</li>
+<li>description: Enable or disable mongodb service.</li>
+<li>type: string</li>
+<li>required: false</li>
+<li>enum: yes,no</li>
+</ul>
+<h2>dbpath</h2>
+<ul>
+<li>default: /var/lib/mongodb</li>
+<li>description: Database files path.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>logpath</h2>
+<ul>
+<li>default: /var/log/mongodb/mongodb.log</li>
+<li>description: Database log file path.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>bindip</h2>
+<ul>
+<li>default: 127.0.0.1</li>
+<li>description: Binding IP address.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>port</h2>
+<ul>
+<li>default: 27017</li>
+<li>description: Connection port.</li>
+<li>type: integer</li>
+<li>required: false</li>
+<li>minimum: 1025</li>
+<li>maximum: 65536</li>
+</ul>
+<h2>nohttp</h2>
+<ul>
+<li>default: false</li>
+<li>description: Disable entirely the HTTP interface.</li>
+<li>type: string</li>
+<li>required: false</li>
+<li>enum: true,false</li>
+</ul>
+<h2>enable_rest</h2>
+<ul>
+<li>default: false</li>
+<li>description: Enable REST over the HTTP interface</li>
+<li>type: boolean</li>
+<li>required: false</li>
+</ul>
 <a href="./tasks/index.html"><h1>Tasks</h1></a>
 </body>
 </html>

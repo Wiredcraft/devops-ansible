@@ -6,56 +6,76 @@
 <body>
 <h1></h1>
 <h1 id="couchdb">Couchdb</h1>
-<p>  Some text doc</p>
-<hr>
-<p>max_document_size:
-    default: 4294967296
-    description: Maximum document size
-    type: integer
-    required: false
-port:
-    default: 5984
-    description: Listening port
-    type: integer
-    required: false
-    minimum: 1025
-    maximum: 65536
-bind_address:
-    default: &#39;127.0.0.1&#39;
-    description: The IP address to bind to.
-    type: string
-    required: false
-admin_user:
-    default: &#39;admin&#39;
-    description: Define the admin username
-    type: string
-    required: false
-admin_pass:
-    default: &#39;admin&#39;
-    description: Define the admin password
-    type: string
-    required: false
-enable:
-    default: &quot;1&quot;
-    description: Define whether CouchDB should start at bood time
-    type: integer
-    required: false
-running_user:
-    default: &#39;couchdb&#39;
-    description: Define the running user for the CouchDB process (it needs to exist)
-    type: string
-    required: false
-stdout_file:
-    default: &#39;/dev/null&#39;
-    description: Where to send the process STDOUT
-    type: string
-    required: false
-stderr_file:
-    default: &#39;/dev/null&#39;
-    description: Where to send the process STDERR
-    type: string
-    required: false</p>
+<p><a href="http://couchdb.apache.org/">Official site</a></p>
+<p>A Database for the Web</p>
+<p>CouchDB is a database that completely embraces the web. Store your data with JSON documents. Access your documents and query your indexes with your web browser, via HTTP. Index, combine, and transform your documents with JavaScript. CouchDB works well with modern web and mobile apps. You can even serve web apps directly out of CouchDB. And you can distribute your data, or your apps, efficiently using CouchDB’s incremental replication. CouchDB supports master-master setups with automatic conflict detection.</p>
+<p>CouchDB comes with a suite of features, such as on-the-fly document transformation and real-time change notifications, that makes web app development a breeze. It even comes with an easy to use web administration console. You guessed it, served up directly out of CouchDB! We care a lot about distributed scaling. CouchDB is highly available and partition tolerant, but is also eventually consistent. And we care a lot about your data. CouchDB has a fault-tolerant storage engine that puts the safety of your data first.</p>
 <h1>Configuration</h1>
+<h2>max_document_size</h2>
+<ul>
+<li>default: 4294967296</li>
+<li>description: Maximum document size</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h2>port</h2>
+<ul>
+<li>default: 5984</li>
+<li>description: Listening port</li>
+<li>type: integer</li>
+<li>required: false</li>
+<li>minimum: 1025</li>
+<li>maximum: 65536</li>
+</ul>
+<h2>bind_address</h2>
+<ul>
+<li>default: 127.0.0.1</li>
+<li>description: The IP address to bind to.</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>admin_user</h2>
+<ul>
+<li>default: admin</li>
+<li>description: Define the admin username</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>admin_pass</h2>
+<ul>
+<li>default: admin</li>
+<li>description: Define the admin password</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>enable</h2>
+<ul>
+<li>default: 1</li>
+<li>description: Define whether CouchDB should start at bood time</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h2>running_user</h2>
+<ul>
+<li>default: couchdb</li>
+<li>description: Define the running user for the CouchDB process (it needs to exist)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>stdout_file</h2>
+<ul>
+<li>default: /dev/null</li>
+<li>description: Where to send the process STDOUT</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>stderr_file</h2>
+<ul>
+<li>default: /dev/null</li>
+<li>description: Where to send the process STDERR</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
 <a href="./tasks/index.html"><h1>Tasks</h1></a>
 </body>
 </html>

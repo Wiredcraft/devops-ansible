@@ -7,131 +7,169 @@
 <h1></h1>
 <h1 id="openvpn">Openvpn</h1>
 <p>  Some text doc</p>
-<hr>
-<p>port: 
-    default: 1194
-    description: Listening port
-    type: integer
-    required: false
-    minimum: 1025
-    maximum: 65536
-proto:
-    default: udp
-    description: Protocol
-    type: string
-    enum:</p>
-<pre><code>    - udp
-    - tcp
-required: false
-</code></pre><p>dev:
-    default: tun
-    description: Device type
-    type: string
-    enum:</p>
-<pre><code>    - tun
-    - tap
-required: false
-</code></pre><p>network:
-    default: 10.8.0.0
-    description: Network IP range for clients
-    type: string
-    required: false
-netmask:
-    default: 255.255.255.0
-    description: Netmask to apply on IP range for clients
-    type: string
-    required: false
-dns1:
-    default: 208.67.222.222
-    description: DNS to propagate to the clients (default to OpenDNS)
-    type: string
-    required: false
-dns2:
-    default: 208.67.220.220
-    description: DNS to propagate to the clients (default to OpenDNS)
-    type: string
-    required: false
-cipher:
-    default: BF-CBC
-    description: cipher
-    type: string
-    enum:</p>
-<pre><code>    - BF-CBC
-    - AES-128-CBC
-    - DES-EDE3-CBC
-required: false
-</code></pre><p>max_client:
-    default: 100
-    description: Maximum number of simultaneous clients
-    type: integer
-    required: false
-user:
-    default: nobody
-    description: Running user of openvpn (must exist)
-    type: string
-    required: false
-group:
-    default: nogroup
-    description: Running group of openvpn (must exist)
-    type: string
-    required: false</p>
-<p>key:
-    key_size:
-        default: 1024
-        description: Increase key size if you are paranoid; it will slow down TLS negociation
-        type: integer
-        required: false
-    ca_expire:
-        default: 3650
-        description: CA validity period (in days)
-        type: integer
-        required: false
-    key_expire:
-        default: 3650
-        description: Key validity period (in days)
-        type: integer
-        required: false
-    country:
-        default: US
-        description: Key country
-        type: string
-        required: false
-    province:
-        default: CA
-        description: Key province
-        type: string
-        required: false
-    city:
-        default: SanFrancisco
-        description: Key city
-        type: string
-        required: false
-    org:
-        default: Fort-Funston
-        description: Key Organization
-        type: string
-        required: false
-    email:
-        default: admin@server
-        description: Key email
-        type: string
-        required: false
-    common_name:
-        default: server
-        description: Key Common Name (CN)
-        type: string
-        required: false
-    name:
-        default: server
-        description: Key name
-        type: string
-        required: false
-    org_unit:
-        default: server
-        description: Key Organization Unit (OU)
-        type: string
-        required: false</p>
 <h1>Configuration</h1>
+<h2>port</h2>
+<ul>
+<li>default: 1194</li>
+<li>description: Listening port</li>
+<li>type: integer</li>
+<li>required: false</li>
+<li>minimum: 1025</li>
+<li>maximum: 65536</li>
+</ul>
+<h2>proto</h2>
+<ul>
+<li>default: udp</li>
+<li>description: Protocol</li>
+<li>type: string</li>
+<li>enum: udp,tcp</li>
+<li>required: false</li>
+</ul>
+<h2>dev</h2>
+<ul>
+<li>default: tun</li>
+<li>description: Device type</li>
+<li>type: string</li>
+<li>enum: tun,tap</li>
+<li>required: false</li>
+</ul>
+<h2>network</h2>
+<ul>
+<li>default: 10.8.0.0</li>
+<li>description: Network IP range for clients</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>netmask</h2>
+<ul>
+<li>default: 255.255.255.0</li>
+<li>description: Netmask to apply on IP range for clients</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>dns1</h2>
+<ul>
+<li>default: 208.67.222.222</li>
+<li>description: DNS to propagate to the clients (default to OpenDNS)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>dns2</h2>
+<ul>
+<li>default: 208.67.220.220</li>
+<li>description: DNS to propagate to the clients (default to OpenDNS)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>cipher</h2>
+<ul>
+<li>default: BF-CBC</li>
+<li>description: cipher</li>
+<li>type: string</li>
+<li>enum: BF-CBC,AES-128-CBC,DES-EDE3-CBC</li>
+<li>required: false</li>
+</ul>
+<h2>max_client</h2>
+<ul>
+<li>default: 100</li>
+<li>description: Maximum number of simultaneous clients</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h2>user</h2>
+<ul>
+<li>default: nobody</li>
+<li>description: Running user of openvpn (must exist)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>group</h2>
+<ul>
+<li>default: nogroup</li>
+<li>description: Running group of openvpn (must exist)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h2>key</h2>
+<ul>
+<h3>key_size</h3>
+<ul>
+<li>default: 1024</li>
+<li>description: Increase key size if you are paranoid; it will slow down TLS negociation</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h3>ca_expire</h3>
+<ul>
+<li>default: 3650</li>
+<li>description: CA validity period (in days)</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h3>key_expire</h3>
+<ul>
+<li>default: 3650</li>
+<li>description: Key validity period (in days)</li>
+<li>type: integer</li>
+<li>required: false</li>
+</ul>
+<h3>country</h3>
+<ul>
+<li>default: US</li>
+<li>description: Key country</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h3>province</h3>
+<ul>
+<li>default: CA</li>
+<li>description: Key province</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h3>city</h3>
+<ul>
+<li>default: SanFrancisco</li>
+<li>description: Key city</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h3>org</h3>
+<ul>
+<li>default: Fort-Funston</li>
+<li>description: Key Organization</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h3>email</h3>
+<ul>
+<li>default: admin@server</li>
+<li>description: Key email</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h3>common_name</h3>
+<ul>
+<li>default: server</li>
+<li>description: Key Common Name (CN)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h3>name</h3>
+<ul>
+<li>default: server</li>
+<li>description: Key name</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+<h3>org_unit</h3>
+<ul>
+<li>default: server</li>
+<li>description: Key Organization Unit (OU)</li>
+<li>type: string</li>
+<li>required: false</li>
+</ul>
+</ul>
 <a href="./tasks/index.html"><h1>Tasks</h1></a>
 </body>
 </html>
