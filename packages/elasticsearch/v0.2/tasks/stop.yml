@@ -1,5 +1,5 @@
 ---
-- name: stop elasticsearch
+- name: Ensure ElasticSearch is stopped
   service:
     name=elasticsearch
     state=stopped

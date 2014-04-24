@@ -1,5 +1,5 @@
 ---
-- name: stop docker
+- name: Ensure Docker is stopped
   service:
     name=docker
     state=stopped

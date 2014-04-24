@@ -1,3 +1,5 @@
 ---
-- name: disable varnish
-  service: name=varnish enabled=no
+- name: Ensure Varnish is disabled
+  service: 
+    name=varnish
+    enabled=no

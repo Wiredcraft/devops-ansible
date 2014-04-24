@@ -1,14 +1,18 @@
 ---
 - name: Ensure mysql-client is installed
-  apt: pkg=mysql-client state=absent
+  apt: 
+    pkg=mysql-client
+    state=absent
 
 - name: Ensure mysql-server is installed
-  apt: pkg=mysql-server state=absent
+  apt: 
+    pkg=mysql-server
+    state=absent
 
 # Later need to add the backup step; or rely on the task system 
 # to schedule the backup task before.
 
-- name: ensure mysql configuration is absent
+- name: Ensure mysql configuration is absent
   file: 
     state=absent
     recurse=yes

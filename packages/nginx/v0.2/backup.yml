@@ -1,22 +1,22 @@
 ---
 # To improve
-- name: Ensure we have a backup folder
+- name: Ensure we have a backup folder for Nginx
   file:
     state=directory
     dest=/opt/backup/nginx
     owner=root
     group=root
 
-- name: Backup nginx configuration files
+- name: Backup Nginx configuration files
   command:
     tar czvf /opt/backup/nginx/config.tar.gz /etc/nginx
 
 # Can be large - investigate async task
-- name: Backup nginx log files
+- name: Backup Nginx log files
   command:
     tar czvf /opt/backup/nginx/log.tar.gz /var/log/nginx
 
 # Can be large - investigate async task
-- name: Backup web data
+- name: Backup Web data
   command:
     tar czvf /opt/backup/nginx/data.tar.gz /var/www

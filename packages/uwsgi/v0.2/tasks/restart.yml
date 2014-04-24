@@ -1,5 +1,5 @@
 ---
-- name: restart emperor
+- name: Restart Emperor
   service:
     name=emperor
     state=restarted

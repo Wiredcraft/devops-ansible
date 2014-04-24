@@ -1,5 +1,5 @@
 ---
-- name: disable couchbase
+- name: Ensure CouchBase is disabled
   service: 
     name=couchbase-server
     enabled=no

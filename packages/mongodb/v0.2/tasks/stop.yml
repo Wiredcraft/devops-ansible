@@ -1,3 +1,5 @@
 ---
-- name: stop mongodb
-  service: name=mongodb state=stopped
+- name: Ensure MongoDB is stopped
+  service: 
+    name=mongodb
+    state=stopped

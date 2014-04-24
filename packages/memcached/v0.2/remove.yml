@@ -1,11 +1,13 @@
 ---
-- name: Ensure memcache is absent
-  apt: pkg=memcached state=absent
+- name: Ensure Memcache is absent
+  apt: 
+    pkg=memcached
+    state=absent
 
 # Later need to add the backup step; or rely on the task system 
 # to schedule the backup task before.
 
-- name: ensure memcached configuration is absent
+- name: Ensure Memcached configuration is absent
   file: 
     state=absent
     path={{ item }}

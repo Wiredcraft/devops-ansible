@@ -1,6 +1,8 @@
 ---
-- name: Ensure php is installed
-  apt: pkg={{ item }} state=present
+- name: Ensure PHP is installed
+  apt: 
+    pkg={{ item }}
+    state=present
   with_items:
     - php5-common
     - php5-cli
@@ -12,41 +14,45 @@
     - php5-fpm
     - php-pear
 
-- name: Ensure php opscode
-  apt: pkg={{ item }} state=present
+- name: Ensure PHP opscode
+  apt: 
+    pkg={{ item }}
+    state=present
   with_items:
     - php-apc
   when:
     ansible_lsb.release | int <= 13 and ansible_lsb.codename != 'saucy'
 
-- name: Ensure extra php extensions via yum
+- name: Ensure extra PHP extensions via APT
   apt:
     name={{ item }}
     state=present
   with_items:
     php.extensions
   notify:
-    - restart php-fpm
-- name: Ensure extra php extensions via pecl
+    - Restart php5-fpm
+
+- name: Ensure extra PHP extensions via PECL
   shell:
     creates=/root/.php_{{ item }}
     printf "\n" | pecl install {{ item }} | tee -a /root/.php_{{ item }} && echo 'extension = {{ item }}.so' > /etc/php.d/{{ item }}.ini
   with_items:
     php.pecl_extensions
   notify:
-    - restart php-fpm
+    - Restart php5-fpm
 
 # Backup config
-- name: backup original config cli
+- name: Backup original config cli
   command: mv /etc/php5/cli/php.ini /etc/php5/cli/php.ini.orig 
            creates=/etc/php5/cli/php.ini.orig
            removes=/etc/php5/cli/php.ini
-- name: backup original config fpm
+
+- name: Backup original config fpm
   command: mv /etc/php5/fpm/php.ini /etc/php5/fpm/php.ini.orig 
            creates=/etc/php5/fpm/php.ini.orig 
            removes=/etc/php5/fpm/php.ini
 
-- name: ensure log folders for php5-fpm
+- name: Ensure log folders for php5-fpm
   file:
     state=directory
     path=/var/log/php-fpm
@@ -54,7 +60,7 @@
     group=root
     mode=755
 
-- name: ensure php.ini confguration
+- name: Ensure php.ini confguration
   template: 
     src=DEVOPS_PACKAGE/templates/php.ini.j2
     dest={{ item }}
@@ -65,18 +71,19 @@
     - /etc/php5/cli/php.ini
     - /etc/php5/fpm/php.ini
   notify:
-    - restart php5-fpm
+    - Restart php5-fpm
 
-- name: backup original config fpm
+- name: Backup original config of php5-fpm (step1)
   command: mv /etc/php5/fpm/php-fpm.conf /etc/php5/fpm/php-fpm.conf.orig 
            creates=/etc/php5/fpm/php-fpm.conf.orig 
            removes=/etc/php5/fpm/php-fpm.conf
-- name: backup original config fpm
+
+- name: Backup original config of php5-fpm (step2)
   command: mv /etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf /etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf.orig
            creates=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf.orig
            removes=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf
 
-- name: ensure php5-fpm configuration
+- name: Ensure php5-fpm configuration is present
   template:
     src=DEVOPS_PACKAGE/templates/php-fpm.conf.j2
     dest=/etc/php5/fpm/php-fpm.conf
@@ -84,9 +91,9 @@
     group=root
     mode=0644
   notify:
-    - restart php5-fpm
+    - Restart php5-fpm
 
-- name: ensure php5-fpm pool configuration
+- name: Ensure php5-fpm pool configuration is defined
   template:
     src=DEVOPS_PACKAGE/templates/php-fpm_pool.conf.j2
     dest=/etc/php5/fpm/pool.d/{{ php.fpm.pool.name }}.conf
@@ -94,9 +101,9 @@
     group=root
     mode=0644
   notify:
-    - restart php5-fpm
+    - Restart php5-fpm
 
-- name: ensure php-apc confguration
+- name: Ensure php-apc confguration
   template: 
     src=DEVOPS_PACKAGE/templates/apc.ini.j2
     dest=/etc/php5/conf.d/apc.ini
@@ -104,7 +111,7 @@
     group=root
     mode=0644
   notify: 
-    - restart php5-fpm
+    - Restart php5-fpm
   when:
     ansible_lsb.release | int <= 13 and ansible_lsb.codename != 'saucy'
 

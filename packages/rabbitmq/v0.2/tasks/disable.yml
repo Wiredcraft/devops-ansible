@@ -1,5 +1,5 @@
 ---
-- name: disable rabbitmq
+- name: Ensure RabbitMQ is disabled
   service: 
     name=rabbitmq-server
     enabled=no

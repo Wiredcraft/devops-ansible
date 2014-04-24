@@ -1,3 +1,5 @@
 ---
-- name: start memcached
-  service: name=memcached state=started
+- name: Ensure Memcached is running
+  service: 
+    name=memcached
+    state=started

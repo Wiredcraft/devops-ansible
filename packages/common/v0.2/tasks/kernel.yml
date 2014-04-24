@@ -2,14 +2,14 @@
 # file: common/tasks/kernel.yml
 
 # Ensure users
-- name: Ensure we set swappiness to 0
+- name: Ensure swappiness is set to 0
   sysctl: 
     name=vm.swappiness
     value=0
     reload=yes
     state=present
 
-- name: Ensure we set nofile to 64K
+- name: Ensure limits nofile is set to 64K
   file: 
     src=DEVOPS_PACKAGE/files/limits.nofile.conf
     dest=/etc/limits.d/nofile.conf

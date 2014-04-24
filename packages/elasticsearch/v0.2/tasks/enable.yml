@@ -1,5 +1,5 @@
 ---
-- name: enable elasticsearch
+- name: Ensure ElasticSearch is Enabled
   service: 
     name=elasticsearch
     enabled=yes

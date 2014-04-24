@@ -1,22 +1,22 @@
 ---
-- name: Ensure docker repo GPG key
+- name: Ensure Docker repo GPG key is present
   apt_key:
     url=http://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x36A1D7869245C8950F966E92D8576A8BA88D21E9
     state=present
 
-- name: Ensure docker repo is installed
+- name: Ensure Docker repo is installed
   apt_repository:
     repo='deb http://get.docker.io/ubuntu docker main'
     state=present
 
-- name: Ensure docker is installed
+- name: Ensure Docker is installed
   apt:
     name=lxc-docker
     state=present
     update_cache=yes
   notify: enable docker
 
-- name: Ensure linux kernel optimization for docker
+- name: Ensure linux kernel optimization for Docker are present
   apt:
     name={{ item }}
     state=present
@@ -27,7 +27,7 @@
   when:
     ansible_lsb.major_release|int >= 13
 
-- name: Ensure linux kernel optimization for docker
+- name: Ensure linux kernel optimization for Docker are present
   apt:
     name={{ item }}
     state=present
@@ -45,21 +45,21 @@
   when:
     kernel_updated_13.changed or kernel_updated_12.changed
 
-- name: wait for the server to go down (reboot)
+- name: Wait for the server to go down (reboot)
   sudo: false
   local_action: 
     wait_for host={{ inventory_hostname }} port=22 state=stopped
   when: 
     kernel_updated_13.changed or kernel_updated_12.changed
 
-- name: wait for the server to come up
+- name: Wait for the server to come up
   sudo: false
   local_action: 
     wait_for host={{ inventory_hostname }} port=22 delay=30
   when: 
     kernel_updated_13.changed or kernel_updated_12.changed
 
-- name: Ensure users part of the docker group
+- name: Ensure the users are part of the docker group
   user:
     name={{ item }}
     groups=docker

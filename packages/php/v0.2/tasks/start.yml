@@ -1,3 +1,5 @@
 ---
-- name: start php5-fpm
-  service: name=php5-fpm state=started
+- name: Ensure php5-fpm is running
+  service: 
+    name=php5-fpm
+    state=started

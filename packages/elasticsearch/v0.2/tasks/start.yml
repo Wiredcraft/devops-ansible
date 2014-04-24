@@ -1,5 +1,5 @@
 ---
-- name: start elasticsearch
+- name: Ensure ElasticSearch is running
   service: 
     name=elasticsearch
     state=started

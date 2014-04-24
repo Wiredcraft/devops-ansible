@@ -24,7 +24,7 @@
 
 - name: Ensure VCS tools are installed
   apt: 
-    name={{ item }} 
+    name={{ item }}
     state=installed
   with_items:
     - subversion
@@ -45,7 +45,7 @@
   notify: restart postfix
 
 # Ensure some of the dev tools are present
-- name: Ensure dev tools
+- name: Ensure development tools are present
   apt:
     name={{ item }}
     state=present

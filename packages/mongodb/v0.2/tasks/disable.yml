@@ -1,3 +1,5 @@
 ---
-- name: disable mongodb
-  service: name=mongodb enabled=no
+- name: Ensure MongoDB is disabled
+  service: 
+    name=mongodb
+    enabled=no

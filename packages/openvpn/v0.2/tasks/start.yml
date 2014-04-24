@@ -1,3 +1,5 @@
 ---
-- name: start openvpn
-  service: name=openvpn state=started
+- name: Ensure OpenVPN is running
+  service: 
+    name=openvpn
+    state=started

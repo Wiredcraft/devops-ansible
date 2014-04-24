@@ -1,37 +1,37 @@
 ---
 - name: Ensure mongodb is installed
   apt: pkg=mongodb state=present
-  notify: enable mongodb
+  notify: Ensure MongoDB is enabled
 
 # Ensure config
-- name: ensure the mongodb config file
+- name: Ensure the MongoDB default file is present
   template:
     src=DEVOPS_PACKAGE/templates/default_mongodb.j2
     dest=/etc/default/mongodb
     owner=root
     group=root
     mode=0644
-  notify: restart mongodb
+  notify: Restart MongoDB
 
 # Ensure config
-- name: ensure the mongodb config file
+- name: Ensure the MongoDB config file is present
   template:
     src=DEVOPS_PACKAGE/templates/mongodb.conf.j2
     dest=/etc/mongodb.conf
     owner=root
     group=root
     mode=0644
-  notify: restart mongodb
+  notify: Restart MongoDB
 
 # Ensure config
-- name: ensure the mongodb upstart script
+- name: Ensure the MongoDB upstart script is present
   template:
     src=DEVOPS_PACKAGE/templates/upstart_mongodb.conf.j2
     dest=/etc/init/mongodb.conf
     owner=root
     group=root
     mode=0644
-  notify: restart mongodb
+  notify: Restart MongoDB
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml

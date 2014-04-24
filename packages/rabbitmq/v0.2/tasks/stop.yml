@@ -1,5 +1,5 @@
 ---
-- name: stop rabbitmq
+- name: Ensure RabbitMQ is stopped
   service:
     name=rabbitmq-server
     state=stopped

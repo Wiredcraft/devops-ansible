@@ -1,14 +1,14 @@
 ---
-- name: Ensure nginx server-status is installed
+- name: Ensure Nginx server-status is installed
   copy: 
     src=DEVOPS_PACKAGE/files/server-status 
     dest=/etc/nginx/sites-available/server-status
     owner=root
     group=root
     mode=0644
-  notify: reload nginx
+  notify: Reload Nginx
 
-- name: Ensure nginx server-status site is enabled
+- name: Ensure Nginx server-status site is enabled
   file: 
     state=link
     src=/etc/nginx/sites-available/server-status 

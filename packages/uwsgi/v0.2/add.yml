@@ -1,5 +1,5 @@
 ---
-- name: Ensure python-dev
+- name: Ensure python-dev is installed
   apt: 
     pkg=python-dev
     state=present
@@ -9,7 +9,7 @@
     name=uwsgi
     state=present
 
-- name: Ensure uwsgi_apps folder
+- name: Ensure uwsgi_apps config folder
   file: 
     dest=/etc/uwsgi
     owner=root
@@ -17,7 +17,7 @@
     state=directory
     mode=0755
 
-- name: ensure the upstart script
+- name: Ensure the Emperor upstart script
   copy:
     src=DEVOPS_PACKAGE/files/emperor.conf
     dest=/etc/init/emperor.conf

@@ -1,3 +1,5 @@
 ---
-- name: stop openvpn
-  service: name=openvpn state=stopped
+- name: Ensure OpenVPN is stopped
+  service: 
+    name=openvpn
+    state=stopped

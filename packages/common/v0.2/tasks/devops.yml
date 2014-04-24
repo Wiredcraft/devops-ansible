@@ -1,22 +1,22 @@
 ---
-- name: Ensure devops repo GPG key
+- name: Ensure devops repo GPG key are present
   apt_key:
     url=http://repo.wiredcraft.com/ubuntu/repo.wiredcraft.com.gpg.key
     state=present
 
-- name: Ensure devops repo
+- name: Ensure devops repo is available
   get_url:
     dest=/etc/apt/sources.list.d/
     url=http://repo.wiredcraft.com/ubuntu/repo_wiredcraft_com_{{ ansible_distribution_release }}.list
     mode=644
 
-- name: Ensure devops-etcd
+- name: Ensure devops-etcd is installed
   apt:
     name=devops-etcd
     state=present
     update_cache=yes
 
-- name: Ensure devops folders
+- name: Ensure devops folders (internal)
   file:
     state=directory
     path={{ item }}
@@ -27,7 +27,7 @@
   with_items:
     - /opt/devops/etc/profile.d
 
-- name: Ensure env file
+- name: Ensure devops environment script
   command:
     creates=/opt/devops/etc/profile.d/devops.sh
     touch /opt/devops/etc/profile.d/devops.sh
@@ -41,16 +41,16 @@
     group=root
     mode=777
 
-- name: Ensure etcd config file
+- name: Validate etcd config file
   lineinfile:
     dest=/etc/default/devops-etcd
     state=present
     regexp='^NODE_NAME={{ inventory_hostname }}'
     line='NODE_NAME={{ inventory_hostname }}'
     insertafter='# NODE_NAME='
-  notify: restart devops-etcd
+  notify: Restart devops-etcd
 
-- name: Enable devops-etcd script
+- name: Ennsure devops-etcd script is enabled
   service:
     name=devops-etcd
     enabled=yes

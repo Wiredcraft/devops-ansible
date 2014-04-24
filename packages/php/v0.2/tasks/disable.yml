@@ -1,3 +1,5 @@
 ---
-- name: disable php5-fpm
-  service: name=php5-fpm enabled=no
+- name: Ensure php5-fpm is disabled
+  service: 
+    name=php5-fpm
+    enabled=no

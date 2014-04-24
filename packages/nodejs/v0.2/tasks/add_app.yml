@@ -1,5 +1,5 @@
 ---
-- name: Add Forever application
+- name: Add forever application
   template:
     src=DEVOPS_PACKAGE/templates/forever_app.conf.j2
     dest=/etc/forever.d/{{ item.name }}.conf
@@ -9,4 +9,4 @@
   with_items:
     # - { name: myapp, root: /var/www/myapp, script: app.js, node_env: production, user: nobody, extra_env: "NODE_DEBUG=DEBUG SOME_ENV=OTHER" }
   notify:
-    - start forever
+    - Ensure forever is running

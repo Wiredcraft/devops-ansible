@@ -4,14 +4,17 @@
     repo='ppa:chris-lea/node.js'
     state=present
     update_cache=yes
+
 - name: Ensure NodeJS is installed
   apt: 
     pkg=nodejs
     state=present
+
 - name: Ensure NodeJS forever is installed
   npm:
     name=forever
     global=yes
+
 - name: Ensure custom npm modules are installed
   npm:
     name={{ item }}
@@ -19,6 +22,7 @@
   with_items:
     nodejs.packages
   ignore_errors: yes
+
 # Init script from: https://github.com/akuznecov/forever-initscript
 - name: Ensure NodeJS forever init script is installed
   copy:
@@ -28,14 +32,16 @@
     group=root
     mode=0755
   notify:
-    - enable forever
-- name: Ensure forever.d config script
+    - Ensure forever is enabled
+
+- name: Ensure forever.d config folder is present
   file:
     dest=/etc/forever.d
     state=directory
     owner=root
     group=root
     mode=0755
+
 - name: Ensure NodeJS forever example config file
   copy:
     src=DEVOPS_PACKAGE/files/example.conf.disabled
@@ -43,6 +49,7 @@
     owner=root
     group=root
     mode=0644
+
 - name: Ensure the log and pid folders for the forever apps
   file:
     dest={{ item }}

@@ -1,5 +1,5 @@
 ---
-- name: stop couchbase
+- name: Ensure CouchBase is stopped
   service: 
     name=couchbase-server
     state=stopped

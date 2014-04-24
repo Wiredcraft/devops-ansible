@@ -1,3 +1,5 @@
 ---
-- name: reload couchdb
-  service: name=couchdb state=reloaded
+- name: Reload CouchDB
+  service: 
+    name=couchdb
+    state=reloaded

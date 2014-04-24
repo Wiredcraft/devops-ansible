@@ -1,5 +1,5 @@
 ---
-- name: enable docker
+- name: Ensure Docker is enabled
   service: 
     name=docker
     enabled=yes

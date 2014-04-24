@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure mysql db
+- name: Ensure mysql database
   sudo: yes
   mysql_db:
     name={{ task.mysql.add_user_db.db }} 

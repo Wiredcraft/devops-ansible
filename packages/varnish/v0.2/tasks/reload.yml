@@ -1,3 +1,5 @@
 ---
-- name: reload varnish
-  service: name=varnish state=reloaded
+- name: Reload Varnish
+  service: 
+    name=varnish
+    state=reloaded

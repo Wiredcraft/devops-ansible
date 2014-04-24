@@ -1,4 +1,6 @@
 ---
-- name: stop nginx
+- name: Ensure Nginx is stopped
   sudo: yes
-  service: name=nginx state=stopped
+  service: 
+    name=nginx
+    state=stopped

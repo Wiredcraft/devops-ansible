@@ -3,26 +3,25 @@
 
 # Ensure troubleshooting tools
 
-- name: install python-apt
+- name: Ensure python-apt is installed
   shell: 
     creates=/home/devops/.ansible/python-apt
     /usr/bin/apt-get install -y python-apt && touch /home/devops/.ansible/python-apt
 
-- name: install dependencies for apt_repository
+- name: Ensure dependencies for apt_repository are installed
   apt: 
     name={{ item }}
     state=present
     update_cache=yes
   with_items:
     - python-software-properties
-    # should use pip for pycurl?
     - python-pycurl
 
-- name: Ensure proper locales
+- name: Ensure proper locales are generated
   shell:
     locale-gen en_US.UTF-8
 
-- name: Ensure locales are being used
+- name: Ensure locales are enabled
   lineinfile:
     dest=/etc/default/locale
     line='LC_ALL="en_US.UTF-8"'

@@ -1,45 +1,45 @@
 ---
-- name: Ensure couchdb repo is installed from PPA
+- name: Ensure CouchDB repo is installed from PPA
   apt_repository:
     repo='ppa:nilya/couchdb-1.3'
     state=present
 
-- name: Ensure couchdb is installed
+- name: Ensure CouchDB is installed
   apt: 
     name=couchdb
     state=present
     update_cache=yes
-  notify: enable couchdb
+  notify: Ensure CouchDB is enabled
 
 # Ensure config
-- name: ensure the couchdb default file
+- name: Ensure the CouchDB default file is present
   template:
     src=DEVOPS_PACKAGE/templates/default_couchdb.j2
     dest=/etc/default/couchdb
     owner=root
     group=root
     mode=0644
-  notify: restart couchdb
+  notify: Restart CouchDB
 
-- name: ensure the couchdb config file
+- name: Ensure the CouchDB config file is present
   template:
     src=DEVOPS_PACKAGE/templates/local.ini.j2
     dest=/etc/couchdb/local.ini
     owner={{ couchdb.running_user }}
     group={{ couchdb.running_user }}
     mode=0644
-  notify: restart couchdb
+  notify: Restart CouchDB
 
-- name: ensure couchdb admin user
+- name: Ensure CouchDB admin user
   template:
     src=DEVOPS_PACKAGE/templates/00_admins.tpl.ini.j2
     dest=/etc/couchdb/local.d/00_admins.tpl.ini
     owner={{ couchdb.running_user }}
     group={{ couchdb.running_user }}
     mode=0400
-  notify: restart couchdb
+  notify: Restart CouchDB
 
-- name: ensure couchdb admins placeholder
+- name: Ensure CouchDB admins placeholder
   copy:
     src=DEVOPS_PACKAGE/files/admins.ini
     dest=/etc/couchdb/local.d/admins.ini

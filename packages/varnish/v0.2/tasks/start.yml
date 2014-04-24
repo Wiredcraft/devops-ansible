@@ -1,3 +1,5 @@
 ---
-- name: start varnish
-  service: name=varnish state=started
+- name: Ensure Varnish is running
+  service: 
+    name=varnish
+    state=started

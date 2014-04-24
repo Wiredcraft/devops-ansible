@@ -1,3 +1,5 @@
 ---
-- name: stop memcached
-  service: name=memcached state=stopped
+- name: Ensure Memcached is stopped
+  service: 
+    name=memcached
+    state=stopped

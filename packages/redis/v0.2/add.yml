@@ -1,21 +1,23 @@
 ---
 - name: Ensure redis is installed
-  apt: pkg=redis-server state=present
-  notify: enable redis
+  apt: 
+    pkg=redis-server
+    state=present
+  notify: Ensure Redis is enabled
 
-- name: backup original redis config
+- name: Backup original redis config
   command: mv /etc/redis/redis.conf /etc/redis/redis.conf.orig 
            creates=/etc/redis/redis.conf.orig
            removes=/etc/redis/redis.conf
 
-- name: Ensure redis configuration
+- name: Ensure redis configuration is present
   template:
     src=DEVOPS_PACKAGE/templates/redis.conf.j2
     dest=/etc/redis/redis.conf
     owner=root
     group=root
     mode=0644
-  notify: restart redis
+  notify: Restart Redis
 
 - name: Touch extra redis config
   copy:

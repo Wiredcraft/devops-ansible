@@ -1,3 +1,5 @@
 ---
-- name: disable mysql
-  service: name=mysql enabled=no
+- name: Ensure MySQL is disabled
+  service: 
+    name=mysql
+    enabled=no

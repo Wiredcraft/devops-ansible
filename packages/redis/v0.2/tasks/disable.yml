@@ -1,3 +1,5 @@
 ---
-- name: disable redis
-  service: name=redis-server enabled=no
+- name: Ensure Redis is disabled
+  service: 
+    name=redis-server
+    enabled=no

@@ -1,3 +1,5 @@
 ---
-- name: stop mysql
-  service: name=mysql state=stopped
+- name: Ensure MySQL is stopped
+  service: 
+    name=mysql
+    state=stopped

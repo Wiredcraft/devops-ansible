@@ -1,15 +1,15 @@
 ---
-- name: Retrieve couchbase debian package
+- name: Retrieve CouchBase debian package
   get_url:
     url=http://packages.couchbase.com/releases/2.1.1/couchbase-server-community_x86_64_2.1.1.deb
     dest=/opt/
 
-- name: Install couchbase dependencies
+- name: Ensure CouchBase dependencies are installed
   apt:
     name=libssl0.9.8
     state=present
 
-- name: Install couchbase package
+- name: Ensure CouchBase is installed
   command:
     creates=/opt/couchbase
     dpkg -i /opt/couchbase-server-community_x86_64_2.1.1.deb

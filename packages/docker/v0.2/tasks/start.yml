@@ -1,5 +1,5 @@
 ---
-- name: start docker
+- name: Ensure Docker is running
   service:
     name=docker
     state=started

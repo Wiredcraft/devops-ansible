@@ -1,3 +1,5 @@
 ---
-- name: disable zeromq
-  service: name=zeromq enabled=no
+- name: Ensure ZeroMQ is disabled 
+  service: 
+    name=zeromq
+    enabled=no

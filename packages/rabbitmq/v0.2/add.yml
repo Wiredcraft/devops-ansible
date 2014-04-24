@@ -1,28 +1,28 @@
 ---
-- name: Ensure rabbitmq repo GPG key
+- name: Ensure RabbitMQ repo GPG key is present
   apt_key:
     url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
     state=present
 
-- name: Ensure rabbitmq repo is installed
+- name: Ensure RabbitMQ repo is installed
   apt_repository:
     repo='deb http://www.rabbitmq.com/debian/ testing main'
     state=present
 
-- name: Ensure rabbitmq is installed
+- name: Ensure RabbitMQ is installed
   apt:
     name=rabbitmq-server
     state=present
     update_cache=yes
-  notify: enable rabbitmq
+  notify: Ensure RabbitMQ is enabled
 
-- name: Ensure rabbitmq plugins
+- name: Ensure RabbitMQ plugins
   rabbitmq_plugin:
     names={{ item }}
     state=enabled
   with_items:
     - rabbitmq_management
-  notify: restart rabbitmq
+  notify: Restart RabbitMQ
 
 - name: Fetch rabbitmq_management plugin script
   get_url:

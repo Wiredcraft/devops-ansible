@@ -1,3 +1,5 @@
 ---
-- name: enable openvpn
-  service: name=openvpn enabled=yes
+- name: Ensure OpenVPN is enabled
+  service: 
+    name=openvpn
+    enabled=yes

@@ -1,3 +1,5 @@
 ---
-- name: stop varnish
-  service: name=varnish state=stopped
+- name: Ensure Varnish is stopped
+  service: 
+    name=varnish
+    state=stopped

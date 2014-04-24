@@ -1,15 +1,13 @@
 ---
-- name: Ensure add-apt-repository
-  apt: name=python-software-properties state=present
+- name: Ensure ZeroMQ ppa repo
+  apt_repository: 
+    repo=ppa:chris-lea/zeromq
 
-- name: Ensure 0mq ppa repo
-  apt_repository: repo=ppa:chris-lea/zeromq
-
-- name: Ensure updated apt repo
-  apt: update_cache=yes
-
-- name: Ensure zeromq is installed
-  apt: name={{ item }} state=present
+- name: Ensure ZeroMQ is installed
+  apt: 
+    name={{ item }}
+    state=present
+    update_cache=yes
   with_items:
     - libzmq3
     - libzmq3-dev 

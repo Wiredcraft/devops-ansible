@@ -1,3 +1,5 @@
 ---
-- name: enable memcached
-  service: name=memcached enabled=yes
+- name: Ensure Memcached is enabled
+  service: 
+    name=memcached
+    enabled=yes

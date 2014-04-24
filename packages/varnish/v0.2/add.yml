@@ -1,17 +1,19 @@
 ---
-- name: Ensure varnish is installed
-  apt: pkg=varnish state=present
-  notify: enable varnish
+- name: Ensure Varnish is installed
+  apt: 
+    pkg=varnish 
+    state=present
+  notify: Ensure Varnish is enabled
 
 # Ensure config
-- name: ensure the varnish default file
+- name: Ensure the Varnish default file
   template:
     src=DEVOPS_PACKAGE/templates/default_varnish.j2
     dest=/etc/default/varnish
     owner=root
     group=root
     mode=0644
-  notify: restart varnish
+  notify: Restart Varnish
 
 # 
 # We'll play later with defining the rewrite rules / drupal etc..

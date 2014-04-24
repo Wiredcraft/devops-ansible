@@ -1,5 +1,5 @@
 ---
-- name: start forever
+- name: Ensure forever is running
   service: 
     name=forever
     state=started

@@ -1,11 +1,13 @@
 ---
-- name: Ensure varnish is absent
-  apt: pkg=varnish state=absent
+- name: Ensure Varnish is absent
+  apt: 
+    pkg=varnish
+    state=absent
 
 # Later need to add the backup step; or rely on the task system 
 # to schedule the backup task before.
 
-- name: ensure varnish configuration is absent
+- name: Ensure Varnish configuration is absent
   file: 
     state=absent
     recurse=yes

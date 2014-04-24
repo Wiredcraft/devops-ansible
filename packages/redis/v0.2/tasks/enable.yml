@@ -1,3 +1,5 @@
 ---
-- name: enable redis
-  service: name=redis-server enabled=yes
+- name: Ensure Redis is enabled
+  service: 
+    name=redis-server
+    enabled=yes

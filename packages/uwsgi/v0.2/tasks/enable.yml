@@ -1,5 +1,5 @@
 ---
-- name: enable emperor
+- name: Ensure Emperor is enabled
   service:
-    name=emperpr
+    name=emperor
     enabled=yes

@@ -1,3 +1,5 @@
 ---
-- name: start mysql
-  service: name=mysql state=started
+- name: Ensure MySQL is runnning
+  service: 
+    name=mysql
+    state=started

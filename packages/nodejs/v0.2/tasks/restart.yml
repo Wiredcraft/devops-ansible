@@ -1,5 +1,5 @@
 ---
-- name: restart forever
+- name: Restart forever
   service: 
     name=forever
     state=restarted

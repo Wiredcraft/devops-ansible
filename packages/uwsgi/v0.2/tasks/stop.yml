@@ -1,5 +1,5 @@
 ---
-- name: stop emperor
+- name: Ensure Emperor is stopped
   service: 
     name=emperor
     state=stopped

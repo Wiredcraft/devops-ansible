@@ -1,5 +1,5 @@
 ---
-- name: enable couchbase
+- name: Ensure CouchBase is enabled
   service: 
     name=couchbase-server
     enabled=yes

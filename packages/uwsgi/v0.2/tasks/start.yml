@@ -1,5 +1,5 @@
 ---
-- name: start emperor
+- name: Ensure Emperor is running
   service: 
     name=emperor
     state=started

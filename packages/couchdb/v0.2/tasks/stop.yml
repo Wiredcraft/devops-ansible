@@ -1,3 +1,5 @@
 ---
-- name: stop couchdb
-  service: name=couchdb state=stopped
+- name: Ensure CouchDB is stopped
+  service: 
+    name=couchdb
+    state=stopped

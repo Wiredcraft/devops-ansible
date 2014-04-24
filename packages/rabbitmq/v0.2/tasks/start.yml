@@ -1,5 +1,5 @@
 ---
-- name: start rabbitmq
+- name: Ensure RabbitMQ is running
   service:
     name=rabbitmq-server
     state=started

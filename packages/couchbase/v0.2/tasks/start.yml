@@ -1,5 +1,5 @@
 ---
-- name: start couchbase
+- name: Ensure CouchBase is running
   service: 
     name=couchbase-server
     state=started

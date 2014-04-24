@@ -1,6 +1,8 @@
 ---
 - name: Ensure php is absent
-  apt: pkg={{ item }} state=absent
+  apt: 
+    pkg={{ item }}
+    state=absent
   with_items:
       - php5-common
       - php5-cli
@@ -17,7 +19,7 @@
 # Later need to add the backup step; or rely on the task system 
 # to schedule the backup task before.
 
-- name: ensure php configuration is absent
+- name: Ensure php configuration is absent
   file: 
     state=absent
     recurse=yes

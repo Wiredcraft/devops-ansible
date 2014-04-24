@@ -1,3 +1,5 @@
 ---
-- name: enable mysql
-  service: name=mysql enabled=yes
+- name: Ensure MySQL is enabled
+  service: 
+    name=mysql
+    enabled=yes

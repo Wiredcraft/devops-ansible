@@ -1,3 +1,5 @@
 ---
-- name: stop php5-fpm
-  service: name=php5-fpm state=stopped
+- name: Ensure php5-fpm is stopped
+  service: 
+    name=php5-fpm
+    state=stopped

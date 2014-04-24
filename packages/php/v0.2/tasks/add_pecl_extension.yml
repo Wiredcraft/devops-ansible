@@ -1,9 +1,9 @@
 ---
-- name: Install pecl extension
+- name: Install PHP extension via PECL
   command:
     pecl -q install {{ task.php.add_pecl_extension.name }}
 
-- name: Add php extension to php config
+- name: Add PHP extension to PHP config
   template:
     src=DEVOPS_PACKAGE/templates/pecl_extension.ini.j2
     dest={{ item }}/{{ task.php.add_pecl_extension.name }}.ini
@@ -14,5 +14,5 @@
     - /etc/php5/fpm/conf.d/
     - /etc/php5/cli/conf.d/
   notify:
-    - restart php5-fpm
+    - Restart php5-fpm
     #- restart apache

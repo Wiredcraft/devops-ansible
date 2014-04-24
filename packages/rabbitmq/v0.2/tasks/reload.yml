@@ -1,5 +1,5 @@
 ---
-- name: reload rabbitmq
+- name: Reload RabbitMQ
   service:
     name=rabbitmq-server
     state=reloaded

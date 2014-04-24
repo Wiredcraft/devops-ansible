@@ -1,5 +1,5 @@
 ---
-- name: Prepare client folder
+- name: Prepare OpenVPN clients folder
   sudo: yes
   file:
     state=directory
@@ -10,7 +10,7 @@
   with_items:
     task.openvpn.add_user.users
 
-- name: Prepare openvpn client config
+- name: Prepare OpenVPN clients config
   sudo: yes
   template:
     src=DEVOPS_PACKAGE/templates/client.ovpn.j2
@@ -21,7 +21,7 @@
   with_items:
     task.openvpn.add_user.users
 
-- name: Copy script to generate openvpn server key
+- name: Prepare helper script to generate OpenVPN server key
   sudo: yes
   copy:
     src=DEVOPS_PACKAGE/files/create_openvpn_user.sh
@@ -30,7 +30,7 @@
     group=root
     mode=0644
 
-- name: Create OpenVPN user
+- name: Create OpenVPN users
   sudo: yes
   command:
     bash /root/create_openvpn_user.sh {{ item.name }}

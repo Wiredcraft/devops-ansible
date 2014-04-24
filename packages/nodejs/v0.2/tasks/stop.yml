@@ -1,5 +1,5 @@
 ---
-- name: stop forever
+- name: Ensure forever is stopped
   service: 
     name=forever
     state=stopped

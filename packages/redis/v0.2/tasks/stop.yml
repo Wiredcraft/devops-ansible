@@ -1,3 +1,5 @@
 ---
-- name: stop redis
-  service: name=redis-server state=stopped
+- name: Ensure Redis is stopped
+  service: 
+    name=redis-server
+    state=stopped

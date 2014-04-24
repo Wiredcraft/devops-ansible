@@ -1,3 +1,5 @@
 ---
-- name: enable zeromq
-  service: name=zeromq enabled=yes
+- name: Ensure ZeroMQ is enabled
+  service: 
+    name=zeromq
+    enabled=yes

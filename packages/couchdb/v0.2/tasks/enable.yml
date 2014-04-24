@@ -1,3 +1,5 @@
 ---
-- name: enable couchdb
-  service: name=couchdb enabled=yes
+- name: Ensure CouchDB is enabled
+  service: 
+    name=couchdb
+    enabled=yes

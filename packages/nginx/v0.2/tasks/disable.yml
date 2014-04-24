@@ -1,4 +1,6 @@
 ---
-- name: disable nginx
+- name: Ensure Nginx is disabled
   sudo: yes
-  service: name=nginx enabled=no
+  service: 
+    name=nginx
+    enabled=no

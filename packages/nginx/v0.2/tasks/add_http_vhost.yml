@@ -9,6 +9,7 @@
     owner=root
     group=root
     mode=644
+  notify: Restart Nginx
 
 - name: Enable HTTP vhost
   sudo: yes
@@ -19,6 +20,7 @@
     owner=root
     group=root
     mode=644
+  notify: Restart Nginx
 
 - name: Ensure the root folder exists
   sudo: yes
@@ -28,5 +30,3 @@
     owner=devops
     group=devops
     mode=755
-
-- include: DEVOPS_PACKAGE/tasks/restart.yml

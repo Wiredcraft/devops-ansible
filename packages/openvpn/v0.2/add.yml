@@ -1,9 +1,11 @@
 ---
-- name: Ensure openvpn is installed
-  apt: pkg=openvpn state=present
-  notify: enable openvpn
+- name: Ensure OpenVPN is installed
+  apt: 
+    pkg=openvpn
+    state=present
+  notify: Ensure OpenVPN is enabled
 
-- name: Ensure easy-rsa folder
+- name: Ensure OpenVPN easy-rsa folder
   file:
     state=directory
     recurse=yes
@@ -11,11 +13,11 @@
     owner=root
     group=root
 
-- name: Prepare easy-rsa
+- name: Prepare OpenVPN easy-rsa
   shell: 
     cp -a /usr/share/doc/openvpn/examples/easy-rsa/2.0/* /etc/openvpn/easy-rsa
 
-- name: Configure easy-rsa vars
+- name: Configure OpenVPN easy-rsa variables
   template:
     src=DEVOPS_PACKAGE/templates/easy-rsa_vars.j2
     dest=/etc/openvpn/easy-rsa/vars
@@ -23,7 +25,7 @@
     group=root
     mode=0644
 
-- name: Handle openssl config
+- name: Handle OpenSSL config for OpenVPN
   file:
     state=link
     src=/etc/openvpn/easy-rsa/openssl-1.0.0.cnf
@@ -31,7 +33,7 @@
     owner=root
     group=root
 
-- name: Copy script to generate openvpn server key
+- name: Copy script to generate OpenVPN server key
   copy:
     src=DEVOPS_PACKAGE/files/create_openvpn_server_key.sh
     dest=/root/create_openvpn_server_key.sh
@@ -39,25 +41,25 @@
     group=root
     mode=0644
 
-- name: Ensure openvpn server key
+- name: Ensure OpenVPN server key are present
   command:
     creates=/etc/openvpn/easy-rsa/keys/server.key
     bash /root/create_openvpn_server_key.sh
 
 # Ensure config
-- name: ensure the openvpn config file
+- name: Ensure the OpenVPN config file is present
   template:
     src=DEVOPS_PACKAGE/templates/server.conf.j2
     dest=/etc/openvpn/server.conf
     owner=root
     group=root
     mode=0644
-  notify: restart openvpn
+  notify: Restart OpenVPN
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml
 
-- name: Allow kernel forwarding
+- name: Allow kernel forwarding for OpenVPN traffic
   sysctl:
     name=net.ipv4.ip_forward
     value=1
