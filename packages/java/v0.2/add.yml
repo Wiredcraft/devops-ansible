@@ -1,3 +1,5 @@
 ---
 - name: Ensure Java (openjdk-7) is installed
-  apt: name=openjdk-7-jre-headless state=present
+  apt: 
+    name=openjdk-7-jre-headless
+    state=present
