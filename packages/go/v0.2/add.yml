@@ -1,0 +1,23 @@
+---
+- name: Ensure Golang package is present
+  get_url:
+    dest=/opt/
+    url=https://go.googlecode.com/files/go1.2.1.linux-amd64.tar.gz
+
+- name: Ensure Golang package is untar-ed
+  shell:
+    creates=/usr/local/go
+    tar -C /usr/local -xzf /opt/go1.2.1.linux-amd64.tar.gz
+
+# Expecting the user to create the $HOME/go folder by himself if needed
+- name: Ensure the environment variables for GO
+  lineinfile:
+    dest=/etc/profile
+    line={{ item }}
+    state=present
+  with_items:
+    # - 'export GOROOT=$HOME/go'
+    # - 'export PATH=/usr/local/go/bin:$PATH:$GOROOT/bin'
+    - 'export GOPATH=$HOME/go'
+    - 'export PATH=/usr/local/go/bin:$PATH:$GOPATH/bin'
+

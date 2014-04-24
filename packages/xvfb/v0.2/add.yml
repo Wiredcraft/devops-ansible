@@ -1,0 +1,17 @@
+---
+- name: Ensure Xvfb is installed
+  apt:
+    name=xvfb
+    state=present
+
+- name: Ensure Xvfb init script is installed
+  copy:
+    src=DEVOPS_PACKAGE/files/xvfb
+    dest=/etc/init.d/xvfb
+    owner=root
+    group=root
+    mode=775
+  notify: 
+    - Ensure Xvfb is enabled
+
+- include: DEVOPS_PACKAGE/tasks/start.yml

@@ -1,0 +1,5 @@
+---
+- name: Ensure Xvfb is running
+  service: 
+    name=xvfb
+    state=started

@@ -1,0 +1,5 @@
+---
+- name: Ensure Xvfb is enabled
+  service: 
+    name=xvfb
+    enabled=yes

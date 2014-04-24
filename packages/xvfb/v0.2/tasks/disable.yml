@@ -1,0 +1,5 @@
+---
+- name: Ensure Xvfb is disabled
+  service: 
+    name=xvfb
+    enabled=no

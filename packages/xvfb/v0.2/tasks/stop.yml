@@ -1,0 +1,5 @@
+---
+- name: Ensure Xvfb is stopped
+  service: 
+    name=xvfb
+    state=stopped
