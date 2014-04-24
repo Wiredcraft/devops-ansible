@@ -18,7 +18,7 @@
 - name: Ensure the environment variables for Dart
   lineinfile:
     dest=/etc/profile
-    line={{ item }}
+    line='{{ item }}'
     state=present
   with_items:
     - 'export DART_SDK=/opt/google/dartsdk'
