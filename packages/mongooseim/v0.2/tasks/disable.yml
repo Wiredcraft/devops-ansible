@@ -1,3 +1,5 @@
 ---
-- name: disable mongooseim
-  service: name=mongooseim enabled=no
+- name: Ensure MongooseIM is disabled
+  service: 
+    name=mongooseim
+    enabled=no

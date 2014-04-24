@@ -1,3 +1,5 @@
 ---
-- name: stop mongooseim
-  service: name=mongooseim state=stopped
+- name: Ensure MongooseIM is stopped
+  service: 
+    name=mongooseim
+    state=stopped

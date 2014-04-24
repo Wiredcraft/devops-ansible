@@ -1,3 +1,5 @@
 ---
-- name: reload mongooseim
-  service: name=mongooseim state=reloaded
+- name: Reload MongooseIM
+  service: 
+    name=mongooseim
+    state=reloaded

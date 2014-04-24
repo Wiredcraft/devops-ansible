@@ -1,3 +1,5 @@
 ---
-- name: enable mongooseim
-  service: name=mongooseim enabled=yes
+- name: Ensure MongooseIM is enabled
+  service: 
+    name=mongooseim
+    enabled=yes

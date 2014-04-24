@@ -1,7 +1,7 @@
 ---
-- name: Ensure mongooseim is installed
+- name: Ensure MongooseIM is installed
   apt: 
-    pkg=mongooseim 
+    pkg=mongooseim
     state=present
 
 # Ensure running
