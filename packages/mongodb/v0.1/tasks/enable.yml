@@ -1,3 +1,0 @@
----
-- name: enable mongodb
-  service: name=mongodb enabled=yes
