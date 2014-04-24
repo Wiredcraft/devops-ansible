@@ -3,52 +3,51 @@
 # - name: Ensure we have apt updated
 #   apt: update_cache=yes
 
-- name: Ensure apache is installed
-  apt: pkg=$item state=present
+- name: Ensure Apache is installed
+  apt: 
+    pkg={{ item }}
+    state=present
   with_items:
     - apache2
     - apache2-mpm-prefork
     - libapache2-mod-gnutls
-  notify: enable apache
-
-- name: Ensure php extension is installed
-  apt: pkg=libapache2-mod-php5 state=present
-  when_string: '"php" in "$group_names"'
+    - libapache2-mod-php5 
+  notify: Ensure Apache is enabled
 
 # Ensure config
-- name: ensure the apache modules are enabled
-  command: /usr/sbin/a2enmod $item
+- name: Ensure the Apache modules are enabled
+  command: /usr/sbin/a2enmod {{ item }}
   with_items:
     - env
     - rewrite
     - ssl
 
-- name: ensure the apache config file
+- name: Ensure the apache config file is present
   template: 
     src=DEVOPS_PACKAGE/templates/apache2.conf.j2
     dest=/etc/apache2/apache2.conf
     owner=root
     group=root
     mode=0644
-  notify: reload apache
+  notify: Reload Apache
 
-- name: ensure the apache config file
+- name: Ensure the Apache config file is present
   template: 
     src=DEVOPS_PACKAGE/templates/envvars.j2
     dest=/etc/apache2/envvars
     owner=root
     group=root
     mode=0644
-  notify: reload apache
+  notify: Reload Apache
 
 # Ensure config
-- name: backup original config apache2
+- name: Backup original config apache2
   command: 
     creates=/etc/php5/apache2/php.ini.orig
     removes=/etc/php5/apache2/php.ini
     mv /etc/php5/apache2/php.ini /etc/php5/apache2/php.ini.orig 
 
-- name: ensure php5 confguration apache2
+- name: Ensure php5 confguration apache2
   template: 
     src=${base}/services/php/templates/php.ini.j2
     dest=/etc/php5/apache2/php.ini
@@ -57,7 +56,7 @@
     mode=0644
   when_string: '"php" in "$group_names"'
   notify: 
-    - restart apache
+    - Restart Apache
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml

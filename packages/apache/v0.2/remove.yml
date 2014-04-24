@@ -1,11 +1,13 @@
 ---
 - name: Ensure apache is absent
-  apt: pkg=apache2 state=absent
+  apt: 
+    pkg=apache2
+    state=absent
 
 # Later need to add the backup step; or rely on the task system 
 # to schedule the backup task before.
 
-- name: ensure apache configuration is absent
+- name: Ensure apache configuration is absent
   file: 
     state=absent
     recurse=yes

@@ -1,3 +1,5 @@
 ---
-- name: disable apache
-  service: name=apache2 enabled=no
+- name: Ensure Apache is disabled
+  service: 
+    name=apache2
+    enabled=no

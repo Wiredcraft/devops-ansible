@@ -1,3 +1,5 @@
 ---
-- name: stop apache
-  service: name=apache2 state=stopped
+- name: Ensure Apache is stopped
+  service: 
+    name=apache2
+    state=stopped
