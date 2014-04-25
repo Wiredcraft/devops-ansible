@@ -4,6 +4,17 @@
 
 The world's most popular open source database
 
+## Configuration example
+
+```yaml
+services:
+  mysql: '*'
+configuration:
+  mysql:
+    bind_address: 0.0.0.0
+    innodb:
+      innodb_buffer_pool_size: 8G
+```
 ---
 port:
     default: 3306

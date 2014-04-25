@@ -4,6 +4,14 @@
 
 Couchbase Server is the leading enterprise NoSQL database for scalability, performance, and availability.
 
+## Configuration example
+
+```yaml
+services:
+  couchbase: '*'
+configuration:
+  couchbase: {}
+```
 ---
 {}
 ---

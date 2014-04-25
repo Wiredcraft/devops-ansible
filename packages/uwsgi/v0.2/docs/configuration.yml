@@ -14,6 +14,15 @@ The "WSGI" part in the name is a tribute to the namesake Python standard, as it 
 
 Versatility, performance, low-resource usage and reliability are the strengths of the project (and the only rules followed).
 
+## Configuration example
+
+```yaml
+services:
+  uwsgi: '*'
+configuration:
+  uwsgi:
+    user: root
+```
 ---
 user:
     default: mongodb

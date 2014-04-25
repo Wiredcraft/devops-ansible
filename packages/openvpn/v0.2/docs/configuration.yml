@@ -4,6 +4,16 @@
 
 SSL/TLS based user-space VPN. Supports Linux, Solaris, OpenBSD, FreeBSD, NetBSD, Mac OS X, and Windows 2000/XP.
 
+## Configuration example
+
+```yaml
+services:
+  openvpn: '*'
+configuration:
+  openvpn:
+      port: 1122
+      proto: 'tcp'
+```
 ---
 port:
     default: 1194

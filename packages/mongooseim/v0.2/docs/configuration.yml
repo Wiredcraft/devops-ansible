@@ -8,6 +8,14 @@ MongooseIM is truly innovative for building high volume scalable instant messagi
 
 In summary, MongooseIM provides high availability, ease of deployment, development, and reliability in production. Our solution is aimed at large, complex enterprise level deployments where real-time communication is critical for business success.
 
+## Configuration example
+
+```yaml
+services:
+  mongooseim: '*'
+configuration:
+  mongooseim: {}
+```
 ---
 {}
 ---

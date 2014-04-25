@@ -10,6 +10,17 @@ Apache httpd has been the most popular web server on the Internet since April 19
 
 The Apache HTTP Server ("httpd") is a project of The Apache Software Foundation.
 
+## Configuration example
+
+```yaml
+services:
+  apache: '*'
+configuration:
+  apache:
+    user: root
+    worker:
+      startservers: 1
+```
 ---
 user:
     default: www-data

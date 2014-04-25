@@ -6,6 +6,17 @@ PHP is a popular general-purpose scripting language that is especially suited to
 
 Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.
 
+## Configuration example
+
+```yaml
+services:
+  php: '*'
+configuration:
+  php:
+      safe_mode: 'off'
+      safe_mode_gid: 'off'
+```
+
 ---
 extensions: []
 pecl_extenstions: []

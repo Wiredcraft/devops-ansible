@@ -4,6 +4,16 @@
 
 Varnish is a web application accelerator. You install it in front of your web application and it will speed it up significantly.
 
+## Configuration example
+
+```yaml
+services:
+  varnish: '*'
+configuration:
+  varnish:
+    listen_port: 6666
+    listen_address: 0.0.0.0
+```
 ---
 vcl_conf:
     default: /etc/varnish/default.vcl

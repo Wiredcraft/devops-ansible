@@ -4,6 +4,16 @@
 
 High performance HTTP server.
 
+## Configuration example
+
+```yaml
+services:
+  nginx: '*'
+configuration:
+  nginx:
+      user: root
+      worker_processes: 1
+```
 ---
 user:
     default: www-data

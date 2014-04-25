@@ -12,6 +12,14 @@ Supports a huge number of developer platforms
 
 Open source and commercially supported
 
+## Configuration example
+
+```yaml
+services:
+  rabbitmq: '*'
+configuration:
+  rabbitmq: {}
+```
 ---
 {}
 ---

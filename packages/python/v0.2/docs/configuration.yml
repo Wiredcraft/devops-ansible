@@ -4,6 +4,15 @@
 
 Python is a programming language that lets you work quickly and integrate systems more effectively.
 
+## Configuration example
+
+```yaml
+services:
+  python: '*'
+configuration:
+  python:
+      packages: []
+```
 ---
 packages:
     default: []
