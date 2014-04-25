@@ -1,7 +1,17 @@
 # Dart
 
+[Official site](https://www.dartlang.org/)
+
 Add support for Dart
 
+## Configuration example
+
+```yaml
+services:
+  dart: '*'
+configuration:
+  dart: {}
+```
 ---
 {}
 ---

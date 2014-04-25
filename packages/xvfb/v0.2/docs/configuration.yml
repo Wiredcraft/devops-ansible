@@ -1,7 +1,17 @@
 # Xfvb
 
+[Official site](http://www.x.org/archive/X11R7.7/doc/man/man1/Xvfb.1.xhtml)
+
 Add support for Xfvb service; useful when trying to run karma tests (for example) in a headless server.
 
+## Configuration example
+
+```yaml
+services:
+  xvfb: '*'
+configuration:
+  xvfb: {}
+```
 ---
 {}
 ---

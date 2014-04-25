@@ -1,7 +1,17 @@
 # Golang
 
+[Official site](http://golang.org/)
+
 Enable Golang support
 
+## Configuration example
+
+```yaml
+services:
+  go: '*'
+configuration:
+  go: {}
+```
 ---
 {}
 ---
