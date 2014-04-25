@@ -8,6 +8,14 @@
 <h1 id="redis">Redis</h1>
 <p><a href="http://redis.io/">Official site</a></p>
 <p>Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.</p>
+<h2 id="configuration-example">Configuration example</h2>
+<pre><code class="lang-yaml">services:
+  rdis: &#39;*&#39;
+configuration:
+  redis:
+    port: 6379
+    bind: 0.0.0.0
+</code></pre>
 <h1>Configuration</h1>
 <h2>port</h2>
 <ul>

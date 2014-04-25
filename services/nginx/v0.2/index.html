@@ -8,6 +8,14 @@
 <h1 id="nginx">Nginx</h1>
 <p><a href="http://wiki.nginx.org/Main">Official site</a></p>
 <p>High performance HTTP server.</p>
+<h2 id="configuration-example">Configuration example</h2>
+<pre><code class="lang-yaml">services:
+  nginx: &#39;*&#39;
+configuration:
+  nginx:
+      user: root
+      worker_processes: 1
+</code></pre>
 <hr>
 <p>user:
     default: www-data

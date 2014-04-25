@@ -9,6 +9,14 @@
 <p><a href="http://www.php.net/">Official site</a></p>
 <p>PHP is a popular general-purpose scripting language that is especially suited to web development.</p>
 <p>Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.</p>
+<h2 id="configuration-example">Configuration example</h2>
+<pre><code class="lang-yaml">services:
+  php: &#39;*&#39;
+configuration:
+  php:
+      safe_mode: &#39;off&#39;
+      safe_mode_gid: &#39;off&#39;
+</code></pre>
 <h1>Configuration</h1>
 <h2>extensions</h2>
 <ul>

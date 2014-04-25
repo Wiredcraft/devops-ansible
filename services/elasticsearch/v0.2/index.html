@@ -8,6 +8,14 @@
 <h1 id="elasticsearch">Elasticsearch</h1>
 <p><a href="http://www.elasticsearch.org/">Official site</a></p>
 <p>Elasticsearch is a flexible and powerful open source, distributed, real-time search and analytics engine. Architected from the ground up for use in distributed environments where reliability and scalability are must haves, Elasticsearch gives you the ability to move easily beyond simple full-text search. Through its robust set of APIs and query DSLs, plus clients for the most popular programming languages, Elasticsearch delivers on the near limitless promises of search technology.</p>
+<h2 id="configuration-example">Configuration example</h2>
+<pre><code class="lang-yaml">services:
+  elasticsearch: &#39;*&#39;
+configuration:
+  elasticsearch:
+      bind_host: 0.0.0.0
+      http_port: 9200
+</code></pre>
 <h1>Configuration</h1>
 <h2>bind_host</h2>
 <ul>

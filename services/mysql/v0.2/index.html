@@ -8,6 +8,15 @@
 <h1 id="mysql">Mysql</h1>
 <p><a href="http://www.mysql.com/">Official site</a></p>
 <p>The world&#39;s most popular open source database</p>
+<h2 id="configuration-example">Configuration example</h2>
+<pre><code class="lang-yaml">services:
+  mysql: &#39;*&#39;
+configuration:
+  mysql:
+    bind_address: 0.0.0.0
+    innodb:
+      innodb_buffer_pool_size: 8G
+</code></pre>
 <h1>Configuration</h1>
 <h2>port</h2>
 <ul>

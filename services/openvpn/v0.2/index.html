@@ -8,6 +8,14 @@
 <h1 id="openvpn">Openvpn</h1>
 <p><a href="http://openvpn.net/">Official site</a></p>
 <p>SSL/TLS based user-space VPN. Supports Linux, Solaris, OpenBSD, FreeBSD, NetBSD, Mac OS X, and Windows 2000/XP.</p>
+<h2 id="configuration-example">Configuration example</h2>
+<pre><code class="lang-yaml">services:
+  openvpn: &#39;*&#39;
+configuration:
+  openvpn:
+      port: 1122
+      proto: &#39;tcp&#39;
+</code></pre>
 <hr>
 <p>port:
     default: 1194

@@ -11,6 +11,15 @@
 <p>The Apache HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows NT. The goal of this project is to provide a secure, efficient and extensible server that provides HTTP services in sync with the current HTTP standards.</p>
 <p>Apache httpd has been the most popular web server on the Internet since April 1996, and celebrated its 17th birthday as a project this February.</p>
 <p>The Apache HTTP Server (&quot;httpd&quot;) is a project of The Apache Software Foundation.</p>
+<h2 id="configuration-example">Configuration example</h2>
+<pre><code class="lang-yaml">services:
+  apache: &#39;*&#39;
+configuration:
+  apache:
+    user: root
+    worker:
+      startservers: 1
+</code></pre>
 <h1>Configuration</h1>
 <h2>user</h2>
 <ul>
