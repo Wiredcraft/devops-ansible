@@ -1,0 +1,7 @@
+# Xfvb
+
+Add support for Xfvb service; useful when trying to run karma tests (for example) in a headless server.
+
+---
+{}
+---

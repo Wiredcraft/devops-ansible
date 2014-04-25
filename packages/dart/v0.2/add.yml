@@ -1,0 +1,25 @@
+---
+- name: Ensure Dart ppa is present
+  apt_repository:
+    repo='ppa:hachre/dart'
+    state=present
+    update_cache=yes
+
+- name: Ensure Dart is installed
+  apt: 
+    pkg={{ item }}
+    state=present
+  with_items:
+    - dartvm
+    - dartsdk
+    - dartium
+
+# Expecting the user to create the $HOME/go folder by himself if needed
+- name: Ensure the environment variables for Dart
+  lineinfile:
+    dest=/etc/profile
+    line='{{ item }}'
+    state=present
+  with_items:
+    - 'export DART_SDK=/opt/google/dartsdk'
+    - 'export DARTIUM_BIN=/opt/google/dartium/chrome'
