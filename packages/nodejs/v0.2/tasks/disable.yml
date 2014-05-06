@@ -1,5 +1,6 @@
 ---
 - name: Ensure forever is disabled
+  sudo: yes
   service: 
     name=forever
     enabled=no

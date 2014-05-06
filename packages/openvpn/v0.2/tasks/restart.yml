@@ -1,5 +1,6 @@
 ---
 - name: Restart OpenVPN
+  sudo: yes
   service: 
     name=openvpn
     state=restarted

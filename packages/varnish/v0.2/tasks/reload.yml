@@ -1,5 +1,6 @@
 ---
 - name: Reload Varnish
+  sudo: yes
   service: 
     name=varnish
     state=reloaded

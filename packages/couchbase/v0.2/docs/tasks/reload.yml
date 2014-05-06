@@ -1,4 +1,13 @@
-# Task Reload
+# Reload
+
+Do a graceful restart of the CouchBase service, reloading the configuration.
+
+# Example in a devops task
+
+```yaml
+do:
+  - run: devops couchbase reload
+```
 
 ---
 {}

@@ -1,5 +1,6 @@
 ---
 - name: Ensure Redis is stopped
+  sudo: yes
   service: 
     name=redis-server
     state=stopped

@@ -1,5 +1,0 @@
----
-- name: Ensure ZeroMQ is enabled
-  service: 
-    name=zeromq
-    enabled=yes

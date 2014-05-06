@@ -1,5 +1,6 @@
 ---
 - name: Reload CouchBase
+  sudo: yes
   service: 
     name=couchbase-server
     state=reloaded

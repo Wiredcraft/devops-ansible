@@ -1,5 +1,6 @@
 ---
 - name: Reload MongooseIM
+  sudo: yes
   service: 
     name=mongooseim
     state=reloaded

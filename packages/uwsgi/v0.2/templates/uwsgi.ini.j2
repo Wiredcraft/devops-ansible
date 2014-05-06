@@ -1,15 +1,16 @@
+{% set task_options = task.uwsgi.add_app | default({})  %}
 [uwsgi]
 
 # App-related settings
 
 # the base directory (full path)
-chdir           = {{ uwsgi_prj_root | mandatory}}
+chdir           = {{ task_options.root | mandatory }}
 
 # Django's wsgi application
-module          = {{ uwsgi_module | mandatory}}
+module          = {{ task_options.module | mandatory }}
 
 # the virtualenv (full path)
-home            = {{ uwsgi_prj_root | mandatory}}
+home            = {{ task_options.module | mandatory }}
 
 # process-related settings
 
@@ -19,8 +20,8 @@ master          = true
 # maximum number of worker processes
 processes       = 4
 
-# socket          = /etc/uwsgi/{{ uwsgi_appname }}.sock
-http-socket      = :{{ uwsgi_port }}
+# socket          = /etc/uwsgi/{{ task_options.name }}.sock
+http-socket      = :{{ task_options.port }}
 
 # ... with appropriate permissions - may be needed
 # chmod-socket    = 664

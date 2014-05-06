@@ -1,5 +1,6 @@
 ---
 - name: Ensure ElasticSearch is running
+  sudo: yes
   service: 
     name=elasticsearch
     state=started

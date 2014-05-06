@@ -1,5 +1,6 @@
 ---
 - name: Restart ElasticSearch
+  sudo: yes
   service: 
     name=elasticsearch
     state=restarted

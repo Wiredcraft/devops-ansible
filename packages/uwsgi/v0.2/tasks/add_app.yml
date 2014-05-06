@@ -1,8 +1,12 @@
 ---
 - name: Add uwsgi app
+  sudo: yes
   template:
     src=DEVOPS_PACKAGE/templates/uwsgi.ini.j2
-    dest=/etc/uwsgi/{{ uwsgi_appname }}.ini
+    dest=/etc/uwsgi/{{ task.uwsgi.add_app.name }}.ini
     owner=root
     group=root
     mode=0755
+  notify:
+    - Ensure Emperor is enabled
+    - Restart Emperor

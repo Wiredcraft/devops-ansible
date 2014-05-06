@@ -1,5 +1,6 @@
 ---
 - name: Restart CouchBase
+  sudo: yes
   service: 
     name=couchbase-server
     state=restarted

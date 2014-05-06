@@ -1,5 +1,6 @@
 ---
 - name: Reload Memcached
+  sudo: yes
   service: 
     name=memcached
     state=reloaded

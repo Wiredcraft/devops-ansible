@@ -1,5 +1,6 @@
 ---
 - name: Ensure Varnish is disabled
+  sudo: yes
   service: 
     name=varnish
     enabled=no

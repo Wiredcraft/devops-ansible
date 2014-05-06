@@ -1,5 +1,6 @@
 ---
 - name: Restart MongooseIM
+  sudo: yes
   service: 
     name=mongooseim
     state=restarted

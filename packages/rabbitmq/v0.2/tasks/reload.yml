@@ -1,5 +1,6 @@
 ---
 - name: Reload RabbitMQ
+  sudo: yes
   service:
     name=rabbitmq-server
     state=reloaded

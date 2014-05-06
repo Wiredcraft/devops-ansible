@@ -1,5 +1,6 @@
 ---
 - name: Reload OpenVPN
+  sudo: yes
   service: 
     name=openvpn
     state=reloaded

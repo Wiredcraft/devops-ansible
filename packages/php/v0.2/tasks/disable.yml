@@ -1,5 +1,6 @@
 ---
 - name: Ensure php5-fpm is disabled
+  sudo: yes
   service: 
     name=php5-fpm
     enabled=no

@@ -24,6 +24,8 @@ configuration:
     user: root
 ```
 ---
+
+
 user:
     default: mongodb
     description: Mongodb running user.

@@ -1,5 +1,6 @@
 ---
 - name: Ensure Memcached is running
+  sudo: yes
   service: 
     name=memcached
     state=started

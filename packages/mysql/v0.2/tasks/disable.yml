@@ -1,5 +1,6 @@
 ---
 - name: Ensure MySQL is disabled
+  sudo: yes
   service: 
     name=mysql
     enabled=no

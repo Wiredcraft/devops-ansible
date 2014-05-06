@@ -1,5 +1,6 @@
 ---
 - name: Ensure MongoDB is stopped
+  sudo: yes
   service: 
     name=mongodb
     state=stopped

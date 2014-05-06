@@ -11,7 +11,8 @@ services:
   python: '*'
 configuration:
   python:
-      packages: []
+    packages:
+      - pyyaml
 ```
 ---
 packages:

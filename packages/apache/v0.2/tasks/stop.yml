@@ -1,5 +1,6 @@
 ---
 - name: Ensure Apache is stopped
+  sudo: yes
   service: 
     name=apache2
     state=stopped

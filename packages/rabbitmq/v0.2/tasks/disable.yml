@@ -1,5 +1,6 @@
 ---
 - name: Ensure RabbitMQ is disabled
+  sudo: yes
   service: 
     name=rabbitmq-server
     enabled=no

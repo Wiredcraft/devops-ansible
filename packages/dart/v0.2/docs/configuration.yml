@@ -9,8 +9,6 @@ Add support for Dart
 ```yaml
 services:
   dart: '*'
-configuration:
-  dart: {}
 ```
 ---
 {}

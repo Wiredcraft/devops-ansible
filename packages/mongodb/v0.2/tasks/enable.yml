@@ -1,5 +1,6 @@
 ---
 - name: Ensure MongoDB is enabled
+  sudo: yes
   service: 
     name=mongodb
     enabled=yes

@@ -1,5 +1,6 @@
 ---
 - name: Ensure ElasticSearch is disabled
+  sudo: yes
   service: 
     name=elasticsearch
     enabled=no

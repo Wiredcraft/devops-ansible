@@ -1,5 +1,6 @@
 ---
 - name: Ensure CouchBase is enabled
+  sudo: yes
   service: 
     name=couchbase-server
     enabled=yes

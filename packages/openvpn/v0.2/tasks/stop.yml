@@ -1,5 +1,6 @@
 ---
 - name: Ensure OpenVPN is stopped
+  sudo: yes
   service: 
     name=openvpn
     state=stopped

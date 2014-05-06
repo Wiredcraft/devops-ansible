@@ -1,5 +1,6 @@
 ---
 - name: Ensure RabbitMQ is stopped
+  sudo: yes
   service:
     name=rabbitmq-server
     state=stopped

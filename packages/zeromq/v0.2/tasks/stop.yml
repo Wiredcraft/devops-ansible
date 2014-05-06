@@ -1,5 +1,0 @@
----
-- name: Ensure ZeroMQ is stopped
-  service: 
-    name=zeromq
-    state=stopped

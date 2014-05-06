@@ -1,5 +1,6 @@
 ---
 - name: Ensure CouchDB is stopped
+  sudo: yes
   service: 
     name=couchdb
     state=stopped

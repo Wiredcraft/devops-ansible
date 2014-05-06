@@ -1,5 +1,6 @@
 ---
 - name: Ensure Emperor is running
+  sudo: yes
   service: 
     name=emperor
     state=started

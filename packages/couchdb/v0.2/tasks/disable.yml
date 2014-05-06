@@ -1,5 +1,6 @@
 ---
 - name: Ensure CouchDB is disabled
+  sudo: yes
   service: 
     name=couchdb
     enabled=no

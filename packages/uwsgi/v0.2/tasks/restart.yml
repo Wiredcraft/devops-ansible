@@ -1,5 +1,6 @@
 ---
 - name: Restart Emperor
+  sudo: yes
   service:
     name=emperor
     state=restarted

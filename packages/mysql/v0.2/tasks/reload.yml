@@ -1,5 +1,6 @@
 ---
 - name: Reload MySQL
+  sudo: yes
   service:
     name=mysql
     state=reloaded

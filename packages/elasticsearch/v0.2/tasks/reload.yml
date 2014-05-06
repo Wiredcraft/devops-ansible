@@ -1,5 +1,6 @@
 ---
 - name: Reload ElasticSearch
+  sudo: yes
   service: 
     name=elasticsearch
     state=reloaded

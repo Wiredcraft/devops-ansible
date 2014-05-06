@@ -1,5 +1,6 @@
 ---
 - name: Ensure Varnish is stopped
+  sudo: yes
   service: 
     name=varnish
     state=stopped

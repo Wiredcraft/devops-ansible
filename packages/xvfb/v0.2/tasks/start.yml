@@ -1,5 +1,6 @@
 ---
 - name: Ensure Xvfb is running
+  sudo: yes
   service: 
     name=xvfb
     state=started

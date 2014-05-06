@@ -1,6 +1,13 @@
-# Task Stop
+# Stop
 
-Stop CouchBase
+Stop the Couchbase service, it does not do anything if it is already stopped.
+
+# Example in a devops task
+
+```yaml
+do:
+  - run: devops couchbase stop
+```
 
 ---
 {}

@@ -1,5 +1,6 @@
 ---
 - name: Ensure CouchDB is running
+  sudo: yes
   service:
     name=couchdb
     state=started

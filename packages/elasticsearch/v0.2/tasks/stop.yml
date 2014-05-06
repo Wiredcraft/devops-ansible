@@ -1,5 +1,6 @@
 ---
 - name: Ensure ElasticSearch is stopped
+  sudo: yes
   service:
     name=elasticsearch
     state=stopped

@@ -1,5 +1,6 @@
 ---
 - name: Ensure Memcached is stopped
+  sudo: yes
   service: 
     name=memcached
     state=stopped

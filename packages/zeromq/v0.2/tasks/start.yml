@@ -1,5 +1,0 @@
----
-- name: Ensure ZeroMQ is running
-  service: 
-    name=zeromq
-    state=started

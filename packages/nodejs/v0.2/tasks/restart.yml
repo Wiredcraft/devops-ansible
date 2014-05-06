@@ -1,5 +1,6 @@
 ---
 - name: Restart forever
+  sudo: yes
   service: 
     name=forever
     state=restarted

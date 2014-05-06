@@ -1,0 +1,6 @@
+---
+- name: Ensure Emperor is disabled
+  sudo: yes
+  service:
+    name=emperor
+    enabled=no

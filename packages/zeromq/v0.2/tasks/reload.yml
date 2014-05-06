@@ -1,5 +1,0 @@
----
-- name: Reload ZeroMQ
-  service: 
-    name=zeromq
-    state=reloaded

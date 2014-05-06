@@ -1,5 +1,6 @@
 ---
 - name: Ensure OpenVPN is running
+  sudo: yes
   service: 
     name=openvpn
     state=started

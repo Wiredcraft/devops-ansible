@@ -1,5 +1,6 @@
 ---
 - name: Reload MongoDB
+  sudo: yes
   service: 
     name=mongodb
     state=reloaded

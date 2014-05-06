@@ -1,5 +1,6 @@
 ---
 - name: Reload Docker
+  sudo: yes
   service:
     name=docker
     state=reloaded

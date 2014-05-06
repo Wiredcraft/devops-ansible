@@ -1,5 +1,6 @@
 ---
 - name: Ensure Redis is disabled
+  sudo: yes
   service: 
     name=redis-server
     enabled=no

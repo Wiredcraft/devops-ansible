@@ -1,5 +1,6 @@
 ---
 - name: Ensure RabbitMQ is running
+  sudo: yes
   service:
     name=rabbitmq-server
     state=started

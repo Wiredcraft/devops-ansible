@@ -1,5 +1,6 @@
 ---
 - name: Ensure Docker is running
+  sudo: yes
   service:
     name=docker
     state=started

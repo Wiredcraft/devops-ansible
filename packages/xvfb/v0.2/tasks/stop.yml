@@ -1,5 +1,6 @@
 ---
 - name: Ensure Xvfb is stopped
+  sudo: yes
   service: 
     name=xvfb
     state=stopped

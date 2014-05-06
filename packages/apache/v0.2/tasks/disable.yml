@@ -1,5 +1,6 @@
 ---
 - name: Ensure Apache is disabled
+  sudo: yes
   service: 
     name=apache2
     enabled=no

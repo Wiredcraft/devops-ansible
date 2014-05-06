@@ -1,5 +1,6 @@
 ---
 - name: Ensure MySQL is stopped
+  sudo: yes
   service: 
     name=mysql
     state=stopped

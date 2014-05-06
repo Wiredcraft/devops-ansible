@@ -1,0 +1,10 @@
+---
+- name: Ensure custom gem modules are installed
+  sudo: yes
+  gem:
+    name={{ item }}
+    state=present
+    user_install=no
+  with_items:
+    ruby.gems
+  ignore_errors: yes

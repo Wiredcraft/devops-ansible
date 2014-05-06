@@ -1,5 +1,6 @@
 ---
 - name: Ensure CouchBase is stopped
+  sudo: yes
   service: 
     name=couchbase-server
     state=stopped

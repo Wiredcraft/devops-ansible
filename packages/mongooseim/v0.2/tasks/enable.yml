@@ -1,5 +1,6 @@
 ---
 - name: Ensure MongooseIM is enabled
+  sudo: yes
   service: 
     name=mongooseim
     enabled=yes

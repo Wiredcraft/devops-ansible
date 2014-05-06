@@ -1,5 +1,6 @@
 ---
 - name: Ensure Docker is enabled
+  sudo: yes
   service: 
     name=docker
     enabled=yes

@@ -6,11 +6,4 @@
   with_items:
     - rubygems
 
-- name: Ensure custom gem modules are installed
-  gem:
-    name={{ item }}
-    state=present
-    user_install=no
-  with_items:
-    ruby.gems
-  ignore_errors: yes
+- include: DEVOPS_PACKAGE/tasks/add_gems.yml

@@ -1,5 +1,6 @@
 ---
 - name: Ensure OpenVPN is disabled
+  sudo: yes
   service:
     name=openvpn
     enabled=no

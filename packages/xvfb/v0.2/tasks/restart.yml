@@ -1,5 +1,6 @@
 ---
 - name: Restart Xvfb
+  sudo: yes
   service: 
     name=xvfb
     state=restarted

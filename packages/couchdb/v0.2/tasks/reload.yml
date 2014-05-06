@@ -1,5 +1,6 @@
 ---
 - name: Reload CouchDB
+  sudo: yes
   service: 
     name=couchdb
     state=reloaded

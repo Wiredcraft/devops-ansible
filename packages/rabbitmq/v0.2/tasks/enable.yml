@@ -1,5 +1,6 @@
 ---
 - name: Ensure RabbitMQ is enabled
+  sudo: yes
   service: 
     name=rabbitmq-server
     enabled=yes
