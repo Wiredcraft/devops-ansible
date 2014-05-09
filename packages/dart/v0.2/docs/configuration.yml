@@ -1,15 +1,14 @@
-# Dart
-
-[Official site](https://www.dartlang.org/)
-
+---
+title: Dart
+layout: page
+links:
+    - title: Official website
+      url: https://www.dartlang.org/
+configuration: {}
+---
 Add support for Dart
 
 ## Configuration example
 
-```yaml
-services:
-  dart: '*'
-```
----
-{}
----
+    services:
+      dart: '*'

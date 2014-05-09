@@ -1,6 +1,0 @@
----
-- name: Ensure MongooseIM is disabled
-  sudo: yes
-  service: 
-    name=mongooseim
-    enabled=no

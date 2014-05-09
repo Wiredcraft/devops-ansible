@@ -1,9 +1,0 @@
----
-# Ensure not running
-- include: DEVOPS_PACKAGE/tasks/stop.yml
-
-- name: Ensure MongooseIM is absent
-  apt: 
-    pkg=mongooseim
-    state=absent
-

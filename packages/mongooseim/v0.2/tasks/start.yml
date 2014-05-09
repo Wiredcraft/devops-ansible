@@ -1,6 +1,0 @@
----
-- name: Ensure MongooseIM is running
-  sudo: yes
-  service: 
-    name=mongooseim
-    state=started

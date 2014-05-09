@@ -1,3 +1,0 @@
-# Task Restart
-
-Restart MongooseIM

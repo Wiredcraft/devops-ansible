@@ -1,3 +1,0 @@
-# Task Start
-
-Start MongooseIM

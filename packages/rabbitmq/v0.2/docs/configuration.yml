@@ -1,7 +1,11 @@
-# Rabbitmq
-
-[Official site](https://www.rabbitmq.com/)
-
+---
+title: RabbitMQ
+layout: page
+links:
+    - title: Official website
+      url: https://www.rabbitmq.com/
+configuration: {}
+---
 Robust messaging for applications
 
 Easy to use
@@ -14,12 +18,7 @@ Open source and commercially supported
 
 ## Configuration example
 
-```yaml
-services:
-  rabbitmq: '*'
-configuration:
-  rabbitmq: {}
-```
----
-{}
----
+    services:
+      rabbitmq: '*'
+    configuration:
+      rabbitmq: {}

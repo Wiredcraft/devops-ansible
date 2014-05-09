@@ -1,7 +1,11 @@
-# Uwsgi
-
-[Official site](http://projects.unbit.it/uwsgi/)
-
+---
+title: uWSGI
+layout: page
+links:
+    - title: Official website
+      url: http://projects.unbit.it/uwsgi/
+configuration: {}
+---
 The uWSGI project aims at developing a full stack for building hosting services.
 
 Application servers (for various programming languages and protocols), proxies, process managers and monitors are all implemented using a common api and a common configuration style.
@@ -16,19 +20,7 @@ Versatility, performance, low-resource usage and reliability are the strengths o
 
 ## Configuration example
 
-```yaml
-services:
-  uwsgi: '*'
-configuration:
-  uwsgi:
-    user: root
-```
----
-
-
-user:
-    default: mongodb
-    description: Mongodb running user.
-    type: string
-    required: false
----
+    services:
+      uwsgi: '*'
+    configuration:
+      uwsgi: {}

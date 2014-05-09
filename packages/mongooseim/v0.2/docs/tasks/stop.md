@@ -1,3 +1,0 @@
-# Task Stop
-
-Stop MongooseIM

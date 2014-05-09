@@ -1,6 +1,0 @@
----
-- name: Ensure MongooseIM is stopped
-  sudo: yes
-  service: 
-    name=mongooseim
-    state=stopped
