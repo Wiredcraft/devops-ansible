@@ -62,7 +62,7 @@ CouchDB comes with a suite of features, such as on-the-fly document transformati
 ## Configuration example
 
     services:
-      couchbdb: '*'
+      couchdb: '*'
     configuration:
       couchdb:
         bind_address: 0.0.0.0
