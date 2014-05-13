@@ -169,7 +169,7 @@ Apache httpd has been the most popular web server on the Internet since April 19
 
 The Apache HTTP Server ("httpd") is a project of The Apache Software Foundation.
 
-## Configuration example
+## Example
 
     services:
       apache: '*'
@@ -179,3 +179,5 @@ The Apache HTTP Server ("httpd") is a project of The Apache Software Foundation.
         prefork:
           maxclients: 20
           maxrequestsperchild: 1000
+
+Install Apache on the node, sets a timeout of 60 seconds on receive / send, set the prefork MPM to start at most 20 Apache child processes and ensure each Apache child process will handle at most 1000 requests before respawning.

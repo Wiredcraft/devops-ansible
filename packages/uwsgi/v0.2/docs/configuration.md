@@ -18,9 +18,11 @@ The "WSGI" part in the name is a tribute to the namesake Python standard, as it 
 
 Versatility, performance, low-resource usage and reliability are the strengths of the project (and the only rules followed).
 
-## Configuration example
+## Example
 
     services:
       uwsgi: '*'
-    configuration:
-      uwsgi: {}
+
+Add support for uWSGI on the node, installing Python Emperor to manage the applications.
+
+Note that the applications are managed via dedicated tasks.

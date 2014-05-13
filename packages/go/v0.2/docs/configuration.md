@@ -8,9 +8,9 @@ configuration: {}
 ---
 Enable Golang support
 
-## Configuration example
+## Example
 
     services:
       go: '*'
-    configuration:
-      go: {}
+
+Install Go on the node.

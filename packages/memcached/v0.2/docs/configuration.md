@@ -53,7 +53,7 @@ Memcached is an in-memory key-value store for small chunks of arbitrary data (st
 
 Memcached is simple yet powerful. Its simple design promotes quick deployment, ease of development, and solves many problems facing large data caches. Its API is available for most popular languages.
 
-## Configuration example
+## Example
 
     services:
       memcached: '*'
@@ -61,3 +61,5 @@ Memcached is simple yet powerful. Its simple design promotes quick deployment, e
       memcached:
         memory: 128
         port: 11212
+
+Install Memcached on the node, allocate 128MB of RAM to the service and make it listen on port TCP/11212

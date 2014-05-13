@@ -8,9 +8,9 @@ configuration: {}
 ---
 Add support for Xfvb (X Virtual FrameBuffer) service; useful when trying to run karma tests (for example) in a headless server.
 
-## Configuration example
+## Example
 
     services:
       xvfb: '*'
-    configuration:
-      xvfb: {}
+
+Install Xvfb on the node and ensure it is running on the node.

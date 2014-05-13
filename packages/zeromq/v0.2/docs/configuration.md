@@ -10,9 +10,9 @@ configuration: {}
 
 ØMQ is developed by a large community of contributors, founded by iMatix, which holds the domain name and trademarks. There are third-party bindings for many popular programming languages.
 
-## Configuration example
+## Example
 
     services:
       zeromq: '*'
-    configuration:
-      zeromq: {}
+
+Install the ZeroMQ libraries on the node.

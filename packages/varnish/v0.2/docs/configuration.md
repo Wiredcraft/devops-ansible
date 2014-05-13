@@ -85,7 +85,7 @@ configuration:
 ---
 Varnish is a web application accelerator. You install it in front of your web application and it will speed it up significantly.
 
-## Configuration example
+## Example
 
     services:
       varnish: '*'
@@ -95,3 +95,5 @@ Varnish is a web application accelerator. You install it in front of your web ap
         listen_address: 0.0.0.0
         storage_type: malloc
         storage_size: 512M
+
+Install Varnish on the node, making it listen on all interfaces (0.0.0.0) and on TCP/80. The cache is set to be held in RAM (Malloc) for a maximum size of 512MB.

@@ -16,9 +16,11 @@ Supports a huge number of developer platforms
 
 Open source and commercially supported
 
-## Configuration example
+## Example
 
     services:
       rabbitmq: '*'
     configuration:
       rabbitmq: {}
+
+Install RabbitMQ on the node, keeping the default configuraiton unchanged.

@@ -8,7 +8,9 @@ configuration: {}
 ---
 Add support for Dart
 
-## Configuration example
+## Example
 
     services:
       dart: '*'
+
+Add support for Dart lang on the node.

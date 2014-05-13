@@ -354,7 +354,7 @@ PHP is a popular general-purpose scripting language that is especially suited to
 
 Fast, flexible and pragmatic, PHP powers everything from your blog to the most popular websites in the world.
 
-## Configuration example
+## Example
 
     services:
       php: '*'
@@ -365,3 +365,5 @@ Fast, flexible and pragmatic, PHP powers everything from your blog to the most p
         upload_max_filesize: 32M
         apc:
           shm_size: 256M
+
+Install PHP on the node, setting the max limit of a php process to 64MB, allowing 32MB files upload, and giving 256MB of room to APC cache.

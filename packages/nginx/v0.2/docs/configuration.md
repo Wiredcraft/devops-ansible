@@ -79,10 +79,14 @@ configuration:
 ---
 High performance HTTP server.
 
-## Configuration example
+## Example
 
     services:
       nginx: '*'
     configuration:
       nginx:
         worker_processes: 1
+
+Install Nginx on the node, but spawn 1 worker only instead of 4 (default).
+
+Managing virtual hosts and domains is handled by dedicated tasks.

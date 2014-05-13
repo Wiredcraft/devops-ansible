@@ -285,9 +285,9 @@ configuration:
                 - On
                 - Off
 ---
-The world's most popular open source database
+The world's most popular open source relational database
 
-## Configuration example
+## Example
 
     services:
       mysql: '*'
@@ -296,3 +296,5 @@ The world's most popular open source database
         bind_address: 0.0.0.0
         innodb:
           innodb_buffer_pool_size: 8G
+
+Install MySQL on the node, make it listen on all interfaces (0.0.0.0) and allocate 8GB of RAM to the InnoDB buffer pool.

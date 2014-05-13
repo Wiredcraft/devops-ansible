@@ -266,11 +266,13 @@ configuration:
 ---
 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.
 
-## Configuration example
+## Example
 
     services:
       redis: '*'
     configuration:
       redis:
-        port: 6379
+        port: 16379
         bind: 0.0.0.0
+
+Install Redis on the node, making it listen on all interfaces (0.0.0.0) and on port TCP/16379 instead of TCP/6379 default.

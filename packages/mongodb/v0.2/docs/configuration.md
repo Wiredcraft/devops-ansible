@@ -56,7 +56,7 @@ configuration:
 ---
 MongoDB (from "humongous") is an open-source document database, and the leading NoSQL database. Written in C++.
 
-## Configuration example
+## Example
 
     services:
       mongodb: '*'
@@ -65,3 +65,5 @@ MongoDB (from "humongous") is an open-source document database, and the leading 
         bindip: 0.0.0.0
         port: 27018
         enable_rest: true
+
+Install MongoDB on the node, make the service listen on all interfaces (0.0.0.0), change the listening port to TCP/27018 (instead of 27017 by default), and enable the REST interface (allowing REST api calls against the Mongo database)

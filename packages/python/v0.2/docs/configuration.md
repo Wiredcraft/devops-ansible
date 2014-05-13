@@ -13,7 +13,7 @@ configuration:
 ---
 Python is a programming language that lets you work quickly and integrate systems more effectively.
 
-## Configuration example
+## Example
 
     services:
       python: '*'
@@ -21,3 +21,5 @@ Python is a programming language that lets you work quickly and integrate system
       python:
         packages:
           - pyyaml
+
+Add support for Python, allowing custom packages to be installed (globally) on the node.

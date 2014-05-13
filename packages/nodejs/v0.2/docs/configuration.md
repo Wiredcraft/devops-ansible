@@ -13,7 +13,7 @@ configuration:
 ---
 Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
-## Configuration example
+## Example
 
     services:
       nodejs: '*'
@@ -22,4 +22,6 @@ Node.js is a platform built on Chrome's JavaScript runtime for easily building f
         packages:
           - forever
           - bower
-          - grunt
+          - grunt-cli
+
+Install Node.js on the node, and install globally `forever`, `bower` and `grunt-cli` (as in `npm install -g xxx`).

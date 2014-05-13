@@ -59,10 +59,12 @@ CouchDB is a database that completely embraces the web. Store your data with JSO
 
 CouchDB comes with a suite of features, such as on-the-fly document transformation and real-time change notifications, that makes web app development a breeze. It even comes with an easy to use web administration console. You guessed it, served up directly out of CouchDB! We care a lot about distributed scaling. CouchDB is highly available and partition tolerant, but is also eventually consistent. And we care a lot about your data. CouchDB has a fault-tolerant storage engine that puts the safety of your data first.
 
-## Configuration example
+## Example
 
     services:
       couchdb: '*'
     configuration:
       couchdb:
         bind_address: 0.0.0.0
+
+Install CouchDB on the node and make the service listen on all interfaces (0.0.0.0)

@@ -131,7 +131,7 @@ configuration:
 ---
 SSL/TLS based user-space VPN. Supports Linux, Solaris, OpenBSD, FreeBSD, NetBSD, Mac OS X, and Windows 2000/XP.
 
-## Configuration example
+## Example
 
     services:
       openvpn: '*'
@@ -143,3 +143,9 @@ SSL/TLS based user-space VPN. Supports Linux, Solaris, OpenBSD, FreeBSD, NetBSD,
         key:
           key_size: 2048
           email: me@example.com
+
+Install OpenVPN on the node, configure the service so it listen on TCP/6543 (instead of regular UDP/1194), limit the number of concurrent clients to 10 and set the server's key to be 2048bits with a custom email in the certificate.
+
+Note that the default values of the configuration will satisfy most of the use and those customization are more for advanced users.
+
+The management of OpenVPN clients is handled by dedicated tasks.

@@ -8,9 +8,9 @@ configuration: {}
 ---
 Add java (openjdk) support to the platform, enabling java based services to be installed
 
-## Configuration example
+## Example
 
     services:
       java: '*'
-    configuration:
-      java: {}
+
+Install Java (openJDK) on the node.

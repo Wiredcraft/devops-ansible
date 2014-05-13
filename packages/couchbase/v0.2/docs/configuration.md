@@ -10,9 +10,11 @@ Couchbase Server is the leading enterprise NoSQL database for scalability, perfo
 
 CouchBase Community 2.1.1
 
-## Configuration example
+## Example
 
     services:
       couchbase: '*'
     configuration:
       couchbase: {}
+
+Install CouchBase Community on the node and perform no additional customization.
