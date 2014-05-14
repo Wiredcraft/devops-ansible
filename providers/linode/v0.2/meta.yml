@@ -1,7 +1,16 @@
 ---
+id: linode
+label: Linode
+version: "0.2"
+
+url_referral: https://www.linode.com/?r=a278f28e12e5e4e08adc41d8491a1988363e80d6
+url_apikey: https://manager.linode.com/profile/api
+url_provider: https://www.linode.com
+
 credentials:
     - label: Linode API key
       id: apiKey
+      private: true
 
 sizes:
     - label: Linode 1024 (8 Cores - 1024 MB - 24GB - 2TB)
@@ -48,7 +57,7 @@ images:
 image_ids:
     ubuntu12.04:
         default: 99
-    ubuntu12.10":
+    ubuntu12.10:
         default: 107
     ubuntu13.04:
         default: 111

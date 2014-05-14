@@ -1,9 +1,20 @@
 ---
+id: digitalocean
+label: Digital Ocean
+version: "0.2"
+
+url_referral: https://www.digitalocean.com/?refcode=3918a442dbd7
+url_apikey: https://cloud.digitalocean.com/api_access
+url_provider: https://www.digitalocean.com
+
 credentials:
     - label: Digital Ocean client ID
       id: clientId
+      private: false
     - label: Digital Ocean API key
       id: apiKey
+      private: true
+
 sizes:
     - label: 512MB (1 Core - 512 MB - 20GB SSD - 1TB)
       id: 66
@@ -28,16 +39,18 @@ sizes:
 
 # Some of the regions become unavailable as the capacity is over taken
 regions:
-    - label: New York
+    - label: New York 1
       id: 1
-    - label: Amsterdam
+    - label: Amsterdam 1
       id: 2
-    - label: San Francisco
+    - label: San Francisco 1
       id: 3
     - label: New York 2
       id: 4
     - label: Amsterdam 2
       id: 5
+    - label: Singapore 1
+      id: 6
 
 images:
     - label: Ubuntu 12.04.3 LTS 64bit

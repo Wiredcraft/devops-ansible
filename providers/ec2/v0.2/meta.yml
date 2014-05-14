@@ -1,9 +1,19 @@
 ---
+id: ec2
+label: Amazon AWS EC2
+version: "0.2"
+
+url_referral: ''
+url_apikey: 'https://console.aws.amazon.com/iam/home?#users'
+url_provider: https://aws.amazon.com
+
 credentials:
     - label: Amazon EC2 access key ID
       id: accessKeyId
+      private: false
     - label: Amazon EC2 secret key ID
       id: secretKeyId
+      private: true
 
 sizes:
     - label: T1 Micro (up to 2 ECUs - 1 Core - 613 MiB)
