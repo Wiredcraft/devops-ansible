@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: https://www.rabbitmq.com/
+tags:
+    - messagebus
 configuration: {}
 ---
 Robust messaging for applications

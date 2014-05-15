@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://openvpn.net/
+tags:
+    - app
 configuration: 
     port:
         default: 1194

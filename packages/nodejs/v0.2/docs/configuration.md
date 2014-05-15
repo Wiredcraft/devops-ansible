@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://nodejs.org/
+tags:
+    - language
 configuration: 
     packages: 
         description: List of packages to have globally installed on the server

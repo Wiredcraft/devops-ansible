@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: https://www.mongodb.org/
+tags:
+    - database
 configuration: 
     user:
         default: mongodb

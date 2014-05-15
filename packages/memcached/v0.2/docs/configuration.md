@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://memcached.org/
+tags:
+    - caching
 configuration: 
     user:
         default: memcache

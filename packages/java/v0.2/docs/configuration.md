@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://openjdk.java.net/
+tags:
+    - language
 configuration: {}
 ---
 Add java (openjdk) support to the platform, enabling java based services to be installed

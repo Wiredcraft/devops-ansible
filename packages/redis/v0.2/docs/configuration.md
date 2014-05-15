@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://redis.io/
+tags:
+    - database
 configuration: 
     port:
         default: 6379

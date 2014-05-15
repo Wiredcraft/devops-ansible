@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://wiki.nginx.org/Main
+tags:
+    - web
 configuration: 
     user:
         default: www-data

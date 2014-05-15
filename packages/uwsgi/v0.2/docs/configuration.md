@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://projects.unbit.it/uwsgi/
+tags:
+    - app
 configuration: {}
 ---
 The uWSGI project aims at developing a full stack for building hosting services.

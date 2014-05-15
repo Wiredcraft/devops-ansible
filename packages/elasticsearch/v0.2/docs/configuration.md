@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://www.elasticsearch.org/
+tags:
+    - database
 configuration: 
     bind_host:
         default: '127.0.0.1'

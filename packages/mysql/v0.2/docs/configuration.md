@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://www.mysql.com/
+tags:
+    - database
 configuration: 
     port:
         default: 3306

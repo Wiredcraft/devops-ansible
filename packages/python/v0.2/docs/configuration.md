@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: https://www.python.org/
+tags:
+    - language
 configuration: 
     packages:
         default: []

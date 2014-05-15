@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: https://www.ruby-lang.org/
+tags:
+    - language
 configuration: 
     gems:
         description: List of gems to install globally on the system

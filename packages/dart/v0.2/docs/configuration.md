@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: https://www.dartlang.org/
+tags:
+    - language
 configuration: {}
 ---
 Add support for Dart

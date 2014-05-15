@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://couchdb.apache.org/
+tags:
+    - database
 configuration: 
     max_document_size:
         default: 4294967296

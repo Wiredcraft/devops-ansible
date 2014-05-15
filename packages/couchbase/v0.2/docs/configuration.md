@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://www.couchbase.com/
+tags:
+    - database
 configuration: {}
 ---
 Couchbase Server is the leading enterprise NoSQL database for scalability, performance, and availability.

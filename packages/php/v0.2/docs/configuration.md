@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://php.net/
+tags:
+    - language
 configuration: 
     extensions: 
         description: List of extra php extensions installable via the regular OS package manager

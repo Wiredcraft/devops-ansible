@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: http://httpd.apache.org/
+tags:
+    - web
 configuration:
     user:
         default: www-data

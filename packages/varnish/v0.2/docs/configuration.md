@@ -4,6 +4,8 @@ layout: page
 links:
     - title: Official website
       url: https://www.varnish-cache.org/
+tags:
+    - caching
 configuration: 
     vcl_conf:
         default: /etc/varnish/default.vcl
