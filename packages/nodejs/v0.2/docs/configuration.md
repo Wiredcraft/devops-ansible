@@ -1,6 +1,8 @@
 ---
 title: Node.js
-layout: page
+template: page.html
+include: 
+  menu_manual: manual.html
 links:
     - title: Official website
       url: http://nodejs.org/
