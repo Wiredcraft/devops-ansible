@@ -3,6 +3,8 @@
   apt_repository:
     repo='ppa:nilya/couchdb-1.3'
     state=present
+  when:
+    ansible_lsb.major_release|int < 14
 
 - name: Ensure CouchDB is installed
   apt: 
