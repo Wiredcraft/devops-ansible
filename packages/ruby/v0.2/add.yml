@@ -5,5 +5,17 @@
     state=present
   with_items:
     - rubygems
+  when:
+    ansible_lsb.major_release|int < 14
+
+- name: Ensure Ruby is installed
+  apt: 
+    pkg={{ item }}
+    state=present
+  with_items:
+    - ruby
+  when:
+    ansible_lsb.major_release|int >= 14
+
 
 - include: DEVOPS_PACKAGE/tasks/add_gems.yml
