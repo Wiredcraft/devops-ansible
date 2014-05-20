@@ -53,19 +53,20 @@ regions:
       id: 6
 
 images:
-    - label: Ubuntu 12.04.3 LTS 64bit
+    - label: Ubuntu 12.04.4 LTS 64bit
       id: ubuntu12.04
-    - label: Ubuntu 12.10 64bit
-      id: ubuntu12.10
     - label: Ubuntu 13.10 64bit
       id: ubuntu13.10
+    - label: Ubuntu 14.04 LTS 64bit
+      id: ubuntu14.04
+
 
 # Images id changes frequently .. May need to rely on the API to fetch automatically
 # or get a proper way to capture errors in the logs
 image_ids:
     ubuntu12.04:
         default: 3101045
-    ubuntu12.10:
-        default: 3101891
     ubuntu13.10:
         default: 3101918
+    ubuntu14.04:
+        default: 3240036
