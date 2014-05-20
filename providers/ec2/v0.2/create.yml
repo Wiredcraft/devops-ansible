@@ -31,32 +31,45 @@
         from_port: -1
         to_port: -1
         cidr_ip: 0.0.0.0/0
-    state: present
-  register: resp_group
-
-# Add self EC2 group rules
-- name: Ensure Ec2 group - self rules
-  local_action:
-    module: ec2_group
-    ec2_access_key: "{{ ec2_access_key }}"
-    ec2_secret_key: "{{ ec2_secret_key }}"
-    name: "{{ ec2_security_group }}"
-    region: "{{ region }}"
-    description: "devo.ps security group"
-    rules:
       - proto: tcp
         from_port: 22
         to_port: 22
-        group_id: "{{ resp_group.group_id }}"
+        group_name: "{{ ec2_security_group }}"
       - proto: all
         from_port: 0
         to_port: 65536
-        group_id: "{{ resp_group.group_id }}"
+        group_id: "{{ ec2_security_group }}"
       - proto: icmp
         from_port: -1
         to_port: -1
-        group_id: "{{ resp_group.group_id }}"
+        group_id: "{{ ec2_security_group }}"
+
     state: present
+  register: resp_group
+
+# # Add self EC2 group rules
+# - name: Ensure Ec2 group - self rules
+#   local_action:
+#     module: ec2_group
+#     ec2_access_key: "{{ ec2_access_key }}"
+#     ec2_secret_key: "{{ ec2_secret_key }}"
+#     name: "{{ ec2_security_group }}"
+#     region: "{{ region }}"
+#     description: "devo.ps security group"
+#     rules:
+#       - proto: tcp
+#         from_port: 22
+#         to_port: 22
+#         group_id: "{{ resp_group.group_id }}"
+#       - proto: all
+#         from_port: 0
+#         to_port: 65536
+#         group_id: "{{ resp_group.group_id }}"
+#       - proto: icmp
+#         from_port: -1
+#         to_port: -1
+#         group_id: "{{ resp_group.group_id }}"
+#     state: present
 
 # Add server
 - name: Ensure Ec2 server
