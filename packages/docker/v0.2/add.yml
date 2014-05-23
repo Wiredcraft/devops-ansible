@@ -14,7 +14,7 @@
     name=lxc-docker
     state=present
     update_cache=yes
-  notify: enable docker
+  notify: Ensure Docker is enabled
 
 - name: Ensure linux kernel optimization for Docker are present
   apt:

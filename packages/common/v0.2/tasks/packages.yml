@@ -31,7 +31,7 @@
     - git
 
 # Ensure more... 
-- name: Ensure postfix is installed
+- name: Ensure Postfix is installed
   apt: 
     name=postfix
     state=installed
@@ -42,7 +42,7 @@
     regexp='^inet_interfaces'
     line='inet_interfaces = 127.0.0.1'
     state=present
-  notify: restart postfix
+  notify: Restart Postfix
 
 # Ensure some of the dev tools are present
 - name: Ensure development tools are present
