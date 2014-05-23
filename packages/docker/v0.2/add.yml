@@ -61,11 +61,11 @@
 
 - name: Ensure the users are part of the docker group
   user:
-    name={{ item }}
+    name={{ item.user_id }}
     groups=docker
     state=present
-  with_items:
-    - "{{ user }}"
-    - devops
+  with_flattened:
+    - "{{ linux_users }}"
+    - [{user_id: 'devops'}]
 
 - include: DEVOPS_PACKAGE/tasks/start.yml
