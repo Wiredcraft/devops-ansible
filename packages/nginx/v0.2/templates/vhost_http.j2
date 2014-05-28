@@ -60,7 +60,7 @@ server {
         try_files $uri $uri/ {% if nginx_vhost_php == 'on' %}/index.php?$args {% else %}/index.html{% endif %};
 
         {# TODO: more checks to define if we want to use `alias` or `root` #}
-        alias {{ route.to }};
+        {% if route.static is defined %}{{ route.static }}{% else %}root{% endif %} {{ route.to }};
     {% endif %}
 {% endif %}
 {% if route.custom is defined %}
