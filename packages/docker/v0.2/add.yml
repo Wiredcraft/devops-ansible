@@ -65,7 +65,7 @@
     groups=docker
     state=present
   with_flattened:
-    - "{{ linux_users }}"
+    - "{{ users }}"
     - [{user_id: 'devops'}]
 
 - include: DEVOPS_PACKAGE/tasks/start.yml

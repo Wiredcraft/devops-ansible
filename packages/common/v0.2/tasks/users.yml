@@ -4,10 +4,10 @@
   user: 
     name="{{ item.user_id }}"
     state=present
-    comment="Devo.ps {{ item.user_name }} user"
+    comment="Devo.ps {{ item.user_id }} user"
     home="/home/{{ item.user_id }}"
     shell=/bin/bash
-  with_items: linux_users
+  with_items: users
 
 - name: Ensure profile user has the correct authorized_keys
   authorized_key: 
@@ -16,7 +16,7 @@
     key='{{ item.1 }}'
     manage_dir=yes
   with_subelements:
-   - linux_users
+   - users
    - ssh_keys
 
 - name: Ensure profile user can sudo
@@ -26,5 +26,5 @@
     owner=root
     group=root
     mode=440
-  with_items: linux_users
+  with_items: users
 
