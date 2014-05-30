@@ -1,9 +1,0 @@
----
-# Ensure not running
-- include: DEVOPS_PACKAGE/tasks/stop.yml
-
-- name: Ensure mongooseim is removed
-  apt: 
-    pkg=mongooseim 
-    state=absent
-

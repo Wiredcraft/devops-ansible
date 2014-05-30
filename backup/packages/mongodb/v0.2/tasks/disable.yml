@@ -1,3 +1,0 @@
----
-- name: disable mongodb
-  service: name=mongodb enabled=no

@@ -1,5 +1,0 @@
----
-- name: disable forever
-  service: 
-    name=forever
-    enabled=no

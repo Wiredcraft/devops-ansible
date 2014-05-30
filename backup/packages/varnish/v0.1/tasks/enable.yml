@@ -1,3 +1,0 @@
----
-- name: enable varnish
-  service: name=varnish enabled=yes

@@ -6,7 +6,7 @@
 
 - name: Ensure ElasticSearch repo is installed
   apt_repository:
-    repo='deb http://packages.elasticsearch.org/elasticsearch/1.0/debian stable main'
+    repo='deb http://packages.elasticsearch.org/elasticsearch/1.1/debian stable main'
     state=present
 
 - name: Ensure ElasticSearch is installed
@@ -33,6 +33,12 @@
     group=root
     mode=0644
   notify: Restart ElasticSearch
+
+- name: Ensure the ElasticSearch Plugins are installed
+  shell:
+    plugin -install {{ item }}
+  with_items:
+    elasticsearch.plugins
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml

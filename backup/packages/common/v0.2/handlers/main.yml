@@ -1,5 +1,0 @@
----
-- name: restart devops-etcd
-  service: name=devops-etcd state=restarted
-
-- include: DEVOPS_PACKAGE/handlers/postfix.yml
