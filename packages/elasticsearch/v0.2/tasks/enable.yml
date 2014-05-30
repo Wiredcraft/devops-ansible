@@ -1,5 +1,5 @@
 ---
-- name: Ensure ElasticSearch is Enabled
+- name: Ensure ElasticSearch is enabled
   sudo: yes
   service: 
     name=elasticsearch
