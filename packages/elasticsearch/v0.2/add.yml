@@ -39,7 +39,7 @@
 
 - name: Ensure the ElasticSearch Plugins are installed
   shell:
-    plugin -install {{ item }}
+    /usr/share/elasticsearch/bin/plugin -install {{ item }}
   with_items:
     elasticsearch.plugins
 
