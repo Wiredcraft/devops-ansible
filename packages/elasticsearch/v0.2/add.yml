@@ -42,6 +42,7 @@
     /usr/share/elasticsearch/bin/plugin -install {{ item }}
   with_items:
     elasticsearch.plugins
+  ignore_errors: yes
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml
