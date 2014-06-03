@@ -40,6 +40,8 @@
     group={{ couchdb.running_user }}
     mode=0400
   notify: Restart CouchDB
+  when_string:
+    "{{ couchdb.insecure }} == false"
 
 - name: Ensure CouchDB admins placeholder
   copy:
@@ -49,6 +51,8 @@
     owner={{ couchdb.running_user }}
     group={{ couchdb.running_user }}
     mode=0640
+  when_string:
+    "{{ couchdb.insecure }} == false"
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml

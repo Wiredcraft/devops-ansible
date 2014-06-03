@@ -36,6 +36,11 @@ configuration:
         description: Define the admin password
         type: string
         required: false
+    insecure:
+        default: false
+        description: Allow insecure setup (no admin user)
+        type: boolean
+        required: true
     enable:
         default: "1"
         description: Define whether CouchDB should start at bood time
