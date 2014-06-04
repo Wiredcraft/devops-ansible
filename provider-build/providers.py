@@ -7,13 +7,9 @@ from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 
 def usage():
-    print '%s <destination_folder>' % sys.argv[0]
+    print '%s <destination_folder> [<config>]\n\n' % sys.argv[0]
     print '  <destination_folder> must already exist'
-
-config = os.path.join('.', 'config.json')
-if not os.path.exists(config):
-    print "Missing config file: %s" % config
-    sys.exit(1)
+    print '  <config> must exist (defaults to ./config.json)'
 
 if len(sys.argv) < 2:
     usage()
@@ -22,6 +18,15 @@ if len(sys.argv) < 2:
 destination = sys.argv[1]
 if not os.path.exists(destination) or not os.path.isdir(destination):
     usage()
+    sys.exit(1)
+
+if len(sys.argv) == 3:
+    config = sys.argv[2]
+else:
+    config = os.path.join('.', 'config.json')
+if not os.path.exists(config):
+    usage()
+    print "Missing config file: %s" % config
     sys.exit(1)
 
 with open(config) as c:
