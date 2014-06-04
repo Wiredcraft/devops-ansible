@@ -100,7 +100,7 @@ def _get_locations(driver):
         },
         {
             'id': 'sa-east-1',
-            'name': 'South America (São Paulo)',
+            'name': 'South America (Sao Paulo)',
             'country': 'Brazil'
         }
     ]
