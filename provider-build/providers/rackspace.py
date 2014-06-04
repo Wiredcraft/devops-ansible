@@ -63,12 +63,45 @@ def _get_locations(driver):
     '''
     Get all the available locations
     '''
-    results = []
-    locations = driver.list_locations()
-    for location in locations:
-        results.append({
-            'id': location.id,
-            'name': location.name,
-            'country': location.country
-        })
+    results = [
+        {
+            'id': 'dfw',
+            'name': 'Dallas (Texas)',
+            'country': 'US'
+        },
+        {
+            'id': 'ord',
+            'name': 'Chicago (Illinois)',
+            'country': 'US'
+        },
+        {
+            'id': 'iad',
+            'name': 'Northern Virginia',
+            'country': 'US'
+        },
+        {
+            'id': 'lon',
+            'name': 'London (UK)',
+            'country': 'UK'
+        },
+        {
+            'id': 'syd',
+            'name': 'Sydney (Australia)',
+            'country': 'Australia'
+        },
+        {
+            'id': 'hkg',
+            'name': 'Hong Kong (China)',
+            'country': 'China'
+        }
+    ]
+
+    # results = []
+    # locations = driver.list_locations()
+    # for location in locations:
+    #     results.append({
+    #         'id': location.id,
+    #         'name': location.name,
+    #         'country': location.country
+    #     })
     return results
