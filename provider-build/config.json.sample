@@ -1,0 +1,23 @@
+{
+    "providers": [
+        {
+            "type": "digital_ocean",
+            "client_id": "AAA",
+            "api_key": "BBB"
+        },
+        {
+            "type": "linode",
+            "api_key": "AAA"
+        },
+        {
+            "type": "rackspace",
+            "client_id": "AAA",
+            "api_key": "BBB"
+        },
+        {
+            "type": "ec2",
+            "client_id": "AAA",
+            "api_key": "BBB"
+        }
+    ]
+}
