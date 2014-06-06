@@ -40,7 +40,7 @@
     group={{ couchdb.running_user }}
     mode=0400
   notify: Restart CouchDB
-  when_string:
+  when:
     "{{ couchdb.insecure }} == false"
 
 - name: Ensure CouchDB admins placeholder
@@ -51,7 +51,7 @@
     owner={{ couchdb.running_user }}
     group={{ couchdb.running_user }}
     mode=0640
-  when_string:
+  when:
     "{{ couchdb.insecure }} == false"
 
 # Ensure running
