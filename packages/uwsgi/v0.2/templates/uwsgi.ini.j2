@@ -6,11 +6,13 @@
 # the base directory (full path)
 chdir           = {{ task_options.root | mandatory }}
 
-# Django's wsgi application
+# wsgi application
 module          = {{ task_options.module | mandatory }}
 
+{% if task_options.virtualenv %}
 # the virtualenv (full path)
-home            = {{ task_options.module | mandatory }}
+home            = {{ task_options.virtualenv }}
+{% endif %}
 
 # process-related settings
 
