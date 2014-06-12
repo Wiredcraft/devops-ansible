@@ -1,4 +1,21 @@
 ---
+- name: Ensure the virtualenvs folder exists
+  sudo: yes
+  file:
+    state=directory
+    path=/opt/virtualenvs
+    owner=devops
+    group=devops
+    mode=755
+  when: task.uwsgi.requirements_file
+
+- name: Ensure virtualenv
+  sudo: yes
+  pip:
+    requirements: {{ task.uwsgi.requirements_file }}
+    virtualenv: /opt/virtualenvs/devops_{{ task.uwsgi.add_app.name }}
+  when: task.uwsgi.requirements_file
+
 - name: Add uwsgi app
   sudo: yes
   template:
