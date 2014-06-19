@@ -54,7 +54,7 @@ for provider in conf.get('providers', []):
     print 'Getting %s...' % provider_type
     data = get(**provider)
 
-    with open(os.path.join(destination, provider_type +'.yml'), 'w') as f:
+    with open(os.path.join(destination, provider_type +'.md'), 'w') as f:
         data.update({'title': provider_type.replace('_', ' ')})
         data.update({'template': 'provider.html'})
         f.write(yaml.safe_dump(data, explicit_start=True, default_flow_style=False))

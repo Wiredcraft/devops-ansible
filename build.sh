@@ -27,34 +27,6 @@ python packages-build/packages.py packages $TMP_FOLDER/references/
 sudo pip install -r providers-build/requirements.txt
 python providers-build/providers.py $TMP_FOLDER/providers /home/devops/providers_config.json
 
-#
-# Prepare the providers' details iun devops-ansible
-#
-# cd provider-build
-# sudo pip install -r requirements.txt
-# python providers.py $TMP_FOLDER3 /home/devops/providers_config.json
-# for provider_file in $(ls $TMP_FOLDER3/*)
-# do  
-#   base=$(basename $provider_file \.yml)
-#   cp $provider_file $HERE/source/references/$base.md
-#   echo "
-# title: $base
-# template: provider.html
-# ---
-# " >> $HERE/source/references/$base.md
-# done
-
-
-#
-# Prepare the menu data file
-#
-# cd $HERE
-# python build/prepare_menu.py
-# make build
-
-# Copy build files
-# cp -a _site/* $TMP_FOLDER2
-
 # Stash changes to allow branch switch
 git stash
 git checkout gh-pages
