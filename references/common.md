@@ -74,12 +74,11 @@ Fetch value from etcd server and set it up as env var
 
 ---
 
-### users
-# Task Users
+### packages
+# Task Packages
 
 ---
 {}
-
 ---
 
 ### env
@@ -98,11 +97,12 @@ Fetch value from etcd server and set it up as env var
 
 ---
 
-### packages
-# Task Packages
+### users
+# Task Users
 
 ---
 {}
+
 ---
 
 ### git clone

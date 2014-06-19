@@ -408,10 +408,10 @@ Restart php-fpm
 
 Reload php-fpm config
 
-### stop
-# Task Stop
+### start
+# Task Start
 
-Stop php-fpm
+Start php-fpm
 
 ### add pecl extension
 # Task Add_pecl_extension
@@ -426,7 +426,7 @@ Add pecl extension
 
 ---
 
-### start
-# Task Start
+### stop
+# Task Stop
 
-Start php-fpm
+Stop php-fpm
