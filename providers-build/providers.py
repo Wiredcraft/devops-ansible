@@ -7,9 +7,10 @@ from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 
 def usage():
-    print '%s <destination_folder> [<config>]\n\n' % sys.argv[0]
+    print 'Usage: %s <destination_folder> [<config>]\n' % sys.argv[0]
     print '  <destination_folder> must already exist'
     print '  <config> must exist (defaults to ./config.json)'
+    print ''
 
 if len(sys.argv) < 2:
     usage()
@@ -54,5 +55,8 @@ for provider in conf.get('providers', []):
     data = get(**provider)
 
     with open(os.path.join(destination, provider_type +'.yml'), 'w') as f:
+        data.update({'title': provider_type.replace('_', ' ')})
+        data.update({'template': 'provider.html'})
         f.write(yaml.safe_dump(data, explicit_start=True, default_flow_style=False))
+        f.write('\n---')
         print 'Written to %s' % (provider_type +'.yml')
