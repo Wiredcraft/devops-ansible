@@ -25,7 +25,7 @@ python packages-build/packages.py packages $TMP_FOLDER/references/
 
 # Handle providers
 sudo pip install -r providers-build/requirements.txt
-python providers-build/providers.py $TMP_FOLDER/ /home/devops/providers_config.json
+python providers-build/providers.py $TMP_FOLDER/providers /home/devops/providers_config.json
 
 #
 # Prepare the providers' details iun devops-ansible
