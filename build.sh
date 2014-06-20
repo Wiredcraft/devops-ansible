@@ -14,6 +14,7 @@ fi
 
 # TMP_FOLDER is used to store the build
 TMP_FOLDER=$(mktemp -d)
+TMP_FOLDER2=$(mktemp -d)
 
 # Create storage bucket for the services and providers
 mkdir -p $TMP_FOLDER/services/
@@ -27,17 +28,25 @@ python packages-build/packages.py packages $TMP_FOLDER/services/
 sudo pip install -r providers-build/requirements.txt
 python providers-build/providers.py $TMP_FOLDER/providers /home/devops/providers_config.json
 
-# Stash changes to allow branch switch
-git stash
-git checkout docs
-# Pull to merge if changes occured in the gh-pages
-git pull
-git clean -f -d
-git clean -f -x
-cp -a $TMP_FOLDER/* .
+# Gonna push the results to the other repo..
+cd $TMP_FOLDER2
+git clone --branch metalsmith git@github.com:devo-ps/docs.devo.ps
+cd docs.devo.ps
+cp -a $TMP_FOLDER/* source
+
+
+# # Stash changes to allow branch switch
+# git stash
+# git checkout docs
+# # Pull to merge if changes occured in the gh-pages
+# git pull
+# git clean -f -d
+# git clean -f -x
+# cp -a $TMP_FOLDER/* .
 git add .
 git commit -am "$COMMIT_MSG"
-git push -u origin docs
+git push
 
 # Cleanup
 rm -rf $TMP_FOLDER
+rm -rf $TMP_FOLDER2
