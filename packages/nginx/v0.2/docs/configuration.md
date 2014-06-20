@@ -1,8 +1,5 @@
 ---
 title: Nginx
-template: page.html
-include: 
-  menu_manual: manual.html
 links:
     - title: Official website
       url: http://wiki.nginx.org/Main
