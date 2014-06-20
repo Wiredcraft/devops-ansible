@@ -15,13 +15,13 @@ fi
 # TMP_FOLDER is used to store the build
 TMP_FOLDER=$(mktemp -d)
 
-# Create storage bucket for the references and providers
-mkdir -p $TMP_FOLDER/references/
+# Create storage bucket for the services and providers
+mkdir -p $TMP_FOLDER/services/
 mkdir -p $TMP_FOLDER/providers/
 
 # Handle packages
 sudo pip install -r packages-build/requirements.txt
-python packages-build/packages.py packages $TMP_FOLDER/references/
+python packages-build/packages.py packages $TMP_FOLDER/services/
 
 # Handle providers
 sudo pip install -r providers-build/requirements.txt
@@ -29,7 +29,6 @@ python providers-build/providers.py $TMP_FOLDER/providers /home/devops/providers
 
 # Stash changes to allow branch switch
 git stash
-git checkout -b docs
 git checkout docs
 # Pull to merge if changes occured in the gh-pages
 git pull
