@@ -29,7 +29,8 @@ python providers-build/providers.py $TMP_FOLDER/providers /home/devops/providers
 
 # Stash changes to allow branch switch
 git stash
-git checkout gh-pages
+git checkout -b docs
+git checkout docs
 # Pull to merge if changes occured in the gh-pages
 git pull
 git clean -f -d
@@ -37,7 +38,7 @@ git clean -f -x
 cp -a $TMP_FOLDER/* .
 git add .
 git commit -am "$COMMIT_MSG"
-git push
+git push -u origin docs
 
 # Cleanup
 rm -rf $TMP_FOLDER

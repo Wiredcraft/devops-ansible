@@ -41,6 +41,7 @@ if not os.path.exists(destination) or not os.path.isdir(destination):
     usage()
     sys.exit(1)
 
+
 for root, dirs, files in os.walk(source):
     # Only consider files within the docs subfolders
     match = docs_pattern.search(root)
@@ -60,6 +61,9 @@ for root, dirs, files in os.walk(source):
                     content = f.read()
                 services[service]['tasks'].update({task: content})
 
+
+# Write the compiles files
+menu = []
 for service, data in services.iteritems():
     with open(os.path.join(destination, service +'.md'), 'w') as f:
         # Start to prepare the yaml header
@@ -75,5 +79,16 @@ for service, data in services.iteritems():
         f.write('\n---')
         f.write('\n%s' % content)
 
+        # Add the service to the menu
+        menu.append({
+            'title': header.get('title', service.replace('_', ' ').replace('-', ' ')),
+            'link': service
+        })
+
+# Prepare the menu
+# Sort by ascending title
+menu.sort(key=lambda i: i['title'])
+with open(os.path.join(destination, 'menu.yaml'), 'w') as f:
+    f.write(yaml.safe_dump(menu, explicit_start=True, default_flow_style=False))
 
 
