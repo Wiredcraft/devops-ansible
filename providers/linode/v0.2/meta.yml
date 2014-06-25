@@ -30,7 +30,7 @@ sizes:
     - label: Linode 40960 (8 Cores - 40960 MB - 960GB - 20TB)
       id: 10
 
-regions:
+locations:
     - label: "Dallas, TX, USA"
       id: 2
     - label: "Fremont, CA, USA"

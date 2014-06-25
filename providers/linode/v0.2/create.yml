@@ -4,7 +4,7 @@
     module: linode
     api_key: "{{ api_key }}"
     plan: "{{ size }}"
-    datacenter: "{{ region }}"
+    datacenter: "{{ location }}"
     distribution: "{{ image }}"
     ssh_pub_key: "{{ ssh_profile_key }}"
     name: "{{ node_id }}"

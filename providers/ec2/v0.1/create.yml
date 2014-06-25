@@ -7,7 +7,7 @@
     group: ${ec2_security_group}
     image: ${image}
     instance_type: ${size}
-    region: ${region}
+    region: ${location}
     key_name: ${ec2_key_name}
     instance_tags: '{"name": "${inventory_hostname}"}'
     wait: yes

@@ -37,8 +37,8 @@ sizes:
     - label: 96GB (24 Cores- 96GB - 960GB SSD - 10TB)
       id: 68
 
-# Some of the regions become unavailable as the capacity is over taken
-regions:
+# Some of the locations become unavailable as the capacity is over taken
+locations:
     - label: New York 1
       id: 1
     - label: Amsterdam 1

@@ -17,7 +17,7 @@
     command: droplet
     size_id: "{{ size }}"
     image_id: "{{ image }}"
-    region_id: "{{ region }}"
+    region_id: "{{ location }}"
     ssh_key_ids: "{{ do_key.ssh_key.id }}"
     name: "{{ node_id }}"
     state: present

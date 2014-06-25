@@ -6,7 +6,7 @@
     ec2_access_key: "{{ ec2_access_key }}"
     ec2_secret_key: "{{ ec2_secret_key }}"
     name: "{{ ec2_key_name }}"
-    region: "{{ region }}"
+    region: "{{ location }}"
     key_material: "{{ ssh_profile_key }}"
 
 # Prepare EC2 group
@@ -16,7 +16,7 @@
     ec2_access_key: "{{ ec2_access_key }}"
     ec2_secret_key: "{{ ec2_secret_key }}"
     name: "{{ ec2_security_group }}"
-    region: "{{ region }}"
+    region: "{{ location }}"
     description: "devo.ps security group"
     rules:
       - proto: tcp
@@ -62,7 +62,7 @@
 #     ec2_access_key: "{{ ec2_access_key }}"
 #     ec2_secret_key: "{{ ec2_secret_key }}"
 #     name: "{{ ec2_security_group }}"
-#     region: "{{ region }}"
+#     region: "{{ location }}"
 #     description: "devo.ps security group"
 #     rules:
 #       - proto: tcp
@@ -89,7 +89,7 @@
     # group: default
     image: "{{ image }}"
     instance_type: "{{ size }}"
-    region: "{{ region }}"
+    region: "{{ location }}"
     key_name: "{{ ec2_key_name }}"
     instance_tags: '{"node_id": "{{ inventory_hostname }}"}'
     wait: yes

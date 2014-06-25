@@ -33,7 +33,7 @@
             "label": "Linode 40960 (8 Cores - 40960 MB - 960GB - 20TB)"
         }
     ],
-    "regions": [
+    "locations": [
         { 
             "id": "2",
             "label": "Dallas, TX, USA" 

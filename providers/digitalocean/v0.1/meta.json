@@ -41,7 +41,7 @@
             "label": "96GB (24 Cores- 96GB - 960GB SSD - 10TB)"
         }
     ],
-    "regions": [
+    "locations": [
         { 
             "id": "1",
             "label": "New York" 

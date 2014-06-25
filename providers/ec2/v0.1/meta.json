@@ -57,7 +57,7 @@
             "label": "High Storage Eight Extra Large (26 ECUs - 16 Cores - 117 GiB)"
          }
     ],
-    "regions": [
+    "locations": [
         { 
             "id": "ap-northeast-1", 
             "label": "Asia Pacific (Tokyo)" 

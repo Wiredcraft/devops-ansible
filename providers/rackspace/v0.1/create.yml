@@ -7,7 +7,7 @@
     module: rax 
     image: ${image}
     flavor: ${size}
-    region: ${region}
+    region: ${location}
     name: "${inventory_hostname}"
     # key_name:
     wait: yes
