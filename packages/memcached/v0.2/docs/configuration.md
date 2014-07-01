@@ -1,13 +1,10 @@
 ---
 title: Memcached
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://memcached.org/
 tags:
+    - database
     - caching
+documentation: https://code.google.com/p/memcached/wiki/NewStart
+
 configuration: 
     user:
         default: memcache

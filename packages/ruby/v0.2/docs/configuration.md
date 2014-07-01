@@ -1,13 +1,9 @@
 ---
 title: Ruby
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: https://www.ruby-lang.org/
 tags:
     - language
+documentation: https://www.ruby-lang.org/en/documentation/
+
 configuration: 
     gems:
         description: List of gems to install globally on the system

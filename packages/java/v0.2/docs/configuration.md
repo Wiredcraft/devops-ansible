@@ -1,13 +1,9 @@
 ---
 title: Java
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://openjdk.java.net/
 tags:
     - language
+documentation: http://openjdk.java.net/
+
 configuration: {}
 ---
 Add java (openjdk) support to the platform, enabling java based services to be installed

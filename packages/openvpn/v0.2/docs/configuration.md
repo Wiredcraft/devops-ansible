@@ -1,13 +1,9 @@
 ---
 title: OpenVPN
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://openvpn.net/
 tags:
     - app
+documentation: http://openvpn.net/index.php/open-source/documentation.html
+
 configuration: 
     port:
         default: 1194

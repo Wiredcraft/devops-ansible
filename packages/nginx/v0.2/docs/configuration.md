@@ -1,10 +1,9 @@
 ---
 title: Nginx
-links:
-    - title: Official website
-      url: http://wiki.nginx.org/Main
 tags:
     - web
+documentation: http://wiki.nginx.org/Modules
+
 configuration: 
     user:
         default: www-data

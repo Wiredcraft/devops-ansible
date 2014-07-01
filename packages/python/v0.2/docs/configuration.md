@@ -1,13 +1,9 @@
 ---
 title: Python
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: https://www.python.org/
 tags:
     - language
+documentation: https://docs.python.org/2/
+
 configuration: 
     packages:
         default: []

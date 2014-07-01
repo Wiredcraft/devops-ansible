@@ -1,13 +1,9 @@
 ---
 title: Apache
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://httpd.apache.org/
 tags:
     - web
+documentation: http://httpd.apache.org/docs/
+
 configuration:
     user:
         default: www-data

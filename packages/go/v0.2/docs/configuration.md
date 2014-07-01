@@ -1,13 +1,9 @@
 ---
 title: Go
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://golang.org/
 tags:
     - language
+documentation: http://golang.org/doc/
+
 configuration: {}
 ---
 Enable Golang support

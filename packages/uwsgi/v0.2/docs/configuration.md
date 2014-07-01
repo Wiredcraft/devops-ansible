@@ -1,13 +1,9 @@
 ---
 title: uWSGI
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://projects.unbit.it/uwsgi/
 tags:
     - app
+documentation: http://uwsgi-docs.readthedocs.org/en/latest/
+
 configuration: {}
 ---
 The uWSGI project aims at developing a full stack for building hosting services.

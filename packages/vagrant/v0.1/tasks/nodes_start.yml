@@ -1,0 +1,13 @@
+---
+- name: Ensure there is a devops_nodes folder available
+  file:
+    state=directory
+    dest=/opt/devops_nodes
+    owner=devops
+    group=devops
+    mode=755
+
+- name: Start all the nodes defined
+  command:
+    chdir=/opt/devops_nodes
+    vagrant up

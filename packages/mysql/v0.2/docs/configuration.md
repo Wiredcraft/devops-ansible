@@ -1,13 +1,10 @@
 ---
 title: MySQL
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://www.mysql.com/
 tags:
     - database
+    - relational
+documentation: http://dev.mysql.com/doc/
+
 configuration: 
     port:
         default: 3306

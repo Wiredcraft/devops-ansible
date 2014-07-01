@@ -37,7 +37,6 @@ with open(config) as c:
         print "Error loading config: %s" % e
         sys.exit(1)
 
-menu = []
 for provider in conf.get('providers', []):
     provider_type = provider.get('type')
     if provider_type == 'linode':
@@ -56,19 +55,8 @@ for provider in conf.get('providers', []):
     data = get(**provider)
 
     with open(os.path.join(destination, provider_type +'.md'), 'w') as f:
-        data.update({'title': provider_type.replace('_', ' ').replace('-', ' ')})
+        data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
         data.update({'template': 'provider.html'})
         f.write(yaml.safe_dump(data, explicit_start=True, default_flow_style=False))
         f.write('\n---')
         print 'Written to %s' % (provider_type +'.md')
-
-        menu.append({
-            'title': data.get('title'),
-            'link': provider_type
-        })
-
-# Prepare the menu
-# Sort by ascending title
-menu.sort(key=lambda i: i['title'])
-with open(os.path.join(destination, 'menu.yaml'), 'w') as f:
-    f.write(yaml.safe_dump(menu, explicit_start=True, default_flow_style=False))

@@ -1,13 +1,10 @@
 ---
 title: MongoDB
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: https://www.mongodb.org/
 tags:
     - database
+    - nosql
+documentation: http://docs.mongodb.org/manual/
+
 configuration: 
     user:
         default: mongodb

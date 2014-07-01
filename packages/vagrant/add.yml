@@ -1,0 +1,30 @@
+---
+- name: Ensure VirtualBox repo file is present
+  template:
+    src=DEVOPS_PACKAGE/templates/virtualbox.list.j2
+    dest=/etc/apt/sources.list.d/virtualbox.list
+    owner=root
+    group=root
+    mode=0644
+
+- name: Ensure VirtualBox repo key is present
+  apt_key:
+    url=https://www.virtualbox.org/download/oracle_vbox.asc
+    state=present
+
+- name: Ensure VirtualBox is installed
+  apt: 
+    name=virtualbox-4.3
+    state=present
+    update_cache=yes
+
+- name: Ensure Vagrant package is fetched
+  get_url:
+    url=https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb
+    dest=/opt/vagrant_1.6.3_x86_64.deb
+    mode=644
+
+- name: Ensure Vagrant is installed
+  command:
+    creates=/opt/vagrant
+    dpkg -i /opt/vagrant_1.6.3_x86_64.deb

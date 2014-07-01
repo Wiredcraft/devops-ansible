@@ -1,13 +1,9 @@
 ---
 title: RabbitMQ
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: https://www.rabbitmq.com/
 tags:
     - messagebus
+documentation: https://www.rabbitmq.com/documentation.html
+
 configuration: {}
 ---
 Robust messaging for applications

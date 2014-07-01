@@ -1,13 +1,9 @@
 ---
 title: Node.js
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://nodejs.org/
 tags:
     - language
+documentation: http://nodejs.org/api/
+
 configuration: 
     packages: 
         description: List of packages to have globally installed on the server

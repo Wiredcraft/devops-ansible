@@ -1,13 +1,10 @@
 ---
 title: CouchBase
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://www.couchbase.com/
 tags:
     - database
+    - nosql
+documentation: http://docs.couchbase.com/
+
 configuration: {}
 ---
 Couchbase Server is the leading enterprise NoSQL database for scalability, performance, and availability.

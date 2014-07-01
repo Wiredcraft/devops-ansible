@@ -1,13 +1,10 @@
 ---
 title: Varnish
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: https://www.varnish-cache.org/
 tags:
     - caching
+    - reverse proxy
+documentation: https://www.varnish-cache.org/docs
+
 configuration: 
     vcl_conf:
         default: /etc/varnish/default.vcl

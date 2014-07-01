@@ -1,13 +1,9 @@
 ---
 title: Dart
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: https://www.dartlang.org/
 tags:
     - language
+documentation: https://www.dartlang.org/docs/
+
 configuration: {}
 ---
 Add support for Dart

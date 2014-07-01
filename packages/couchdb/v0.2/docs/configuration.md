@@ -1,13 +1,10 @@
 ---
 title: CouchDB
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://couchdb.apache.org/
 tags:
     - database
+    - nosql
+documentation: http://docs.couchdb.org/en/latest/
+
 configuration: 
     max_document_size:
         default: 4294967296

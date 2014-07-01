@@ -1,13 +1,10 @@
 ---
 title: ElasticSearch
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://www.elasticsearch.org/
 tags:
     - database
+    - full text
+documentation: http://www.elasticsearch.org/guide/
+
 configuration: 
     bind_host:
         default: '127.0.0.1'

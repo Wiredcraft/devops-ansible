@@ -1,13 +1,9 @@
 ---
 title: Redis
-template: page.html
-include: 
-  menu_manual: manual.html
-links:
-    - title: Official website
-      url: http://redis.io/
 tags:
     - database
+documentation: http://redis.io/documentation
+
 configuration: 
     port:
         default: 6379
