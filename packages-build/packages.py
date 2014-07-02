@@ -83,7 +83,7 @@ for service, data in services.iteritems():
                 header['tasks'].append({
                     'name': task_name, 
                     'description': task_header.get('description', ''),
-                    'options': task_header.get('options', {})
+                    'options': task_header.get('options', None)
                 })
 
 
