@@ -129,7 +129,6 @@ configuration:
             type: string
             required: false
 ---
-SSL/TLS based user-space VPN. Supports Linux, Solaris, OpenBSD, FreeBSD, NetBSD, Mac OS X, and Windows 2000/XP.
 
 ## Example
 

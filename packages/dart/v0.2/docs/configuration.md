@@ -6,7 +6,6 @@ documentation: https://www.dartlang.org/docs/
 
 configuration: {}
 ---
-Add support for Dart
 
 ## Example
 

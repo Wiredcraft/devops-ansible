@@ -286,7 +286,6 @@ configuration:
                 - On
                 - Off
 ---
-The world's most popular open source relational database
 
 ## Example
 

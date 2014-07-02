@@ -6,7 +6,6 @@ documentation: http://golang.org/doc/
 
 configuration: {}
 ---
-Enable Golang support
 
 ## Example
 

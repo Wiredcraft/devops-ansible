@@ -55,7 +55,6 @@ configuration:
         type: boolean
         required: false
 ---
-MongoDB (from "humongous") is an open-source document database, and the leading NoSQL database. Written in C++.
 
 ## Example
 

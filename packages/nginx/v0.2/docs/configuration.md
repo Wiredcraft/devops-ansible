@@ -77,7 +77,6 @@ configuration:
             type: string
             required: false
 ---
-High performance HTTP server.
 
 ## Example
 

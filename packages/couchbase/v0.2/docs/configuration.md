@@ -7,9 +7,6 @@ documentation: http://docs.couchbase.com/
 
 configuration: {}
 ---
-Couchbase Server is the leading enterprise NoSQL database for scalability, performance, and availability.
-
-CouchBase Community 2.1.1
 
 ## Example
 
