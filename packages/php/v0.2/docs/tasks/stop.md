@@ -1,3 +1,9 @@
-# Task Stop
+---
+description: Stop PHP-FPM
+---
 
-Stop php-fpm
+#### Example in a devops task
+
+    steps:
+      - run: devops php stop
+

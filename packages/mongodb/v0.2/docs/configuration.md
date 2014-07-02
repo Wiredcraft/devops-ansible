@@ -55,15 +55,3 @@ configuration:
         type: boolean
         required: false
 ---
-
-## Example
-
-    services:
-      mongodb: '*'
-    configuration:
-      mongodb:
-        bindip: 0.0.0.0
-        port: 27018
-        enable_rest: true
-
-Install MongoDB on the node, make the service listen on all interfaces (0.0.0.0), change the listening port to TCP/27018 (instead of 27017 by default), and enable the REST interface (allowing REST api calls against the Mongo database)

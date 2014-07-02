@@ -161,16 +161,3 @@ configuration:
             required: false
             minimum: 0
 ---
-
-## Example
-
-    services:
-      apache: '*'
-    configuration:
-      apache:
-        timeout: 60
-        prefork:
-          maxclients: 20
-          maxrequestsperchild: 1000
-
-Install Apache on the node, sets a timeout of 60 seconds on receive / send, set the prefork MPM to start at most 20 Apache child processes and ensure each Apache child process will handle at most 1000 requests before respawning.

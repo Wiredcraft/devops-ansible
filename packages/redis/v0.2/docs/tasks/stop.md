@@ -1,3 +1,9 @@
-# Task Stop
+---
+description: Stop Redis
+---
 
-Stop Redis Server
+#### Example in a devops task
+
+    steps:
+      - run: devops redis stop
+

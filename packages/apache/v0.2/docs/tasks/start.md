@@ -1,8 +1,8 @@
-# Start
+---
+description: Start Apache
+---
 
-Start the Apache service, it does not do anything if it is already running.
+#### Example in a devops task
 
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops apache start

@@ -1,3 +1,8 @@
-# Task Stop
+---
+description: Stop MongoDB
+---
 
-Stop MongoDB
+#### Example in a devops task
+
+    steps:
+      - run: devops mongodb stop

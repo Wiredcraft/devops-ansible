@@ -1,8 +1,8 @@
-# Reload
+---
+description: Reload CouchDB
+---
 
-Do a graceful restart of the CouchDB service, reloading the configuration.
+#### Example in a devops task
 
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops couchdb reload

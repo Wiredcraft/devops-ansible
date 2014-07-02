@@ -1,3 +1,9 @@
-# Task Start
+---
+description: Start uWSGI emperor
+---
 
-Start emperor service
+#### Example in a devops task
+
+    steps:
+      - run: devops uwsgi start
+

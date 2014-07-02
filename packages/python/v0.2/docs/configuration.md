@@ -11,14 +11,3 @@ configuration:
         type: array
         required: false
 ---
-
-## Example
-
-    services:
-      python: '*'
-    configuration:
-      python:
-        packages:
-          - pyyaml
-
-Add support for Python, allowing custom packages to be installed (globally) on the node.

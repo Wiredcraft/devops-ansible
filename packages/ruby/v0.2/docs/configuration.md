@@ -11,14 +11,3 @@ configuration:
         default: []
         required: false
 ---
-
-## Example
-
-    services:
-      ruby: '*'
-    configuration:
-      ruby:
-        gems:
-          - compass
-
-Add ruby support to allow install of Gem packages (globally) on the system.

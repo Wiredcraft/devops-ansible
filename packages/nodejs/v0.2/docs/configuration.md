@@ -11,16 +11,3 @@ configuration:
         default: []
         required: false
 ---
-
-## Example
-
-    services:
-      nodejs: '*'
-    configuration:
-      nodejs: 
-        packages:
-          - forever
-          - bower
-          - grunt-cli
-
-Install Node.js on the node, and install globally `forever`, `bower` and `grunt-cli` (as in `npm install -g xxx`).

@@ -1,3 +1,9 @@
-# Task Stop
+---
+description: Stop OpenVPN
+---
 
-Stop OpenVPN
+#### Example in a devops task
+
+    steps:
+      - run: devops openvpn stop
+

@@ -1,8 +1,8 @@
-# Start
+---
+description: Start CouchBase
+---
 
-Start the CouchBase service, it does not do anything if it is already running.
+#### Example in a devops task
 
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops couchbase start

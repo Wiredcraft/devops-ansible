@@ -52,27 +52,40 @@ for root, dirs, files in os.walk(source):
         services.setdefault(service, {})
         if 'configuration.md' in files:
             with open(os.path.join(root, 'configuration.md')) as f:
-                content = f.read()
+                config = f.read()
+            header, content = parse_mixed_content(config)
+            services[service].update({'header': header})
             services[service].update({'config': content})
         if root.endswith('tasks'):
             services[service].setdefault('tasks', {})
             for task in files:
                 with open(os.path.join(root, task)) as f:
-                    content = f.read()
-                services[service]['tasks'].update({task: content})
+                    task_content = f.read()
+                header, content = parse_mixed_content(task_content)
+                services[service]['tasks'].update({task: {'header': header, 'content': content}})
 
 
 # Write the compiles files
 for service, data in services.iteritems():
     with open(os.path.join(destination, service +'.md'), 'w') as f:
         # Start to prepare the yaml header
-        header, content = parse_mixed_content(data.get('config', ''))
+        header = data.get('header', {})
+        content = data.get('config', '')
         # Check if we have tasks defined for the service
         if data.get('tasks'):
+            header['tasks'] = []
             content += '\n## Tasks'
-            for task_name, task_doc in data.get('tasks', {}).iteritems():
-                content += '\n### %s' % task_name.replace('_', ' ').replace('.md', '')
-                content += '\n%s' % task_doc
+            for task_name, task in data.get('tasks', {}).iteritems():
+                task_name = task_name.replace('_', ' ').replace('.md', '')
+                content += '\n### %s' % task_name
+                content += '\n%s' % task.get('content')
+                task_header = task.get('header', {})
+                header['tasks'].append({
+                    'name': task_name, 
+                    'description': task_header.get('description', ''),
+                    'options': task_header.get('options', {})
+                })
+
 
         f.write(yaml.safe_dump(header, explicit_start=True, default_flow_style=False))
         f.write('\n---')

@@ -59,13 +59,3 @@ configuration:
         type: string
         required: false
 ---
-
-## Example
-
-    services:
-      couchdb: '*'
-    configuration:
-      couchdb:
-        bind_address: 0.0.0.0
-
-Install CouchDB on the node and make the service listen on all interfaces (0.0.0.0)

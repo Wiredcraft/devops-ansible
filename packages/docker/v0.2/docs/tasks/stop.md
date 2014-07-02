@@ -1,3 +1,8 @@
-# Task Stop
+---
+description: Stop Docker
+---
 
-Stop Docker
+#### Example in a devops task
+
+    steps:
+      - run: devops docker stop

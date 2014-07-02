@@ -1,3 +1,9 @@
-# Task Restart
+---
+description: Restart node.js foreverd
+---
 
-Restart node.js forever service
+#### Example in a devops task
+
+    steps:
+      - run: devops nodejs restart
+

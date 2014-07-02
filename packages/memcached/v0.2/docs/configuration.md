@@ -48,14 +48,3 @@ configuration:
         type: integer
         required: false
 ---
-
-## Example
-
-    services:
-      memcached: '*'
-    configuration:
-      memcached:
-        memory: 128
-        port: 11212
-
-Install Memcached on the node, allocate 128MB of RAM to the service and make it listen on port TCP/11212

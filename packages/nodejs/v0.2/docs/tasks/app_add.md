@@ -1,0 +1,42 @@
+---
+description: Add a new app defintion for foreverd to run
+options:
+  name:
+    type: string
+    description: name of your app
+    required: true
+  root:
+    type: string
+    description: path of the root folder of your app
+    required: true
+  script:
+    type: string
+    description: node.js script to run via foreverd
+    required: true
+  node_env:
+    type: string
+    description: node.js environment var NODE_ENV
+    required: false
+  user:
+    type: string
+    description: running user of the application
+    required: false
+    default: devops
+  extra_env:
+    type: string
+    description: additional environment variable to pass to the application
+    required: false
+---
+
+#### Example in a devops task
+
+    steps:
+      - run: devops nodejs app add
+        options:
+          name: myapp
+          root: /var/www/myapp 
+          script: app.js 
+          node_env: production 
+          user: nobody 
+          extra_env: "NODE_DEBUG=DEBUG SOME_ENV=OTHER"
+

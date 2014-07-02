@@ -1,8 +1,7 @@
-# Reload
+---
+description: Reload Apache
+---
+#### Example in a devops task
 
-Do a graceful restart of the Apache service, reloading the configuration.
-
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops apache reload

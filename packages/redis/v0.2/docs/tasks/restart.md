@@ -1,3 +1,9 @@
-# Task Restart
+---
+description: Restart Redis
+---
 
-Restart Redis Server
+#### Example in a devops task
+
+    steps:
+      - run: devops redis restart
+

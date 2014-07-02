@@ -1,3 +1,9 @@
-# Task Start
+---
+description: Start PHP-FPM
+---
 
-Start php-fpm
+#### Example in a devops task
+
+    steps:
+      - run: devops php start
+

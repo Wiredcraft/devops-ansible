@@ -1,3 +1,8 @@
-# Task Restart
+---
+description: Restart MongoDB
+---
 
-Restart MongoDB
+#### Example in a devops task
+
+    steps:
+      - run: devops mongodb restart

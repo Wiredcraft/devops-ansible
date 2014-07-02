@@ -1,10 +1,35 @@
-# vhost add
+---
+description: Defines a HTTP virtual host in Nginx config
+options:
+  domain: 
+    type: string
+    description: domain name
+    required: true
+  aliases:
+    type: string
+    description: space separated list of domain name aliases
+    required: false
+  port:
+    type: int
+    description: listening port
+    required: true
+  webroot:
+    type: string
+    description: subfolder to serve data from based on the root /var/www/_domain_
+    required: false
+  upstreams:
+    type: array
+    description: list of upstream objects
+    required: false
+  routes:
+    type: array
+    description: list of route objects
+    required: true
+---
 
-Ensure a HTTP virtual host is defined in the node, creating it and restarting nginx if needed
+#### Example in a devops task
 
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops nginx vhost add
         options:
           domain: example.com

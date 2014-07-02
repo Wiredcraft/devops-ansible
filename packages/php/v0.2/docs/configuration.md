@@ -350,17 +350,3 @@ configuration:
                 type: string
                 required: false
 ---
-
-## Example
-
-    services:
-      php: '*'
-    configuration:
-      php:
-        memory_limit: 64M
-        post_max_size: 32M
-        upload_max_filesize: 32M
-        apc:
-          shm_size: 256M
-
-Install PHP on the node, setting the max limit of a php process to 64MB, allowing 32MB files upload, and giving 256MB of room to APC cache.

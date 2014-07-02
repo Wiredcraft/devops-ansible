@@ -1,3 +1,9 @@
-# Task Restart
+---
+description: Restart uWSGI emperor
+---
 
-Restart emperor service
+#### Example in a devops task
+
+    steps:
+      - run: devops uwsgi restart
+

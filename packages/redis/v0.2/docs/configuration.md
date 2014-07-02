@@ -264,14 +264,3 @@ configuration:
             required: false
             minimum: 1
 ---
-
-## Example
-
-    services:
-      redis: '*'
-    configuration:
-      redis:
-        port: 16379
-        bind: 0.0.0.0
-
-Install Redis on the node, making it listen on all interfaces (0.0.0.0) and on port TCP/16379 instead of TCP/6379 default.

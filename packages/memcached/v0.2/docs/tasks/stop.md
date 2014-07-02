@@ -1,3 +1,8 @@
-# Task Stop
+---
+description: Stop Memcached
+---
 
-Stop Memcached
+#### Example in a devops task
+
+    steps:
+      - run: devops memcached stop

@@ -1,3 +1,8 @@
-# Task Restart
+---
+description: Restart Docker
+---
 
-Restart Docker
+#### Example in a devops task
+
+    steps:
+      - run: devops docker restart

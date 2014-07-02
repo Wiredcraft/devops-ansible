@@ -1,3 +1,9 @@
-# Task Restart
+---
+description: Restart PHP-FPM
+---
 
-Restart php-fpm
+#### Example in a devops task
+
+    steps:
+      - run: devops php restart
+

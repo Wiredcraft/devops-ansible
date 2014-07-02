@@ -1,3 +1,9 @@
-# Task Reload
+---
+description: Reload PHP-FPM
+---
 
-Reload php-fpm config
+#### Example in a devops task
+
+    steps:
+      - run: devops php reload
+

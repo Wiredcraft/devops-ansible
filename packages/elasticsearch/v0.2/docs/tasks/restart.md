@@ -1,3 +1,8 @@
-# Task Restart
+---
+description: Restart ElasticSearch
+---
 
-Restart ElasticSearch
+#### Example in a devops task
+
+    steps:
+      - run: devops elasticsearch restart

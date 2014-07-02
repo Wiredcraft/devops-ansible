@@ -129,22 +129,3 @@ configuration:
             type: string
             required: false
 ---
-
-## Example
-
-    services:
-      openvpn: '*'
-    configuration:
-      openvpn:
-        port: 6543
-        proto: 'tcp'
-        max_client: 10
-        key:
-          key_size: 2048
-          email: me@example.com
-
-Install OpenVPN on the node, configure the service so it listen on TCP/6543 (instead of regular UDP/1194), limit the number of concurrent clients to 10 and set the server's key to be 2048bits with a custom email in the certificate.
-
-Note that the default values of the configuration will satisfy most of the use and those customization are more for advanced users.
-
-The management of OpenVPN clients is handled by dedicated tasks.

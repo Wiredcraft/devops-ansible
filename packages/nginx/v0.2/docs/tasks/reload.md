@@ -1,3 +1,8 @@
-# Task Reload
+---
+description: Reload Nginx
+---
 
-Reload Nginx config
+#### Example in a devops task
+
+    steps:
+      - run: devops nginx reload

@@ -1,8 +1,8 @@
-# Reload
+---
+description: Reload CouchBase
+---
 
-Do a graceful restart of the CouchBase service, reloading the configuration.
+#### Example in a devops task
 
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops couchbase reload

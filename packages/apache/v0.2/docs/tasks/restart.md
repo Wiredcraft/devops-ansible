@@ -1,10 +1,10 @@
-# Restart
-
-Do a full restart of the Apache service, killing existing HTTP connections.
+---
+description: Restart Apache
+---
 
 For better user experience you may prefer the use of the `reload` task instead.
 
-# Example in a devops task
+#### Example in a devops task
 
-    do:
+    steps:
       - run: devops apache restart

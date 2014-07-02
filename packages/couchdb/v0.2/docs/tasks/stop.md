@@ -1,8 +1,8 @@
-# Stop
+---
+description: Stop CouchDB
+---
 
-Stop the CouchDB service, it does not do anything if it is already stopped.
+#### Example in a devops task
 
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops couchdb stop

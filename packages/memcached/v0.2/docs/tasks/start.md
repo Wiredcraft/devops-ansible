@@ -1,3 +1,8 @@
-# Task Start
+---
+description: Start Memcached
+---
 
-Start Memcached
+#### Example in a devops task
+
+    steps:
+      - run: devops memcached start

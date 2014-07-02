@@ -1,3 +1,9 @@
-# Task Reload
+---
+description: Reload Varnish
+---
 
-Reload Varnish config
+#### Example in a devops task
+
+    steps:
+      - run: devops varnish reload
+

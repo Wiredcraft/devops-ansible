@@ -17,5 +17,11 @@
   when:
     ansible_lsb.major_release|int >= 14
 
-
-- include: DEVOPS_PACKAGE/tasks/add_gems.yml
+- name: Ensure custom gem modules are installed
+  gem:
+    name={{ item }}
+    state=present
+    user_install=no
+  with_items:
+    ruby.gems
+  ignore_errors: yes

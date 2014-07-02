@@ -8,7 +8,7 @@
     owner=root
     group=root
   with_items:
-    task.openvpn.add_user.users
+    task.openvpn.user_add.users
 
 - name: Prepare OpenVPN clients config
   sudo: yes
@@ -19,7 +19,7 @@
     group=root
     mode=0644
   with_items:
-    task.openvpn.add_user.users
+    task.openvpn.user_add.users
 
 - name: Prepare helper script to generate OpenVPN server key
   sudo: yes
@@ -35,7 +35,7 @@
   command:
     bash /root/create_openvpn_user.sh {{ item.name }}
   with_items:
-    task.openvpn.add_user.users
+    task.openvpn.user_add.users
 
 - name: Sends email with credentials
   sudo: yes
@@ -45,5 +45,5 @@
     attach="/etc/openvpn/clients/"{{ item.name }}".tar.gz"
     to={{ item.email }}
   with_items:
-    task.openvpn.add_user.users
+    task.openvpn.user_add.users
 

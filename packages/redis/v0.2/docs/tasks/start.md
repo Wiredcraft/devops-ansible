@@ -1,3 +1,9 @@
-# Task Start
+---
+description: Start Redis
+---
 
-Start Redis Server
+#### Example in a devops task
+
+    steps:
+      - run: devops redis start
+

@@ -13,14 +13,14 @@
   sudo: yes
   pip:
     requirements: {{ task.uwsgi.requirements_file }}
-    virtualenv: /opt/virtualenvs/devops_{{ task.uwsgi.add_app.name }}
+    virtualenv: /opt/virtualenvs/devops_{{ task.uwsgi.app_add.name }}
   when: task.uwsgi.requirements_file
 
 - name: Add uwsgi app
   sudo: yes
   template:
     src=DEVOPS_PACKAGE/templates/uwsgi.ini.j2
-    dest=/etc/uwsgi/{{ task.uwsgi.add_app.name }}.ini
+    dest=/etc/uwsgi/{{ task.uwsgi.app_add.name }}.ini
     owner=root
     group=root
     mode=0755

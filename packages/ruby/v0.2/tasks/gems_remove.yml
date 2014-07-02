@@ -1,10 +1,10 @@
 ---
-- name: Ensure custom gem modules are installed
+- name: Ensure custom gem modules are removed
   sudo: yes
   gem:
     name={{ item }}
-    state=present
+    state=absent
     user_install=no
   with_items:
-    ruby.gems
+    task.ruby.gems_remove.gems
   ignore_errors: yes

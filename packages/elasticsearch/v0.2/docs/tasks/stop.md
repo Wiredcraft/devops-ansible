@@ -1,3 +1,8 @@
-# Task Stop
+---
+description: Stop ElasticSearch
+---
 
-Stop ElasticSearch
+#### Example in a devops task
+
+    steps:
+      - run: devops elasticsearch stop

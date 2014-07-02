@@ -1,3 +1,9 @@
-# Task Start
+---
+description: Start OpenVPN
+---
 
-Start OpenVPN
+#### Example in a devops task
+
+    steps:
+      - run: devops openvpn start
+

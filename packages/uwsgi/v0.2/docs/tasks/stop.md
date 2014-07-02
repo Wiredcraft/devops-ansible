@@ -1,3 +1,9 @@
-# Task Stop
+---
+description: Stop uWSGI emperor
+---
 
-Stop emperor service
+#### Example in a devops task
+
+    steps:
+      - run: devops uwsgi stop
+

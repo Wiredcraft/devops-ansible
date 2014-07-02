@@ -1,3 +1,9 @@
-# Task Stop
+---
+description: Stop node.js foreverd
+---
 
-Stop node.js forever service
+#### Example in a devops task
+
+    steps:
+      - run: devops nodejs stop
+

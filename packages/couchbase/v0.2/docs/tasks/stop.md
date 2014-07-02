@@ -1,8 +1,8 @@
-# Stop
+---
+description: Stop CouchBase
+---
 
-Stop the Couchbase service, it does not do anything if it is already stopped.
+#### Example in a devops task
 
-# Example in a devops task
-
-    do:
+    steps:
       - run: devops couchbase stop
