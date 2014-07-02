@@ -10,7 +10,7 @@ configuration:
         default: []
         type: array
         required: false
-    pecl_extenstions: 
+    pecl_extensions: 
         description: List of extra php extensions installable via PECL
         default: []
         type: array
