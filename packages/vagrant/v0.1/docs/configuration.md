@@ -4,6 +4,4 @@ tags:
     - virtualbox
     - vm
 documentation: http://docs.vagrantup.com/v2/
-
-configuration: {}
 ---

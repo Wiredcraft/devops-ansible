@@ -3,6 +3,4 @@ title: Java
 tags:
     - language
 documentation: http://openjdk.java.net/
-
-configuration: {}
 ---

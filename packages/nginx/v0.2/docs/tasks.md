@@ -20,7 +20,7 @@ tasks:
         description: space separated list of domain name aliases
         required: false
       port:
-        type: int
+        type: integer
         description: listening port
         required: true
       webroot:
