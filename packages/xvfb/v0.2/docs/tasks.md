@@ -1,0 +1,9 @@
+---
+tasks:
+  - name: start
+    description: Start Xvfb if stopped
+  - name: stop
+    description: Stop Xvfb if started
+  - name: restart
+    description: Restart Xvfb
+---
