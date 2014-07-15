@@ -15,14 +15,16 @@ tasks:
         type: array
         description: list of user objects
         required: true
+        options:
+          name:
+            description: The client name (ex. bob, alice)
+            type: string
+            required: true
+          email:
+            description: The email address to send the credentials to 
+            type: string
+            required: true
+            valid_values: email address 
+
 ---
-
-### Options
-
-#### User object
-
-Name | Type | Required | Default | Valid Values | Description
-----|----|----|----|----|----
-name | string | True | | | The client name (ex. bob, alice)
-email | string | True | | email address | The email address to send the credentials to
 
