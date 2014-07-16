@@ -1,17 +1,17 @@
 ---
 # Ensure customer users
-- name: Ensure user exists
-  user: 
-    name="{{ item.user_id }}"
-    state=present
-    comment="Devo.ps {{ item.user_id }} user"
-    home="/home/{{ item.user_id }}"
-    shell=/bin/bash
-  with_items: users
+# - name: Ensure user exists
+#   user: 
+#     name="{{ item.user_id }}"
+#     state=present
+#     comment="Devo.ps {{ item.user_id }} user"
+#     home="/home/{{ item.user_id }}"
+#     shell=/bin/bash
+#   with_items: users
 
-- name: Ensure profile user has the correct authorized_keys
+- name: Ensure devops user has the SSH keys of the profile user and collaborators
   authorized_key: 
-    user={{ item.0.user_id }}
+    user=devops
     state=present
     key='{{ item.1 }}'
     manage_dir=yes
@@ -19,12 +19,12 @@
    - users
    - ssh_keys
 
-- name: Ensure profile user can sudo
-  template: 
-    src=DEVOPS_PACKAGE/templates/10-customer.j2 
-    dest=/etc/sudoers.d/10-{{ item.user_id }}
-    owner=root
-    group=root
-    mode=440
-  with_items: users
+# - name: Ensure profile user can sudo
+#   template: 
+#     src=DEVOPS_PACKAGE/templates/10-customer.j2 
+#     dest=/etc/sudoers.d/10-{{ item.user_id }}
+#     owner=root
+#     group=root
+#     mode=440
+#   with_items: users
 

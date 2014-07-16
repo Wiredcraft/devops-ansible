@@ -1,0 +1,10 @@
+---
+- name: Ensure devops user does not have the SSH keys of the removed collaborators
+  authorized_key: 
+    user=devops
+    state=absent
+    key='{{ item.1 }}'
+    manage_dir=yes
+  with_subelements:
+   - users
+   - ssh_keys

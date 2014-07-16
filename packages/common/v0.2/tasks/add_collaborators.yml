@@ -1,0 +1,10 @@
+---
+- name: Ensure devops user has the SSH keys of the profile user and collaborators
+  authorized_key: 
+    user=devops
+    state=present
+    key='{{ item.1 }}'
+    manage_dir=yes
+  with_subelements:
+   - users
+   - ssh_keys
