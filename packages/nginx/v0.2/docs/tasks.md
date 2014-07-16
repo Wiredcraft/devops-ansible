@@ -1,12 +1,12 @@
 ---
 tasks:
-- description: Start MongoDB if stopped
+- description: Start Nginx if stopped
   name: start
-- description: Stop MongoDB if started
+- description: Stop Nginx if started
   name: stop
-- description: Reload MongoDB, reload the configuration and perform a graceful restart
+- description: Reload Nginx, reload the configuration and perform a graceful restart
   name: reload
-- description: Restart MongoDB, reload the configuration (but kills existing connection)
+- description: Restart Nginx, reload the configuration (but kills existing connection)
   name: restart
 - description: Defines a HTTP virtual host in Nginx config
   name: vhost add
