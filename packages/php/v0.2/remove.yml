@@ -22,7 +22,6 @@
 - name: Ensure php configuration is absent
   file: 
     state=absent
-    recurse=yes
     path={{ item }}
   with_items:
     - /etc/php5

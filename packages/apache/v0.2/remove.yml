@@ -10,5 +10,4 @@
 - name: Ensure apache configuration is absent
   file: 
     state=absent
-    recurse=yes
     path=/etc/apache2

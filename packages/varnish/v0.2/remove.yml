@@ -10,7 +10,6 @@
 - name: Ensure Varnish configuration is absent
   file: 
     state=absent
-    recurse=yes
     path={{ item }}
   with_items:
     - /etc/varnish

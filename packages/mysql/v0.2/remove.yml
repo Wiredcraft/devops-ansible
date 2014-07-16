@@ -15,7 +15,6 @@
 - name: Ensure mysql configuration is absent
   file: 
     state=absent
-    recurse=yes
     path=/etc/mysql
 
 # - name: ensure mysql data are absent
