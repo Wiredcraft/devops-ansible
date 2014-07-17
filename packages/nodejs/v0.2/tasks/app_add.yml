@@ -1,12 +1,14 @@
 ---
 - name: Add forever application
+  sudo: yes
   template:
     src=DEVOPS_PACKAGE/templates/forever_app.conf.j2
     dest=/etc/forever.d/{{ item.name }}.conf
     owner=root
     group=root
     mode=0644
-  with_items:
+  with_flattened:
+    task.nodejs.app_add
     # - { name: myapp, root: /var/www/myapp, script: app.js, node_env: production, user: nobody, extra_env: "NODE_DEBUG=DEBUG SOME_ENV=OTHER" }
   notify:
     - Ensure forever is running
