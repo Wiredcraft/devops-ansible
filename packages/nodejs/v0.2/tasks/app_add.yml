@@ -11,4 +11,4 @@
     task.nodejs.app_add
     # - { name: myapp, root: /var/www/myapp, script: app.js, node_env: production, user: nobody, extra_env: "NODE_DEBUG=DEBUG SOME_ENV=OTHER" }
   notify:
-    - Ensure forever is running
+    - Restart forever
