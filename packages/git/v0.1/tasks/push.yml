@@ -2,7 +2,7 @@
 - name: Commit the build result to the current branch
   shell:
     chdir={{ task.git['push'].repo }}
-    git add . ; git commit -am 'Add build result'
+    git add . ; git commit -am 'Add build result' ; exit 0
 
 - name: Push the build result over to the remote branch
   shell:
