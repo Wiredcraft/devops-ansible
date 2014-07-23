@@ -7,7 +7,7 @@
 
 - name: Set git config
   shell:
-    chdir task.git.config.path
+    chdir {{ task.git.config.path }}
     git config user.name {{ task.git.config.user }}; git config user.email {{ task.git.config.email }}; 
   when: 
     task.git.config.path != ''
