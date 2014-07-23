@@ -7,6 +7,6 @@
 
 - name: Update git repository
   git: 
-    repo={{ task.git.update.repo }}
-    dest={{ task.git.update.dest }}
-    version={{ task.git.update.version | default('HEAD') }}
+    repo={{ task.git['update'].repo }}
+    dest={{ task.git['update'].dest }}
+    version={{ task.git['update'].version | default('HEAD') }}
