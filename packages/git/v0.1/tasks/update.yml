@@ -8,5 +8,5 @@
 - name: Update git repository
   git: 
     repo={{ task.git.update.repo }}
-    dest={{ task.git.udpate.dest }}
+    dest={{ task.git.update.dest }}
     version={{ task.git.update.version | default('HEAD') }}
