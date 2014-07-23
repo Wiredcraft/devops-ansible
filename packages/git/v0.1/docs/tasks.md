@@ -34,7 +34,7 @@ tasks:
   - name: push
     description: Commit and push the content of a folder to a remote repository
     options:
-      src:
+      build_dir:
         type: string
         description: Source folder where the content to push is
         required: true

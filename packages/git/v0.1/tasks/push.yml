@@ -1,26 +1,10 @@
 ---
-- name: Prepare temp folder
-  shell:
-    mktemp -d
-  register:
-    temp_folder
-
-- name: Package the source folder
-  shell:
-    chdir={{ task.git['push'].src }}
-    cp -a . {{ temp_folder.stdout }}
-
-- name: Move to gh-pages
+- name: Commit the build result to the current branch
   shell:
     chdir={{ task.git['push'].repo }}
-    git checkout -b gh-pages ; git clean -f -d ; git clean -f -x ; git pull
+    git add . ; git commit -am 'Add build result'
 
-- name: Commit and push to gh-pages
+- name: Push the build result over to the remote branch
   shell:
-    chdir={{ temp_folder.stdout }}
-    cp -a . {{ task.git['push'].repo }} ; git add . ; git commit -am 'Push new gh-pages' ; git push -u origin {{ task.git['push'].version }}
-
-- name: Remove temp folder
-  file:
-    dest={{ temp_folder.stdout }}
-    state=absent
+    chdir={{ task.git['push'].repo }}
+    git subtree push --prefix {{ task.git['push'].build_dir }} origin {{ task.git['push'].version }}
