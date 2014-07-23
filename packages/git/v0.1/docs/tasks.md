@@ -31,19 +31,19 @@ tasks:
         type: string
         description: Path of the repo on the host where to set the git configuration, if no `path` provided perform a global setup
         required: false
-  - name: push
+  - name: deploy
     description: Commit and push the content of a folder to a remote repository
     options:
-      build_dir:
+      source:
         type: string
-        description: Source folder where the content to push is
+        description: Source folder within the repo where the content to push is
         required: true
       repo:
         type: string
-        description: Local folder that host a repository
+        description: Local folder where the repository is located
         required: true
-      version:
+      branch:
         type: string
-        description: Remote branch to push the source content to
+        description: Remote branch to push the source content to (will be removed)
         required: true
 ---

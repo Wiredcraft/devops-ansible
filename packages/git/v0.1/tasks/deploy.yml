@@ -1,10 +1,10 @@
 ---
 - name: Commit the build result to the current branch
   shell:
-    chdir={{ task.git['push'].repo }}
+    chdir={{ task.git.deploy.repo }}
     git add . ; git commit -am 'Add build result' ; git pull
 
 - name: Delete the remote dest branch and push the build result over a (new) remote branch
   shell:
-    chdir={{ task.git['push'].repo }}
-    git push origin :{{ task.git['push'].version }} ; git subtree push --prefix {{ task.git['push'].build_dir }} origin {{ task.git['push'].version }}
+    chdir={{ task.git.deploy.repo }}
+    git push origin :{{ task.git.deploy.branch }} ; git subtree push --prefix {{ task.git.deploy.source }} origin {{ task.git.deploy.branch }}
