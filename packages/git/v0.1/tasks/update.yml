@@ -1,0 +1,12 @@
+---
+# Expects to be triggerd via task with
+- name: Ensure github.com ssh key is known
+  sudo: true
+  shell:
+    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
+
+- name: Update git repository
+  git: 
+    repo={{ task.git.update.repo }}
+    dest={{ task.git.udpate.dest }}
+    version={{ task.git.update.version | default('HEAD') }}
