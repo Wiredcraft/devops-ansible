@@ -9,7 +9,7 @@
     owner=root
     group=root
     mode=644
-  with:
+  with_items:
     nginx.vhosts | default([])
   notify: Restart Nginx
 
@@ -22,7 +22,7 @@
     owner=root
     group=root
     mode=644
-  with:
+  with_items:
     nginx.vhosts | default([])
   notify: Restart Nginx
 
@@ -34,5 +34,5 @@
     owner=devops
     group=devops
     mode=755
-  with:
+  with_items:
     nginx.vhosts | default([])
