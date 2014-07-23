@@ -44,5 +44,8 @@
     state=link
   notify: Restart Nginx
 
+# Enable the virtual hosts
+- include: DEVOPS_PACKAGE/tasks/vhosts.yml
+
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml
