@@ -5,6 +5,14 @@
   shell:
     ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
 
+- name: Ensure the destination folder for the repository exists
+  file:
+    path={{ task.git['update'].dest }}
+    state=directory
+    recurse=yes
+    owner=devops
+    mode=755
+
 - name: Update git repository
   git: 
     repo={{ task.git['update'].repo }}
