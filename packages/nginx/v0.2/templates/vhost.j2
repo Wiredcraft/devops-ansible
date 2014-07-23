@@ -1,0 +1,71 @@
+{% set item = item | default({}) %}
+
+{% set php = php | default({}) %}
+{% set fpm = php.fpm | default({}) %}
+{% set pool = fpm.pool | default({}) %}
+{% set nginx_vhost_php = item.php | default('off') %}
+{% set nginx = nginx | default({}) %}
+{% set http = nginx.http | default({}) %}
+
+{# optional upstreams parameter #}
+{% if item.upstreams is defined %}
+{% for upstream in task.nginx.add_http_vhost.upstreams %}
+upstream {{ upstream.name }} {
+    {% for backend in upstream.backends %}
+    server {{ backend }};
+    {% endfor %}
+}
+{% endfor %}
+{% endif %}
+
+server {
+    listen   {{ item.port }};
+    root /var/www/{{ item.domain }}/{{ item.webroot | default('') }};
+
+    {# Need better index management #}
+    index {% if nginx_vhost_php == 'on' %}index.php{% endif %} index.html index.htm;
+
+    access_log {{ http.access_log | dirname }}/{{ item.domain }}-access.log;
+    error_log {{ http.error_log | dirname }}/{{ item.domain }}-error.log;
+
+    # Make site accessible from http://localhost/
+    # server_name _;
+    server_name {{ item.domain }} {% if item.aliases is defined %}{% if item.aliases is sequence %}{{ item.aliases | join(' ') }}{% else %}{{ item.aliases }}{% endif %}{% endif %};
+
+{% for route in item.routes %}
+    location {{ route.uri }} {
+{% if route.type == 'proxy' %}
+        proxy_pass {{ route.to }};
+        proxy_pass_header Set-Cookie;
+{% elif route.type == 'fastcgi' %}
+        fastcgi_pass {{ route.to }};
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+        {# We may want to remove index.php #}
+        fastcgi_index index.php; 
+        include fastcgi_params;
+{% elif route.type == 'websocket' %}
+        proxy_pass {{ route.to }};
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+{% elif route.type == 'uwsgi' %}
+        uwsgi_pass {{ route.to }};
+        include uwsgi_params;
+{% else %}
+{# It covers anything else - including route.type == 'static' #}
+    {% if route.to is defined %}
+        # First attempt to serve request as file, then
+        # as directory, then fall back to index.html
+        try_files $uri $uri/ {% if nginx_vhost_php == 'on' %}/index.php?$args {% else %}/index.html{% endif %};
+
+        {# TODO: more checks to define if we want to use `alias` or `root` #}
+        {% if route.static is defined %}{{ route.static }}{% else %}root{% endif %} {{ route.to }};
+    {% endif %}
+{% endif %}
+{% if route.custom is defined %}
+        {{ route.custom }}
+{% endif %}
+    }
+{% endfor %}
+}

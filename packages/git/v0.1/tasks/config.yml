@@ -1,13 +1,13 @@
 ---
-- name: Set git config globally
+- name: Set git config globally for user name and email
   shell:
-    git config --global user.name {{ task.git.config.user }}; git config --global user.email {{ task.git.config.email }}; 
+    git config --global user.name {{ task.git.config.user }} && git config --global user.email {{ task.git.config.email }}
   when: 
     not task.git.config.path or task.git.config.path == ''
 
-- name: Set git config
+- name: Set git config for user name and email
   shell:
-    chdir {{ task.git.config.path }}
+    chdir={{ task.git.config.path }}
     git config user.name {{ task.git.config.user }} && git config user.email {{ task.git.config.email }}
   when: 
     task.git.config.path != ''

@@ -76,4 +76,9 @@ configuration:
             description: Space separated list of browser to disable gzip compression for
             type: string
             required: false
+    vhosts:
+        default: []
+        description: List of virtual hosts objects
+        type: array
+        required: false
 ---
