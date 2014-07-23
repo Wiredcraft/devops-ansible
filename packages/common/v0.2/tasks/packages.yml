@@ -2,11 +2,11 @@
 # file: common/tasks/packages.yml
 
 # Ensure troubleshooting tools
-- name: Ensure we have apt updated
+- name: Ensure APT cache is up-to-date
   apt: 
     update_cache=yes
 
-- name: Ensure we have the latest installed packages
+- name: Ensure the packages are up-to-date
   apt:
     upgrade=safe
 

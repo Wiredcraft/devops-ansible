@@ -26,19 +26,49 @@
   register:
     mysql_root_pass
 
-- name: Ensure MySQL root password
+- name: Set up root pass for mysql (localhost)
   mysql_user: 
     name=root
-    password=mysql_root_pass.stdout
-    priv=*.*:ALL,GRANT
+    password={{ mysql_root_pass.stdout }}
     state=present
-
-- name: Ensure the root user can log on MySQL
+    host={{ item }}
+  with_items:
+    - localhost
+- name: Prepare root .my.cnf
   template:
     src=DEVOPS_PACKAGE/templates/client.my.cnf.j2
     dest=/root/.my.cnf
     owner=root
-    mode=0400
+    group=root
+    mode=0600
+- name: Set up root pass for mysql (other localhost aliases)
+  mysql_user: 
+    name=root
+    password={{ mysql_root_pass.stdout }}
+    state=present
+    host={{ item }}
+  with_items:
+    - localhost
+    - 127.0.0.1
+    - ::1
+    - {{ ansible_hostname }}
+
+
+
+
+# - name: Ensure MySQL root password
+#   mysql_user: 
+#     name=root
+#     password=mysql_root_pass.stdout
+#     priv=*.*:ALL,GRANT
+#     state=present
+
+# - name: Ensure the root user can log on MySQL
+#   template:
+#     src=DEVOPS_PACKAGE/templates/client.my.cnf.j2
+#     dest=/root/.my.cnf
+#     owner=root
+#     mode=0400
   # with_password: 
   #   DEVOPS_BASE/users/{{ user }}/{{ inventory_hostname }}/mysql_root_password
   #   length=20
