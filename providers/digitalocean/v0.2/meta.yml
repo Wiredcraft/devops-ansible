@@ -55,8 +55,6 @@ locations:
 images:
     - label: Ubuntu 12.04.4 LTS 64bit
       id: ubuntu12.04
-    - label: Ubuntu 13.10 64bit
-      id: ubuntu13.10
     - label: Ubuntu 14.04 LTS 64bit
       id: ubuntu14.04
 
@@ -66,7 +64,5 @@ images:
 image_ids:
     ubuntu12.04:
         default: 3101045
-    ubuntu13.10:
-        default: 3101918
     ubuntu14.04:
-        default: 3240036
+        default: 5141286
