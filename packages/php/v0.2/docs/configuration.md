@@ -1,5 +1,6 @@
 ---
 title: PHP
+experimental: true
 tags:
     - language
 documentation: http://www.php.net/docs.php

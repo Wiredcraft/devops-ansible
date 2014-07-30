@@ -1,5 +1,6 @@
 ---
 title: RabbitMQ
+experimental: true
 tags:
     - messagebus
 documentation: https://www.rabbitmq.com/documentation.html

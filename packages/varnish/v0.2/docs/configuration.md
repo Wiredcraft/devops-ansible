@@ -1,5 +1,6 @@
 ---
 title: Varnish
+experimental: true
 tags:
     - caching
     - reverse proxy
