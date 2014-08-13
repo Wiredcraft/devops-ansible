@@ -15,6 +15,7 @@
     - php5-json
     - php-pear
     - php5-mcrypt
+    - php5-sqlite
 
 - name: Ensure PHP opscode
   apt: 

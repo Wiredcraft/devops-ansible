@@ -54,11 +54,11 @@ server {
         include uwsgi_params;
 {% else %}
 {# It covers anything else - including route.type == 'static' #}
-    {% if route.to is defined %}
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
         try_files $uri $uri/ {% if nginx_vhost_php == 'on' %}/index.php?$args {% else %}/index.html{% endif %};
 
+    {% if route.to is defined %}
         {# TODO: more checks to define if we want to use `alias` or `root` #}
         {% if route.static is defined %}{{ route.static }}{% else %}root{% endif %} {{ route.to }};
     {% endif %}
