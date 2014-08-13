@@ -7,7 +7,7 @@
     - php5-common
     - php5-cli
     - php5-dev
-    # - php5-suhosin
+    - php5-curl
     - php5-mysql
     - php5-gd
     - php5-memcache
@@ -115,4 +115,10 @@
   when:
     ansible_lsb.release | int <= 13 and ansible_lsb.codename != 'saucy'
 
+- name: Ensure php composer is installed (when required)
+  shell:
+    creates=/usr/local/bin/composer
+    mkdir -p /opt/php-composer && cd /opt/php-composer && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+  when:
+    php.composer
 

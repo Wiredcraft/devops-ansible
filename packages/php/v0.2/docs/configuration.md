@@ -6,6 +6,11 @@ tags:
 documentation: http://www.php.net/docs.php
 
 configuration: 
+    composer:
+        description: Add composer support (https://getcomposer.org/) globally to the node
+        default: false
+        type: boolean
+        required: false
     extensions: 
         description: List of extra php extensions installable via the regular OS package manager
         default: []
