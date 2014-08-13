@@ -31,7 +31,7 @@
     owner=root
     group=root
     mode=0600
-    state=present
+    state=file
   with_items:
     - /swapfile
 
