@@ -43,6 +43,12 @@
   notify:
     - Restart php5-fpm
 
+- name: Ensure all PHP extensions are enabled
+  shell:
+    for file in /etc/php5/mods-available/*ini; do php5enmod $(basename "$file" | cut -d'.' -f1); done
+  when:
+    ansible_distribution_major_version | int >= 14 and ansible_distribution == 'Ubuntu'
+
 # Backup config
 - name: Backup original config cli
   command: mv /etc/php5/cli/php.ini /etc/php5/cli/php.ini.orig 
