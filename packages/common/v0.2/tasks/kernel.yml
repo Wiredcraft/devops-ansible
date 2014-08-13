@@ -41,7 +41,7 @@
     regexp="^{{ item }}"
     line="{{ item }}    swap    swap    defaults    0 0"
     state=present
-  when:
+  with_items:
     - /swapfile
 
 - name: Ensure the SWAP is used
