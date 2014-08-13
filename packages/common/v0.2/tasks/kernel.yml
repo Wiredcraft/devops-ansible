@@ -16,3 +16,34 @@
     owner=root
     group=root
     mode=0644
+
+# Need some swap somewhere
+- name: Ensure a poor man's SWAP file is available
+  shell:
+    creates={{ item }}
+    dd if=/dev/zero of={{ item }} bs=1M count=2048; mkswap {{ item }}
+  with_items:
+    - /swapfile
+
+- name: Ensure proper permissions for the SWAP file
+  file:
+    path={{ item }}
+    owner=root
+    group=root
+    mode=0600
+    state=present
+  with_items:
+    - /swapfile
+
+- name: Ensure the SWAP file is used at boot
+  lineinfile: 
+    dest=/etc/fstab
+    regexp="^{{ item }}"
+    line="{{ item }}    swap    swap    defaults    0 0"
+    state=present
+  when:
+    - /swapfile
+
+- name: Ensure the SWAP is used
+  command:
+    swapon -a
