@@ -23,8 +23,8 @@ server {
     root /var/www/{{ item.domain }}/{{ item.webroot | default('') }};
 
     {% if item.ssl %}
-    ssl_certificate {{ item.ssl.certificate | default('') }};
-    ssl_certificate_key {{ item.ssl.private_key | default('') }};
+    ssl_certificate {% if item.ssl.certificate %}{{ item.ssl.certificate }}{% else %}/etc/nginx/ssl/{{ item.domain }}.pem{% endif %};
+    ssl_certificate_key {% if item.ssl.private_key %}{{ item.ssl.private_key }}{% else %}/etc/nginx/ssl/{{ item.domain }}.key{% endif %};
     {% endif %}
 
     {# Need better index management #}

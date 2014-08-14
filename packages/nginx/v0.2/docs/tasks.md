@@ -12,17 +12,32 @@ tasks:
   name: vhost add
   options:
     aliases:
-      description: space separated list of domain name aliases
+      description: Space separated list of domain name aliases
       required: false
       type: string
     domain:
-      description: domain name
+      description: Domain name
       required: true
       type: string
     port:
-      description: listening port
-      required: true
+      description: Listening port (TCP/80 by default, TCP/443 if SSL is enabled)
+      required: false
+      default: 80
       type: integer
+    ssl:
+      description: Enable HTTPS
+      required: false
+      options:
+        certicate:
+          description: HTTPS certificate file path (chained if needed)
+          required: false
+          default: /etc/nginx/ssl/{domain}.pem
+          type: string
+        private_key:
+          description: Private key file path used to generate the certificate (password-less)
+          required: false
+          default: /etc/nginx/ssl/{domain}.key
+          type: string          
     routes:
       description: list of route objects
       required: true
@@ -40,7 +55,7 @@ tasks:
           valid_values: Either of proxy / fastcgi / websocket / uwsgi / static
         to:
           description: Either an upstream name, or a service / url, or a path
-          required: true
+          required: false
           type: string
         custom:
           description: Custom inline nginx config to include within the route (e.g. auth, custom timeout)
