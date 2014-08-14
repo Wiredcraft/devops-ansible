@@ -6,6 +6,7 @@
 {% set nginx_vhost_php = item.php | default('off') %}
 {% set nginx = nginx | default({}) %}
 {% set http = nginx.http | default({}) %}
+{% set ssl = item.ssl | default(False) %}
 
 {# optional upstreams parameter #}
 {% if item.upstreams is defined %}
@@ -19,12 +20,12 @@ upstream {{ upstream.name }} {
 {% endif %}
 
 server {
-    listen   {% if item.port %}{{ item.port }}{% else %}{% if item.ssl %}443{% else %}80{% endif %}{% if item.ssl %} ssl{% endif %}{% endif %};
+    listen   {% if item.port %}{{ item.port }}{% else %}{% if ssl %}443{% else %}80{% endif %}{% if ssl %} ssl{% endif %}{% endif %};
     root /var/www/{{ item.domain }}/{{ item.webroot | default('') }};
 
-    {% if item.ssl %}
-    ssl_certificate {% if item.ssl.certificate %}{{ item.ssl.certificate }}{% else %}/etc/nginx/ssl/{{ item.domain }}.pem{% endif %};
-    ssl_certificate_key {% if item.ssl.private_key %}{{ item.ssl.private_key }}{% else %}/etc/nginx/ssl/{{ item.domain }}.key{% endif %};
+    {% if ssl %}
+    ssl_certificate {% if ssl.certificate %}{{ ssl.certificate }}{% else %}/etc/nginx/ssl/{{ item.domain }}.pem{% endif %};
+    ssl_certificate_key {% if ssl.private_key %}{{ ssl.private_key }}{% else %}/etc/nginx/ssl/{{ item.domain }}.key{% endif %};
     {% endif %}
 
     {# Need better index management #}
