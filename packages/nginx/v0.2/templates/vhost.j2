@@ -7,6 +7,7 @@
 {% set nginx = nginx | default({}) %}
 {% set http = nginx.http | default({}) %}
 {% set ssl = item.ssl | default(False) %}
+{% set port = item.port | default(False) %}
 
 {# optional upstreams parameter #}
 {% if item.upstreams is defined %}
@@ -20,7 +21,7 @@ upstream {{ upstream.name }} {
 {% endif %}
 
 server {
-    listen   {% if item.port %}{{ item.port }}{% else %}{% if ssl %}443{% else %}80{% endif %}{% if ssl %} ssl{% endif %}{% endif %};
+    listen   {% if item.port is defined %}{{ item.port }}{% else %}{% if ssl %}443{% else %}80{% endif %}{% if ssl %} ssl{% endif %}{% endif %};
     root /var/www/{{ item.domain }}/{{ item.webroot | default('') }};
 
     {% if ssl %}
