@@ -9,7 +9,7 @@
 
 {# optional upstreams parameter #}
 {% if item.upstreams is defined %}
-{% for upstream in task.nginx.add_http_vhost.upstreams %}
+{% for upstream in item.upstreams %}
 upstream {{ upstream.name }} {
     {% for backend in upstream.backends %}
     server {{ backend }};
@@ -19,8 +19,13 @@ upstream {{ upstream.name }} {
 {% endif %}
 
 server {
-    listen   {{ item.port }};
+    listen   {% if item.port %}{{ item.port }}{% else %}{% if item.ssl %}443{% else %}80{% endif %}{% if item.ssl %} ssl{% endif %}{% endif %};
     root /var/www/{{ item.domain }}/{{ item.webroot | default('') }};
+
+    {% if item.ssl %}
+    ssl_certificate {{ item.ssl.certificate | default('') }};
+    ssl_certificate_key {{ item.ssl.private_key | default('') }};
+    {% endif %}
 
     {# Need better index management #}
     index {% if nginx_vhost_php == 'on' %}index.php{% endif %} index.html index.htm;
