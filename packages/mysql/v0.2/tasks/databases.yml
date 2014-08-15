@@ -32,8 +32,10 @@
   when:
     "{{ item.1 }} in {{ mysql.databases[item.0].users }} "
   with_nested:
-    "{{ mysql.databases | keys }}"
-    "{{ mysql.users | keys }}"
+    # - "{{ mysql.databases | keys }}"
+    # "{{ mysql.users | keys }}"
+    - [ {% for key, val in mysql.databases %}{{ key }}{% if not loop.last %},{% endif %} %}{% endfor %} ]
+    - [ {% for key, val in mysql.users %}{{ key }}{% if not loop.last %},{% endif %} %}{% endfor %} ]
 
 - name: Ensure user's grants to the databases
   mysql_user:
