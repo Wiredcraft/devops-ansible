@@ -1,0 +1,19 @@
+---
+
+
+- name: Ensure mysql passwords
+  shell:
+    if [ -f {{ item.key }}.passwd ]; then cat {{ item.key }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee {{ item.key }}.passwd ; fi
+  with_dict:
+    mysql.users | default({})
+  register:
+    mysql_pass
+
+- name: Ensure mysql users
+  sudo: yes
+  mysql_user: 
+    name={{ item.item.key }}
+    password={{ item.stdout }}
+    state=present
+  with_items:
+    mysql_pass.results

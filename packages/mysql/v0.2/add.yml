@@ -53,6 +53,10 @@
     - ::1
     - "{{ ansible_hostname }}"
 
+# Handle users and databases
+- include: DEVOPS_PACKAGE/tasks/users.yml
+- include: DEVOPS_PACKAGE/tasks/databases.yml
+
 
 
 
