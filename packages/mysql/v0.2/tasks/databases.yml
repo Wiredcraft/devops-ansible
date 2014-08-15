@@ -21,8 +21,8 @@
   shell:
     "echo '{{ item.1 }}' >> /tmp/toto ; echo '{{ item.0 }}.*:ALL' >> /tmp/toto"
   with_nested:
-    - {{ item.key }}
-    - {{ item.users }}
+    item.key
+    item.users
   with_dict:
     mysql.databases
 
