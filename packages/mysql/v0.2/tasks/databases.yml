@@ -14,4 +14,4 @@
     state=present
   with_subelements:
     - "{% set dbs = []; set databases = mysql.databases | default({}); for key, value in databases.iteritems() %}{% db = {'name':key}; db.update(value); dbs.append(db) %}{%endfor%}{{ dbs }}"
-    - users | default([])
+    - users

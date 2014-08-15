@@ -285,4 +285,15 @@ configuration:
             enum:
                 - On
                 - Off
+    users:
+        default: {}
+        description: Regular users
+        type: user
+        required: false
+    databases:
+        default: {}
+        description: Databases to be present on the host
+        type: database
+        required: false
+
 ---
