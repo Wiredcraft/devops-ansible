@@ -11,7 +11,7 @@
     "echo '{{ item.1 }}' >> /tmp/toto ; echo '{{ item.0 }}.*:ALL' >> /tmp/toto"
   when:
     # "'toto' in ['toto']"
-    "'{{ item.1 }}' in {{ mysql.databases[item.0].users | list }}"
+    item.1 in mysql.databases[item.0].users
   with_nested:
     - "{% set dbs = mysql.databases.iterkeys() %}{{ dbs | list }}"
     - "{% set users = mysql.users.iterkeys() %}{{ users | list }}"
