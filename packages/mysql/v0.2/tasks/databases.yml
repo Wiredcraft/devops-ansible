@@ -20,8 +20,9 @@
 - name: Ensure user's grants to the databases
   shell:
     "echo '{{ item.1 }}' >> /tmp/toto ; echo '{{ item.0 }}.*:ALL' >> /tmp/toto"
-  with_items:
-    item.users
+  with_nested:
+    - item.key
+    - item.users
   with_dict:
     mysql.databases
 
@@ -30,7 +31,7 @@
   mysql_user:
     name={{ item.1 }}
     append_privs=yes
-    priv={{ item.0 }}.*:ALL
+    priv={{ item }}.*:ALL
     state=present
   with_items:
     item.users
