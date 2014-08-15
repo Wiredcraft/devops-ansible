@@ -34,8 +34,8 @@
   with_nested:
     # - "{{ mysql.databases | keys }}"
     # "{{ mysql.users | keys }}"
-    - [ "{% for key, val in mysql.databases.iteritems() %}{{ key }}{% if not loop.last %},{% endif %} %}{% endfor %}" ]
-    - [ "{% for key, val in mysql.users.iteritems() %}{{ key }}{% if not loop.last %},{% endif %} %}{% endfor %}" ]
+    - [ "{% for key, val in mysql.databases.iteritems() %}{{ key }}{% if not loop.last %},{% endif %}{% endfor %}" ]
+    - [ "{% for key, val in mysql.users.iteritems() %}{{ key }}{% if not loop.last %},{% endif %}{% endfor %}" ]
 
 - name: Ensure user's grants to the databases
   mysql_user:
