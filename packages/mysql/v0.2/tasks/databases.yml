@@ -10,27 +10,19 @@
   shell:
     "echo '{{ item.1 }}' >> /tmp/toto ; echo '{{ item.0 }}.*:ALL' >> /tmp/toto"
   when:
-    # "'toto' in ['toto']"
     item.1 in mysql.databases[item.0].users
   with_nested:
     - "{% set dbs = mysql.databases.iterkeys() %}{{ dbs | list }}"
     - "{% set users = mysql.users.iterkeys() %}{{ users | list }}"
-    # - [ "{% mysql.users.iterkeys() %}" ]
-    # - [ "{{ mysql.users | iterkeys }}" ]
-    # - [ "{% for key, val in mysql.databases.iteritems() %}{{ key }}{% if not loop.last %}, {% endif %}{% endfor %}" ]
-    # - [ "{% for key, val in mysql.users.iteritems() %}{{ key }}{% if not loop.last %}, {% endif %}{% endfor %}" ]
-    # - "{{ mysql.databases | keys }}"
-    # "{{ mysql.users | keys }}"
-    # - "{% set dbs = [] %}{% for key, val in mysql.databases.iteritems() %}{% dbs.append(key) %}}{% endfor %}{{ dbs | list }}"
-    # - "{% set users = [] %}{% for key, val in mysql.users.iteritems() %}{% users.append(key) %}}{% endfor %}{{ users | list }}"
 
 - name: Ensure user's grants to the databases
   mysql_user:
     name={{ item.1 }}
     append_privs=yes
-    priv={{ item }}.*:ALL
+    priv={{ item.0 }}.*:ALL
     state=present
-  with_items:
-    item.users
-  with_dict:
-    mysql.databases
+  when:
+    item.1 in mysql.databases[item.0].users
+  with_nested:
+    - "{% set dbs = mysql.databases.iterkeys() %}{{ dbs | list }}"
+    - "{% set users = mysql.users.iterkeys() %}{{ users | list }}"
