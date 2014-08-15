@@ -10,8 +10,9 @@
   mysql_user:
     name={{ item.1 }}
     append_privs=yes
-    priv={{ item.0.name }}.*:ALL
+    priv={{ item.0.key }}.*:ALL
     state=present
   with_subelements:
-    - "{% set dbs = []; set databases = mysql.databases | default({}); for key, value in databases.iteritems() %}{% db = {'name':key}; db.update(value); dbs.append(db) %}{%endfor%}{{ dbs }}"
+    # - "{% set dbs = []; set databases = mysql.databases | default({}); for key, value in databases.iteritems() %}{% db = {'name':key}; db.update(value); dbs.append(db) %}{%endfor%}{{ dbs }}"
+    - mysql.databases
     - users
