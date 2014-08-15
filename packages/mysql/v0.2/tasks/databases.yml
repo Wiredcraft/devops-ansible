@@ -32,8 +32,8 @@
   when:
     "{{ item.1 }} in {{ mysql.databases[item.0].users }} "
   with_nested:
-    {{ mysql.databases | keys }}
-    {{ mysql.users | keys }}
+    "{{ mysql.databases | keys }}"
+    "{{ mysql.users | keys }}"
 
 - name: Ensure user's grants to the databases
   mysql_user:
