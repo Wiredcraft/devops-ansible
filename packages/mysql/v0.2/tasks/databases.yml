@@ -22,7 +22,7 @@
   mysql_user:
     name={{ item.1 }}
     append_privs=yes
-    priv={{ item.0.key }}.*:ALL
+    priv={{ item.0 }}.*:ALL
     state=present
   with_items:
     item.users
