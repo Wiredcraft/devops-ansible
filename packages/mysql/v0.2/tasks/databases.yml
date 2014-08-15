@@ -19,7 +19,7 @@
 
 - name: Ensure user's grants to the databases
   shell:
-    echo "1: {{ item.1 }} {{ item.0 }}.*:ALL" >> /tmp/toto
+    "echo '{{ item.1 }}' >> /tmp/toto ; echo '{{ item.0 }}.*:ALL' >> /tmp/toto"
   with_items:
     item.users
   with_dict:
