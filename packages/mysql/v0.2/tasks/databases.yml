@@ -30,13 +30,13 @@
   shell:
     "echo '{{ item.1 }}' >> /tmp/toto ; echo '{{ item.0 }}.*:ALL' >> /tmp/toto"
   when:
-    "{{ item.1 }} in {{ mysql.databases[item.0].users }} "
+    "'{{ item.1 }}' in {{ mysql.databases[item.0].users }} "
   with_nested:
     # - "{{ mysql.databases | keys }}"
     # "{{ mysql.users | keys }}"
     # - "{% set dbs = [] %}{% for key, val in mysql.databases.iteritems() %}{% dbs.append(key) %}}{% endfor %}{{ dbs | list }}"
-    - [ "{% for key, val in mysql.databases.iteritems() %}'{{ key }}'{% if not loop.last %}, {% endif %}{% endfor %}" ]
-    - [ "{% for key, val in mysql.users.iteritems() %}'{{ key }}'{% if not loop.last %}, {% endif %}{% endfor %}" ]
+    - [ "{% for key, val in mysql.databases.iteritems() %}{{ key }}{% if not loop.last %}, {% endif %}{% endfor %}" ]
+    - [ "{% for key, val in mysql.users.iteritems() %}{{ key }}{% if not loop.last %}, {% endif %}{% endfor %}" ]
     # - "{% set users = [] %}{% for key, val in mysql.users.iteritems() %}{% users.append(key) %}}{% endfor %}{{ users | list }}"
 
 - name: Ensure user's grants to the databases
