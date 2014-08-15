@@ -6,13 +6,25 @@
   with_dict:
     mysql.databases | default({})
 
+# - name: Ensure user's grants to the databases
+#   mysql_user:
+#     name={{ item.1 }}
+#     append_privs=yes
+#     priv={{ item.0.key }}.*:ALL
+#     state=present
+#   with_subelements:
+#     - mysql.databases
+#     - users
+
+
+
 - name: Ensure user's grants to the databases
   mysql_user:
     name={{ item.1 }}
     append_privs=yes
     priv={{ item.0.key }}.*:ALL
     state=present
-  with_subelements:
-    # - "{% set dbs = []; set databases = mysql.databases | default({}); for key, value in databases.iteritems() %}{% db = {'name':key}; db.update(value); dbs.append(db) %}{%endfor%}{{ dbs }}"
-    - "{% set dbs = [] %}{% set databases = mysql.databases | default({}) %}{% for key, value in databases.iteritems() %}{% value['name'] = key %}{% dbs.append(value) %}{% endfor %}{{ dbs | list }}"
-    - users
+  with_items:
+    item.users
+  with_dict:
+    mysql.databases
