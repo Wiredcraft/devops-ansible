@@ -23,8 +23,8 @@
   when:
     "{{ item.1 }} in {{ mysql.databases[item.0].users }} "
   with_nested:
-    - [ "{% set dbs = list(mysql.databases.iterkeys()) %}{{ dbs }}" ]
-    - [ "{% set users = list(mysql.users.iterkeys()) %}{{ users }}" ]
+    - [ "{% set dbs = mysql.databases.iterkeys() %}{{ dbs | list }}" ]
+    - [ "{% set users = mysql.users.iterkeys() %}{{ users | list }}" ]
     # - [ "{% mysql.users.iterkeys() %}" ]
     # - [ "{{ mysql.users | iterkeys }}" ]
     # - [ "{% for key, val in mysql.databases.iteritems() %}{{ key }}{% if not loop.last %}, {% endif %}{% endfor %}" ]
