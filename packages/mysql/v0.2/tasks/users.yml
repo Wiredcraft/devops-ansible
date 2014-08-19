@@ -1,15 +1,14 @@
 ---
-
-
-- name: Ensure mysql passwords
+- name: Ensure MySQL passwords
+  sudo: yes
   shell:
-    if [ -f {{ item.key }}.passwd ]; then cat {{ item.key }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee {{ item.key }}.passwd ; fi
+    if [ -f /root/{{ item.key }}.passwd ]; then cat /root/{{ item.key }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/{{ item.key }}.passwd ; fi
   with_dict:
     mysql.users | default({})
   register:
     mysql_pass
 
-- name: Ensure mysql users
+- name: Ensure MySQL users
   sudo: yes
   mysql_user: 
     name={{ item.item.key }}
@@ -17,3 +16,17 @@
     state=present
   with_items:
     mysql_pass.results
+
+# Register the user / pass to the devops registry
+- name: Register MySQL users
+  local_action:
+    module: shell
+      echo REGISTER_MYSQL_USER "{{ item.item.key }}" "{{ item.stdout }}"
+  with_items:
+    mysql_pass.results
+# - name: Register MySQL users
+#   local_action:
+#     module: shell
+#       'python push_to_registry {{ item.item.key }} {{ item.stdout }}'
+#   with_items:
+#     mysql_pass.results

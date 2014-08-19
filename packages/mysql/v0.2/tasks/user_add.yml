@@ -1,21 +1,41 @@
 ---
-
-- name: Ensure mysql database
+- name: Ensure MySQL database
   sudo: yes
   mysql_db:
-    name={{ task.mysql.user_add.db }} 
+    name={{ task.mysql.user_add.db }}
     state=present
+  when:
+    task.mysql.user_add.db is defined
 
-- name: Prepare mysql password
+# TODO: consider when a password is provided
+- name: Ensure MySQL passwords
+  sudo: yes
   shell:
-    if [ -f {{ task.mysql.user_add.user }}.passwd ]; then cat {{ task.mysql.user_add.user }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee {{ task.mysql.user_add.user }}.passwd ; fi
+    if [ -f /root/{{ task.mysql.user_add.user }}.passwd ]; then cat /root/{{ task.mysql.user_add.user }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/{{ task.mysql.user_add.user }}.passwd ; fi
   register:
     mysql_pass
 
-- name: Ensure mysql user
+- name: Ensure MySQL users
   sudo: yes
   mysql_user: 
     name={{ task.mysql.user_add.user }}
     password={{ mysql_pass.stdout }}
     priv={{ task.mysql.user_add.db }}.*:ALL
     state=present
+  when:
+    task.mysql.user_add.db is defined
+
+# Register the user/pass to the devops registry
+- name: Register MySQL user
+  local_action:
+    module: shell
+      echo REGISTER_MYSQL_USER "{{ task.mysql.user_add.user }}" "{{ mysql_pass.stdout }}"
+
+# Register the database/user to the devops registry
+- name: Register MySQL database
+  local_action:
+    module: shell
+      echo REGISTER_MYSQL_DB "{{ task.mysql.user_add.db }}" "{{ task.mysql.user_add.user }}"
+  when:
+    task.mysql.user_add.db is defined
+
