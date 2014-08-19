@@ -6,6 +6,7 @@
     ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
 
 - name: Ensure the destination folder for the repository exists
+  sudo: true
   file:
     path={{ task.git['update'].dest }}
     state=directory
