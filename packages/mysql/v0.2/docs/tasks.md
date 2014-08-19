@@ -15,8 +15,12 @@ tasks:
         type: string
         description: Name of the user to create
         required: true
+      pass:
+        type: string
+        description: Password to use for the MySQL user. If none supplied a random one will be created
+        required: false
       db: 
         type: string
-        description: Name of the database to create
-        required: true
+        description: Name of the database to be granted access to. If the database doesn't exist it will be created.
+        required: false
 ---
