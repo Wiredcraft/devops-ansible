@@ -2,12 +2,14 @@
 # Enable / Disable default vhost depending whether other vhosts are defined
 - name: Toggle default vhost
   file:
-    state={% if nginx.vhosts is defined %}absent{% else %}link{% fi %}
+    state={{ item }}
     src=/etc/nginx/sites-available/default
     dest=/etc/nginx/sites-enabled/default
     owner=root
     group=root
     mode=644
+  with_items:
+    - {% if nginx.vhosts is defined %}absent{% else %}link{% fi %}
   notify: Restart Nginx
 
 - name: Add HTTP vhosts
