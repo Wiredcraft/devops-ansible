@@ -1,5 +1,5 @@
 ---
-- name: Ensure memcached is installed
+- name: Ensure Memcached is installed
   apt: 
     pkg=memcached
     state=present
@@ -15,7 +15,7 @@
     mode=0644
   notify: Restart Memcached
 
-- name: Ensure the memcached config file
+- name: Ensure the Memcached config file
   template:
     src=DEVOPS_PACKAGE/templates/memcached.conf.j2
     dest=/etc/memcached.conf

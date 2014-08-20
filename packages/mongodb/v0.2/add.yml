@@ -1,5 +1,5 @@
 ---
-- name: Ensure mongodb is installed
+- name: Ensure MongoDB is installed
   apt: pkg=mongodb state=present
   notify: Ensure MongoDB is enabled
 
