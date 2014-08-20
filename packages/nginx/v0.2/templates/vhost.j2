@@ -2,14 +2,15 @@
 {% set vhost_id = item.key | default('default') %}
 {% set value = item.value | default({}) %}
 
-{% set php = php | default({}) %}
-{% set fpm = php.fpm | default({}) %}
-{% set pool = fpm.pool | default({}) %}
-{% set nginx_vhost_php = value.php | default('off') %}
 {% set nginx = nginx | default({}) %}
 {% set http = nginx.http | default({}) %}
 {% set ssl = value.ssl | default(False) %}
 {% set port = value.port | default(False) %}
+
+{% set support = value.support | default([]) %}
+{% set support_php = False %}
+{% if 'php' in support %}{% set support_php = True %}{% endif %}
+
 
 {# optional upstreams parameter #}
 {% if value.upstreams is defined %}
@@ -32,7 +33,7 @@ server {
     {% endif %}
 
     {# Need better index management #}
-    index {% if nginx_vhost_php == 'on' %}index.php{% endif %} index.html index.htm;
+    index {% if support_php %}index.php{% endif %} index.html index.htm;
 
     access_log {{ http.access_log | dirname }}/{{ vhost_id }}-access.log;
     error_log {{ http.error_log | dirname }}/{{ vhost_id }}-error.log;
@@ -65,7 +66,7 @@ server {
 {# It covers anything else - including route.type == 'static' #}
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
-        try_files $uri $uri/ {% if nginx_vhost_php == 'on' %}/index.php?$args {% else %}/index.html{% endif %};
+        try_files $uri $uri/ {% if support_php %}/index.php?$args{% else %}/index.html{% endif %};
 
     {% if route.to is defined %}
         {# TODO: more checks to define if we want to use `alias` or `root` #}
