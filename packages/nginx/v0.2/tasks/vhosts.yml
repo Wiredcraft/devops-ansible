@@ -9,7 +9,7 @@
     group=root
     mode=644
   with_items:
-    - {% if nginx.vhosts is defined %}absent{% else %}link{% fi %}
+    - "{% if nginx.vhosts is defined %}absent{% else %}link{% fi %}"
   notify: Restart Nginx
 
 - name: Add HTTP vhosts
