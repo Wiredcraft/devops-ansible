@@ -1,38 +1,45 @@
 ---
-# Expects to be triggerd via task with
+# Enable / Disable default vhost depending whether other vhosts are defined
+- name: Toggle default vhost
+  file:
+    state={% if nginx.vhosts is defined %}absent{% else %}link{% fi %}
+    src=/etc/nginx/sites-available/default
+    dest=/etc/nginx/sites-enabled/default
+    owner=root
+    group=root
+    mode=644
+  notify: Restart Nginx
 
-- name: Add HTTP vhost
-  sudo: yes
+- name: Add HTTP vhosts
   template: 
     src=DEVOPS_PACKAGE/templates/vhost.j2
-    dest=/etc/nginx/sites-available/{{ item.domain }}
+    dest=/etc/nginx/sites-available/{{ item.key }}
     owner=root
     group=root
     mode=644
-  with_items:
-    nginx.vhosts | default([])
+  with_dict:
+    nginx.vhosts | default({})
   notify: Restart Nginx
 
-- name: Enable HTTP vhost
-  sudo: yes
+- name: Enable HTTP vhosts
   file:
     state=link
-    src=/etc/nginx/sites-available/{{ item.domain }}
-    dest=/etc/nginx/sites-enabled/{{ item.domain }}
+    src=/etc/nginx/sites-available/{{ item.key }}
+    dest=/etc/nginx/sites-enabled/{{ item.key }}
     owner=root
     group=root
     mode=644
-  with_items:
-    nginx.vhosts | default([])
+  with_dict:
+    nginx.vhosts | default({})
   notify: Restart Nginx
 
-- name: Ensure the root folder exists
-  sudo: yes
+- name: Ensure the root folders exists
   file:
     state=directory
-    path=/var/www/{{ item.domain }}
+    path=/var/www/{{ item.key }}
     owner=devops
     group=devops
     mode=755
-  with_items:
+  with_dict:
     nginx.vhosts | default([])
+

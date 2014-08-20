@@ -1,17 +1,19 @@
 {% set item = item | default({}) %}
+{% set vhost_id = item.key | default('default') %}
+{% set value = item.value | default({}) %}
 
 {% set php = php | default({}) %}
 {% set fpm = php.fpm | default({}) %}
 {% set pool = fpm.pool | default({}) %}
-{% set nginx_vhost_php = item.php | default('off') %}
+{% set nginx_vhost_php = value.php | default('off') %}
 {% set nginx = nginx | default({}) %}
 {% set http = nginx.http | default({}) %}
-{% set ssl = item.ssl | default(False) %}
-{% set port = item.port | default(False) %}
+{% set ssl = value.ssl | default(False) %}
+{% set port = value.port | default(False) %}
 
 {# optional upstreams parameter #}
-{% if item.upstreams is defined %}
-{% for upstream in item.upstreams %}
+{% if value.upstreams is defined %}
+{% for upstream in value.upstreams %}
 upstream {{ upstream.name }} {
     {% for backend in upstream.backends %}
     server {{ backend }};
@@ -21,25 +23,25 @@ upstream {{ upstream.name }} {
 {% endif %}
 
 server {
-    listen   {% if item.port is defined %}{{ item.port }}{% else %}{% if ssl %}443{% else %}80{% endif %}{% if ssl %} ssl{% endif %}{% endif %};
-    root /var/www/{{ item.domain }}/{{ item.webroot | default('') }};
+    listen   {% if value.port is defined %}{{ value.port }}{% else %}{% if ssl %}443{% else %}80{% endif %}{% if ssl %} ssl{% endif %}{% endif %};
+    root /var/www/{{ vhost_id }}/{{ value.webroot | default('') }};
 
     {% if ssl %}
-    ssl_certificate {% if ssl.certificate %}{{ ssl.certificate }}{% else %}/etc/nginx/ssl/{{ item.domain }}.pem{% endif %};
-    ssl_certificate_key {% if ssl.private_key %}{{ ssl.private_key }}{% else %}/etc/nginx/ssl/{{ item.domain }}.key{% endif %};
+    ssl_certificate {% if ssl.certificate %}{{ ssl.certificate }}{% else %}/etc/nginx/ssl/{{ vhost_id }}.pem{% endif %};
+    ssl_certificate_key {% if ssl.private_key %}{{ ssl.private_key }}{% else %}/etc/nginx/ssl/{{ vhost_id }}.key{% endif %};
     {% endif %}
 
     {# Need better index management #}
     index {% if nginx_vhost_php == 'on' %}index.php{% endif %} index.html index.htm;
 
-    access_log {{ http.access_log | dirname }}/{{ item.domain }}-access.log;
-    error_log {{ http.error_log | dirname }}/{{ item.domain }}-error.log;
+    access_log {{ http.access_log | dirname }}/{{ vhost_id }}-access.log;
+    error_log {{ http.error_log | dirname }}/{{ vhost_id }}-error.log;
 
     # Make site accessible from http://localhost/
     # server_name _;
-    server_name {{ item.domain }} {% if item.aliases is defined %}{% if item.aliases is sequence %}{{ item.aliases | join(' ') }}{% else %}{{ item.aliases }}{% endif %}{% endif %};
+    server_name {{ value.domain }} {% if value.aliases is defined %}{% if value.aliases is sequence %}{{ value.aliases | join(' ') }}{% else %}{{ value.aliases }}{% endif %}{% endif %};
 
-{% for route in item.routes %}
+{% for route in value.routes %}
     location {{ route.uri }} {
 {% if route.type == 'proxy' %}
         proxy_pass {{ route.to }};

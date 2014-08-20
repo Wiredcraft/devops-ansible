@@ -77,7 +77,7 @@ configuration:
             type: string
             required: false
     vhosts:
-        default: []
+        default: {}
         description: List of virtual hosts objects
         type: array
         required: false
