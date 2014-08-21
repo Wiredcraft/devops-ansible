@@ -19,44 +19,44 @@
   notify: Restart Nginx
 
 
-- name: Add HTTP vhosts
-  template: 
-    src=DEVOPS_PACKAGE/templates/vhost.j2
-    dest=/etc/nginx/sites-available/{{ item.key }}
-    owner=root
-    group=root
-    mode=644
-  with_dict:
-    nginx.vhosts | default({})
-  when:
-    nginx.vhosts is defined and nginx.vhosts is mapping
-  notify: Restart Nginx
+# - name: Add HTTP vhosts
+#   template: 
+#     src=DEVOPS_PACKAGE/templates/vhost.j2
+#     dest=/etc/nginx/sites-available/{{ item.key }}
+#     owner=root
+#     group=root
+#     mode=644
+#   with_dict:
+#     nginx.vhosts | default({})
+#   when:
+#     nginx.vhosts is defined and nginx.vhosts is mapping
+#   notify: Restart Nginx
 
-- name: Enable HTTP vhosts
-  file:
-    state=link
-    src=/etc/nginx/sites-available/{{ item.key }}
-    dest=/etc/nginx/sites-enabled/{{ item.key }}
-    owner=root
-    group=root
-    mode=644
-  with_dict:
-    nginx.vhosts | default({})
-  when:
-    nginx.vhosts is defined and nginx.vhosts is mapping
-  notify: Restart Nginx
+# - name: Enable HTTP vhosts
+#   file:
+#     state=link
+#     src=/etc/nginx/sites-available/{{ item.key }}
+#     dest=/etc/nginx/sites-enabled/{{ item.key }}
+#     owner=root
+#     group=root
+#     mode=644
+#   with_dict:
+#     nginx.vhosts | default({})
+#   when:
+#     nginx.vhosts is defined and nginx.vhosts is mapping
+#   notify: Restart Nginx
 
-- name: Ensure the root folders exists
-  file:
-    state=directory
-    path=/var/www/{{ item.key }}
-    owner=devops
-    group=devops
-    mode=755
-  with_dict:
-    nginx.vhosts | default({})
-  when:
-    nginx.vhosts is defined and nginx.vhosts is mapping
+# - name: Ensure the root folders exists
+#   file:
+#     state=directory
+#     path=/var/www/{{ item.key }}
+#     owner=devops
+#     group=devops
+#     mode=755
+#   with_dict:
+#     nginx.vhosts | default({})
+#   when:
+#     nginx.vhosts is defined and nginx.vhosts is mapping
 
 
 #
@@ -67,38 +67,38 @@
 - name: Add HTTP vhosts
   template: 
     src=DEVOPS_PACKAGE/templates/vhost_legacy.j2
-    dest=/etc/nginx/sites-available/{{ item.domain | default('_') }}
+    dest=/etc/nginx/sites-available/{% if item.id %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
     owner=root
     group=root
     mode=644
   with_items:
     nginx.vhosts | default([])
-  when:
-    nginx.vhosts is defined and nginx.vhosts is not mapping
+  # when:
+  #   nginx.vhosts is defined and nginx.vhosts is not mapping
   notify: Restart Nginx
 
 - name: Enable HTTP vhosts
   file:
     state=link
-    src=/etc/nginx/sites-available/{{ item.domain | default('_') }}
-    dest=/etc/nginx/sites-enabled/{{ item.domain | default('_') }}
+    src=/etc/nginx/sites-available/{% if item.id %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
+    dest=/etc/nginx/sites-enabled/{% if item.id %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
     owner=root
     group=root
     mode=644
   with_items:
     nginx.vhosts | default([])
-  when:
-    nginx.vhosts is defined and nginx.vhosts is not mapping
+  # when:
+  #   nginx.vhosts is defined and nginx.vhosts is not mapping
   notify: Restart Nginx
 
 - name: Ensure the root folders exists
   file:
     state=directory
-    path=/var/www/{{ item.domain | default('_') }}
+    path=/var/www/{% if item.id %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
     owner=devops
     group=devops
     mode=755
   with_items:
     nginx.vhosts | default([])
-  when:
-    nginx.vhosts is defined and nginx.vhosts is not mapping
+  # when:
+  #   nginx.vhosts is defined and nginx.vhosts is iterable and nginx.vhosts is not string
