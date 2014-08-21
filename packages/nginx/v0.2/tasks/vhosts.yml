@@ -15,7 +15,7 @@
     owner=root
     group=root
     mode=644
-  when: nginx.vhosts is not defined or nginx.vhosts == {}
+  when: nginx.vhosts is undefined or nginx.vhosts == {} or nginx.vhosts == []
   notify: Restart Nginx
 
 
@@ -28,6 +28,8 @@
     mode=644
   with_dict:
     nginx.vhosts | default({})
+  when:
+    nginx.vhosts is defined and nginx.vhosts is mapping
   notify: Restart Nginx
 
 - name: Enable HTTP vhosts
@@ -40,6 +42,8 @@
     mode=644
   with_dict:
     nginx.vhosts | default({})
+  when:
+    nginx.vhosts is defined and nginx.vhosts is mapping
   notify: Restart Nginx
 
 - name: Ensure the root folders exists
@@ -50,5 +54,51 @@
     group=devops
     mode=755
   with_dict:
-    nginx.vhosts | default([])
+    nginx.vhosts | default({})
+  when:
+    nginx.vhosts is defined and nginx.vhosts is mapping
 
+
+#
+# LEGACY - vhosts are array
+# TODO: deprecate
+#
+
+- name: Add HTTP vhosts
+  template: 
+    src=DEVOPS_PACKAGE/templates/vhost_legacy.j2
+    dest=/etc/nginx/sites-available/{{ item.domain | default('_') }}
+    owner=root
+    group=root
+    mode=644
+  with_items:
+    nginx.vhosts | default([])
+  when:
+    nginx.vhosts is defined and nginx.vhosts is not mapping
+  notify: Restart Nginx
+
+- name: Enable HTTP vhosts
+  file:
+    state=link
+    src=/etc/nginx/sites-available/{{ item.domain | default('_') }}
+    dest=/etc/nginx/sites-enabled/{{ item.domain | default('_') }}
+    owner=root
+    group=root
+    mode=644
+  with_items:
+    nginx.vhosts | default([])
+  when:
+    nginx.vhosts is defined and nginx.vhosts is not mapping
+  notify: Restart Nginx
+
+- name: Ensure the root folders exists
+  file:
+    state=directory
+    path=/var/www/{{ item.domain | default('_') }}
+    owner=devops
+    group=devops
+    mode=755
+  with_items:
+    nginx.vhosts | default([])
+  when:
+    nginx.vhosts is defined and nginx.vhosts is not mapping
