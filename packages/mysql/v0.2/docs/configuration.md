@@ -286,14 +286,14 @@ configuration:
                 - On
                 - Off
     users:
-        default: {}
+        default: None
         description: Associative array of users, the key is used as username
         required: false
         type: object
         object_id: user
     databases:
-        default: {}
-        description: Associative array of databaes, the key is used as database name
+        default: None
+        description: Associative array of databases, the key is used as database name
         required: false
         type: object
         object_id: database
