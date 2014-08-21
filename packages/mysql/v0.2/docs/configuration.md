@@ -287,7 +287,7 @@ configuration:
                 - Off
     users:
         default: {}
-        description: Associative array of users, the key is used as username, no options supported at the moment
+        description: Associative array of users, the key is used as username
         required: false
         type: object
         object_id: user
@@ -295,32 +295,36 @@ configuration:
         default: {}
         description: Associative array of databaes, the key is used as database name
         required: false
+        type: object
         object_id: database
 
 # Define objects that are 
 objects:
     user:
-        password:
-            description: Define the password to be set for the user [UNSUPPORTED]
-            default: RANDOM
-            type: string
-            required: false
-        generate_password:
-            description: Define whether a random password must be generated for the user
-            default: true
-            type: bool
-            required: false
-        hosts:
-            description: Array of hosts the user will be allowed to connect from. ex. [localhost, 192.168.%]
-            default: localhost
-            type: array
-            required: false
+        description: MySQL user object. Currently passwords are generated randomly only.
+        options:
+            password:
+                description: Define the password to be set for the user [UNSUPPORTED]
+                default: RANDOM
+                type: string
+                required: false
+            generate_password:
+                description: Define whether a random password must be generated for the user
+                default: true
+                type: bool
+                required: false
+            hosts:
+                description: Array of hosts the user will be allowed to connect from. ex. [localhost, 192.168.%]
+                default: localhost
+                type: array
+                required: false
     database:
-        users:
-            description: Array of users with full privileges on the database
-            default: None
-            type: array
-            required: false
+        description: MySQL database object, defines a database and the permissions of the users
+            users:
+                description: Array of users with full privileges on the database
+                default: None
+                type: array
+                required: false
 
 
 ---
