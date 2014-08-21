@@ -1,6 +1,7 @@
 {% set item = item | default({}) %}
-{% set vhost_id = item.key | default('default') %}
-{% set value = item.value | default({}) %}
+{% set vhost_id = item.domain | default('_') %}
+{% set vhost_id = item.id | default(vhost_id) %}
+{% set value = item | default({}) %}
 
 {% set nginx = nginx | default({}) %}
 {% set http = nginx.http | default({}) %}
@@ -40,7 +41,7 @@ server {
 
     # Make site accessible from http://localhost/
     # server_name _;
-    server_name {{ value.domain | default('_') }} {% if value.aliases is defined %}{% if value.aliases is sequence %}{{ value.aliases | join(' ') }}{% else %}{{ value.aliases }}{% endif %}{% endif %};
+    server_name {{ value.domain | default('_') }} {% if value.aliases is defined %}{% if value.aliases is sequence and value.aliases is not string %}{{ value.aliases | join(' ') }}{% else %}{{ value.aliases }}{% endif %}{% endif %};
 
 {% for route in value.routes %}
     location {{ route.uri }} {

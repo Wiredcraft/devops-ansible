@@ -77,16 +77,20 @@ configuration:
             type: string
             required: false
     vhosts:
-        default: {}
-        description: Associative array of virtual hosts objects, the key is used as vhost identifier
+        default: []
+        description: Array of virtual hosts objects
         required: false
-        type: object
+        type: array
         object_id: vhost
 
 objects:
     vhost:
         description: A virtual host object.
         options:
+            id:
+                description: Virtual host identifier, used to perform lookup in the vhosts array. Also used to name the configuration files and the default web root.
+                required: false
+                type: string
             aliases:
                 description: Space separated list of domain name aliases
                 required: false
