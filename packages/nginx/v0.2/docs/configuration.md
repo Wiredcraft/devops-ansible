@@ -116,49 +116,15 @@ objects:
                         default: /etc/nginx/ssl/{domain}.key
                         type: string          
             routes:
-                description: list of route objects
+                description: List of route objects. The order matters and the routes will be applied sequentially.
                 required: true
                 type: array
-                options:
-                    uri:
-                        description: Any string / regex that nginx understand as a `location`
-                        required: true
-                        type: string
-                        valid_values: Any string including regex
-                    type:
-                        description: The type of handler for that route
-                        required: true
-                        type: string
-                        valid_values: Either of proxy / fastcgi / websocket / uwsgi / static
-                    to:
-                        description: Either an upstream name, or a service / url, or a path
-                        required: false
-                        type: string
-                    custom:
-                        description: Custom inline nginx config to include within the route (e.g. auth, custom timeout)
-                        required: false
-                        type: string
-                    static:
-                        description: For type static only, define how to consider the source folder - alias or root
-                        required: false
-                        type: string
-                        default: root
-                        valid_values: Either of alias / root
+                object_id: route
             upstreams:
                 description: list of upstream objects
                 required: false
-                type: array      
-                options:
-                    name:
-                        description: Name of the upstream - it must be unique on the entire node
-                        required: true
-                        type: string
-                        valid: Unique name on the node
-                    backends:
-                        description: List of backends associated with the upstream
-                        required: true
-                        type: array
-                        valid: TCP URL and Unix socket path
+                type: array
+                object_id: upstream
             webroot:
                 description: Subfolder to serve data from based on the root /var/www/_vhost_id_
                 required: false
@@ -167,5 +133,46 @@ objects:
                 description: List of technologies the vhost will support (only 'php' for the moment)
                 required: false
                 type: array
+    route:
+        description: A route object used in a vhost.
+        options:
+            uri:
+                description: Any string / regex that nginx understand as a `location`
+                required: true
+                type: string
+                valid_values: Any string including regex
+            type:
+                description: The type of handler for that route
+                required: true
+                type: string
+                valid_values: Either of proxy / fastcgi / websocket / uwsgi / static
+            to:
+                description: Either an upstream name, or a service / url, or a path
+                required: false
+                type: string
+            custom:
+                description: Custom inline nginx config to include within the route (e.g. auth, custom timeout)
+                required: false
+                type: string
+            static:
+                description: For type static only, define how to consider the source folder - alias or root
+                required: false
+                type: string
+                default: root
+                valid_values: Either of alias / root
+    upstream:
+        description: An upstream object used in a vhost.
+        options:
+            name:
+                description: Name of the upstream - it must be unique on the entire node
+                required: true
+                type: string
+                valid: Unique name on the node
+            backends:
+                description: List of backends associated with the upstream
+                required: true
+                type: array
+                valid: TCP URL and Unix socket path
+
 
 ---
