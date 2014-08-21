@@ -298,7 +298,6 @@ configuration:
         type: object
         object_id: database
 
-# Define objects that are 
 objects:
     user:
         description: MySQL user object. Currently passwords are generated randomly only.
@@ -320,6 +319,7 @@ objects:
                 required: false
     database:
         description: MySQL database object, defines a database and the permissions of the users
+        options:
             users:
                 description: Array of users with full privileges on the database
                 default: None
