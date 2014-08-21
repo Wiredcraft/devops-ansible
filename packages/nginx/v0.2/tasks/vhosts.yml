@@ -67,7 +67,7 @@
 - name: Add HTTP vhosts
   template: 
     src=DEVOPS_PACKAGE/templates/vhost_legacy.j2
-    dest=/etc/nginx/sites-available/{% if item.id is defined %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
+    dest=/etc/nginx/sites-available/{% if item.id is defined %}{{ item.id }}{% else %}{{ item.domain | default('_') }}{% endif %}
     owner=root
     group=root
     mode=644
@@ -80,8 +80,8 @@
 - name: Enable HTTP vhosts
   file:
     state=link
-    src=/etc/nginx/sites-available/{% if item.id is defined %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
-    dest=/etc/nginx/sites-enabled/{% if item.id is defined %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
+    src=/etc/nginx/sites-available/{% if item.id is defined %}{{ item.id }}{% else %}{{ item.domain | default('_') }}{% endif %}
+    dest=/etc/nginx/sites-enabled/{% if item.id is defined %}{{ item.id }}{% else %}{{ item.domain | default('_') }}{% endif %}
     owner=root
     group=root
     mode=644
@@ -94,7 +94,7 @@
 - name: Ensure the root folders exists
   file:
     state=directory
-    path=/var/www/{% if item.id is defined %}item.id{% else %}{{ item.domain | default('_') }}{% endif %}
+    path=/var/www/{% if item.id is defined %}{{ item.id }}{% else %}{{ item.domain | default('_') }}{% endif %}
     owner=devops
     group=devops
     mode=755
