@@ -44,7 +44,10 @@ locations:
     - label: "Tokyo, Japan, JP"
       id: 8
 
-images:
-    default:
+defaults:
+    image:
         id: 124
         name: Ubuntu 14.04.1 64bit LTS
+    location:
+        id: 2
+        name: "Dallas, TX, USA"

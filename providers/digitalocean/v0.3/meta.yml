@@ -52,10 +52,13 @@ locations:
     - label: Singapore 1
       id: 6
 
-images:
-    default: 
-      id: 5141286
-      name: Ubuntu 14.04.1 64bit LTS
+defaults:
+    image:
+        id: 5141286
+        name: Ubuntu 14.04.1 64bit LTS
+    location:
+        id: 1
+        name: New York 1
 
 
 # # Images id changes frequently .. May need to rely on the API to fetch automatically

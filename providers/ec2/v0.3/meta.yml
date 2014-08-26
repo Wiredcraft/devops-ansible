@@ -63,6 +63,9 @@ locations:
     - label: South America (São Paulo)
       id: sa-east-1
 
-images:
-    default:
+defaults:
+    image:
         id: 
+    location:
+        id: us-east-1
+        name: US East (N. Virginia)
