@@ -31,18 +31,6 @@
         from_port: -1
         to_port: -1
         cidr_ip: 0.0.0.0/0
-      - proto: tcp
-        from_port: 22
-        to_port: 22
-        group_name: "{{ ec2_security_group }}"
-      - proto: all
-        from_port: 0
-        to_port: 65536
-        group_id: "{{ ec2_security_group }}"
-      - proto: icmp
-        from_port: -1
-        to_port: -1
-        group_id: "{{ ec2_security_group }}"
     rules_egress:
       - proto: icmp
         from_port: -1
