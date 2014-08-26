@@ -1,0 +1,67 @@
+---
+id: digitalocean
+label: Digital Ocean
+version: "0.2"
+
+url_referral: https://www.digitalocean.com/?refcode=3918a442dbd7
+url_apikey: https://cloud.digitalocean.com/api_access
+url_provider: https://www.digitalocean.com
+
+credentials:
+    - label: Digital Ocean client ID
+      id: clientId
+      private: false
+    - label: Digital Ocean API key
+      id: apiKey
+      private: true
+
+sizes:
+    - label: 512MB (1 Core - 512 MB - 20GB SSD - 1TB)
+      id: 66
+    - label: 1GB (2 Cores- 1GB - 30GB SSD - 2TB)
+      id: 63
+    - label: 2GB (2 Cores- 2GB - 40GB SSD - 3TB)
+      id: 62
+    - label: 4GB (2 Cores- 4GB - 60GB SSD - 4TB)
+      id: 64
+    - label: 8GB (4 Cores- 8GB - 80GB SSD - 5TB)
+      id: 65
+    - label: 16GB (8 Cores- 16GB - 160GB SSD - 6TB)
+      id: 61
+    - label: 32GB (12 Cores- 32GB - 320GB SSD - 7TB)
+      id: 60
+    - label: 48GB (16 Cores- 48GB - 480GB SSD - 8TB)
+      id: 70
+    - label: 64GB (20 Cores- 64GB - 640GB SSD - 9TB)
+      id: 69
+    - label: 96GB (24 Cores- 96GB - 960GB SSD - 10TB)
+      id: 68
+
+# Some of the locations become unavailable as the capacity is over taken
+locations:
+    - label: New York 1
+      id: 1
+    - label: Amsterdam 1
+      id: 2
+    - label: San Francisco 1
+      id: 3
+    - label: New York 2
+      id: 4
+    - label: Amsterdam 2
+      id: 5
+    - label: Singapore 1
+      id: 6
+
+images:
+    default: 
+      id: 5141286
+      name: Ubuntu 14.04.1 64bit LTS
+
+
+# # Images id changes frequently .. May need to rely on the API to fetch automatically
+# # or get a proper way to capture errors in the logs
+# image_ids:
+#     ubuntu12.04:
+#         default: 3101045
+#     ubuntu14.04:
+#         default: 5141286

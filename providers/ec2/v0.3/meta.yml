@@ -16,7 +16,7 @@ credentials:
       private: true
 
 sizes:
-    - label: T1 Micro (up to 2 ECUs - 1 Core - 613 MiB) EBS only
+    - label: T1 Micro (up to 2 ECUs - 1 Core - 613 MiB)
       id: t1.micro
     - label: M1 Small (1 ECU - 1 Core - 1.7 GiB)
       id: m1.small
@@ -64,54 +64,5 @@ locations:
       id: sa-east-1
 
 images:
-    - label: Ubuntu 12.04.4 LTS 64bit (EBS)
-      id: ubuntu12.04_ebs
-    - label: Ubuntu 12.04.4 LTS 64bit (Instance)
-      id: ubuntu12.04_ebs
-    - label: Ubuntu 14.04 LTS 64bit (EBS)
-      id: ubuntu14.04_ebs
-    - label: Ubuntu 14.04 LTS 64bit (Instance)
-      id: ubuntu14.04
-
-# Images IDs are available at http://cloud-images.ubuntu.com/
-image_ids:
-    ubuntu12.04:
-        ap-northeast-1: ami-77530e76
-        ap-southeast-1: ami-2a257d78
-        ap-southeast-2: ami-dd2147e7
-        eu-west-1: ami-2f5b8a58
-        us-east-1: ami-b0b37bd8
-        us-west-1: ami-a9999aec
-        us-west-2: ami-f199e1c1
-        sa-east-1: ami-63bf167e
-        default: null
-    ubuntu12.04_ebs:
-        ap-northeast-1: ami-df471ade
-        ap-southeast-1: ami-e45800b6
-        ap-southeast-2: ami-7d2f4947
-        eu-west-1: ami-7d43920a
-        us-east-1: ami-6ec20a06
-        us-west-1: ami-039d9e46
-        us-west-2: ami-d39ce4e3
-        sa-east-1: ami-55be1748
-        default: null
-    ubuntu14.04:
-        ap-northeast-1: ami-e58cd6e4
-        ap-southeast-1: ami-28fda67a
-        ap-southeast-2: ami-cd6405f7
-        eu-west-1: ami-3eba6549
-        sa-east-1: ami-0970d814
-        us-east-1: ami-9ac11df2
-        us-west-1: ami-29777b6c
-        us-west-2: ami-57cf8a67
-        default: null
-    ubuntu14.04_ebs:
-        ap-northeast-1: ami-c786dcc6
-        ap-southeast-1: ami-eefca7bc
-        ap-southeast-2: ami-996706a3
-        eu-west-1: ami-4ab46b3d
-        sa-east-1: ami-6770d87a
-        us-east-1: ami-d2ff23ba
-        us-west-1: ami-73717d36
-        us-west-2: ami-f1ce8bc1
-        default: null
+    default:
+        id: 
