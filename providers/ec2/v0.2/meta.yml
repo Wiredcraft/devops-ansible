@@ -96,22 +96,22 @@ image_ids:
         sa-east-1: ami-55be1748
         default: null
     ubuntu14.04:
-        ap-northeast-1: ami-a7e4b6a6
-        ap-southeast-1: ami-be3d65ec
-        ap-southeast-2: ami-2bddba11
-        eu-west-1: ami-2f16c758
-        us-east-1: ami-502fe638
-        us-west-1: ami-bbf4f7fe
-        us-west-2: ami-8f4139bf
-        sa-east-1: ami-b9a108a4
+        ap-northeast-1: ami-e58cd6e4
+        ap-southeast-1: ami-28fda67a
+        ap-southeast-2: ami-cd6405f7
+        eu-west-1: ami-3eba6549
+        sa-east-1: ami-0970d814
+        us-east-1: ami-9ac11df2
+        us-west-1: ami-29777b6c
+        us-west-2: ami-57cf8a67
         default: null
     ubuntu14.04_ebs:
-        ap-northeast-1: ami-6decbe6c
-        ap-southeast-1: ami-b63068e4
-        ap-southeast-2: ami-c7dcbbfd
-        eu-west-1: ami-4d02d33a
-        us-east-1: ami-6a3ff602
-        us-west-1: ami-1bf8fb5e
-        us-west-2: ami-2d453d1d
-        sa-east-1: ami-a9a009b4
+        ap-northeast-1: ami-c786dcc6
+        ap-southeast-1: ami-eefca7bc
+        ap-southeast-2: ami-996706a3
+        eu-west-1: ami-4ab46b3d
+        sa-east-1: ami-6770d87a
+        us-east-1: ami-d2ff23ba
+        us-west-1: ami-73717d36
+        us-west-2: ami-f1ce8bc1
         default: null
