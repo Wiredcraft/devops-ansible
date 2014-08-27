@@ -60,6 +60,10 @@ defaults:
         id: 3
         name: San Francisco 1
 
+description: '
+  '
+
+
 
 # # Images id changes frequently .. May need to rely on the API to fetch automatically
 # # or get a proper way to capture errors in the logs

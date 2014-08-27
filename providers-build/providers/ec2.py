@@ -27,7 +27,6 @@ def get(**kwargs):
     }
     return results
 
-
 # def _get_images():
 #     '''
 #     Get all the available images

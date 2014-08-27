@@ -26,7 +26,7 @@ python packages-build/packages.py packages $TMP_FOLDER/services/
 
 # Handle providers
 sudo pip install -r providers-build/requirements.txt
-python providers-build/providers.py $TMP_FOLDER/providers /home/devops/providers_config.json
+python providers-build/providers.py providers $TMP_FOLDER/providers /home/devops/providers_config.json
 
 
 # Gonna push the results to the other repo..

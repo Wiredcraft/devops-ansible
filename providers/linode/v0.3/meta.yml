@@ -51,3 +51,6 @@ defaults:
     location:
         id: 2
         name: "Dallas, TX, USA"
+
+description: '
+  '

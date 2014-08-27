@@ -7,22 +7,24 @@ from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 
 def usage():
-    print 'Usage: %s <destination_folder> [<config>]\n' % sys.argv[0]
+    print 'Usage: %s <source> <destination_folder> [<config>]\n' % sys.argv[0]
+    print '  <source> source folder where the providers yml are'
     print '  <destination_folder> must already exist'
     print '  <config> must exist (defaults to ./config.json)'
     print ''
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
     usage()
     sys.exit(1)
 
-destination = sys.argv[1]
+src = sys.argv[1]
+destination = sys.argv[2]
 if not os.path.exists(destination) or not os.path.isdir(destination):
     usage()
     sys.exit(1)
 
-if len(sys.argv) == 3:
-    config = sys.argv[2]
+if len(sys.argv) == 4:
+    config = sys.argv[3]
 else:
     config = os.path.join('.', 'config.json')
 if not os.path.exists(config):
@@ -54,9 +56,17 @@ for provider in conf.get('providers', []):
     print 'Getting %s...' % provider_type
     data = get(**provider)
 
+    # Fetch the data from the source yaml file
+    meta = {}
+    with open(os.path.join(src, provider_type, 'v0.3', 'meta.yml')) as s:
+        meta = yaml.safe_load(s.read())
+
+
     with open(os.path.join(destination, provider_type +'.md'), 'w') as f:
         data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
         data.update({'template': 'provider.html'})
+        data.update({'defaults': meta.get('defaults')})
+        data.update({'description': meta.get('description')})
         f.write(yaml.safe_dump(data, explicit_start=True, default_flow_style=False))
         f.write('\n---')
         print 'Written to %s' % (provider_type +'.md')
