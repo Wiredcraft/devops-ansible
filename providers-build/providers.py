@@ -13,6 +13,18 @@ def usage():
     print '  <config> must exist (defaults to ./config.json)'
     print ''
 
+# http://stackoverflow.com/questions/6432605/any-yaml-libraries-in-python-that-support-dumping-of-long-strings-as-block-liter
+class folded_unicode(unicode): pass
+class literal_unicode(unicode): pass
+
+def folded_unicode_representer(dumper, data):
+    return dumper.represent_scalar(u'tag:yaml.org,2002:str', data, style='>')
+def literal_unicode_representer(dumper, data):
+    return dumper.represent_scalar(u'tag:yaml.org,2002:str', data, style='|')
+
+yaml.add_representer(folded_unicode, folded_unicode_representer)
+yaml.add_representer(literal_unicode, literal_unicode_representer)
+
 if len(sys.argv) < 3:
     usage()
     sys.exit(1)
@@ -74,7 +86,7 @@ for provider in conf.get('providers', []):
         # data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
         data.update({'template': 'provider.html'})
         data.update({'defaults': meta.get('defaults')})
-        data.update({'description': meta.get('description')})
+        data.update({'description': folded_unicode_representer(meta.get('description'))})
         f.write(yaml.safe_dump(data, explicit_start=True, default_flow_style=False))
         f.write('\n---')
         print 'Written to %s' % (provider_type +'.md')
