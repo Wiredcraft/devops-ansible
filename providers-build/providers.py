@@ -43,7 +43,7 @@ for provider in conf.get('providers', []):
     provider_type = provider.get('type')
     if provider_type == 'linode':
         from providers.linode import get
-    elif provider_type == 'digital_ocean':
+    elif provider_type == 'digitalocean':
         from providers.digitalocean import get
     elif provider_type == 'rackspace':
         from providers.rackspace import get

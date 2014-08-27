@@ -1,7 +1,7 @@
 {
     "providers": [
         {
-            "type": "digital_ocean",
+            "type": "digitalocean",
             "client_id": "AAA",
             "api_key": "BBB"
         },
