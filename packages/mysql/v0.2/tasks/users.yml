@@ -16,6 +16,8 @@
     state=present
   with_items:
     mysql_pass.results
+  when:
+    mysql.users | length > 0
 
 # Register the user / pass to the devops registry
 - name: Register MySQL users
@@ -24,6 +26,9 @@
       echo REGISTER_MYSQL_USER "{{ item.item.key }}" "{{ item.stdout }}"
   with_items:
     mysql_pass.results
+  when:
+    mysql.users | length > 0
+
 # - name: Register MySQL users
 #   local_action:
 #     module: shell
