@@ -14,16 +14,16 @@ def usage():
     print ''
 
 # http://stackoverflow.com/questions/6432605/any-yaml-libraries-in-python-that-support-dumping-of-long-strings-as-block-liter
-class folded_unicode(unicode): pass
-class literal_unicode(unicode): pass
+# class folded_unicode(unicode): pass
+# class literal_unicode(unicode): pass
 
-def folded_unicode_representer(dumper, data):
-    return dumper.represent_scalar(u'tag:yaml.org,2002:str', data, style='>')
-def literal_unicode_representer(dumper, data):
-    return dumper.represent_scalar(u'tag:yaml.org,2002:str', data, style='|')
+# def folded_unicode_representer(dumper, data):
+#     return dumper.represent_scalar(u'tag:yaml.org,2002:str', data, style='>')
+# def literal_unicode_representer(dumper, data):
+#     return dumper.represent_scalar(u'tag:yaml.org,2002:str', data, style='|')
 
-yaml.add_representer(folded_unicode, folded_unicode_representer)
-yaml.add_representer(literal_unicode, literal_unicode_representer)
+# yaml.add_representer(folded_unicode, folded_unicode_representer)
+# yaml.add_representer(literal_unicode, literal_unicode_representer)
 
 if len(sys.argv) < 3:
     usage()
@@ -80,13 +80,20 @@ for provider in conf.get('providers', []):
         with open(meta_file) as s:
             meta = yaml.safe_load(s.read())
 
+    description_file = os.path.join(src, provider_type, 'v0.3', 'description.md')
+    description = ''
+    if os.path.exists(description_file):
+        with open(description_file) as s:
+            description = s.read()
 
     with open(os.path.join(destination, provider_type +'.md'), 'w') as f:
         data.update({'title': title})
         # data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
         data.update({'template': 'provider.html'})
         data.update({'defaults': meta.get('defaults')})
-        data.update({'description': folded_unicode(meta.get('description'))})
+        # data.update({'description': folded_unicode(meta.get('description'))})
         f.write(yaml.dump(data, explicit_start=True, default_flow_style=False))
-        f.write('\n---')
+        f.write('\n---\n')
+        f.write(description)
+
         print 'Written to %s' % (provider_type +'.md')
