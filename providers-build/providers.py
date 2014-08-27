@@ -86,7 +86,7 @@ for provider in conf.get('providers', []):
         # data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
         data.update({'template': 'provider.html'})
         data.update({'defaults': meta.get('defaults')})
-        data.update({'description': folded_unicode_representer(meta.get('description'))})
+        data.update({'description': folded_unicode(meta.get('description'))})
         f.write(yaml.safe_dump(data, explicit_start=True, default_flow_style=False))
         f.write('\n---')
         print 'Written to %s' % (provider_type +'.md')
