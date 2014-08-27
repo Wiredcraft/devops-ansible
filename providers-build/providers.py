@@ -63,8 +63,10 @@ for provider in conf.get('providers', []):
 
     # Fetch the data from the source yaml file
     meta = {}
-    with open(os.path.join(src, provider_type, 'v0.3', 'meta.yml')) as s:
-        meta = yaml.safe_load(s.read())
+    meta_file = os.path.join(src, provider_type, 'v0.3', 'meta.yml')
+    if os.path.exists(meta_file):
+        with open(meta_file) as s:
+            meta = yaml.safe_load(s.read())
 
 
     with open(os.path.join(destination, provider_type +'.md'), 'w') as f:
