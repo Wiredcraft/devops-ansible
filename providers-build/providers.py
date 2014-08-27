@@ -41,13 +41,18 @@ with open(config) as c:
 
 for provider in conf.get('providers', []):
     provider_type = provider.get('type')
+    title = ''
     if provider_type == 'linode':
+        title = 'Linode'
         from providers.linode import get
     elif provider_type == 'digitalocean':
+        title = 'Digital Ocean'
         from providers.digitalocean import get
     elif provider_type == 'rackspace':
+        title = 'Rackspace'
         from providers.rackspace import get
     elif provider_type == 'ec2':
+        title = 'Ec2'
         from providers.ec2 import get
     else:
         print 'Provider %s not supported' % provider_type
@@ -63,7 +68,8 @@ for provider in conf.get('providers', []):
 
 
     with open(os.path.join(destination, provider_type +'.md'), 'w') as f:
-        data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
+        data.update({'title': title})
+        # data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
         data.update({'template': 'provider.html'})
         data.update({'defaults': meta.get('defaults')})
         data.update({'description': meta.get('description')})
