@@ -1,6 +1,0 @@
-# Task Devops_user
-
----
-{}
-
----
