@@ -1,7 +1,0 @@
----
-title: Xvfb
-experimental: true
-tags:
-    - app
-documentation: http://www.x.org/wiki/
----

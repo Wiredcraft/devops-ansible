@@ -1,0 +1,12 @@
+---
+title: Python
+tags:
+    - language
+documentation: https://docs.python.org/2/
+
+configuration: 
+    packages:
+        default: []
+        description: List of pip packages to install globally on the system
+        type: array
+        required: false
