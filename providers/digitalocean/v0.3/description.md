@@ -13,4 +13,4 @@ The following [node file](http://docs.devo.ps/manual/nodes/#node-file) will crea
       location: 3
       size: 66
 
-<em>Don't have a Digital Ocean account yet? <a href='https://www.digitalocean.com/?refcode=3918a442dbd7' class='button' target='_blank'>Sign up for an account</a></em>
+<em>Don't have a Digital Ocean account yet? <a href='https://www.digitalocean.com/?refcode=3918a442dbd7' target='_blank'>Sign up for an account</a>.</em>

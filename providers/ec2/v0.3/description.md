@@ -17,4 +17,4 @@ The following [node file](http://docs.devo.ps/manual/nodes/#node-file) will crea
       location: us-east-1
       image: ami-d2ff23ba
 
-<em>Don't have an Amazon EC2 account yet? <a href='https://aws.amazon.com/' class='button' target='_blank'>Sign up for an account</a></em>
+<em>Don't have an Amazon EC2 account yet? <a href='https://aws.amazon.com/' target='_blank'>Sign up for an account</a>.</em>

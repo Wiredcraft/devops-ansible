@@ -13,4 +13,4 @@ The following [node file](http://docs.devo.ps/manual/nodes/#node-file) will crea
       location: dfw
       size: 2
 
-<em>Don't have a Rackspace account yet? <a href='https://www.rackspace.com/' class='button' target='_blank'>Sign up for an account</a></em>
+<em>Don't have a Rackspace account yet? <a href='https://www.rackspace.com/' target='_blank'>Sign up for an account</a>.</em>
