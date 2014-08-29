@@ -64,7 +64,7 @@ for provider in conf.get('providers', []):
         title = 'Rackspace'
         from providers.rackspace import get
     elif provider_type == 'ec2':
-        title = 'Ec2'
+        title = 'Amazon EC2'
         from providers.ec2 import get
     else:
         print 'Provider %s not supported' % provider_type
