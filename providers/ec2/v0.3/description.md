@@ -4,7 +4,7 @@
 
 <em>Don't have an Amazon EC2 account yet? <a href='https://aws.amazon.com/' target='_blank'>Sign up for an account</a>.</em>
 
-### Example
+## Example
 
 The following [node file](http://docs.devo.ps/manual/nodes/#node-file) will create a micro instance of first generation (`size: t1.micro`) in the Northern Virginia datacenter (`location: us-east-1`) with a 64-bit Ubuntu 14.04.1 LTS, EBS-backed AMI (`image: ami-d2ff23ba`, see the [official Ubuntu AMIs page](http://cloud-images.ubuntu.com/releases/14.04.1/release/)):
 
