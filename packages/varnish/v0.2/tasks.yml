@@ -1,0 +1,10 @@
+---
+tasks:
+  - name: start
+    description: Start Varnish if stopped
+  - name: stop
+    description: Stop Varnish if started
+  - name: reload
+    description: Reload Varnish, reload the configuration and perform a graceful restart
+  - name: restart
+    description: Restart Varnish, reload the configuration (but kills existing connection)

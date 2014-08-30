@@ -1,0 +1,12 @@
+---
+title: Node.js
+tags:
+    - language
+documentation: http://nodejs.org/api/
+
+configuration: 
+    packages: 
+        description: List of packages to have globally installed on the server
+        type: array
+        default: []
+        required: false

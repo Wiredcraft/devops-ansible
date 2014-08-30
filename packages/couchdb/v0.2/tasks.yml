@@ -1,0 +1,10 @@
+---
+tasks:
+  - name: start
+    description: Start CouchDB if stopped
+  - name: stop
+    description: Stop CouchDB if started
+  - name: reload
+    description: Reload CouchDB, reload the configuration and perform a graceful restart
+  - name: restart
+    description: Restart CouchDB, reload the configuration (but kills existing connection)

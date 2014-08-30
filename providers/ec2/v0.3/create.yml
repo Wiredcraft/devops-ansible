@@ -55,7 +55,7 @@
     instance_type: "{{ size }}"
     region: "{{ location }}"
     key_name: "{{ ec2_key_name }}"
-    instance_tags: '{"node_id": "{{ inventory_hostname }}"}'
+    instance_tags: '{"node_id": "{{ node_id }}"}'
     wait: yes
     wait_timeout: 500
   register: resp_instance

@@ -1,0 +1,17 @@
+---
+tasks:
+  - name: start
+    description: Start PHP-FPM if stopped
+  - name: stop
+    description: Stop PHP-FPM if started
+  - name: reload
+    description: Reload PHP-FPM, reload the configuration and perform a graceful restart
+  - name: restart
+    description: Restart PHP-FPM, reload the configuration (but kills existing connection)
+  - name: pecl_extension add
+    description: Add PHP PECL extensions
+    options:
+      name: 
+        type: string
+        description: Name of the PECL extension to install
+        required: true

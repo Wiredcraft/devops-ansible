@@ -80,20 +80,20 @@ for provider in conf.get('providers', []):
         with open(meta_file) as s:
             meta = yaml.safe_load(s.read())
 
-    description_file = os.path.join(src, provider_type, 'v0.3', 'description.md')
-    description = ''
-    if os.path.exists(description_file):
-        with open(description_file) as s:
-            description = s.read()
+    readme_file = os.path.join(src, provider_type, 'v0.3', 'README.md')
+    readme = ''
+    if os.path.exists(readme_file):
+        with open(readme_file) as s:
+            readme = s.read()
 
     with open(os.path.join(destination, provider_type +'.md'), 'w') as f:
         data.update({'title': title})
         # data.update({'title': provider_type.replace('_', ' ').replace('-', ' ').title()})
         data.update({'template': 'provider.html'})
         data.update({'defaults': meta.get('defaults')})
-        # data.update({'description': folded_unicode(meta.get('description'))})
+        # data.update({'readme': folded_unicode(meta.get('readme'))})
         f.write(yaml.dump(data, explicit_start=True, default_flow_style=False))
         f.write('\n---\n')
-        f.write(description)
+        f.write(readme)
 
         print 'Written to %s' % (provider_type +'.md')
