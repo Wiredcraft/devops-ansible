@@ -55,7 +55,6 @@ for root, dirs, files in os.walk(source):
 for service, data in services.iteritems():
     with open(os.path.join(destination, service +'.md'), 'w') as f:
         # Start to prepare the yaml header
-        if not
         meta = data.get('meta', {})
         tasks = data.get('tasks', {})
         content = data.get('content', '')
