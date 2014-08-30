@@ -55,11 +55,14 @@ for root, dirs, files in os.walk(source):
 for service, data in services.iteritems():
     with open(os.path.join(destination, service +'.md'), 'w') as f:
         # Start to prepare the yaml header
+        if not
         meta = data.get('meta', {})
         tasks = data.get('tasks', {})
         content = data.get('content', '')
 
         # merge meta and tasks objects
+        if isinstance(None, tasks):
+            tasks = {}
         meta.update(tasks)
 
         f.write(yaml.safe_dump(meta, explicit_start=True, default_flow_style=False))
