@@ -60,7 +60,7 @@ for service, data in services.iteritems():
         content = data.get('content', '')
 
         # merge meta and tasks objects
-        if isinstance(None, tasks):
+        if not tasks:
             tasks = {}
         meta.update(tasks)
 

@@ -79,7 +79,7 @@ for provider in conf.get('providers', []):
     if os.path.exists(meta_file):
         with open(meta_file) as s:
             meta = yaml.safe_load(s.read())
-    if isinstance(None, meta): 
+    if not meta: 
         meta = {}
 
     readme_file = os.path.join(src, provider_type, 'v0.3', 'README.md')
