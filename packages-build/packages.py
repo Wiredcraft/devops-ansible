@@ -59,6 +59,10 @@ for service, data in services.iteritems():
         tasks = data.get('tasks', {})
         content = data.get('content', '')
 
+        if not meta and not tasks and not content:
+            # Fuck it
+            continue
+            
         # merge meta and tasks objects
         if not tasks:
             tasks = {}
