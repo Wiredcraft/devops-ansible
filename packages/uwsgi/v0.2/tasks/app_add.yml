@@ -12,7 +12,7 @@
 - name: Ensure virtualenv
   sudo: yes
   pip:
-    requirements: {{ task.uwsgi.requirements_file }}
+    requirements: "{{ task.uwsgi.requirements_file }}"
     virtualenv: /opt/virtualenvs/devops_{{ task.uwsgi.app_add.name }}
   when: task.uwsgi.requirements_file
 
