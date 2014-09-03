@@ -4,7 +4,7 @@ In practive virtual hosts allows you to compartment your web files and allow you
 
 ## Default web roots
 
-The default web roots are created based on the vhost id supploed on creation:
+The default web roots are created based on the vhost id supplied on creation:
 
     /var/www/{vhost_id}
 
@@ -35,7 +35,7 @@ There is several types of routes:
 
 ## Supported technologies
 
-An extra attribute `support` is available in the definition of a _vhost_; it should list the technologies that this vhost needs to support. 
+An extra attribute `support` is available in the definition of a vhost; it should list the technologies that this vhost needs to support. 
 
 Currently only `php` is relevant and will change the behavior of the vhost by ensuring the `index` includes `index.php` along with the `index.html` and `index.htm`.
 
