@@ -2,32 +2,37 @@
 - name: Ensure MySQL passwords
   sudo: yes
   shell:
-    if [ -f /root/{{ item.key }}.passwd ]; then cat /root/{{ item.key }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/{{ item.key }}.passwd ; fi
-  with_dict:
-    mysql.users | default({})
+    if [ -f /root/.mysql_{{ item.name }}.passwd ]; then cat /root/.mysql_{{ item.name }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/.mysql_{{ item.name }}.passwd ; fi
+  with_items:
+    mysql.users | default([])
   register:
     mysql_pass
 
 - name: Ensure MySQL users
   sudo: yes
   mysql_user: 
-    name={{ item.item.key }}
-    password={{ item.stdout }}
+    name={{ item.2.name }}
+    password={{ item.1.stdout }}
+    host={{ item.3 }}
     state=present
-  with_items:
-    mysql_pass.results
   when:
-    mysql.users | length > 0
+    item.1.item.name == item.2.name
+  with_nested_subelements:
+    - mysql_pass.results
+    - mysql.users
+    - hosts
+    - localhost
 
 # Register the user / pass to the devops registry
 - name: Register MySQL users
   local_action:
     module: shell
-      echo REGISTER_MYSQL_USER "{{ item.item.key }}" "{{ item.stdout }}"
-  with_items:
-    mysql_pass.results
+      echo REGISTER_MYSQL_USER "{{ item.1.item.name }}" "{{ item.1.stdout }}"
   when:
-    mysql.users | length > 0
+    item.1.item.name == item.2.name
+  with_nested:
+    - mysql_pass.results
+    - mysql.users
 
 # - name: Register MySQL users
 #   local_action:
