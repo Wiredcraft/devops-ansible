@@ -147,9 +147,10 @@ objects:
                 valid_values: Any string including regex
             type:
                 description: The type of handler for that route
-                required: true
+                required: false
                 type: string
-                valid_values: Either of proxy / fastcgi / websocket / uwsgi / static
+                default: custom
+                valid_values: Either of proxy / fastcgi / websocket / uwsgi / static / custom
             to:
                 description: Either an upstream name, or a service / url, or a path
                 required: false
