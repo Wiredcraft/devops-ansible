@@ -45,26 +45,31 @@ server {
 
 {% for route in value.routes %}
     location {{ route.uri }} {
-{% if route.type == 'proxy' %}
+{% set type = route.type | default('custom') %}
+{% if type == 'proxy' %}
+        # Route type: proxy
         proxy_pass {{ route.to }};
         proxy_pass_header Set-Cookie;
-{% elif route.type == 'fastcgi' %}
+{% elif type == 'fastcgi' %}
+        # Route type: fastcgi
         fastcgi_pass {{ route.to }};
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
         {# We may want to remove index.php #}
         fastcgi_index index.php; 
         include fastcgi_params;
-{% elif route.type == 'websocket' %}
+{% elif type == 'websocket' %}
+        # Route type: websocket
         proxy_pass {{ route.to }};
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-{% elif route.type == 'uwsgi' %}
+{% elif type == 'uwsgi' %}
+        # Route type: uwsgi
         uwsgi_pass {{ route.to }};
         include uwsgi_params;
-{% else %}
-{# It covers anything else - including route.type == 'static' #}
+{% elif type == 'static' %}
+        # Route type: static
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
         try_files $uri $uri/ {% if support_php %}/index.php?$args{% else %}/index.html{% endif %};
@@ -73,6 +78,10 @@ server {
         {# TODO: more checks to define if we want to use `alias` or `root` #}
         {% if route.static is defined %}{{ route.static }}{% else %}root{% endif %} {{ route.to }};
     {% endif %}
+{% elif type == 'custom' %}
+        # Route type: custom
+{% else %}
+        # Route type: unknown
 {% endif %}
 {% if route.custom is defined %}
         {{ route.custom }}
