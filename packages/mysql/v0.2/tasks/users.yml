@@ -11,12 +11,12 @@
 - name: Ensure MySQL users
   sudo: yes
   mysql_user: 
-    name={{ item.2.name }}
-    password={{ item.1.stdout }}
-    host={{ item.3 }}
+    name={{ item.1.name }}
+    password={{ item.0.stdout }}
+    host={{ item.2 }}
     state=present
   when:
-    item.1.item.name == item.2.name
+    item.0.item.name == item.1.name
   with_nested_subelements:
     - mysql_pass.results
     - mysql.users
@@ -27,9 +27,9 @@
 - name: Register MySQL users
   local_action:
     module: shell
-      echo REGISTER_MYSQL_USER "{{ item.1.item.name }}" "{{ item.1.stdout }}"
+      echo REGISTER_MYSQL_USER "{{ item.0.item.name }}" "{{ item.0.stdout }}"
   when:
-    item.1.item.name == item.2.name
+    item.0.item.name == item.1.name
   with_nested:
     - mysql_pass.results
     - mysql.users
