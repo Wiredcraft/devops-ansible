@@ -1,19 +1,22 @@
 ---
 - name: Ensure mysql databases
   mysql_db:
-    name={{ item.key }}
+    name={{ item.name }}
     state=present
-  with_dict:
-    mysql.databases | default({})
+  with_items:
+    mysql.databases | default([])
 
 - name: Ensure user's grants to the databases
   mysql_user:
-    name={{ item.1 }}
+    name={{ item.1.name }}
+    host={{ item.2 }}
     append_privs=yes
-    priv={{ item.0 }}.*:ALL
+    priv={{ item.0.name }}.*:ALL
     state=present
   when:
-    item.1 in mysql.databases[item.0].users
-  with_nested:
-    - "{% set dbs = mysql.databases.iterkeys() %}{{ dbs | list }}"
-    - "{% set users = mysql.users.iterkeys() %}{{ users | list }}"
+    item.1.name in item.0.users
+  with_nested_subelements:
+    - mysql.databases
+    - mysql.users
+    - hosts
+    - localhost
