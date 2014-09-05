@@ -286,32 +286,36 @@ configuration:
                 - On
                 - Off
     users:
-        default: {}
-        description: Associative array of users, the key is used as username
+        default: []
+        description: Array of users
         required: false
         type: object
         object_id: user
     databases:
-        default: {}
-        description: Associative array of databases, the key is used as database name
+        default: []
+        description: Array of databases
         required: false
         type: object
         object_id: database
 
 objects:
     user:
-        description: MySQL user object. Currently passwords are generated randomly only.
+        description: MySQL user object. Passwords are randomly generated.
         options:
-            password:
-                description: Define the password to be set for the user [UNSUPPORTED]
-                default: RANDOM
-                type: string
-                required: false
-            generate_password:
-                description: Define whether a random password must be generated for the user
-                default: true
-                type: bool
-                required: false
+            name:
+                description: User name
+                default: 
+                required: true
+            # password:
+            #     description: Define the password to be set for the user [UNSUPPORTED]
+            #     default: RANDOM
+            #     type: string
+            #     required: false
+            # generate_password:
+            #     description: Define whether a random password must be generated for the user
+            #     default: true
+            #     type: bool
+            #     required: false
             hosts:
                 description: Array of hosts the user will be allowed to connect from. ex. [localhost, 192.168.%]
                 default: localhost
@@ -320,8 +324,12 @@ objects:
     database:
         description: MySQL database object, defines a database and the permissions of the users
         options:
+            name:
+                description: Database name
+                default: 
+                required: true
             users:
-                description: Array of users with full privileges on the database
-                default: None
+                description: Array of users with full privileges on the database, users will be granted access from all their hosts
+                default: []
                 type: array
                 required: false
