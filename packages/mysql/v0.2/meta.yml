@@ -304,6 +304,7 @@ objects:
         options:
             name:
                 description: User name
+                type: string
                 default: 
                 required: true
             # password:
@@ -327,6 +328,7 @@ objects:
             name:
                 description: Database name
                 default: 
+                type: string
                 required: true
             users:
                 description: Array of users with full privileges on the database, users will be granted access from all their hosts
