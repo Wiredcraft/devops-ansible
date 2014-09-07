@@ -1,6 +1,5 @@
-{% set task_options = task.uwsgi.add_app | default({})  %}
+{% set task_options = task.uwsgi.app_add | default({})  %}
 [uwsgi]
-
 # App-related settings
 
 # the base directory (full path)
