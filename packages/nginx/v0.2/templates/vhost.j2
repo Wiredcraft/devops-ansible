@@ -1,4 +1,4 @@
-{% if task.nginx.vhost_add is defined %}
+{% if task is defined and task.nginx is defined and task.nginx.vhost_add is defined %}
     {% set item = task.nginx.vhost_add | default({}) %}
 {% else %}
     {% set item = item | default({}) %}
