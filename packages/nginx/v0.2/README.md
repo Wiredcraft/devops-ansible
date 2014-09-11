@@ -21,7 +21,7 @@ Routes allow you to define a list of ways to handle different types of requests,
 
 <em><strong>You can add supported technologies with the `support` attribute</strong>. This attribute willl help your vhost figure out what index to serve. By default it includes `index.html` and `index.html`, adding `php` to `support` will extend it to `index.php`.</em>
 
-## Example
+## Examples
 
 * ### PHP app
 
@@ -38,7 +38,36 @@ Routes allow you to define a list of ways to handle different types of requests,
               to: localhost:9001
   ```
 
-    We here define a vhost that will answer to the `mydomain.com` domain and will pass all requests which URL ends up with `.php` to a `fastcgi` process listening on `http://localhost:9001` (Typically a php-fpm process).
+  We here define a vhost that will answer to the `mydomain.com` domain and will pass all requests which URL ends up with `.php` to a `fastcgi` process listening on `http://localhost:9001` (Typically a php-fpm process).
+
+  This configuration will generate the following Nginx configuration file (also linked and enabled in `sites-enabled`):
+
+  #### /etc/nginx/sites-available/my_vhost_php
+
+  ```snippet
+  server {
+      listen   80;
+      root /var/www/my_vhost_php;
+
+      index index.php index.html index.htm;
+
+      access_log /var/log/nginx/my_vhost_php-access.log;
+      error_log /var/log/nginx/my_vhost_php-error.log;
+
+      # Make site accessible from http://localhost/
+      # server_name _;
+      server_name mydomain.com;
+
+      location ~ \.php$ {
+          # Route type: fastcgi
+          fastcgi_pass localhost:9001;
+          fastcgi_split_path_info ^(.+\.php)(/.+)$;
+          # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+          fastcgi_index index.php; 
+          include fastcgi_params;
+      }
+  }
+  ```
 
 * ### Node.js app
 
@@ -54,60 +83,28 @@ Routes allow you to define a list of ways to handle different types of requests,
               to: localhost:3000
   ```
 
-    We here define a vhost that will answer to the `mydomain.com` domain and will proxy all requests to a http process listening on `http://localhost:3000` (Typically your Node.js service).
-    
-  </li>
-</ul>
+  We here define a vhost that will answer to the `mydomain.com` domain and will proxy all requests to a http process listening on `http://localhost:3000` (Typically your Node.js service).
 
-This configuration will generate the following Nginx configuration file (also linked and enabled in `sites-enabled`):
+  #### /etc/nginx/sites-available/my_vhost_node
 
-### /etc/nginx/sites-available/my_vhost_php
+  ```snippet
+  server {
+      listen   80;
+      root /var/www/my_vhost_node;
 
-```snippet
-server {
-    listen   80;
-    root /var/www/my_vhost_php;
+      index index.html index.htm;
 
-    index index.php index.html index.htm;
+      access_log /var/log/nginx/my_vhost_node-access.log;
+      error_log /var/log/nginx/my_vhost_node-error.log;
 
-    access_log /var/log/nginx/my_vhost_php-access.log;
-    error_log /var/log/nginx/my_vhost_php-error.log;
+      # Make site accessible from http://localhost/
+      # server_name _;
+      server_name mydomain.com;
 
-    # Make site accessible from http://localhost/
-    # server_name _;
-    server_name mydomain.com;
-
-    location ~ \.php$ {
-        # Route type: fastcgi
-        fastcgi_pass localhost:9001;
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
-        fastcgi_index index.php; 
-        include fastcgi_params;
-    }
-}
-```
-
-### /etc/nginx/sites-available/my_vhost_node
-
-```snippet
-server {
-    listen   80;
-    root /var/www/my_vhost_node;
-
-    index index.html index.htm;
-
-    access_log /var/log/nginx/my_vhost_node-access.log;
-    error_log /var/log/nginx/my_vhost_node-error.log;
-
-    # Make site accessible from http://localhost/
-    # server_name _;
-    server_name mydomain.com;
-
-    location / {
-        # Route type: proxy
-        proxy_pass localhost:3000;
-        proxy_pass_header Set-Cookie;
-    }
-}
-```
+      location / {
+          # Route type: proxy
+          proxy_pass localhost:3000;
+          proxy_pass_header Set-Cookie;
+      }
+  }
+  ```
