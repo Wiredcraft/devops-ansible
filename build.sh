@@ -34,7 +34,7 @@ cd docs.devo.ps
 
 # Cleaning up the docs.devo.ps repo from its old sources.
 git rm -r source/providers/*
-git rm -r source/packages/*
+git rm -r source/services/*
 
 cp -a $TMP_FOLDER/* source
 
