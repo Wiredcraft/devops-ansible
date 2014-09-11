@@ -3,12 +3,6 @@
   shell:
     echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
   with_items:
-    task.mysql.user_add
-
-- name: da funk
-  shell:
-    echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
-  with_items:
     - task.mysql.user_add
 
 - name: da funk
