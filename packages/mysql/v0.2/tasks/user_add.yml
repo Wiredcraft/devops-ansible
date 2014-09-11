@@ -1,8 +1,30 @@
 ---
 - name: da funk
   shell:
-    echo {{ task.mysql.user_add | default('no') }} {{ task.mysql.user_add.name | default('no name') }} >&2
-    
+    echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
+  with_items:
+    task.mysql.user_add
+
+- name: da funk
+  shell:
+    echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
+  with_items:
+    - task.mysql.user_add
+
+- name: da funk
+  shell:
+    echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
+  with_items:
+    - 
+    task.mysql.user_add
+
+- name: da funk
+  shell:
+    echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
+  with_items:
+    - 
+      - task.mysql.user_add
+
 # TODO: consider when a password is provided
 - name: Ensure MySQL passwords
   sudo: yes
