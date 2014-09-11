@@ -82,11 +82,7 @@ configuration:
         required: false
         type: array
         object_id: vhost
-
-objects:
-    vhost:
-        description: A virtual host object.
-        options:
+        options: 
             id:
                 description: Virtual host identifier, used to perform lookup in the vhosts array. Also used to name the configuration files and the default web root.
                 required: false
@@ -107,6 +103,7 @@ objects:
                 type: integer
             ssl:
                 description: Enable HTTPS
+                type: object
                 required: false
                 options:
                     certificate:
@@ -124,58 +121,54 @@ objects:
                 required: true
                 type: array
                 object_id: route
+                options:
+                    uri:
+                        description: Any string / regex that nginx understand as a `location`
+                        required: true
+                        type: string
+                        valid_values: Any string including regex
+                    type:
+                        description: The type of handler for that route
+                        required: false
+                        type: string
+                        default: custom
+                        valid_values: Either of proxy / fastcgi / websocket / uwsgi / static / custom
+                    to:
+                        description: Either an upstream name, or a service / url, or a path
+                        required: false
+                        type: string
+                    custom:
+                        description: Custom inline nginx config to include within the route (e.g. auth, custom timeout)
+                        required: false
+                        type: string
+                    static:
+                        description: For type static only, define how to consider the source folder - alias or root
+                        required: false
+                        type: string
+                        default: root
+                        valid_values: Either of alias / root
             upstreams:
                 description: list of upstream objects
                 required: false
                 type: array
                 object_id: upstream
+                options:
+                    name:
+                        description: Name of the upstream - it must be unique on the entire node
+                        required: true
+                        type: string
+                        valid: Unique name on the node
+                    backends:
+                        description: List of backends associated with the upstream
+                        required: true
+                        type: array
+                        valid: TCP URL and Unix socket path
             webroot:
                 description: Subfolder to serve data from based on the root /var/www/_vhost_id_
                 required: false
                 type: string
-            support:
-                description: List of technologies the vhost will support (only 'php' for the moment)
-                required: false
-                type: array
-    route:
-        description: A route object used in a vhost.
-        options:
-            uri:
-                description: Any string / regex that nginx understand as a `location`
-                required: true
-                type: string
-                valid_values: Any string including regex
-            type:
-                description: The type of handler for that route
+            indexes:
+                description: List indexes space separated.
                 required: false
                 type: string
-                default: custom
-                valid_values: Either of proxy / fastcgi / websocket / uwsgi / static / custom
-            to:
-                description: Either an upstream name, or a service / url, or a path
-                required: false
-                type: string
-            custom:
-                description: Custom inline nginx config to include within the route (e.g. auth, custom timeout)
-                required: false
-                type: string
-            static:
-                description: For type static only, define how to consider the source folder - alias or root
-                required: false
-                type: string
-                default: root
-                valid_values: Either of alias / root
-    upstream:
-        description: An upstream object used in a vhost.
-        options:
-            name:
-                description: Name of the upstream - it must be unique on the entire node
-                required: true
-                type: string
-                valid: Unique name on the node
-            backends:
-                description: List of backends associated with the upstream
-                required: true
-                type: array
-                valid: TCP URL and Unix socket path
-
+                default: index.html index.htm
