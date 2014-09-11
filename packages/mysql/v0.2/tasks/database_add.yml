@@ -4,7 +4,7 @@
     name={{ item.name }}
     state=present
   with_items:
-    - task.mysql.database_add
+    - task.mysql.database_add | list
 
 - name: Ensure user's grants to the databases
   mysql_user:
@@ -16,7 +16,7 @@
   when:
     item.1.name in item.0.users
   with_nested_subelements:
-    - [task.mysql.database_add]
+    - task.mysql.database_add | list
     - mysql.users
     - hosts
     - localhost
