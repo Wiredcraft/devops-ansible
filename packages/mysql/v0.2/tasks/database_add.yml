@@ -1,5 +1,6 @@
 ---
 - name: Ensure MySQL database
+  sudo: yes
   mysql_db:
     name={{ item.name }}
     state=present
@@ -7,6 +8,7 @@
     - "{{ task.mysql.database_add }}"
 
 - name: Ensure user's grants to the databases
+  sudo: yes
   mysql_user:
     name={{ item.1.name }}
     host={{ item.2 }}
