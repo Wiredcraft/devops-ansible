@@ -39,6 +39,7 @@ git rm -r source/packages/*
 
 cp -a $TMP_FOLDER/* source
 
+# Adding
 git add .
 git commit -am "$COMMIT_MSG"
 git push
