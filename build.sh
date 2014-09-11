@@ -28,12 +28,12 @@ python packages-build/packages.py packages $TMP_FOLDER/services/
 sudo pip install -r providers-build/requirements.txt
 python providers-build/providers.py providers $TMP_FOLDER/providers /home/devops/providers_config.json
 
-
 # Gonna push the results to the other repo..
 cd $TMP_FOLDER2
 git clone --branch metalsmith git@github.com:devo-ps/docs.devo.ps
 cd docs.devo.ps
 
+# Cleaning up the docs.devo.ps repo from its old sources.
 git rm -r source/providers/*
 git rm -r source/packages/*
 
