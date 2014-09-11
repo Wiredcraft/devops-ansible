@@ -5,7 +5,8 @@
   shell:
     if [ -f /root/.mysql_{{ item.name }}.passwd ]; then cat /root/.mysql_{{ item.name }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/.mysql_{{ item.name }}.passwd ; fi
   with_items:
-    task.mysql.user_add | list
+    {% set val = list() %}{% set val = val.append(task.mysql.user_add) %}
+    val
   register:
     mysql_pass
 
