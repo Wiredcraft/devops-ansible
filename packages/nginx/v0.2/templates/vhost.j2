@@ -8,10 +8,7 @@
 {% set ssl = value.ssl | default(False) %}
 {% set port = value.port | default(False) %}
 
-{% set support = value.support | default([]) %}
-{% set support_php = False %}
-{% if 'php' in support %}{% set support_php = True %}{% endif %}
-
+{% set indexes = value.indexes | default('') %}
 
 {# optional upstreams parameter #}
 {% if value.upstreams is defined %}
@@ -34,7 +31,7 @@ server {
     {% endif %}
 
     {# Need better index management #}
-    index {% if support_php %}index.php{% endif %} index.html index.htm;
+    index {{ indexes }} index.html index.htm;
 
     access_log {{ http.access_log | dirname }}/{{ vhost_id }}-access.log;
     error_log {{ http.error_log | dirname }}/{{ vhost_id }}-error.log;
@@ -72,7 +69,8 @@ server {
         # Route type: static
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
-        try_files $uri $uri/ {% if support_php %}/index.php?$args{% else %}/index.html{% endif %};
+        try_files $uri $uri/ /index.html;
+        try_files $uri $uri/ {% if index.php in indexes %}/index.php?$args{% endif %};
 
     {% if route.to is defined %}
         {# TODO: more checks to define if we want to use `alias` or `root` #}

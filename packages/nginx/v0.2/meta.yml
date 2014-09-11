@@ -147,27 +147,28 @@ configuration:
                         type: string
                         default: root
                         valid_values: Either of alias / root
-                    upstreams:
-                        description: list of upstream objects
-                        required: false
-                        type: array
-                        object_id: upstream
-                        options:
-                            name:
-                                description: Name of the upstream - it must be unique on the entire node
-                                required: true
-                                type: string
-                                valid: Unique name on the node
-                            backends:
-                                description: List of backends associated with the upstream
-                                required: true
-                                type: array
-                                valid: TCP URL and Unix socket path
-                    webroot:
-                        description: Subfolder to serve data from based on the root /var/www/_vhost_id_
-                        required: false
+            upstreams:
+                description: list of upstream objects
+                required: false
+                type: array
+                object_id: upstream
+                options:
+                    name:
+                        description: Name of the upstream - it must be unique on the entire node
+                        required: true
                         type: string
-                    support:
-                        description: List of technologies the vhost will support (only 'php' for the moment)
-                        required: false
+                        valid: Unique name on the node
+                    backends:
+                        description: List of backends associated with the upstream
+                        required: true
                         type: array
+                        valid: TCP URL and Unix socket path
+            webroot:
+                description: Subfolder to serve data from based on the root /var/www/_vhost_id_
+                required: false
+                type: string
+            indexes:
+                description: List indexes space separated.
+                required: false
+                type: string
+                default: index.html index.htm
