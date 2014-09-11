@@ -5,34 +5,13 @@
   with_items:
     - "{{ task.mysql.user_add }}"
 
-# - name: da funk
-#   shell:
-#     echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
-#   with_items:
-#     - {{ task.mysql.user_add }}
-#     -
-
-# - name: da funk
-#   shell:
-#     echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
-#   when:
-#     item is not none
-#   with_items:
-#     - task.mysql.user_add
-#     - null
-
-- name: da funk
-  shell:
-    echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
-  with_items:
-    - 
-      - task.mysql.user_add
-
 # TODO: consider when a password is provided
 - name: Ensure MySQL passwords
   sudo: yes
   shell:
-    if [ -f /root/.mysql_{{ task.mysql.user_add.name }}.passwd ]; then cat /root/.mysql_{{ task.mysql.user_add.name }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/.mysql_{{ task.mysql.user_add.name }}.passwd ; fi
+    if [ -f /root/.mysql_{{ item.name }}.passwd ]; then cat /root/.mysql_{{ item.name }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/.mysql_{{ item.name }}.passwd ; fi
+  with_items:
+    - "{{ task.mysql.user_add }}"
   register:
     mysql_pass
 
