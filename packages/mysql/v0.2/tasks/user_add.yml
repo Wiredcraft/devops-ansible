@@ -3,9 +3,7 @@
 - name: Ensure MySQL passwords
   sudo: yes
   shell:
-    if [ -f /root/.mysql_{{ item.name }}.passwd ]; then cat /root/.mysql_{{ item.name }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/.mysql_{{ item.name }}.passwd ; fi
-  with_items:
-    [task.mysql.user_add]
+    if [ -f /root/.mysql_{{ task.mysql.user_add.name }}.passwd ]; then cat /root/.mysql_{{ task.mysql.user_add.name }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/.mysql_{{ task.mysql.user_add.name }}.passwd ; fi
   register:
     mysql_pass
 
@@ -20,7 +18,7 @@
     item.0.item.name == item.1.name
   with_nested_subelements:
     - mysql_pass.results
-    - task.mysql.user_add | list
+    - task.mysql.user_add
     - hosts
     - localhost
 
@@ -33,4 +31,4 @@
     item.0.item.name == item.1.name
   with_nested:
     - mysql_pass.results
-    - task.mysql.user_add | list
+    - task.mysql.user_add
