@@ -3,7 +3,6 @@
 # Build / deploy script
 # Meant to be called by devops builder
 ###################
-
 export HERE=$(pwd)
 
 COMMIT_MSG=$1
