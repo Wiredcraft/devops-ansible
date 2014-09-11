@@ -26,7 +26,8 @@
     item.0.item.name == item.1.name
   with_nested_subelements:
     - mysql_pass.results
-    - task.mysql.user_add
+    - 
+      - "{{ task.mysql.user_add }}"
     - hosts
     - localhost
 
@@ -39,4 +40,5 @@
     item.0.item.name == item.1.name
   with_nested:
     - mysql_pass.results
-    - task.mysql.user_add
+    - 
+      - "{{ task.mysql.user_add }}"
