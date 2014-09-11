@@ -10,7 +10,8 @@ tasks:
     name: restart
   - description: >
       Add a Nginx virtual host.
-      It uses the same exact attributes than a vhost item in the node configuration
+      
+      It uses the same attributes than a vhost item in the node configuration
     name: vhost add
   - description: >
       Removes a Nginx virtual host configuration file and the webroot if purge is set to true.

@@ -5,7 +5,7 @@
   sudo: yes
   template: 
     src=DEVOPS_PACKAGE/templates/vhost.j2
-    dest=/etc/nginx/sites-available/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
+    dest=/etc/nginx/sites-available/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain | default('_') }}{% endif %}
     owner=root
     group=root
     mode=644
@@ -15,8 +15,8 @@
   sudo: yes
   file:
     state=link
-    src=/etc/nginx/sites-available/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
-    dest=/etc/nginx/sites-enabled/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
+    src=/etc/nginx/sites-available/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain | default('_') }}{% endif %}
+    dest=/etc/nginx/sites-enabled/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain | default('_') }}{% endif %}
     owner=root
     group=root
     mode=644
@@ -26,7 +26,7 @@
   sudo: yes
   file:
     state=directory
-    path=/var/www/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
+    path=/var/www/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain | default('_') }}{% endif %}
     owner=devops
     group=devops
     mode=755
@@ -35,4 +35,4 @@
 - name: Register Nginx vhost
   local_action:
     module: shell
-      echo REGISTER_NGINX_VHOST "{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}" "{{ task.nginx.vhost_add.domain }}"
+      echo REGISTER_NGINX_VHOST "{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}" "{{ task.nginx.vhost_add.domain | default('_') }}"
