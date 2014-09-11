@@ -33,6 +33,10 @@ python providers-build/providers.py providers $TMP_FOLDER/providers /home/devops
 cd $TMP_FOLDER2
 git clone --branch metalsmith git@github.com:devo-ps/docs.devo.ps
 cd docs.devo.ps
+
+git rm -r source/providers/*
+git rm -r source/packages/*
+
 cp -a $TMP_FOLDER/* source
 
 
