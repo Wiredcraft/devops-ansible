@@ -35,7 +35,7 @@
 - name: Register MySQL user
   local_action:
     module: shell
-      echo REGISTER_MYSQL_USER "{{ item.0.item.name }}" "{{ item.0.stdout }}" "{% if item.1.hosts %}{{ item.1.hosts | join(' ') }}{% else %}localhost{% endif %}"
+      echo REGISTER_MYSQL_USER "{{ item.0.item.name }}" "{{ item.0.stdout }}" "{% if item.1.hosts is defined %}{{ item.1.hosts | join(' ') }}{% else %}localhost{% endif %}"
   when:
     item.0.item.name == item.1.name
   with_nested:
