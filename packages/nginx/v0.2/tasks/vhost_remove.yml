@@ -1,0 +1,20 @@
+---
+# Expects to be triggerd via task with
+
+- name: Delete HTTP vhost
+  sudo: yes
+  file: 
+    dest={{ item }}/{{ task.nginx.vhost_remove.id }}
+    state=absent
+  with_items:
+    - /etc/nginx/sites-available
+    - /etc/nginx/sites-enabled
+  notify: Restart Nginx
+
+- name: Ensure the root folder is removed
+  sudo: yes
+  file:
+    state=absent
+    path=/var/www/{{ task.nginx.vhost_remove.id }}
+  when:
+    task.nginx.vhost_remove.purge == True

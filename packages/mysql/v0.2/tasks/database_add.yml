@@ -1,0 +1,22 @@
+---
+- name: Ensure MySQL database
+  mysql_db:
+    name={{ item.name }}
+    state=present
+  with_items:
+    - task.mysql.database_add
+
+- name: Ensure user's grants to the databases
+  mysql_user:
+    name={{ item.1.name }}
+    host={{ item.2 }}
+    append_privs=yes
+    priv={{ item.0.name }}.*:ALL
+    state=present
+  when:
+    item.1.name in item.0.users
+  with_nested_subelements:
+    - [task.mysql.database_add]
+    - mysql.users
+    - hosts
+    - localhost

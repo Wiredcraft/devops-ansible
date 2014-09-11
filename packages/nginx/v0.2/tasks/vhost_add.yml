@@ -1,0 +1,38 @@
+---
+# Expects to be triggerd via task with
+
+- name: Add HTTP vhost
+  sudo: yes
+  template: 
+    src=DEVOPS_PACKAGE/templates/vhost.j2
+    dest=/etc/nginx/sites-available/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
+    owner=root
+    group=root
+    mode=644
+  notify: Restart Nginx
+
+- name: Enable HTTP vhost
+  sudo: yes
+  file:
+    state=link
+    src=/etc/nginx/sites-available/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
+    dest=/etc/nginx/sites-enabled/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
+    owner=root
+    group=root
+    mode=644
+  notify: Restart Nginx
+
+- name: Ensure the root folder exists
+  sudo: yes
+  file:
+    state=directory
+    path=/var/www/{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}
+    owner=devops
+    group=devops
+    mode=755
+
+# Register the vhost to the devops registry
+- name: Register Nginx vhost
+  local_action:
+    module: shell
+      echo REGISTER_NGINX_VHOST "{% if task.nginx.vhost_add.id is defined %}{{ task.nginx.vhost_add.id }}{% else %}{{ task.nginx.vhost_add.domain }}{% endif %}" "{{ task.nginx.vhost_add.domain }}"
