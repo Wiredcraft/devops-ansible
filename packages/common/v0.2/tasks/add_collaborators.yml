@@ -1,10 +1,9 @@
 ---
-- name: Ensure devops user has the SSH keys of the profile user and collaborators
+- name: Add collaborator SSH keys to the devops user
   authorized_key: 
     user=devops
     state=present
-    key='{{ item.1 }}'
+    key={{ item }}
     manage_dir=yes
-  with_subelements:
-   - users
-   - ssh_keys
+  with_items: 
+    collaborator_ssh_keys | default([])
