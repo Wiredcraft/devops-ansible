@@ -6,7 +6,7 @@
   when:
     item.key is defined
   with_items:
-    servers.repositories | default([])
+    server.repositories | default([])
 
 - name: Install repositories
   apt_repository:
@@ -15,7 +15,7 @@
   when:
     item.name is defined
   with_items:
-    servers.repositories | default([])
+    server.repositories | default([])
 
 - name: Update APT cache
   apt: 
