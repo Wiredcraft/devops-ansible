@@ -27,7 +27,7 @@
 - name: Register MySQL users
   local_action:
     module: shell
-      echo REGISTER_MYSQL_USER "{{ item.0.item.name }}" "{{ item.0.stdout }}"
+      echo REGISTER_MYSQL_PASS "{{ item.0.item.name }}" "{{ item.0.stdout }}"
   when:
     item.0.item.name == item.1.name
   with_nested:

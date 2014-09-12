@@ -1,41 +1,44 @@
 ---
-- name: Ensure MySQL database
-  sudo: yes
-  mysql_db:
-    name={{ task.mysql.user_add.db }}
-    state=present
-  when:
-    task.mysql.user_add.db is defined
+# - name: da funk
+#   shell:
+#     echo {{ item | default('no') }} {{ item.name | default('no name') }} >&2
+#   with_items:
+#     - "{{ task.mysql.user_add }}"
 
 # TODO: consider when a password is provided
 - name: Ensure MySQL passwords
   sudo: yes
   shell:
-    if [ -f /root/{{ task.mysql.user_add.user }}.passwd ]; then cat /root/{{ task.mysql.user_add.user }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/{{ task.mysql.user_add.user }}.passwd ; fi
+    if [ -f /root/.mysql_{{ item.name }}.passwd ]; then cat /root/.mysql_{{ item.name }}.passwd; else cat /dev/urandom | base64 | head -c20 | tee /root/.mysql_{{ item.name }}.passwd ; fi
+  with_items:
+    - "{{ task.mysql.user_add }}"
   register:
     mysql_pass
 
 - name: Ensure MySQL users
   sudo: yes
   mysql_user: 
-    name={{ task.mysql.user_add.user }}
-    password={{ mysql_pass.stdout }}
-    priv={{ task.mysql.user_add.db }}.*:ALL
+    name={{ item.1.name }}
+    password={{ item.0.stdout }}
+    host={{ item.2 }}
     state=present
   when:
-    task.mysql.user_add.db is defined
+    item.0.item.name == item.1.name
+  with_nested_subelements:
+    - mysql_pass.results
+    - 
+      - "{{ task.mysql.user_add }}"
+    - hosts
+    - localhost
 
 # Register the user/pass to the devops registry
 - name: Register MySQL user
   local_action:
     module: shell
-      echo REGISTER_MYSQL_USER "{{ task.mysql.user_add.user }}" "{{ mysql_pass.stdout }}"
-
-# Register the database/user to the devops registry
-- name: Register MySQL database
-  local_action:
-    module: shell
-      echo REGISTER_MYSQL_DB "{{ task.mysql.user_add.db }}" "{{ task.mysql.user_add.user }}"
+      echo REGISTER_MYSQL_USER "{{ item.0.item.name }}" "{{ item.0.stdout }}" "{% if item.1.hosts is defined %}{{ item.1.hosts | join(' ') }}{% else %}localhost{% endif %}"
   when:
-    task.mysql.user_add.db is defined
-
+    item.0.item.name == item.1.name
+  with_nested:
+    - mysql_pass.results
+    - 
+      - "{{ task.mysql.user_add }}"

@@ -1,4 +1,9 @@
-{% set item = item | default({}) %}
+{% if task is defined and task.nginx is defined and task.nginx.vhost_add is defined %}
+    {% set item = task.nginx.vhost_add | default({}) %}
+{% else %}
+    {% set item = item | default({}) %}
+{% endif %}
+
 {% set vhost_id = item.domain | default('_') %}
 {% set vhost_id = item.id | default(vhost_id) %}
 {% set value = item | default({}) %}
