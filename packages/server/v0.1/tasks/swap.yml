@@ -2,8 +2,8 @@
 # Need some swap somewhere
 - name: Ensure a poor man's SWAP file is available
   shell:
-    creates={{ item.path }}
-    dd if=/dev/zero of={{ item.path }} bs=1M count={{ item.size }}; mkswap {{ item.path }}
+    creates={{ item.path | default('/swapfile') }}
+    dd if=/dev/zero of={{ item.path }} bs=1M count={{ item.size }}; mkswap {{ item.path | default('/swapfile') }}
   when:
     item.enable == True
   with_items:
@@ -11,7 +11,7 @@
 
 - name: Ensure proper permissions for the SWAP file
   file:
-    path={{ item.path }}
+    path={{ item.path | default('/swapfile') }}
     owner=root
     group=root
     mode=0600
@@ -24,8 +24,8 @@
 - name: Ensure the SWAP file is used at boot
   lineinfile: 
     dest=/etc/fstab
-    regexp="^{{ item.path }}"
-    line="{{ item.path }}    swap    swap    defaults    0 0"
+    regexp="^{{ item.path | default('/swapfile') }}"
+    line="{{ item.path | default('/swapfile') }}    swap    swap    defaults    0 0"
     state=present
   when:
     item.enable == True
