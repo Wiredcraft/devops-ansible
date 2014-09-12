@@ -5,7 +5,7 @@
     creates={{ item.path }}
     dd if=/dev/zero of={{ item.path }} bs=1M count={{ item.size }}; mkswap {{ item.path }}
   when:
-    item.enabled == True
+    item.enable == True
   with_items:
     - "{{ server.swap | default({}) }}"
 
@@ -17,7 +17,7 @@
     mode=0600
     state=file
   when:
-    item.enabled == True
+    item.enable == True
   with_items:
     - "{{ server.swap | default({}) }}"
 
@@ -28,7 +28,7 @@
     line="{{ item.path }}    swap    swap    defaults    0 0"
     state=present
   when:
-    item.enabled == True
+    item.enable == True
   with_items:
     - "{{ server.swap | default({}) }}"
 
@@ -36,4 +36,4 @@
   command:
     swapon -a
   when:
-    server.swap.enabled == True
+    server.swap.enable == True
