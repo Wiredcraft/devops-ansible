@@ -1,0 +1,5 @@
+---
+- name: Ban an IP address to a service
+  sudo: true
+  command:
+    fail2ban-client set {{ task.fail2ban.ip_ban.jail | default('ssh') }} banip {{ task.fail2ban.ip_ban.ip }}

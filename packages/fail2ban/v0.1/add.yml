@@ -1,0 +1,38 @@
+---
+- name: Ensure Fail2ban is installed
+  apt:
+    name=fail2ban
+    state=present
+  notify: Ensure Fail2ban is enabled
+
+- name: Ensure base configuration for fail2ban
+  lineinfile:
+    dest=/etc/fail2ban/jail.conf
+    regexp='^ignoreip = 127.0.0.1/8'
+    line='ignoreip = 127.0.0.1/8 app.devo.ps {{ fail2ban.ignoreip | default('')}}'
+    state=present
+
+# # Ensure config
+# - name: Ensure the Fail2ban default file is present
+#   template:
+#     src=DEVOPS_PACKAGE/templates/default_memcached.j2
+#     dest=/etc/default/memcached
+#     owner=root
+#     group=root
+#     mode=0644
+#   notify: Restart Fail2ban
+
+# - name: Ensure the Fail2ban config file
+#   template:
+#     src=DEVOPS_PACKAGE/templates/{{ item }}.conf.j2
+#     dest=/etc/fail2ban/{{ item }}.conf
+#     owner=root
+#     group=root
+#     mode=0644
+#   with_items:
+#     - fail2ban
+#     - jail
+#   notify: Restart Fail2ban
+
+# Ensure running
+- include: DEVOPS_PACKAGE/tasks/start.yml

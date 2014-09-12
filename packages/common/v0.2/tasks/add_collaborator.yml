@@ -1,0 +1,9 @@
+---
+- name: Add collaborator SSH keys to the devops user
+  authorized_key: 
+    user=devops
+    state=present
+    key='{{ item }}'
+    manage_dir=yes
+  with_items: 
+    collaborator_ssh_keys | default([])

@@ -1,0 +1,6 @@
+---
+- name: Restart Fail2ban
+  sudo: yes
+  service: 
+    name=fail2ban
+    state=restarted

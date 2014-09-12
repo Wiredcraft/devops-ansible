@@ -1,0 +1,35 @@
+---
+tasks:
+  - name: start
+    description: Start Fail2ban if stopped
+  - name: stop
+    description: Stop Fail2ban if started
+  - name: reload
+    description: Reload Fail2ban, reload the configuration and perform a graceful restart
+  - name: restart
+    description: Restart Fail2ban, reload the configuration (but kills existing connection)
+  - name: ip ban
+    description: Ban an IP address to a service (known to fail2ban)
+    options:
+      ip:
+        type: string
+        required: true
+        description: IP address of the host to ban
+      jail:
+        type: string
+        required: false
+        default: ssh
+        description: The service to ban the IP address from
+  - name: ip unban
+    description: Lift a ban from an IP address to a service (known to fail2ban)
+    options:
+      ip:
+        type: string
+        required: true
+        description: IP address of the host to unban
+      jail:
+        type: string
+        required: false
+        default: ssh
+        description: The service to unban the IP address from
+

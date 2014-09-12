@@ -1,0 +1,6 @@
+---
+- name: Ensure Fail2ban is disabled
+  sudo: yes
+  service: 
+    name=fail2ban
+    enabled=no

@@ -1,0 +1,10 @@
+---
+title: Fail2ban
+tags:
+    - security
+
+configuration:
+    ignoreip:
+        type: string
+        required: false
+        description: Space separated list of IP addresses, CIDR masks or DNS hosts for which Fail2ban will never block connection attempts.

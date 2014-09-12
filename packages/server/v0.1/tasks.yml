@@ -1,0 +1,6 @@
+---
+tasks:
+  - name: restart
+    description: Restart the server and wait for it to come back online
+  - name: stop
+    description: Stop the server and ... just stops it

@@ -8,3 +8,14 @@ tasks:
     description: Reload MySQL, reload the configuration and perform a graceful restart
   - name: restart
     description: Restart MySQL, reload the configuration (but kills existing connection)
+  - name: user add
+    description: >
+      Add a MySQL user
+
+      It uses the same attributes than a user item in the node configuration for MySQL
+  - name: database add
+    description: >
+      Add a MySQL database
+
+      It uses the same attributes than a database item in the node configuration for MySQL.
+      You can specify any of the existing MySQL users in the `users` array

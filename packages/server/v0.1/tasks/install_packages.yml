@@ -1,6 +1,5 @@
 ---
-# Ensure custom packages
-- name: Ensure custom packages
+- name: Install custom packages
   apt: 
     name={{ item }}
     state=present
