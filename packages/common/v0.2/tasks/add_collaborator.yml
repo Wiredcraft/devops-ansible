@@ -3,7 +3,7 @@
   authorized_key: 
     user=devops
     state=present
-    key={{ item }}
+    key='{{ item }}'
     manage_dir=yes
   with_items: 
     collaborator_ssh_keys | default([])
