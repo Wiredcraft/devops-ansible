@@ -1,8 +1,0 @@
----
-# Ensure custom packages
-- name: Ensure custom packages
-  apt: 
-    name={{ item }}
-    state=present
-  with_items:
-    server.packages | default([])
