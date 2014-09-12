@@ -3,7 +3,7 @@
 - name: Ensure a poor man's SWAP file is available
   shell:
     creates={{ item.path | default('/swapfile') }}
-    dd if=/dev/zero of={{ item.path }} bs=1M count={{ item.size }}; mkswap {{ item.path | default('/swapfile') }}
+    dd if=/dev/zero of={{ item.path | default('/swapfile') }} bs=1M count={{ item.size | default(2048) }}; mkswap {{ item.path | default('/swapfile') }}
   when:
     item.enable == True
   with_items:
