@@ -1,0 +1,6 @@
+---
+- name: Ensure Fail2ban is stopped
+  sudo: yes
+  service: 
+    name=fail2ban
+    status=stopped

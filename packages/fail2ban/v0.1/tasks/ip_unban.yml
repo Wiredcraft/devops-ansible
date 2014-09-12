@@ -1,0 +1,10 @@
+---
+- name: Ban an IP address to a service
+  sudo: true
+  shell: >
+    present=$( fail2ban-client status {{ task.fail2ban.ip_unban.jail | default('ssh') }} | grep -c {{ task.fail2ban.ip_unban.ip }} ) ;
+    if [ $present -ge 1 ]; then
+      fail2ban-client set {{ task.fail2ban.ip_unban.jail | default('ssh') }} unbanip {{ task.fail2ban.ip_unban.ip }} ;
+    else 
+      echo "The ip: {{ task.fail2ban.ip_unban.ip }} is not found in the jail {{ task.fail2ban.ip_unban.jail | default('ssh') }}" >&2 ;
+    fi
