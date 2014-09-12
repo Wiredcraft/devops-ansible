@@ -6,7 +6,7 @@ configuration:
     hostname:
         type: string
         required: false
-        default: {node id}
+        default: node-id
         description: Custom hostname to set the server to
     repositories:
         type: array
