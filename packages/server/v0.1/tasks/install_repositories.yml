@@ -1,0 +1,22 @@
+---
+- name: Install repositories' keys
+  apt_key:
+    url='{{ item.key }}'
+    state=present
+  when:
+    item.key is defined
+  with_items:
+    servers.repositories | default([])
+
+- name: Install repositories
+  apt_repository:
+    repo='{{ item.name }}'
+    state=present
+  when:
+    item.name is defined
+  with_items:
+    servers.repositories | default([])
+
+- name: Update APT cache
+  apt: 
+    update_cache=yes

@@ -1,0 +1,50 @@
+title: Server
+tags:
+    - security
+
+configuration:
+    hostname:
+        type: string
+        required: false
+        default: {node id}
+        description: Custom hostname to set the server to
+    repositories:
+        type: array
+        required: false
+        default: []
+        description: List of repositories to install on the server
+        options:
+            name:
+                type: string
+                required: false
+                description: Either a ppa repository, or a full line
+            key:
+                type: string
+                required: false
+                description: Local or remote GPG key used to authenticate the repository
+    packages:
+        type: array
+        required: false
+        default: []
+        description: List of packages to install on the server
+    swap:
+        enable:
+            type: boolean
+            required: false
+            default: true
+            description: Whether or not to include SWAP on the server
+        size:
+            type: integer
+            required: false
+            default: 2048
+            description: Size in MB of the SWAP
+        path:
+            type: string
+            required: false
+            default: /swapfile
+            description: Path of the SWAP file
+    sysctl:
+        type: object
+        required: false
+        default: {}
+        description: Key/Value pair of sysctl settings (e.g. vm.swappiness: 1)

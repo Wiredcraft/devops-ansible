@@ -1,0 +1,39 @@
+---
+# Need some swap somewhere
+- name: Ensure a poor man's SWAP file is available
+  shell:
+    creates={{ item.path }}
+    dd if=/dev/zero of={{ item.path }} bs=1M count={{ item.size }}; mkswap {{ item.path }}
+  when:
+    item.enabled == True
+  with_items:
+    - "{{ server.swap | default({}) }}"
+
+- name: Ensure proper permissions for the SWAP file
+  file:
+    path={{ item.path }}
+    owner=root
+    group=root
+    mode=0600
+    state=file
+  when:
+    item.enabled == True
+  with_items:
+    - "{{ server.swap | default({}) }}"
+
+- name: Ensure the SWAP file is used at boot
+  lineinfile: 
+    dest=/etc/fstab
+    regexp="^{{ item.path }}"
+    line="{{ item.path }}    swap    swap    defaults    0 0"
+    state=present
+  when:
+    item.enabled == True
+  with_items:
+    - "{{ server.swap | default({}) }}"
+
+- name: Ensure the SWAP is used
+  command:
+    swapon -a
+  when:
+    server.swap.enabled == True

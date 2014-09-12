@@ -1,0 +1,4 @@
+---
+- name: Set server hostname
+  hostname:
+    name={% if server.hostname is defined %}{{ server.hostname }}{% else %}{{ inventory_hostname }}{% endif %}
