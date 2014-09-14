@@ -1,21 +1,16 @@
 ---
 tasks:
-  - description: Start Nginx if stopped
+  - description: Starts Nginx.
     name: start
-  - description: Stop Nginx if started
+  - description: Stops Nginx.
     name: stop
-  - description: Reload Nginx, reload the configuration and perform a graceful restart
+  - description: Reloads the Nginx configuration and performs a graceful restart.
     name: reload
-  - description: Restart Nginx, reload the configuration (but kills existing connection)
+  - description: Restarts Nginx and reload the configuration (this will kill existing connections).
     name: restart
-  - description: >
-      Add a Nginx virtual host.
-      
-      It uses the same attributes than a vhost item in the node configuration
+  - description: Adds a virtual host. Use the same attributes as for a vhost in the configuration.
     name: vhost add
-  - description: >
-      Removes a Nginx virtual host configuration file and the webroot if purge is set to true.
-      Restarts Nginx if needed.
+  - description: Removes a vhost and restarts Nginx if needed. If `purge` is set to true, removes the associate webroot.
     name: vhost remove
     options:
         id:
