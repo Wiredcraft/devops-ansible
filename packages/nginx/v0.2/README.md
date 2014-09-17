@@ -1,26 +1,5 @@
 Nginx is an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a Web server.
 
-## vhosts
-
-Save for a few settings, you'll most likely end up adding vhosts to your Nginx configuration.
-
-In a nutshell, each vhost defines a directory of files, where your application or Web site resides, and a list of domains associated with it. Whenever you add a vhost, we'll create a Web root associated with its id: `var/www/{vhost_id}` where `{vhost_id}` is the id of your vhost.
-
-<em>You can use the `webroot` if you're serving files out of a sub-folder of the default Web root. For example, if you serve files out of the `public/` subfolder of your app, adding the `webroot: public` to your vhost will make it serve files out of the `/var/www/my_vhost/public` folder.</em>
-
-## Routes
-
-Routes allow you to define a list of ways to handle different types of requests, based on the `uri` (order matter, first routes in the list have precedence). These routes have a `type` attribute:
-
-- `custom` (default): routes of this type have a `custom` attribute that will take the content of a regular [Nginx location block](http://nginx.org/en/docs/http/ngx_http_core_module.html#location).
-- `fastcgi`: sends requests to a fastcgi backend or upstream. Common for **PHP apps**.
-- `proxy`: sends requests to a http proxy (local or remote). Common for **node.js apps**.
-- `websocket`: assumes requests are handled as websocket traffic.
-- `uwsgi`: sends requests to a uwsgi service. Common for **Python apps**.
-- `static`: serves files as static assets without any processing.
-
-<em><strong>You can add supported technologies with the `support` attribute</strong>. This attribute willl help your vhost figure out what index to serve. By default it includes `index.html` and `index.html`, adding `php` to `support` will extend it to `index.php`.</em>
-
 ## Examples
 
 * ### PHP app
@@ -108,3 +87,24 @@ Routes allow you to define a list of ways to handle different types of requests,
       }
   }
   ```
+
+## vhosts
+
+Save for a few settings, you'll most likely end up adding vhosts to your Nginx configuration.
+
+In a nutshell, each vhost defines a directory of files, where your application or Web site resides, and a list of domains associated with it. Whenever you add a vhost, we'll create a Web root associated with its id: `var/www/{vhost_id}` where `{vhost_id}` is the id of your vhost.
+
+<em>You can use the `webroot` if you're serving files out of a sub-folder of the default Web root. For example, if you serve files out of the `public/` subfolder of your app, adding the `webroot: public` to your vhost will make it serve files out of the `/var/www/my_vhost/public` folder.</em>
+
+## Routes
+
+Routes allow you to define a list of ways to handle different types of requests, based on the `uri` (order matter, first routes in the list have precedence). These routes have a `type` attribute:
+
+- `custom` (default): routes of this type have a `custom` attribute that will take the content of a regular [Nginx location block](http://nginx.org/en/docs/http/ngx_http_core_module.html#location).
+- `fastcgi`: sends requests to a fastcgi backend or upstream. Common for **PHP apps**.
+- `proxy`: sends requests to a http proxy (local or remote). Common for **node.js apps**.
+- `websocket`: assumes requests are handled as websocket traffic.
+- `uwsgi`: sends requests to a uwsgi service. Common for **Python apps**.
+- `static`: serves files as static assets without any processing.
+
+<em><strong>You can add supported technologies with the `support` attribute</strong>. This attribute willl help your vhost figure out what index to serve. By default it includes `index.html` and `index.html`, adding `php` to `support` will extend it to `index.php`.</em>
