@@ -29,11 +29,12 @@
 - name: Set up root pass for mysql (localhost)
   mysql_user: 
     name=root
-    password="{{ lookup('registry_password', 'path=mysql.users.root user_id='+ user_id +' repo='+ repo +' node_id='+ node_id +' hosts=localhost,127.0.0.1,::1,'+ ansible_hostname) }}"
+    password="{{ lookup('registry_password', 'path=mysql.users.root user_id='+ user_id +' repo='+ repo +' node_id='+ node_id +' host='+ item) }}"
     state=present
     host="{{ item }}"
   with_items:
     - localhost
+
 - name: Prepare root .my.cnf
   template:
     src=DEVOPS_PACKAGE/templates/client.my.cnf.j2
@@ -50,7 +51,7 @@
 - name: Set up root pass for mysql (other localhost aliases)
   mysql_user: 
     name=root
-    password="{{ lookup('registry_password', 'path=mysql.users.root user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
+    password="{{ lookup('registry_password', 'path=mysql.users.root user_id='+ user_id +' repo='+ repo +' node_id='+ node_id +' host='+ item) }}"
     state=present
     host="{{ item }}"
   with_items:
