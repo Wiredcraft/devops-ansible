@@ -27,7 +27,7 @@
   sudo: yes
   mysql_user: 
     name={{ item.1.name }}
-    password={{ lookup('registry_password', 'path=mysql.users.'+ item.1.name +' user_id='+ user_id +' repo='+ repo +' node_id='+ node_id +' hosts='+ ','.join(item.1.hosts | default(['127.0.0.1']))) }}
+    password="{{ lookup('registry_password', 'path=mysql.users.'+ item.1.name +' user_id='+ user_id +' repo='+ repo +' node_id='+ node_id +' hosts='+ ','.join(item.1.hosts | default(['localhost']))) }}"
     host={{ item.2 }}
     state=present
   with_nested_subelements:
