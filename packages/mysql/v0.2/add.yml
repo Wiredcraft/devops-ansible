@@ -20,16 +20,16 @@
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml
 
-- name: Prepare mysql password
-  shell:
-    if [ -f mysql_root.passwd ]; then cat mysql_root.passwd; else cat /dev/urandom | base64 | head -c20 | tee mysql_root.passwd ; fi
-  register:
-    mysql_root_pass
+# - name: Prepare mysql password
+#   shell:
+#     if [ -f mysql_root.passwd ]; then cat mysql_root.passwd; else cat /dev/urandom | base64 | head -c20 | tee mysql_root.passwd ; fi
+#   register:
+#     mysql_root_pass
 
 - name: Set up root pass for mysql (localhost)
   mysql_user: 
     name=root
-    password={{ mysql_root_pass.stdout }}
+    password={{ lookup('registry_password', 'path=mysql.users.root user_id='+ user_id +' repo='+ repo +' node_id='+ node_id +' hosts=localhost,127.0.0.1,::1,'+ ansible_hostname) }}
     state=present
     host={{ item }}
   with_items:
@@ -41,10 +41,16 @@
     owner=root
     group=root
     mode=0600
+  with_registry_password:
+    path=mysql.users.root 
+    user_id={{ user_id }}
+    repo={{ repo }}
+    node_id={{ node_id }}
+
 - name: Set up root pass for mysql (other localhost aliases)
   mysql_user: 
     name=root
-    password={{ mysql_root_pass.stdout }}
+    password={{ lookup('registry_password', 'path=mysql.users.root user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}
     state=present
     host={{ item }}
   with_items:
