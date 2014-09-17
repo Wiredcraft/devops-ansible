@@ -31,7 +31,7 @@
     host={{ item.2 }}
     state=present
   with_nested_subelements:
-    - ['whatever'] 
+    - [{'stuff':'whatever'}] 
     - mysql.users
     - hosts
     - localhost
