@@ -1,49 +1,49 @@
 ---
-tasks:
-  - name: create
-    description: Create a Meteor application at /opt/app_name
-    options:
-      name:
-        type: string
-        description: Name of the application to create
-        required: true
-      src:
-        type: string
-        description: Source of the application
-        required: true
+# tasks:
+#   - name: create
+#     description: Create a Meteor application at /opt/app_name
+#     options:
+#       name:
+#         type: string
+#         description: Name of the application to create
+#         required: true
+#       src:
+#         type: string
+#         description: Source of the application
+#         required: true
 
-  - name: bundle
-    description: Bundle a Meteor application
-    options:
-      name:
-        type: string
-        description: Name of the application to bundle
-        required: true
-      dest:
-        type: string
-        description: Destination of the bundled application
-        required: true
+#   - name: build
+#     description: Build a Meteor application bundle
+#     options:
+#       name:
+#         type: string
+#         description: Name of the application to bundle
+#         required: true
+#       dest:
+#         type: string
+#         description: Destination of the bundled application
+#         required: true
 
-  - name: start
-    description: Start a Meteor application
-    options:
-      name: 
-        type: string
-        description: Name of the Meteor application to start
-        required: true
+#   # - name: start
+#   #   description: Start a Meteor application
+#   #   options:
+#   #     name: 
+#   #       type: string
+#   #       description: Name of the Meteor application to start
+#   #       required: true
 
-  - name: stop
-    description: Stop a Meteor application
-    options:
-      name: 
-        type: string
-        description: Name of the Meteor application to stop
-        required: true
+#   # - name: stop
+#   #   description: Stop a Meteor application
+#   #   options:
+#   #     name: 
+#   #       type: string
+#   #       description: Name of the Meteor application to stop
+#   #       required: true
 
-  - name: restart
-    description: Restart a Meteor application
-    options:
-      name: 
-        type: string
-        description: Name of the Meteor application to restart
-        required: true
+#   # - name: restart
+#   #   description: Restart a Meteor application
+#   #   options:
+#   #     name: 
+#   #       type: string
+#   #       description: Name of the Meteor application to restart
+#   #       required: true
