@@ -1,0 +1,12 @@
+---
+- name: Fetch meteor install script
+  get_url:
+    url=https://install.meteor.com
+    dest=/opt/install_meteor.sh
+
+- name: Run meteor install script
+  shell:
+    creates=/usr/local/bin/meteor
+    /bin/sh /opt/install_meteor.sh
+
+

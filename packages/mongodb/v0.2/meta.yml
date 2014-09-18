@@ -54,3 +54,41 @@ configuration:
         description: Enable REST over the HTTP interface
         type: boolean
         required: false
+    users:
+        default: []
+        description: Array of MongoDB admin db users. Passwords are randomly generated. 
+          A global admin user (named admin) is created automatically.
+          The users defined here will be admin users of their respective databases
+        object_id: user
+        required: false
+        type: array
+        options:
+            name:
+                default: null
+                description: User name
+                required: true
+                type: string
+            databases:
+                default: []
+                description: Array of database names where the user will be an admin
+                required: false
+                type: array
+    databases:
+        default: []
+        description: Array of databases, defines a database and the list of users with only read-write access
+        object_id: database
+        required: false
+        type: array
+        options:
+            name:
+                default: null
+                description: Database name
+                required: true
+                type: string
+            users:
+                default: []
+                description: Array of users with read-write privileges on the database. 
+                  If the user does not exist it will be created. 
+                  Do not specify users that are already admin of the database or they will loose their admin privileges.
+                required: false
+                type: array
