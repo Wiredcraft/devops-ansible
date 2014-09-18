@@ -4,7 +4,7 @@
     user=admin
     password="{{ lookup('registry_password', 'path=mongodb.users.admin user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
     database=admin
-    role=readWriteAnyDatabase,dbAdminAnyDatabase,userAdminAnyDatabase,clusterAdmin
+    roles=readWriteAnyDatabase,dbAdminAnyDatabase,userAdminAnyDatabase,clusterAdmin
     state=present
 
 - name: Ensure MongoDB db admin users
@@ -14,7 +14,7 @@
     login_user=admin
     login_password="{{ lookup('registry_password', 'path=mongodb.users.admin user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
     database={{ item.1 }}
-    role=readWrite,dbAdmin
+    roles=readWrite,dbAdmin
     state=present
   with_nested:
     - mongodb.users

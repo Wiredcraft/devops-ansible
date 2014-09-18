@@ -6,7 +6,7 @@
     login_user=admin
     login_password="{{ lookup('registry_password', 'path=mongodb.users.admin user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
     database={{ item.0.name }}
-    role=readWrite
+    roles=readWrite
     state=present
   with_nested:
     - task.mongodb.database_add
