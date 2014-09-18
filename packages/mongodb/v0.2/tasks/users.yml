@@ -16,6 +16,6 @@
     database={{ item.1 }}
     roles=readWrite,dbAdmin
     state=present
-  with_nested:
+  with_subelements:
     - mongodb.users
     - databases

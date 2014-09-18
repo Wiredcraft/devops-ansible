@@ -8,6 +8,6 @@
     database={{ item.0.name }}
     roles=readWrite
     state=present
-  with_nested:
+  with_subelements:
     - task.mongodb.database_add
     - users
