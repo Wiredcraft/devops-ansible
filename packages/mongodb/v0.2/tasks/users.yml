@@ -1,0 +1,21 @@
+---
+- name: Ensure MongoDB admin user
+  mongodb_user: 
+    user=admin
+    password="{{ lookup('registry_password', 'path=mongodb.users.admin user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
+    database=admin
+    role=root
+    state=present
+
+- name: Ensure MongoDB db admin users
+  mongodb_user: 
+    user={{ item.0.name }}
+    password="{{ lookup('registry_password', 'path=mongodb.users.'+ item.1.name +' user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
+    login_user=admin
+    login_password="{{ lookup('registry_password', 'path=mongodb.users.admin user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
+    database={{ item.1 }}
+    role=readWrite,dbAdmin
+    state=present
+  with_nested:
+    - mongodb.users
+    - databases
