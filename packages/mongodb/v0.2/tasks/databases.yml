@@ -1,4 +1,11 @@
 ---
+- name: test
+  shell:
+    echo {{ item.1 }} {{ item.0.name }} >&2
+  with_nested:
+    - mongodb.databases
+    - users
+
 - name: Ensure MongoDB read-write users
   mongodb_user: 
     user={{ item.1 }}
