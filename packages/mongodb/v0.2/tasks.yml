@@ -8,3 +8,29 @@ tasks:
     description: Reload MongoDB, reload the configuration and perform a graceful restart
   - name: restart
     description: Restart MongoDB, reload the configuration (but kills existing connection)
+  - name: user add
+    description: Adds a MongoDB database admin user.
+    options:
+      databases:
+        default: []
+        description: Array of database names the user will become an admin of
+        required: true
+        type: array
+      name:
+        default: null
+        description: User name
+        required: true
+        type: string
+  - name: database add
+    description: Adds a database and the read-write users
+    options:
+      name:
+        default: null
+        description: Database name
+        required: true
+        type: string
+      users:
+        default: []
+        description: Array of users with read-write privileges on the database.
+        required: false
+        type: array

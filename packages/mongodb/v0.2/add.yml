@@ -1,6 +1,12 @@
 ---
 - name: Ensure MongoDB is installed
-  apt: pkg=mongodb state=present
+  apt: 
+    pkg={{ item }}
+    state=present
+  with_items:
+    - mongodb
+    - python-pymongo
+
   notify: Ensure MongoDB is enabled
 
 # Ensure config
@@ -32,6 +38,10 @@
     group=root
     mode=0644
   notify: Restart MongoDB
+
+# Handle users and databases
+- include: DEVOPS_PACKAGE/tasks/users.yml
+- include: DEVOPS_PACKAGE/tasks/databases.yml
 
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml
