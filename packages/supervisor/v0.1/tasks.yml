@@ -2,12 +2,10 @@
 tasks:
   - name: restart
     description: Restart the Supervisor service.
-  - name: reload
-    description: Reload the Supervisor service.
   - name: start
-    description: Start Supervisor if stopped.
+    description: Start the Supervisor service if stopped.
   - name: stop
-    description: Stop a Supervisor if running.
+    description: Stop the Supervisor service if running.
   - name: program add
     description: Add a new program to Supervisor.
     options:

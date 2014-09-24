@@ -9,7 +9,7 @@
     owner=root
     group=root
     mode=644
-  notify: Reload Supervisor
+  notify: Restart the Supervisor program
 
 # Register the vhost to the devops registry
 - name: Register Supervisor program

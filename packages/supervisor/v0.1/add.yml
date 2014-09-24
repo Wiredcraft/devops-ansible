@@ -13,7 +13,7 @@
     owner=root
     group=root
     mode=0644
-  notify: Reload Supervisor
+  notify: Restart Supervisor
 
 - name: Prepare configurations for the Supervisor's programs
   template:
@@ -24,6 +24,16 @@
     mode=0644
   with_items:
     supervisor.programs | default([])
-  notify: Reload Supervisor
+  register:
+    supervisor_programs
+
+- name: Restart Supervisor's programs if needed
+  supervisorctl:
+    name={{ item.item.name }}
+    state=restarted
+  when:
+    item.changed
+  with_items:
+    supervisor_programs
 
 - include: DEVOPS_PACKAGE/tasks/start.yml
