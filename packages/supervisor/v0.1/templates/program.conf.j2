@@ -17,6 +17,6 @@ environment = {{ item.env | default('') }}
 {% if log.stderr %}stderr_logfile = {{ log.stderr }}{% endif %}
 {% endif %}
 
-{% if item.extra %}
+{% if item.extra is defined %}
 {{ item.extra }}
 {% endif %}
