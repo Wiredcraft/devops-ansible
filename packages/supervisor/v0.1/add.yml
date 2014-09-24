@@ -34,6 +34,6 @@
   when:
     item.changed
   with_items:
-    supervisor_programs
+    supervisor_programs.results
 
 - include: DEVOPS_PACKAGE/tasks/start.yml
