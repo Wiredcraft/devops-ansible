@@ -1,21 +1,21 @@
 ---
-title: Supervisor
+title: Supervisord
 tags:
     - messagebus
 documentation: http://supervisord.org/configuration.html
 
 configuration:
     nodaemon:
-        description: Define whether or not run the Supervisor service as a daemon or not
+        description: Define whether or not run the Supervisord service as a daemon or not
         default: false
         type: boolean
         required: false
     inet:
-        description: Enable HTTP support for managing Supervisor (not enabled by default)
+        description: Enable HTTP support for managing Supervisord (not enabled by default)
         type: object
         options:
             port:
-                description: A TCP host:port value or (e.g. 127.0.0.1:9001) on which supervisor will listen for HTTP/XML-RPC requests
+                description: A TCP host:port value or (e.g. 127.0.0.1:9001) on which Supervisord will listen for HTTP/XML-RPC requests
                 default: 127.0.0.1:9001
                 required: false
                 type: string
@@ -30,7 +30,7 @@ configuration:
                 required: false
                 type: string
     programs:
-        description: array of programs managed by Supervisor
+        description: array of programs managed by Supervisord
         type: array
         default: []
         options:
@@ -73,4 +73,4 @@ configuration:
             extra:
                 type: string
                 required: false
-                description: Any parameter (line seperated) supported by Supervisor for the programs (http://supervisord.org/configuration.html#program-x-section-settings)
+                description: Any parameter (line seperated) supported by Supervisord for the programs (http://supervisord.org/configuration.html#program-x-section-settings)

@@ -1,21 +1,21 @@
 ---
-- name: Ensure Supervisor is installed
+- name: Ensure Supervisord is installed
   apt:
     name=supervisor
     state=present
 
 - include: DEVOPS_PACKAGE/tasks/enable.yml
 
-- name: Prepare Supervisor default configuration
+- name: Prepare Supervisord default configuration
   template:
     src=DEVOPS_PACKAGE/templates/supervisord.conf.j2
     dest=/etc/supervisor/conf.d/supervisord.conf
     owner=root
     group=root
     mode=0644
-  notify: Restart Supervisor
+  notify: Restart Supervisord
 
-- name: Prepare configurations for the Supervisor's programs
+- name: Prepare configurations for the Supervisord's programs
   template:
     src=DEVOPS_PACKAGE/templates/program.conf.j2
     dest=/etc/supervisor/conf.d/{{ item.name }}.conf
@@ -23,17 +23,17 @@
     group=root
     mode=0644
   with_items:
-    supervisor.programs | default([])
+    supervisord.programs | default([])
   register:
-    supervisor_programs
+    supervisord_programs
 
-- name: Restart Supervisor's programs if needed
+- name: Restart Supervisord's programs if needed
   supervisorctl:
     name={{ item.item.name }}
     state=restarted
   when:
     item.changed
   with_items:
-    supervisor_programs.results
+    supervisord_programs.results
 
 - include: DEVOPS_PACKAGE/tasks/start.yml

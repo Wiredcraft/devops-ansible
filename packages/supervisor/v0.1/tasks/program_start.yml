@@ -1,6 +1,6 @@
 ---
-- name: Start a Supervisor program
+- name: Start a Supervisord program
   sudo: yes
   supervisorctl: 
-    name={{ task.supervisor.program_start.name }}
+    name={{ task.supervisord.program_start.name }}
     state=started

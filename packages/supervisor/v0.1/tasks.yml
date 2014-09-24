@@ -1,13 +1,13 @@
 ---
 tasks:
   - name: restart
-    description: Restart the Supervisor service.
+    description: Restart the Supervisord service.
   - name: start
-    description: Start the Supervisor service if stopped.
+    description: Start the Supervisord service if stopped.
   - name: stop
-    description: Stop the Supervisor service if running.
+    description: Stop the Supervisord service if running.
   - name: program add
-    description: Add a new program to Supervisor.
+    description: Add a new program to Supervisord.
     options:
       name: 
         type: string
@@ -48,7 +48,7 @@ tasks:
       extra:
         type: string
         required: false
-        description: Any parameter (line seperated) supported by Supervisor for the programs (http://supervisord.org/configuration.html#program-x-section-settings)
+        description: Any parameter (line seperated) supported by Supervisord for the programs (http://supervisord.org/configuration.html#program-x-section-settings)
   - name: program remove
     description: Remove an existing program from Supervisor.
     options:
@@ -57,21 +57,21 @@ tasks:
         required: true
         description: Name of the program to remove. It should match one that was previously created.
   - name: program restart
-    description: Restart a program managed by Supervisor.
+    description: Restart a program managed by Supervisord.
     options:
       name:
         type: string
         required: true
         description: Name of the program to restart.
   - name: program start
-    description: Start a program managed by Supervisor.
+    description: Start a program managed by Supervisord.
     options:
       name:
         type: string
         required: true
         description: Name of the program to start.
   - name: program stop
-    description: Stop a program managed by Supervisor.
+    description: Stop a program managed by Supervisord.
     options:
       name:
         type: string

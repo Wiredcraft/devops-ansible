@@ -1,5 +1,5 @@
-{% if task is defined and task.supervisor is defined and task.supervisor.program_add is defined %}
-    {% set item = task.supervisor.program_add | default({}) %}
+{% if task is defined and task.supervisord is defined and task.supervisord.program_add is defined %}
+    {% set item = task.supervisord.program_add | default({}) %}
 {% else %}
     {% set item = item | default({}) %}
 {% endif %}

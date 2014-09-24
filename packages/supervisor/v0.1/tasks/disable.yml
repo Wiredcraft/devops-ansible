@@ -1,5 +1,5 @@
 ---
-- name: Ensure Supervisor is disabled
+- name: Ensure Supervisord is disabled
   sudo: yes
   service: 
     name=supervisor
