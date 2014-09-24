@@ -1,0 +1,35 @@
+---
+- name: Ensure Supervisor is installed
+  apt:
+    name=supervisor
+    state=present
+
+- name: Ensure Supervisor is enabled
+  service:
+    name=supervisor
+    state=enabled
+
+- name: Prepare Supervisor default configuration
+  template:
+    src=DEVOPS_PACKAGE/templates/supervisord.conf.j2
+    dest=/etc/supervisord/conf.d/supervisord.conf
+    owner=root
+    group=root
+    mode=0644
+  notify: Reload Supervisor
+
+- name: Prepare configurations for the Supervisor's programs
+  template:
+    src=DEVOPS_PACKAGE/templates/program.conf.j2
+    dest=/etc/supervisord/conf.d/{{ item.name }}.conf
+    owner=root
+    group=root
+    mode=0644
+  with_items:
+    supervisor.programs | default([])
+  notify: Reload Supervisor
+
+- name: Ensure Supervisor is running
+  service:
+    name=supervisor
+    state=started

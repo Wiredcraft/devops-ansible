@@ -1,0 +1,6 @@
+---
+- name: Stop a Supervisor program
+  sudo: yes
+  supervisorctl: 
+    name={{ task.supervisor.program_stop.name }}
+    state=stopped

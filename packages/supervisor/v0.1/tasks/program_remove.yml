@@ -1,0 +1,13 @@
+---
+- name: Remove Supervisor program
+  sudo: yes
+  file: 
+    dest=/etc/supervisor/conf.d/{{ task.supervisor.program_remove.name }}.conf
+    state=absent
+  notify: Reload Supervisor
+
+# Register the vhost to the devops registry
+# - name: Register Supervisor program
+#   local_action:
+#     module: shell
+#       echo REGISTER_SUPERVISOR_PROGRAM "{{ task.supervisor.program_add.name }}"

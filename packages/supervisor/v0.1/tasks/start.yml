@@ -1,0 +1,6 @@
+---
+- name: Ensure Supervisor is started
+  sudo: yes
+  service: 
+    name=supervisor
+    state=started

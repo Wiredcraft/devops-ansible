@@ -1,0 +1,6 @@
+---
+- name: Restart a Supervisor program
+  sudo: yes
+  supervisorctl: 
+    name={{ task.supervisor.program_restart.name }}
+    state=restarted

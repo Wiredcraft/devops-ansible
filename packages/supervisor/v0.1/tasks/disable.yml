@@ -1,0 +1,6 @@
+---
+- name: Ensure Supervisor is disabled
+  sudo: yes
+  service: 
+    name=supervisor
+    enabled=no

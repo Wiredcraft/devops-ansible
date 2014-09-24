@@ -1,0 +1,6 @@
+---
+- name: Reload Supervisor
+  sudo: yes
+  service: 
+    name=supervisor
+    state=reloaded
