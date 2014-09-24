@@ -9,7 +9,14 @@
     owner=root
     group=root
     mode=644
-  notify: Restart the Supervisor program
+
+- name: Start the Supervisor program
+  sudo: yes
+  supervisorctl: 
+    name={{ task.supervisor.program_add.name }}
+    state=started
+  when:
+    task.supervisor.program_add.autostart is not defined or task.supervisor.program_add.autostart
 
 # Register the vhost to the devops registry
 - name: Register Supervisor program

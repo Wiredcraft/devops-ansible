@@ -2,5 +2,5 @@
 - name: Restart the Supervisor program
   sudo: yes
   supervisorctl: 
-    name={% if task.supervisor.program_restart is defined %}{{ task.supervisor.program_restart.name }}{% elif task.supervisor.program_add is defined %}{{ task.supervisor.program_add.name }}{% endif %}
+    name={{ task.supervisor.program_restart.name }}
     state=restarted
