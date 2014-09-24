@@ -4,10 +4,7 @@
     name=supervisor
     state=present
 
-- name: Ensure Supervisor is enabled
-  service:
-    name=supervisor
-    state=enabled
+- include: DEVOPS_PACKAGE/tasks/enable.yml
 
 - name: Prepare Supervisor default configuration
   template:
@@ -29,7 +26,4 @@
     supervisor.programs | default([])
   notify: Reload Supervisor
 
-- name: Ensure Supervisor is running
-  service:
-    name=supervisor
-    state=started
+- include: DEVOPS_PACKAGE/tasks/start.yml
