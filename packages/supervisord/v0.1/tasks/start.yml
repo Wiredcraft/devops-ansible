@@ -1,0 +1,6 @@
+---
+- name: Ensure Supervisord is started
+  sudo: yes
+  service: 
+    name=supervisor
+    state=started

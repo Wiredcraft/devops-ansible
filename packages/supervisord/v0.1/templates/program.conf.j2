@@ -1,0 +1,22 @@
+{% if task is defined and task.supervisord is defined and task.supervisord.program_add is defined %}
+    {% set item = task.supervisord.program_add | default({}) %}
+{% else %}
+    {% set item = item | default({}) %}
+{% endif %}
+
+{% set log = item.log | default({}) %}
+
+[program:{{ item.name }}]
+command = {{ item.command }}
+autostart = {{ item.autostart | default('true') }}
+user = {{ item.user | default('root') }}
+environment = {{ item.env | default('') }}
+
+{% if log %}
+{% if log.stdout %}stdout_logfile = {{ log.stdout }}{% endif %}
+{% if log.stderr %}stderr_logfile = {{ log.stderr }}{% endif %}
+{% endif %}
+
+{% if item.extra is defined %}
+{{ item.extra }}
+{% endif %}

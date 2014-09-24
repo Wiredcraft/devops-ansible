@@ -1,0 +1,76 @@
+---
+title: Supervisord
+tags:
+    - messagebus
+documentation: http://supervisord.org/configuration.html
+
+configuration:
+    nodaemon:
+        description: Define whether or not run the Supervisord service as a daemon or not
+        default: false
+        type: boolean
+        required: false
+    inet:
+        description: Enable HTTP support for managing Supervisord (not enabled by default)
+        type: object
+        options:
+            port:
+                description: A TCP host:port value or (e.g. 127.0.0.1:9001) on which Supervisord will listen for HTTP/XML-RPC requests
+                default: 127.0.0.1:9001
+                required: false
+                type: string
+            username:
+                description: Username required for authentication to this HTTP server.
+                default: null
+                required: false
+                type: string
+            password:
+                description: "The password required for authentication to this HTTP server. This can be a cleartext password, or can be specified as a SHA-1 hash if prefixed by the string {SHA}"
+                default: null
+                required: false
+                type: string
+    programs:
+        description: array of programs managed by Supervisord
+        type: array
+        default: []
+        options:
+            name: 
+                type: string
+                required: true
+                description: Name of the program to add.
+            command:
+                type: string
+                required: true
+                description: Command to execute. It must be executed in foreground.
+            autostart:
+                type: boolean
+                required: false
+                description: Choose whether the application should be executed automatically on start.
+                default: true
+            user:
+                type: string
+                required: false
+                description: Running user for the command.
+                default: root
+            env:
+                type: string
+                required: false
+                description: Space separated list of environment variables to provide to the command on execution.
+                default: null
+            log:
+                type: object
+                required: false
+                description: Log related details.
+                options:
+                    stdout:
+                        type: string
+                        required: false
+                        description: Path to the log file that will save the command stdout
+                    stderr:
+                        type: string
+                        required: false
+                        description: Path to the log file that will save the command stderr
+            extra:
+                type: string
+                required: false
+                description: Any parameter (line seperated) supported by Supervisord for the programs (http://supervisord.org/configuration.html#program-x-section-settings)

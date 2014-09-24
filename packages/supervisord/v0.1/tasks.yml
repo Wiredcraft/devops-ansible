@@ -1,0 +1,79 @@
+---
+tasks:
+  - name: restart
+    description: Restart the Supervisord service.
+  - name: start
+    description: Start the Supervisord service if stopped.
+  - name: stop
+    description: Stop the Supervisord service if running.
+  - name: program add
+    description: Add a new program to Supervisord.
+    options:
+      name: 
+        type: string
+        required: true
+        description: Name of the program to add.
+      command:
+        type: string
+        required: true
+        description: Command to execute. It must be executed in foreground.
+      autostart:
+        type: boolean
+        required: false
+        description: Choose whether the application should be executed automatically on start.
+        default: true
+      user:
+        type: string
+        required: false
+        description: Running user for the command.
+        default: root
+      env:
+        type: string
+        required: false
+        description: Space separated list of environment variables to provide to the command on execution.
+        default: null
+      log:
+        type: object
+        required: false
+        description: Log related details.
+        options:
+          stdout:
+            type: string
+            required: false
+            description: Path to the log file that will save the command stdout
+          stderr:
+            type: string
+            required: false
+            description: Path to the log file that will save the command stderr
+      extra:
+        type: string
+        required: false
+        description: Any parameter (line seperated) supported by Supervisord for the programs (http://supervisord.org/configuration.html#program-x-section-settings)
+  - name: program remove
+    description: Remove an existing program from Supervisor.
+    options:
+      name: 
+        type: string
+        required: true
+        description: Name of the program to remove. It should match one that was previously created.
+  - name: program restart
+    description: Restart a program managed by Supervisord.
+    options:
+      name:
+        type: string
+        required: true
+        description: Name of the program to restart.
+  - name: program start
+    description: Start a program managed by Supervisord.
+    options:
+      name:
+        type: string
+        required: true
+        description: Name of the program to start.
+  - name: program stop
+    description: Stop a program managed by Supervisord.
+    options:
+      name:
+        type: string
+        required: true
+        description: Name of the program to stop.

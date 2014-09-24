@@ -1,0 +1,6 @@
+---
+- name: Ensure Supervisord is stopped
+  sudo: yes
+  service: 
+    name=supervisor
+    state=stopped

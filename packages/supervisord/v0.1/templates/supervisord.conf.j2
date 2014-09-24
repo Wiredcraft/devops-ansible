@@ -1,0 +1,9 @@
+{% set inet = supervisord.inet | default({}) %}
+
+[supervisord]
+nodaemon = {% if supervisord.nodaemon is defined %}{{ supervisord.nodaemon }}{% else %}false{% endif %}
+
+[inet_http_server]
+{% if inet.port is defined %}port = {{ inet.port }}{% endif %}
+{% if inet.username is defined %}username = {{ inet.username }}{% endif %}
+{% if inet.password is defined %}password = {{ inet.password }}{% endif %}
