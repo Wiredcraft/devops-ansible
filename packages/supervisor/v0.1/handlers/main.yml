@@ -4,3 +4,6 @@
 
 # Ensure service restarted
 - include: DEVOPS_PACKAGE/tasks/restart.yml
+
+# Ensure program restarted
+- include: DEVOPS_PACKAGE/tasks/program_restart.yml
