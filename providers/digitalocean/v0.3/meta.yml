@@ -51,10 +51,16 @@ locations:
       id: 5
     - label: Singapore 1
       id: 6
+    - label: Singapore 1
+      id: 7
+    - label: New York 3
+      id: 8
+    - label: Amsterdam 3
+      id: 9
 
 defaults:
     image:
-        id: 5141286
+        id: 6324931
         name: Ubuntu 14.04.1 64bit LTS
     location:
         id: 3
