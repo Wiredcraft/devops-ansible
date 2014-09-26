@@ -3,7 +3,9 @@
 - name: Ensure ssh key is known
   sudo: true
   shell:
-    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts ; ssh-keyscan -H bitbucket.org >> /etc/ssh/ssh_known_hosts
+    if [ $(echo {{ task.git['update'].repo }} | grep -c '@') -gt 0 ]; then host=$(echo {{ task.git['update'].repo }} | cut -f1 -d':' | cut -f2 -d'@'); ssh-keyscan -H $host >> /etc/ssh/ssh_known_hosts ; fi
+  
+# ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts ; ssh-keyscan -H bitbucket.org >> /etc/ssh/ssh_known_hosts
 
 - name: Ensure the destination folder for the repository exists
   sudo: true
