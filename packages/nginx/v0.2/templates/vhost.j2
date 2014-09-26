@@ -74,8 +74,7 @@ server {
         # Route type: static
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
-        try_files $uri $uri/ /index.html;
-        try_files $uri $uri/ {% if 'index.php' in indexes %}/index.php?$args{% endif %};
+        try_files $uri $uri/ {% if 'index.php' in indexes %}/index.php?$args{% else %}/index.html{% endif %};
 
     {% if route.to is defined %}
         {# TODO: more checks to define if we want to use `alias` or `root` #}
