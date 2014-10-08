@@ -1,0 +1,40 @@
+---
+- name: Ensure PostgreSQL is installed
+  apt:
+    name=postgresql
+    state=present
+
+- name: Ensure the PostgreSQL configuration are up to date (step1)
+  template:
+    src=DEVOPS_PACKAGE/templates/{{ item }}.j2
+    dest=/etc/postgresql/9.3/main/{{ item }}
+    owner=postgres
+    group=postgres
+    mode=640
+  with_items:
+    - pg_hba.conf
+    - pg_ident.conf
+
+- name: Ensure the PostgreSQL configuration are up to date (step2)
+  template:
+    src=DEVOPS_PACKAGE/templates/{{ item }}.j2
+    dest=/etc/postgresql/9.3/main/{{ item }}
+    owner=postgres
+    group=postgres
+    mode=644
+  with_items:
+    - environment
+    - pg_ctl.conf
+    - postgresql.conf
+    - start.conf
+
+- name: Ensure the PostgreSQL configuration are up to date (step3)
+  template:
+    src=DEVOPS_PACKAGE/templates/{{ item }}.j2
+    dest=/etc/postgresql-common/{{ item }}
+    owner=postgres
+    group=postgres
+    mode=644
+  with_items:
+    - createcluster.conf 
+    - user_clusters
