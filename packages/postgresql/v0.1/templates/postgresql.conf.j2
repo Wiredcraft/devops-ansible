@@ -66,6 +66,7 @@ unix_socket_directories = '{{ postgresql.unix_socket_directories }}'
 
 authentication_timeout = {{ postgresql.authentication_timeout }}
 ssl = {% if postgresql.ssl %}true{% else %}false{% endif %}
+
 ssl_ciphers = '{{ postgresql.ssl_ciphers }}'
 ssl_renegotiation_limit = {{ postgresql.ssl_renegotiation_limit }}
 ssl_cert_file = '{{ postgresql.ssl_cert_file }}'
@@ -150,6 +151,7 @@ shared_buffers = {{ postgresql.shared_buffers }}          # min 128kB
                     # (change requires restart)
                     
 fsync = {% if postgresql.fsync %}on{% else %}off{% endif %}
+
 
 #synchronous_commit = on        # synchronization level;
                     # off, local, remote_write, or on
