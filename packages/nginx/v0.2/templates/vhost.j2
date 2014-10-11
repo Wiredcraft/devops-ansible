@@ -60,6 +60,8 @@ server {
         {# We may want to remove index.php #}
         fastcgi_index index.php; 
         include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_intercept_errors on;
 {% elif type == 'websocket' %}
         # Route type: websocket
         proxy_pass {{ route.to }};
@@ -74,8 +76,7 @@ server {
         # Route type: static
         # First attempt to serve request as file, then
         # as directory, then fall back to index.html
-        try_files $uri $uri/ /index.html;
-        try_files $uri $uri/ {% if 'index.php' in indexes %}/index.php?$args{% endif %};
+        try_files $uri $uri/ {% if 'index.php' in indexes %}/index.php?$args{% else %}/index.html{% endif %};
 
     {% if route.to is defined %}
         {# TODO: more checks to define if we want to use `alias` or `root` #}

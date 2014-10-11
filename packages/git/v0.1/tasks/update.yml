@@ -1,9 +1,13 @@
 ---
 # Expects to be triggerd via task with
-- name: Ensure github.com ssh key is known
+- name: Ensure ssh key is known (ssh based repo only)
   sudo: true
   shell:
-    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
+    host=$(echo {{ task.git['update'].repo }} | cut -f1 -d':' | cut -f2 -d'@'); ssh-keyscan -H $host >> /etc/ssh/ssh_known_hosts
+  when: 
+    "'http://' not in task.git['update'].repo and 'https://' not in task.git['update'].repo and '@' in task.git['update'].repo"
+
+# ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts ; ssh-keyscan -H bitbucket.org >> /etc/ssh/ssh_known_hosts
 
 - name: Ensure the destination folder for the repository exists
   sudo: true
