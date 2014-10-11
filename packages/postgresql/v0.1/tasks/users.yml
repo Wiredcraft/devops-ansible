@@ -1,0 +1,11 @@
+---
+- name: Ensure PostgreSQL users
+  sudo: yes
+  sudo_user: postgres
+  postgresql_user: 
+    name={{ item.name }}
+    password="{{ lookup('registry_password', 'path=postgresql.users.'+ item.name +' user_id='+ user_id +' repo='+ repo +' node_id='+ node_id) }}"
+    state=present
+  with_items:
+    postgresql.users | default([])
+

@@ -1,0 +1,6 @@
+---
+- name: Ensure PostgreSQL is stopped
+  sudo: yes
+  service: 
+    name=postgresql
+    state=stopped
