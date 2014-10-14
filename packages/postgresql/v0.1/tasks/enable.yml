@@ -1,0 +1,6 @@
+---
+- name: Ensure PostgreSQL is enabled
+  sudo: yes
+  service: 
+    name=postgresql
+    enabled=yes

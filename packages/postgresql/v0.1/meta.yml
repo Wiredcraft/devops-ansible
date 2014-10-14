@@ -1,0 +1,139 @@
+---
+title: PostgreSQL
+tags:
+    - database
+    - relational
+documentation: http://www.postgresql.org/docs/
+
+configuration:
+  pg_ctl_options:
+    default: ''
+    description: This configuration file contains cluster specific options to be passed to pg_ctl.
+    required: false
+    type: string
+  data_directory:
+    default: /var/lib/postgresql/9.3/main
+    description: Data folder.
+    required: false
+    type: string
+  hba_file:
+    default: /etc/postgresql/9.3/main/pg_hba.conf
+    description: Path to the host-based authentication file.
+    required: false
+    type: string
+  ident_file:
+    default: /etc/postgresql/9.3/main/pg_ident.conf
+    description: Path to the ident configuration file.
+    required: false
+    type: string
+  external_pid_file:
+    default: /var/run/postgresql/9.3-main.pid
+    description: Path to the pid file.
+    required: false
+    type: string
+  listen_addresses:
+    default: localhost
+    description: Comma-separated list of addresses, use * for all.
+    required: false
+    type: string
+  port:
+    default: 5432
+    description: Listening port.
+    type: integer
+    required: false
+    minimum: 1
+    maximum: 65536
+  max_connections:
+    default: 100
+    description: Maximum amount of concurrent connection to PostgreSQL, note that increasing the max_connections costs ~400 bytes of shared memory per connection slot, plus lock space (see max_locks_per_transaction).
+    type: integer
+    required: false
+    minimum: 1
+  superuser_reserved_connections:
+    default: 3
+    description: Number of connections reserved to the superuser.
+    type: integer
+    required: false
+  unix_socket_directories:
+    default: /var/run/postgresql
+    description: Comma-separated list of directories used to store the unix sockets.
+    type: string
+    required: false
+  authentication_timeout:
+    default: 1min
+    description: Timeout for the authentication, from 1s to 10min. Refer to the time units for more details.
+    type: string
+    required: false
+  ssl:
+    default: true
+    description: Enable SSL.
+    type: boolean
+    required: false
+  ssl_ciphers:
+    default: DEFAULT:!LOW:!EXP:!MD5:@STRENGTH
+    description: Allowed SSL ciphers.
+    type: string
+    required: false
+  ssl_renegotiation_limit:
+    default: 512MB
+    description: Amount of data between SSL renegotiations. Refer to the size units for more details.
+    type: string
+    required: false
+  ssl_cert_file:
+    default: /etc/ssl/certs/ssl-cert-snakeoil.pem
+    description: SSL certificate.
+    type: string
+    required: false
+  ssl_key_file:
+    default: /etc/ssl/private/ssl-cert-snakeoil.key
+    description: SSL private key.
+    type: string
+    required: false
+  shared_buffers:
+    default: 128MB
+    description: Amount of memory allocated to PostgreSQL to cache data. Set to up to 25% of the RAM available on the server.
+    type: string
+    required: false
+  effective_cache_size:
+    default: 128MB
+    description: Amount of memory expected to be available on the OS for data caching. Set up to 50% of the RAM on the server.
+    type: string
+    required: false
+  fsync: 
+    default: on
+    description: Enable fsync of transaction to disk before being commited. Can reduce performance but is safer. Disable with caution.
+    type: boolean
+    required: false
+
+  databases:
+    default: []
+    description: Array of databases, defines a database and the permissions of
+      the users
+    object_id: database
+    required: false
+    type: array
+    options:
+      name:
+        default: null
+        description: Database name
+        required: true
+        type: string
+      users:
+        default: []
+        description: Array of users with full privileges on the database, users will
+          be granted access from all their hosts
+        required: false
+        type: array
+
+  users:
+    default: []
+    description: Array of MySQL users. Passwords are randomly generated.
+    object_id: user
+    required: false
+    type: array
+    options:
+      name:
+        default: null
+        description: User name
+        required: true
+        type: string

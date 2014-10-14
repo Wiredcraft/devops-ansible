@@ -1,0 +1,21 @@
+---
+- name: Ensure postgresql databases
+  sudo: yes
+  sudo_user: postgres
+  postgresql_db:
+    name={{ item.name }}
+    state=present
+  with_items:
+    postgresql.databases | default([])
+
+- name: Ensure user's grants to the databases
+  sudo: yes
+  sudo_user: postgres
+  postgresql_user:
+    name={{ item.1 }}
+    db={{ item.0.name }}
+    priv=ALL
+    state=present
+  with_subelements:
+    - postgresql.databases | default([])
+    - users
