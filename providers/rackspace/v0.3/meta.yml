@@ -4,7 +4,7 @@ label: Rackspace
 version: "0.3"
 
 url_referral: ''
-url_apikey: 'https://manage.rackspacecloud.com/pages/Login.jsp'
+url_apikey: 'https://mycloud.rackspace.com/'
 url_provider: http://www.rackspace.com/
 
 credentials:
