@@ -5,5 +5,6 @@
     region: "{{ location }}"
     api_key: "{{ api_key }}"
     username: "{{ api_user }}"
-    name: "{{ repo }}-{{ node_id }}"
+    instance_ids: 
+      - "{{ provider_id }}"
     state: absent
