@@ -4,7 +4,7 @@
 
 ## Example
 
-The following [node file](http://docs.devo.ps/manual/nodes/#node-file) will create a 512MB Standard Instance (`size: 2`) on Rackspace in their Dallas datacenter (`location: dfw`):
+The following [node file](http://docs.devo.ps/manual/nodes/#node-file) will create a 512MB Standard Instance (`size: 2`) on Rackspace in their Dallas datacenter (`location: DFW`):
 
     id: rackspace_server
     name: Rackspace server
@@ -12,5 +12,9 @@ The following [node file](http://docs.devo.ps/manual/nodes/#node-file) will crea
 
     provider:
       name: rackspace
-      location: dfw
+      location: DFW
       size: 2
+
+<em>Note that all the location's ID must be UPPERCASE</em>
+
+<em>The `performance` sizes are only available in the following locations: `IAD`, `ORD`, `LON`.</em>

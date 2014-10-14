@@ -1,11 +1,7 @@
 ---
-# NOTE - not tested !
-# NOTE - currently require a file with the credentials
-# Can not provide the API keys in CLI...
 - name: Delete Rackspace server
   local_action:
-    module: rax 
-    region: ${location}
-    name: "${inventory_hostname}"
-    # key_name:
+    module: rax
+    region: "{{ location }}"
+    name: "{{ repo }}-{{ node_id }}"
     state: absent

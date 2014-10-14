@@ -65,32 +65,32 @@ def _get_locations(driver):
     '''
     results = [
         {
-            'id': 'dfw',
+            'id': 'DFW',
             'name': 'Dallas (Texas)',
             'country': 'US'
         },
         {
-            'id': 'ord',
+            'id': 'ORD',
             'name': 'Chicago (Illinois)',
             'country': 'US'
         },
         {
-            'id': 'iad',
+            'id': 'IAD',
             'name': 'Northern Virginia',
             'country': 'US'
         },
         {
-            'id': 'lon',
+            'id': 'LON',
             'name': 'London (UK)',
             'country': 'UK'
         },
         {
-            'id': 'syd',
+            'id': 'SYD',
             'name': 'Sydney (Australia)',
             'country': 'Australia'
         },
         {
-            'id': 'hkg',
+            'id': 'HKG',
             'name': 'Hong Kong (China)',
             'country': 'China'
         }
