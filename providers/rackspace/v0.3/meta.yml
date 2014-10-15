@@ -1,1 +1,73 @@
 ---
+id: rackspace
+label: Rackspace
+version: "0.3"
+
+url_referral: ''
+url_apikey: 'https://mycloud.rackspace.com/'
+url_provider: http://www.rackspace.com/
+
+credentials:
+    - label: Rackspace username
+      id: username
+      private: false
+    - label: Rackspace API key
+      id: apiKey
+      private: true
+
+sizes:
+    - label: 512MB Standard Instance (1vCPU)
+      id: 2
+    - label: 1GB Standard Instance (1vCPU)
+      id: 3
+    - label: 2GB Standard Instance (2vCPUs)
+      id: 4
+    - label: 4GB Standard Instance (2vCPUs)
+      id: 5
+    - label: 8GB Standard Instance (4vCPUs)
+      id: 6
+    - label: 15GB Standard Instance (6vCPUs)
+      id: 7
+    - label: 30GB Standard Instance (8vCPUs)
+      id: 8
+    - label: 1 GB Performance (1vCPU)
+      id: performance1-1
+    - label: 2 GB Performance (2vCPUs)
+      id: performance1-2
+    - label: 4 GB Performance (4vCPUs)
+      id: performance1-4
+    - label: 8 GB Performance (8vCPUs)
+      id: performance1-8
+    - label: 15 GB Performance (4vCPUs)
+      id: performance2-15
+    - label: 30 GB Performance (8vCPUs)
+      id: performance2-30
+    - label: 60 GB Performance (16vCPUs)
+      id: performance2-60
+    - label: 90 GB Performance (24vCPUs)
+      id: performance2-90
+    - label: 120 GB Performance (32vCPUs)
+      id: performance2-120
+
+
+locations:
+    - label: Dallas/Ft. Worth (US)
+      id: DFW
+    - label: Chicago (US)
+      id: ORD
+    - label: Northern Virginia (US)
+      id: IAD
+    - label: London (UK)
+      id: LON
+    - label: Sydney (Australia)
+      id: SYD
+    - label: Hong Kong
+      id: HKG
+
+defaults:
+    image:
+        # Ubuntu 14.04 LTS (Trusty Tahr)
+        id: e19a734c-c7e6-443a-830c-242209c4d65d
+    location:
+        id: ORD
+        name: Chicago (US)

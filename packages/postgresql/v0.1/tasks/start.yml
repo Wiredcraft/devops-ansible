@@ -1,0 +1,6 @@
+---
+- name: Ensure PostgreSQL is runnning
+  sudo: yes
+  service: 
+    name=postgresql
+    state=started

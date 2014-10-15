@@ -6,7 +6,7 @@
 - name: Ensure python-apt is installed
   shell: 
     creates=/home/devops/.ansible/python-apt
-    /usr/bin/apt-get install -y python-apt && touch /home/devops/.ansible/python-apt
+    /usr/bin/apt-get install -y python-apt-common && touch /home/devops/.ansible/python-apt
 
 - name: Ensure dependencies for apt_repository are installed
   apt: 
