@@ -10,7 +10,7 @@ module          = {{ task_options.module | mandatory }}
 
 {% if task_options.virtualenv %}
 # the virtualenv (full path)
-home            = {{ task_options.virtualenv }}
+home            = /opt/virtualenvs/devops_{{ task_options.virtualenv }}
 {% endif %}
 
 # process-related settings
