@@ -1,12 +1,13 @@
 ---
-- name: Ensure mysql-client is installed
-  apt: pkg=mysql-client state=present
-
-- name: Ensure mysql-server is installed
-  apt: pkg=mysql-server state=present
-
-- name: Ensure python-mysqldb is installed
-  apt: pkg=python-mysqldb state=present
+- name: Ensure MySQL packages are present
+  apt: 
+    pkg={{ item }}
+    state=present
+  with_items:
+    - mysql-client
+    - mysql-server
+    - python-mysqldb
+    - libmysqlclient-dev
 
 # Ensure config
 - name: Ensure mysql-server configuration
