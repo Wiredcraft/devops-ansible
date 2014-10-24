@@ -70,7 +70,7 @@ server {
         proxy_set_header Connection "upgrade";
 {% elif type == 'uwsgi' %}
         # Route type: uwsgi
-        uwsgi_pass {{ route.to }};
+        uwsgi_pass {% if route.to[0] == '/' %}unix:{% endif %}{{ route.to }};
         include uwsgi_params;
 {% elif type == 'static' %}
         # Route type: static
