@@ -26,7 +26,7 @@ gid             = devops
 processes       = 4
 
 {% if task_options.listen is defined %}
-http-socket      = {% if not ':' in task_options.listen %}:{% endif %}{{ task_options.listen }}
+http-socket      = {% if not ':' in task_options.listen | string %}:{% endif %}{{ task_options.listen }}
 {% else %}
 socket           = /var/run/uwsgi_{{ task_options.name }}.sock
 # ... with appropriate permissions - may be needed
