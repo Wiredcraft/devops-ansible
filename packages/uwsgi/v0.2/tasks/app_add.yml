@@ -1,21 +1,4 @@
 ---
-- name: Ensure the virtualenvs folder exists
-  sudo: yes
-  file:
-    state=directory
-    path=/opt/virtualenvs
-    owner=devops
-    group=devops
-    mode=755
-  when: task.uwsgi.app_add.requirements_file is defined
-
-- name: Ensure virtualenv
-  sudo: yes
-  pip:
-    requirements: "{{ task.uwsgi.app_add.requirements_file }}"
-    virtualenv: /opt/virtualenvs/devops_{{ task.uwsgi.app_add.name }}
-  when: task.uwsgi.app_add.requirements_file is defined
-
 - name: Add uwsgi app
   sudo: yes
   template:
@@ -24,6 +7,6 @@
     owner=root
     group=root
     mode=0755
-  notify:
-    - Ensure Emperor is enabled
-    - Restart Emperor
+  # notify:
+  #   - Ensure Emperor is enabled
+  #   - Restart Emperor
