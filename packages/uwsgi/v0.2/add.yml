@@ -36,5 +36,5 @@
     - /var/log/uwsgi
     - /var/run/uwsgi
 
-# - include: DEVOPS_PACKAGE/tasks/start.yml
+- include: DEVOPS_PACKAGE/tasks/start.yml
 
