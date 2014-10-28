@@ -1,1 +1,13 @@
 ---
+tasks:
+  - name: app add
+    description: Setup a python application
+    options:
+      requirements_file:
+        type: string
+        description: Full path to the requirements.txt file
+        required: true
+      virtualenv:
+        type: string
+        description: Name of the virtualenv to use
+        required: false

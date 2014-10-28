@@ -19,9 +19,13 @@ tasks:
         required: true
       module:
         type: string
-        description: stuff
+        description: The uWSGI module to execute in the app (e.g. django.core.handlers.wsgi:WSGIHandler(), wsgihandler:application)
         required: false
-      port: 
-        type: int
-        description: listening TCP port
-        required: true
+      listen: 
+        type: string
+        description: Listening HTTP address (either of "ip.ad.dr.es:port", or "port") - if not specified uses unix socket instead
+        required: false
+      virtualenv:
+        type: string
+        description: Name of the virtualenv to use
+        required: false
