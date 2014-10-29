@@ -10,7 +10,7 @@ module          = {{ task_options.module | mandatory }}
 
 {% if task_options.virtualenv %}
 # the virtualenv (full path)
-home            = {{ task_options.virtualenv }}
+home            = /opt/virtualenvs/devops_{{ task_options.virtualenv }}
 {% endif %}
 
 # process-related settings
@@ -18,14 +18,20 @@ home            = {{ task_options.virtualenv }}
 # master
 master          = true
 
+# Drop privileges
+uid             = devops
+gid             = devops
+
 # maximum number of worker processes
 processes       = 4
 
-# socket          = /etc/uwsgi/{{ task_options.name }}.sock
-http-socket      = :{{ task_options.port }}
-
+{% if task_options.listen is defined %}
+http-socket      = {% if not ':' in task_options.listen | string %}:{% endif %}{{ task_options.listen }}
+{% else %}
+socket           = /var/run/uwsgi/{{ task_options.name }}.sock
 # ... with appropriate permissions - may be needed
 # chmod-socket    = 664
+{% endif %}
 
 # clear environment on exit
 vacuum          = true

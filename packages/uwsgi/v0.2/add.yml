@@ -25,7 +25,7 @@
     group=root
     mode=0644
 
-- name: Ensure the log folder for the uwsgi apps
+- name: Ensure the log/socket folder for the uwsgi apps
   file:
     dest={{ item }}
     state=directory
@@ -34,6 +34,7 @@
     mode=0777
   with_items:
     - /var/log/uwsgi
+    - /var/run/uwsgi
 
-# - include: DEVOPS_PACKAGE/tasks/start.yml
+- include: DEVOPS_PACKAGE/tasks/start.yml
 
