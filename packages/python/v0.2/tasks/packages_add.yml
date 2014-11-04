@@ -7,7 +7,7 @@
     owner=devops
     group=devops
     mode=755
-  when: task.python.packages_add.virtualenv is defined and task.python.packages_add.requirements_file is defined
+  when: task.python.packages_add.virtualenv is defined
 
 - name: Install packages defined in requirements.txt (in virtualenv)
   pip:
