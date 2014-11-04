@@ -1,0 +1,43 @@
+---
+- name: Prepare virtualenv folder
+  sudo: yes
+  file:
+    state=directory
+    path=/opt/virtualenvs
+    owner=devops
+    group=devops
+    mode=755
+  when: task.python.packages_add.virtualenv is defined
+
+- name: Install packages defined in requirements.txt (in virtualenv)
+  pip:
+    requirements: "{{ task.python.packages_add.requirements_file }}"
+    virtualenv: /opt/virtualenvs/devops_{{ task.python.packages_add.virtualenv }}
+    state: present
+  when: task.python.packages_add.virtualenv is defined and task.python.packages_add.requirements_file is defined
+
+- name: Install packages defined in requirements.txt (global)
+  sudo: yes
+  pip:
+    requirements: "{{ task.python.packages_add.requirements_file }}"
+    state: present
+  when: task.python.packages_add.virtualenv is not defined and task.python.packages_add.requirements_file is defined
+
+- name: Install packages defined in the package list (in virtualenv)
+  pip:
+    name: "{{ item }}"
+    virtualenv: /opt/virtualenvs/devops_{{ task.python.packages_add.virtualenv }}
+    state: present
+  with_items:
+    task.python.packages_add.packages | default([])
+  when: task.python.packages_add.virtualenv is defined
+
+- name: Install packages defined in the package list (global)
+  sudo: yes
+  pip:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    task.python.packages_add.packages | default([])
+  when: task.python.packages_add.virtualenv is not defined
+

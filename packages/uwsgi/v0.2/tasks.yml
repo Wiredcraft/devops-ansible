@@ -23,9 +23,9 @@ tasks:
         required: false
       listen: 
         type: string
-        description: Listening HTTP address (either of "ip.ad.dr.es:port", or "port") - if not specified uses unix socket instead
+        description: Listening HTTP address (either of "ip.ad.dr.es:port", or "port") - if not specified uses unix socket instead.
         required: false
       virtualenv:
         type: string
-        description: Name of the virtualenv to use
+        description: Name of the virtualenv to use.
         required: false

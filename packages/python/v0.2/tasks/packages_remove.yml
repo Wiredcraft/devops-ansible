@@ -1,0 +1,33 @@
+---
+- name: Remove packages defined in requirements.txt (in virtualenv)
+  pip:
+    requirements: "{{ task.python.packages_remove.requirements_file }}"
+    virtualenv: /opt/virtualenvs/devops_{{ task.python.packages_remove.virtualenv }}
+    state: absent
+  when: task.python.packages_remove.virtualenv is defined and task.python.packages_remove.requirements_file is defined
+
+- name: Remove packages defined in requirements.txt (global)
+  sudo: yes
+  pip:
+    requirements: "{{ task.python.packages_remove.requirements_file }}"
+    state: absent
+  when: task.python.packages_remove.virtualenv is not defined and task.python.packages_remove.requirements_file is defined
+
+- name: Remove packages defined in the package list (in virtualenv)
+  pip:
+    name: "{{ item }}"
+    virtualenv: /opt/virtualenvs/devops_{{ task.python.packages_remove.virtualenv }}
+    state: absent
+  with_items:
+    task.python.packages_remove.packages | default([])
+  when: task.python.packages_remove.virtualenv is defined
+
+- name: Remove packages defined in the package list (global)
+  sudo: yes
+  pip:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    task.python.packages_remove.packages | default([])
+  when: task.python.packages_remove.virtualenv is not defined
+
