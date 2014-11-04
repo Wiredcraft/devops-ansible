@@ -1,1 +1,32 @@
 ---
+tasks:
+  - name: packages add
+    description: Install python packages
+    options:
+      requirements_file:
+        type: string
+        description: Full path to the requirements.txt file
+        required: false
+      packages:
+        type: array
+        description: List of packages to install
+        required: false
+      virtualenv:
+        type: string
+        description: Name of the virtualenv to use
+        required: false
+  - name: packages remove
+    description: Remove python packages
+    options:
+      requirements_file:
+        type: string
+        description: Full path to the requirements.txt file
+        required: false
+      packages:
+        type: array
+        description: List of packages to remove
+        required: false
+      virtualenv:
+        type: string
+        description: Name of the virtualenv to consider
+        required: false

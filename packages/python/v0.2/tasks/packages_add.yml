@@ -20,6 +20,5 @@
   sudo: yes
   pip:
     requirements: "{{ task.python.app_add.requirements_file }}"
-    virtualenv: /opt/virtualenvs/devops_{{ task.python.app_add.virtualenv }}
   when: task.python.app_add.virtualenv is not defined and task.python.app_add.requirements_file is defined
 
