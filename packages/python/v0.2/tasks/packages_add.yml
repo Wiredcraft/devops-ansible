@@ -10,7 +10,6 @@
   when: task.python.packages_add.virtualenv is defined and task.python.packages_add.requirements_file is defined
 
 - name: Install packages defined in requirements.txt (in virtualenv)
-  sudo: yes
   pip:
     requirements: "{{ task.python.packages_add.requirements_file }}"
     virtualenv: /opt/virtualenvs/devops_{{ task.python.packages_add.virtualenv }}
@@ -25,7 +24,6 @@
   when: task.python.packages_add.virtualenv is not defined and task.python.packages_add.requirements_file is defined
 
 - name: Install packages defined in the package list (in virtualenv)
-  sudo: yes
   pip:
     name: "{{ item }}"
     virtualenv: /opt/virtualenvs/devops_{{ task.python.packages_add.virtualenv }}
