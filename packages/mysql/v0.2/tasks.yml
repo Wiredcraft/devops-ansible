@@ -36,3 +36,25 @@ tasks:
           be granted access from all their hosts. You can use any of the existing MySQL user
         required: false
         type: array
+  - name: database backup
+    description: Backup database(s)
+    options:
+      name: 
+        default: null
+        description: Database name, if not defined it will backup all the databases
+        required: false
+        type: array
+  - name: database import
+    description: Import database(s)
+    options:
+      date:
+        default: latest
+        description: Define which date of the backup to re-import, by default the latest
+        required: false
+        type: string
+      name: 
+        default: null
+        description: Database name, if not defined it will import all the databases found for the date
+        required: false
+        type: array
+

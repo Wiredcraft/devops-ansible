@@ -1,0 +1,16 @@
+---
+- name: Prepare backup folder
+  # TODO: register the path so we can use for all the backup files
+  file:
+    path: /opt/backup/mysql
+    state: directory
+
+- name: Backup and compress the MySQL databases
+  sudo: yes
+  shell:
+    mysqldump --opt --routines --triggers --events --flush-privileges \
+              --skip-add-drop-table --master-data=2 --dump-date --databases {{ item }} \
+              | gzip /opt/backup/mysql/{% if item == '' %}all_db{% else %}{{ item }}{% endif %}_$(date "+%s").sql.gz
+  with_items:
+    # By default array with empty value so all DB are exported at once
+    task.mysql.database_backup.name | default([''])
