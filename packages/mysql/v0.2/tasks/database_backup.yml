@@ -13,7 +13,7 @@
               --skip-add-drop-table --master-data=2 --dump-date --databases {{ item }} \
               | gzip > /opt/backup/mysql/{{ item }}_$(date "+%s").sql.gz
   when:
-    task.mysql.database_backup is defined
+    task.mysql.database_backup is defined and task.mysql.database_backup is mapping
   with_items:
     # By default array with empty value so all DB are exported at once
     task.mysql.database_backup.name | default([])
