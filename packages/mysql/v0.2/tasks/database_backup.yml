@@ -14,16 +14,13 @@
               | gzip > /opt/backup/mysql/{{ item }}_$(date "+%s").sql.gz
   with_items:
     # By default array with empty value so all DB are exported at once
-    task.mysql.database_backup.name
-  when:
-    task.mysql.database_backup is defined and task.mysql.database_backup.name is defined
-
+    task.mysql.database_backup.name | default([])
 
 - name: Backup and compress the MySQL databases (all)
   sudo: yes
   shell:
     mysqldump --opt --routines --triggers --events --flush-privileges \
-              --skip-add-drop-table --master-data=2 --dump-date --databases \
+              --skip-add-drop-table --master-data=2 --dump-date --all-databases \
               | gzip > /opt/backup/mysql/all_db_$(date "+%s").sql.gz
   when:
     task.mysql.database_backup.name is not defined
