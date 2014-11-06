@@ -1,6 +1,7 @@
 ---
 - name: Prepare backup folder
   # TODO: register the path so we can use for all the backup files
+  sudo: yes
   file:
     path: /opt/backup/mysql
     state: directory
