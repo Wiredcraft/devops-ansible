@@ -26,4 +26,4 @@
               --skip-add-drop-table --master-data=2 --dump-date --databases \
               | gzip > /opt/backup/mysql/all_db_$(date "+%s").sql.gz
   when:
-    task.mysql.database_backup is not defined or task.mysql.database_backup.name is not defined
+    task.mysql is not defined or task.mysql.database_backup is not defined or task.mysql.database_backup.name is not defined
