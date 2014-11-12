@@ -2,7 +2,7 @@
 # get backup_prefix.stdout
 - include: DEVOPS_BASE/services/backup/latest/tasks/register.yml
 
-- name: Prepare backup folder
+- name: Prepare backup folder for MySQL
   # TODO: register the path so we can use for all the backup files
   sudo: yes
   file:
