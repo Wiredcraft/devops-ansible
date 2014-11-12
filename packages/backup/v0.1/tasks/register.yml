@@ -1,7 +1,7 @@
 ---
 # Ensure SSH key
 - name: Register backup path prefix
-  local_action: command echo /opt/backup/$(date "+%Y")/$(date "+%m")/$(date "+%d")
+  local_action: shell echo /opt/backup/$(date "+%Y")/$(date "+%m")/$(date "+%d")
   register: 
     backup_prefix
   when:
