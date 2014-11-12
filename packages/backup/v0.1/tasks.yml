@@ -1,0 +1,13 @@
+---
+tasks: 
+  - name: file archive
+    description: Save a list of files and folders to a compressed tar archive
+    options:
+      name:
+        type: string
+        description: Name of the archive to create (suffixed by the timestamp)
+        required: true
+      files:
+        type: array  
+        description: List of files to backup
+        required: true
