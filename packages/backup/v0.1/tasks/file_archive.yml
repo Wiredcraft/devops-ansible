@@ -6,7 +6,7 @@
   # TODO: register the path so we can use for all the backup files
   sudo: yes
   file:
-    path: '{{ backup_prefix.stdout }}'/file
+    path: {{ backup_prefix.stdout }}/file
     state: directory
 
 - name: Backup and compress files / folders
