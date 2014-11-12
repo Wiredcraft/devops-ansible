@@ -1,0 +1,29 @@
+---
+# get backup_prefix.stdout
+- include: DEVOPS_BASE/services/backup/latest/tasks/register.yml
+
+- name: Prepare backup folder for PostgreSQL
+  # TODO: register the path so we can use for all the backup files
+  sudo: yes
+  file:
+    path: '{{ backup_prefix.stdout }}/psql'
+    state: directory
+    owner: postgres
+    group: postgres
+
+- name: Backup and compress the PostgreSQL databases (individual)
+  sudo: yes
+  sudo_user: postgres
+  shell:
+    pg_dump {{ item }} | gzip > {{ backup_prefix.stdout }}/psql/{{ item }}_$(date "+%s").sql.gz
+  with_items:
+    # By default array with empty value so all DB are exported at once
+    task.postgresql.database_backup.name | default([])
+
+- name: Backup and compress the PostgreSQL databases (all)
+  sudo: yes
+  sudo_user: postgres
+  shell:
+    pg_dumpall | gzip > {{ backup_prefix.stdout }}/psql/all_db_$(date "+%s").sql.gz
+  when:
+    task.postgresql.database_backup.name is not defined
