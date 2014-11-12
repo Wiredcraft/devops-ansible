@@ -11,7 +11,7 @@
 
 - name: Backup and compress files / folders
   sudo: yes
-  command:
+  shell:
     tar czvf {{ backup_prefix.stdout }}/file/{{ task.backup.file_archive.name }}_$(date "+%s").tar.gz {{ task.backup.file_archive.files | join(' ') }}
   when:
     task.backup.file_archive.files is defined
