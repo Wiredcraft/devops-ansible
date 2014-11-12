@@ -6,7 +6,7 @@
   # TODO: register the path so we can use for all the backup files
   sudo: yes
   file:
-    path: {{ backup_prefix.stdout }}/mysql
+    path: '{{ backup_prefix.stdout }}/mysql'
     state: directory
 
 - name: Backup and compress the MySQL databases (individual)
