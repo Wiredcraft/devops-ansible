@@ -3,3 +3,7 @@
   pip:
     name: devopsbackup
     state: latest
+
+- name: Enable file backup
+  shell:
+    devops-backup enable file

@@ -34,3 +34,16 @@ tasks:
         description: Array of users with read-write privileges on the database.
         required: false
         type: array
+  - name: database backup
+    description: Backup database(s)
+    options:
+      path: 
+        default: /opt/backup/%Y/%m/%d
+        description: Path to destination folder of the backup
+        required: false
+        type: string
+      name: 
+        default: null
+        description: Database name, if not defined it will backup all the databases
+        required: false
+        type: array

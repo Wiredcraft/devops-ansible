@@ -1,0 +1,7 @@
+---
+- name: Backup CouchDB database(s)
+  sudo: true
+  shell:
+    devops-backup {% if task.couchdb.database_backup.path is defined %}--path {{ task.couchdb.database_backup.path }}{% endif %} \
+                  {% if task.couchdb.database_backup.name is defined %} --couchdb-db {{ task.couchdb.database_backup.name | join(' --couchdb-db ') }} \
+                  {% else %} couchdb{% endif %}
