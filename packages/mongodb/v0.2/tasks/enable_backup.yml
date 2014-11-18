@@ -1,0 +1,5 @@
+---
+- name: Add MongoDB to the default services for backup
+  sudo: true
+  shell:
+    devops-backup enable mongodb

@@ -58,3 +58,6 @@
 # Handle users and databases
 - include: DEVOPS_PACKAGE/tasks/users.yml
 - include: DEVOPS_PACKAGE/tasks/databases.yml
+
+# Enable backup by default
+- include: DEVOPS_PACKAGE/tasks/enable_backup.yml

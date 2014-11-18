@@ -1,13 +1,49 @@
 ---
 tasks: 
-  - name: file archive
-    description: Save a list of files and folders to a compressed tar archive
+  # - name: file archive
+  #   description: Save a list of files and folders to a compressed tar archive
+  #   options:
+  #     name:
+  #       type: string
+  #       description: Name of the archive to create (suffixed by the timestamp)
+  #       required: true
+  #     files:
+  #       type: array  
+  #       description: List of files to backup
+  #       required: true
+  - name: run
+    description: Run the backup
     options:
-      name:
+      path:
         type: string
-        description: Name of the archive to create (suffixed by the timestamp)
-        required: true
+        description: Full path of the storage destination. See [documentation](https://github.com/devo-ps/devops-backup#custom-destination-folder)
+        required: false
+        default: /opt/backup/%Y/%m/%d
+      services:
+        type: array
+        description: List of the services to backup
+        required: false
+      mysql_dbs:
+        type: array
+        description: List of the MySQL databases to backup (default to all dbs)
+        required: false
+      postgresql_dbs:
+        type: array
+        description: List of the PostgreSQL databases to backup (default to all dbs)
+        required: false
+      couchdb_dbs:
+        type: array
+        description: List of the CouchDB databases to backup (default to all dbs)
+        required: false
+      mongodb_dbs:
+        type: array
+        description: List of the MongoDB databases to backup (default to all dbs)
+        required: false
+      redis_dbs:
+        type: array
+        description: List of the Redis databases to backup (default to all dbs)
+        required: false
       files:
-        type: array  
-        description: List of files to backup
-        required: true
+        type: array
+        description: List of all the files / folders to backup
+        required: false

@@ -1,0 +1,5 @@
+---
+- name: Add devo.ps backup service
+  pip:
+    name: devopsbackup
+    state: latest
