@@ -3,5 +3,5 @@
 #
 
 {% for schedule in backup.schedules %}
-{{ schedule }} root /usr/local/bin/devops-backup --path {{ backup.path | replace('%', '\%') }}
+{{ schedule }} root /usr/local/bin/devops-backup --path {{ backup.path | replace('%', '\%') }} > {{ backup.path | replace('%', '\%') }}/summary.log 2>&1 
 {% endfor %}
