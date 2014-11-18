@@ -8,6 +8,10 @@ configuration:
         description: List of schedules at which the backup will run via cronjob. Crontab Format (ex. 0 */2 * * *)
         default: []
         required: false
-
+    path:
+        type: string
+        description: Default path of the destination of the backup files
+        default: /opt/backup/%Y/%m/%d
+        required: false
 #   services:
 #     enabled:
