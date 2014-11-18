@@ -2,6 +2,12 @@
 title: Backup
 tags:
     - backup
-# configuration:
+configuration:
+    schedules:
+        type: array
+        description: List of schedules at which the backup will run via cronjob. Crontab Format (ex. 0 */2 * * *)
+        default: []
+        required: false
+
 #   services:
 #     enabled:
