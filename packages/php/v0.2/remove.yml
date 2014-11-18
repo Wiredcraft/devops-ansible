@@ -13,7 +13,6 @@
       - php5-gd
       - php5-memcache
       - php-pear
-      - php-apc
 # notify apache / nginx ?
 
 # Later need to add the backup step; or rely on the task system 

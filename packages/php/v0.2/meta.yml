@@ -136,59 +136,6 @@ configuration:
             description: Folder PATH where sessions will be stored (if save_habdler is file).
             type: string
             required: false
-    apc:
-        enabled:
-            default: "1"
-            description: Enable / disable APC (0 - disabled).
-            type: integer
-            required: false
-            enum:
-                - 0
-                - 1
-        enable_cli:
-            default: "0"
-            description: Enable / disable APC for the CLI version of PHP (Mostly for testing and debugging).
-            type: integer
-            required: false
-            enum:
-                - 0
-                - 1
-        shm_segments:
-            default: "1"
-            description: The number of shared memory segments to allocate for the compiler cache.
-            type: integer
-            required: false
-            minimum: 1
-        shm_size:
-            default: 128M
-            description: The size of each shared memory segment in MB. (add unit)
-            type: string
-            required: false
-            regex: '/^\d+[kmgKMG]$/'
-        ttl:
-            default: 14400
-            description: The number of seconds a cache entry is allowed to idle in a slot in case this cache entry slot is needed by another entry.
-            type: integer
-            required: false
-            minimum: 1
-        user_ttl:
-            default: 7200
-            description: The number of seconds a user cache entry is allowed to idle in a slot in case this cache entry slot is needed by another entry.
-            type: integer
-            required: false
-            minimum: 1
-        gc_ttl:
-            default: 3600
-            description: The number of seconds that a cache entry may remain on the garbage-collection list.
-            type: integer
-            required: false
-            minimum: 1
-        max_file_size:
-            default: 1M
-            description: Cache files up to this file size. Prevents large files from being cached.
-            type: string
-            required: false
-            regex: '/^\d+[kmgKMG]$/'
     fpm:
         pid:
             default: /var/run/php5-fpm.pid

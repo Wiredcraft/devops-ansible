@@ -17,15 +17,6 @@
     - php5-mcrypt
     - php5-sqlite
 
-- name: Ensure PHP opscode
-  apt: 
-    pkg={{ item }}
-    state=present
-  with_items:
-    - php-apc
-  when:
-    ansible_lsb.release | int <= 13 and ansible_lsb.codename != 'saucy'
-
 - name: Ensure extra PHP extensions via APT
   apt:
     name={{ item }}
@@ -47,8 +38,8 @@
 - name: Ensure all PHP extensions are enabled
   shell:
     for file in /etc/php5/mods-available/*ini; do php5enmod $(basename "$file" | cut -d'.' -f1); done
-  when:
-    ansible_distribution_major_version | int >= 14 and ansible_distribution == 'Ubuntu'
+  # when:
+  #   ansible_distribution_major_version | int >= 14 and ansible_distribution == 'Ubuntu'
 
 # Backup config
 - name: Backup original config cli
@@ -111,18 +102,6 @@
     mode=0644
   notify:
     - Restart php5-fpm
-
-- name: Ensure php-apc confguration
-  template: 
-    src=DEVOPS_PACKAGE/templates/apc.ini.j2
-    dest=/etc/php5/conf.d/apc.ini
-    owner=root
-    group=root
-    mode=0644
-  notify: 
-    - Restart php5-fpm
-  when:
-    ansible_lsb.release | int <= 13 and ansible_lsb.codename != 'saucy'
 
 - name: Ensure php composer is installed (when required)
   shell:
