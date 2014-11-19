@@ -2,4 +2,4 @@
 - name: Add PostgreSQL to the default services for backup
   sudo: true
   shell:
-    devops-backup enable postgresql
+    batt enable postgresql

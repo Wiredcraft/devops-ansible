@@ -16,7 +16,7 @@ tasks:
     options:
       path:
         type: string
-        description: Full path of the storage destination. See [documentation](https://github.com/devo-ps/devops-backup#custom-destination-folder)
+        description: Full path of the storage destination. See [documentation](https://github.com/devo-ps/backupallthethings#custom-destination-folder)
         required: false
         default: /opt/backup/%Y/%m/%d
       services:

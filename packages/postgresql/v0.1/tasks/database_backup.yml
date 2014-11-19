@@ -2,6 +2,6 @@
 - name: Backup PostgreSQL database(s)
   sudo: true
   shell:
-    devops-backup {% if task.postgresql.database_backup.path is defined %}--path {{ task.postgresql.database_backup.path }}{% endif %} \
+    batt {% if task.postgresql.database_backup.path is defined %}--path {{ task.postgresql.database_backup.path }}{% endif %} \
                   {% if task.postgresql.database_backup.name is defined %} --postgresql-db {{ task.postgresql.database_backup.name | join(' --postgresql-db ') }} \
                   {% else %} postgresql{% endif %}

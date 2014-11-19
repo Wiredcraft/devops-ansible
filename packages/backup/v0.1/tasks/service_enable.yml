@@ -2,5 +2,5 @@
 - name: Enable default services for backup
   sudo: true
   shell:
-    devops-backup enable {{ backup.services.enable | join(' ') }}
+    batt enable {{ backup.services.enable | join(' ') }}
   when: backup.services is defined and backup.services.enable is defined

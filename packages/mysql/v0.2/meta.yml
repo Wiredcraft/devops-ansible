@@ -4,6 +4,7 @@ tags:
     - database
     - relational
 documentation: http://dev.mysql.com/doc/
+backup: true
 
 configuration:
   auto_increment_increment:

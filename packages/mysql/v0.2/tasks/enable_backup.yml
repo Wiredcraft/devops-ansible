@@ -2,4 +2,4 @@
 - name: Add MySQL to the default services for backup
   sudo: true
   shell:
-    devops-backup enable mysql
+    batt enable mysql

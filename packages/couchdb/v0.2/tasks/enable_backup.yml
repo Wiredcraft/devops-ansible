@@ -2,4 +2,4 @@
 - name: Add CouchDB to the default services for backup
   sudo: true
   shell:
-    devops-backup enable couchdb
+    batt enable couchdb

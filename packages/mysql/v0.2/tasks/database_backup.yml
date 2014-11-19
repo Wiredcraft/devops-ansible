@@ -2,6 +2,6 @@
 - name: Backup MySQL database(s)
   sudo: true
   shell:
-    devops-backup {% if task.mysql.database_backup.path is defined %}--path {{ task.mysql.database_backup.path }}{% endif %} \
-                  {% if task.mysql.database_backup.name is defined %} --mysql-db {{ task.mysql.database_backup.name | join(' --mysql-db ') }} \
-                  {% else %} mysql{% endif %}
+    batt {% if task.mysql.database_backup.path is defined %}--path {{ task.mysql.database_backup.path }}{% endif %} \
+         {% if task.mysql.database_backup.name is defined %} --mysql-db {{ task.mysql.database_backup.name | join(' --mysql-db ') }} \
+         {% else %} mysql{% endif %}

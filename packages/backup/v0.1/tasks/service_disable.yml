@@ -2,5 +2,5 @@
 - name: Disable default services for backup
   sudo: true
   shell:
-    devops-backup enable {{ backup.services.disable | join(' ') }}
-  when: backup.services is defined and backup.services.enable is defined
+    batt disable {{ backup.services.disable | join(' ') }}
+  when: backup.services is defined and backup.services.disable is defined
