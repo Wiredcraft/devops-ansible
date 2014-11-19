@@ -4,6 +4,7 @@ tags:
     - database
     - relational
 documentation: http://www.postgresql.org/docs/
+backup: true
 
 configuration:
   pg_ctl_options:

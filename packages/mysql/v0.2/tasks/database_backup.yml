@@ -1,29 +1,7 @@
 ---
-# get backup_prefix.stdout
-- include: DEVOPS_BASE/services/backup/latest/tasks/register.yml
-
-- name: Prepare backup folder for MySQL
-  # TODO: register the path so we can use for all the backup files
-  sudo: yes
-  file:
-    path: '{{ backup_prefix.stdout }}/mysql'
-    state: directory
-
-- name: Backup and compress the MySQL databases (individual)
-  sudo: yes
+- name: Backup MySQL database(s)
+  sudo: true
   shell:
-    mysqldump --opt --routines --triggers --events --flush-privileges \
-              --skip-add-drop-table --master-data=2 --dump-date --databases {{ item }} \
-              | gzip > {{ backup_prefix.stdout }}/mysql/{{ item }}_$(date "+%s").sql.gz
-  with_items:
-    # By default array with empty value so all DB are exported at once
-    task.mysql.database_backup.name | default([])
-
-- name: Backup and compress the MySQL databases (all)
-  sudo: yes
-  shell:
-    mysqldump --opt --routines --triggers --events --flush-privileges \
-              --skip-add-drop-table --master-data=2 --dump-date --all-databases \
-              | gzip > {{ backup_prefix.stdout }}/mysql/all_db_$(date "+%s").sql.gz
-  when:
-    task.mysql.database_backup.name is not defined
+    batt {% if task.mysql.database_backup.path is defined %}--path {{ task.mysql.database_backup.path }}{% endif %} \
+         {% if task.mysql.database_backup.name is defined %} --mysql-db {{ task.mysql.database_backup.name | join(' --mysql-db ') }} \
+         {% else %} mysql{% endif %}

@@ -3,6 +3,7 @@ title: Redis
 tags:
     - database
 documentation: http://redis.io/documentation
+backup: true
 
 configuration: 
     port:

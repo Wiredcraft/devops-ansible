@@ -1,0 +1,12 @@
+---
+- name: Run backup
+  sudo: true
+  shell:
+    batt {% if task.backup.run.path is defined %}--path {{ task.backup.run.path }}{% endif %} \
+         {% if task.backup.run.services is defined %} {{ task.backup.run.services | join(' ') }} {% endif %} \
+         {% if task.backup.run.mysql_dbs is defined %} --mysql-db {{ task.backup.run.mysql_dbs | join(' --mysql-db ') }}{% endif %} \
+         {% if task.backup.run.postgresql_dbs is defined %} --postgresql-db {{ task.backup.run.postgresql_dbs | join(' --postgresql-db ') }}{% endif %} \
+         {% if task.backup.run.mongodb_dbs is defined %} --mongodb-db {{ task.backup.run.mongodb_dbs | join(' --mongodb-db ') }}{% endif %} \
+         {% if task.backup.run.couchdb_dbs is defined %} --couchdb-db {{ task.backup.run.couchdb_dbs | join(' --couchdb-db ') }}{% endif %} \
+         {% if task.backup.run.redis_dbs is defined %} redis {% endif %} \
+         {% if task.backup.run.files is defined %} --file {{ task.backup.run.files | join(' --file ') }}{% endif %} \
