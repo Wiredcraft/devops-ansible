@@ -12,5 +12,8 @@
 - include: DEVOPS_BASE/services/server/latest/tasks/swap.yml
 - include: DEVOPS_BASE/services/server/latest/tasks/sysctl.yml
 
+# Add backup by default
+- include: DEVOPS_BASE/services/backup/latest/add.yml
+
 # - include: DEVOPS_PACKAGE/tasks/env.yml
 

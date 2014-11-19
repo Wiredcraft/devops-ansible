@@ -54,5 +54,8 @@
   when:
     "{{ couchdb.insecure }} == false"
 
+# Enable backup by default
+- include: DEVOPS_PACKAGE/tasks/enable_backup.yml
+
 # Ensure running
 - include: DEVOPS_PACKAGE/tasks/start.yml

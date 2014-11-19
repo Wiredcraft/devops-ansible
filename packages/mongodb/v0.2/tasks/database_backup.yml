@@ -1,0 +1,7 @@
+---
+- name: Backup MongoDB database(s)
+  sudo: true
+  shell:
+    batt {% if task.mongodb.database_backup.path is defined %}--path {{ task.mongodb.database_backup.path }}{% endif %} \
+         {% if task.mongodb.database_backup.name is defined %} --mongodb-db {{ task.mongodb.database_backup.name | join(' --mongodb-db ') }} \
+         {% else %} mongodb{% endif %}

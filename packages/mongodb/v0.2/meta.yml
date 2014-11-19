@@ -4,6 +4,7 @@ tags:
     - database
     - nosql
 documentation: http://docs.mongodb.org/manual/
+backup: true
 
 configuration: 
     user:

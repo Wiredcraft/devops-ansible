@@ -1,0 +1,5 @@
+---
+- name: Add PostgreSQL to the default services for backup
+  sudo: true
+  shell:
+    batt enable postgresql

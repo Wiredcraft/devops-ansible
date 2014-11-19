@@ -8,3 +8,11 @@ tasks:
     description: Reload Redis, reload the configuration and perform a graceful restart
   - name: restart
     description: Restart Redis, reload the configuration (but kills existing connection)
+  - name: database backup
+    description: Backup database(s)
+    options:
+      path: 
+        default: /opt/backup/%Y/%m/%d
+        description: Path to destination folder of the backup
+        required: false
+        type: string

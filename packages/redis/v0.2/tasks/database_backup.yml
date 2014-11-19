@@ -1,0 +1,7 @@
+---
+- name: Backup Redis database(s)
+  sudo: true
+  shell:
+    batt {% if task.redis.database_backup.path is defined %}--path {{ task.redis.database_backup.path }}{% endif %} \
+         {% if task.redis.database_backup.name is defined %} --redis-db {{ task.redis.database_backup.name | join(' --redis-db ') }} \
+         {% else %} redis{% endif %}

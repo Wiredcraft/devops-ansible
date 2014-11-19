@@ -1,0 +1,6 @@
+---
+- name: Enable default services for backup
+  sudo: true
+  shell:
+    batt enable {{ backup.services.enable | join(' ') }}
+  when: backup.services is defined and backup.services.enable is defined
