@@ -15,7 +15,7 @@
     owner=root
     group=root
     mode=0644
-  when: backup.schedules | length > 0
+  when: backup is defined and backup.schedules is defined and backup.schedules | length > 0
 
 - name: Ensure log folder for BackupAllTheThings
   file:
