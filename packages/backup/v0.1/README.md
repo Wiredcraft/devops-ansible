@@ -10,7 +10,7 @@ Several of the databases available in [devo.ps](http://devo.ps) come with a back
 - MongoDB
 - Redis
 
-The backup files are then available by default in /opt/backup/YYYY/MM/DD/{service} in compressed archives.
+The backup files are then available by default in `/opt/backup/YYYY/MM/DD/{service}` in compressed archives.
 
 The services for which the backup service is available are marked in the documentation.
 
