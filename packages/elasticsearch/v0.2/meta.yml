@@ -11,6 +11,16 @@ configuration:
         description: The IP address to bind to.
         type: string
         required: false
+    publish_host:
+        default: '127.0.0.1'
+        description: The address other nodes will use to communicate with this node.
+        type: string
+        required: false
+    host:
+        default: 
+        description: Set both 'bind_host' and 'publish_host'. If defined it overrides both 'bind_host' and 'publish_host' settings.
+        type: string
+        required: false
     http_port:
         default: 9200
         description: Listening port for HTTP traffic
