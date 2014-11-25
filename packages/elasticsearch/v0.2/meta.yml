@@ -17,7 +17,6 @@ configuration:
         type: string
         required: false
     host:
-        default: 
         description: Set both 'bind_host' and 'publish_host'. If defined it overrides both 'bind_host' and 'publish_host' settings.
         type: string
         required: false
