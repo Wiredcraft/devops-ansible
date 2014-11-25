@@ -2,7 +2,7 @@ The backup service provides simple local backup for the services installed on th
 
 ## Backup support
 
-Several of the databases available in [devo.ps](http://devo.ps) come with a *backup* support among which:
+Several of the databases available in [devo.ps](http://devo.ps) come with a backup support among which:
 
 - MySQL 
 - PostgreSQL
