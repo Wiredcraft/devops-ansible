@@ -1,0 +1,30 @@
+---
+- name: Restart Postfix
+  service: 
+    name=postfix
+    state=restarted
+
+- name: Reload Postfix
+  service: 
+    name=postfix
+    state=reloaded
+
+- name: Ensure Postfix is running
+  service: 
+    name=postfix
+    state=started
+
+- name: Ensure Postfix is stopped
+  service:
+    name=postfix
+    state=stopped
+
+- name: Ensure Postfix is enabled
+  service: 
+    name=postfix
+    enabled=yes
+
+- name: Ensure Postfix is disabled
+  service: 
+    name=postfix
+    enabled=no

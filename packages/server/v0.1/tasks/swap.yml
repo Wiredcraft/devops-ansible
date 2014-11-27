@@ -8,6 +8,8 @@
     item.enable is not defined or item.enable == True
   with_items:
     - "{{ server.swap | default({}) }}"
+  tags:
+    - full_sync
 
 - name: Ensure proper permissions for the SWAP file
   file:
@@ -20,6 +22,9 @@
     item.enable is not defined or item.enable == True
   with_items:
     - "{{ server.swap | default({}) }}"
+  tags:
+    - full_sync
+
 
 - name: Ensure the SWAP file is used at boot
   lineinfile: 
@@ -31,9 +36,13 @@
     item.enable is not defined or item.enable == True
   with_items:
     - "{{ server.swap | default({}) }}"
+  tags:
+    - full_sync
 
 - name: Ensure the SWAP is used
   command:
     swapon -a
   when:
     server.swap is not defined or server.swap.enable is not defined or server.swap.enable == True
+  tags:
+    - full_sync
