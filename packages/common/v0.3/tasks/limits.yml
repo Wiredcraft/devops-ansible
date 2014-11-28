@@ -1,0 +1,10 @@
+---
+- name: Ensure limits nofile is set to 64K
+  copy: 
+    src=DEVOPS_PACKAGE/files/limits.nofile.conf
+    dest=/etc/security/limits.d/nofile.conf
+    owner=root
+    group=root
+    mode=0644
+  tags:
+    - full_sync

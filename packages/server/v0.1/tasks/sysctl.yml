@@ -2,9 +2,11 @@
 - name: Ensure swappiness is set to 1
   sysctl: 
     name=vm.swappiness
-    value=0
+    value=1
     reload=yes
     state=present
+  tags:
+    - full_sync
 
 - name: Ensure sysctl settings
   sysctl:
@@ -16,3 +18,5 @@
     ignoreerrors=yes
   with_dict: 
     server.sysctl | default({})
+  tags:
+    - full_sync

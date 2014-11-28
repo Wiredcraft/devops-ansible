@@ -1,0 +1,10 @@
+---
+- name: Ensure postfix is only listening to localhost
+  lineinfile:
+    dest=/etc/postfix/main.cf
+    regexp='^inet_interfaces'
+    line='inet_interfaces = 127.0.0.1'
+    state=present
+  notify: Restart Postfix
+  tags:
+    - full_sync

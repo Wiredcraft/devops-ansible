@@ -1,0 +1,36 @@
+---
+- name: Ensure python-apt is installed
+  shell: 
+    creates=/home/devops/.ansible/python-apt
+    /usr/bin/apt-get install -y python-apt-common && touch /home/devops/.ansible/python-apt
+
+# Ensure troubleshooting tools
+- name: Ensure APT cache is up-to-date
+  apt: 
+    update_cache=yes
+
+- name: Ensure the packages are up-to-date
+  apt:
+    upgrade=safe
+  tags:
+    - full_sync
+
+- name: Ensure base packages are installed
+  apt: 
+    name={{ item }}
+    state=present
+    update_cache=yes
+  with_items:
+    - python-software-properties
+    - python-pycurl
+    - htop
+    - iftop
+    - sysstat
+    - dstat
+    - subversion
+    - git
+    - postfix
+    - make
+    - gcc
+    - g++
+    - python-pip

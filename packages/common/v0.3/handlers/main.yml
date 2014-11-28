@@ -1,0 +1,2 @@
+---
+- include: DEVOPS_PACKAGE/handlers/postfix.yml
