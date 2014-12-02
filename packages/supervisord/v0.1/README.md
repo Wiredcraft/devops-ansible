@@ -21,10 +21,10 @@ It can be used to manage any type of process, from custom python code to node.js
 
   We here define a node.js application that will run as `nobody` user, execute the `app.js` code from the `/opt/api` folder. It will restart automatically no matter how. Both `NODE_ENV` and `MANDRILL_API_KEY` environment variable will be passed along to the running process.
 
-
 * ### Python app
 
   ```example
+  configuration:
     supervisord:
       programs:
         - name: app
@@ -38,6 +38,7 @@ It can be used to manage any type of process, from custom python code to node.js
 * ### Custom app
 
   ```example
+  configuration:
     supervisord:
       programs:
         - name: consul
@@ -45,7 +46,6 @@ It can be used to manage any type of process, from custom python code to node.js
   ```
 
   We here define a simple program that will execute a custom command; in this case the `consul` agent as root.
-
 
 ## Parameters
 
