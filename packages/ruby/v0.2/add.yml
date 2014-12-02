@@ -23,7 +23,8 @@
     line='{{ item }}'
     state=present
   with_items:
-    - 'export PATH="/opt/rbenv/bin:$PATH"'
+    - 'export RBENV_ROOT=/opt/rbenv'
+    - 'export PATH="$RBENV_ROOT/bin:$PATH"'
     - 'eval "$(rbenv init -)"'
 
 - name: Add rbenv plugins
