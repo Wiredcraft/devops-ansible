@@ -1,21 +1,41 @@
 ---
-- name: Ensure Ruby is installed
-  apt: 
-    pkg={{ item }}
-    state=present
-  with_items:
-    - rubygems
-  when:
-    ansible_lsb.major_release|int < 14
-
-- name: Ensure Ruby is installed
+- name: Ensure Ruby and rbenv are installed (system)
   apt: 
     pkg={{ item }}
     state=present
   with_items:
     - ruby
-  when:
-    ansible_lsb.major_release|int >= 14
+    - rbenv
+
+- name: Ensure global rbenv folders
+  file:
+    dest={{ item }}
+    state=directory
+    owner=root
+    group=root
+  with_items:
+    - /opt/rbenv
+    - /opt/rbenv/plugins
+
+- name: Set rbenv PATH and shims
+  lineinfile:
+    dest=/etc/profile
+    line={{ item }}
+    state=present
+  with_items:
+    - export PATH="/opt/rbenv/bin:$PATH"
+    - eval "$(rbenv init -)"
+
+- name: Add rbenv plugins
+  git:
+    repo=https://github.com/sstephenson/ruby-build.git
+    dest=/opt/rbenv/plugins/ruby-build
+
+- name: Install Ruby versions
+  shell:
+    rbenv install {{ item.key }}
+  with_dict:
+    ruby.versions
 
 - name: Ensure custom gem modules are installed
   gem:
