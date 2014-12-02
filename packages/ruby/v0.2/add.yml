@@ -20,11 +20,11 @@
 - name: Set rbenv PATH and shims
   lineinfile:
     dest=/etc/profile
-    line={{ item }}
+    line='{{ item }}'
     state=present
   with_items:
-    - export PATH="/opt/rbenv/bin:$PATH"
-    - eval "$(rbenv init -)"
+    - 'export PATH="/opt/rbenv/bin:$PATH"'
+    - 'eval "$(rbenv init -)"'
 
 - name: Add rbenv plugins
   git:
