@@ -29,12 +29,12 @@ Multiple versions of Ruby (and gems) can be installed with [rbenv](https://githu
   configuration:
     ruby:
       versions:
-        1.9.3-p327: {}
+        1.9.3-p551: {}
       gems:
         - compass
   ```
 
-  We are installing here both the default version of Ruby available on the system via the package manager (apt), and the version `1.9.3-p327`. We install as well `compass` using the **system version** of Ruby, but install no extra gems with the `1.9.3-p327` version.
+  We are installing here both the default version of Ruby available on the system via the package manager (apt), and the version `1.9.3-p551`. We install as well `compass` using the **system version** of Ruby, but install no extra gems with the `1.9.3-p551` version.
 
 * ### Multiple custom Ruby versions and gems
 
@@ -45,15 +45,15 @@ Multiple versions of Ruby (and gems) can be installed with [rbenv](https://githu
   configuration:
     ruby:
       versions:
-        1.9.3-p327:
+        1.9.3-p551:
           gems:
             - rails
-        2.0.0:
+        2.0.0-p598:
           gems:
             - rails
   ```
 
-  We are installing here the default version of Ruby available on the system via the package manager (apt), as well as 2 extra versions of Ruby (`1.9.3-p327` and `2.0.0.`). No gems are installed for the system version of Ruby, but `rails` is installed for both extra versions of Ruby.
+  We are installing here the default version of Ruby available on the system via the package manager (apt), as well as 2 extra versions of Ruby (`1.9.3-p551` and `2.0.0-p598`). No gems are installed for the system version of Ruby, but `rails` is installed for both extra versions of Ruby.
 
 ## Plugins of rbenv
 

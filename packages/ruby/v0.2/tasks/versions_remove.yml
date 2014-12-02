@@ -1,0 +1,8 @@
+---
+- name: Remove Ruby versions
+  sudo: yes
+  shell:
+    bash -l -c 'rbenv uninstall --force {{ item }} && rbenv rehash'
+  with_items:
+    task.ruby.versions_remove.versions | default([])
+  ignore_errors: yes

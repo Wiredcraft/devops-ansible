@@ -5,8 +5,15 @@ tasks:
     options:
       gems:
         type: array
-        description: List of gems (string) to add
+        description: List of gems (string) to add.
         required: true
+      ruby_version:
+        type: string
+        description: >
+          Version of Ruby the gems should be installed to. Note: the version of
+          Ruby should be installed on the system already.
+        required: false
+        default: system
   - name: gems remove
     description: Remove Ruby gems globally
     options:
@@ -14,3 +21,29 @@ tasks:
         type: array
         description: List of gems (string) to remove
         required: true
+      ruby_version:
+        type: string
+        description: >
+          Version of Ruby the gem should be removed from. Note: the version of
+          Ruby should be installed on the system.
+        required: false
+        default: system
+  - name: versions list
+    description: List installed versions of Ruby in rbenv
+  - name: versions list available
+    description: List available versions of Ruby (installable in rbenv)
+  - name: versions add
+    description: Add versions of Ruby (need to be installable)
+    options:
+      versions:
+        type: array
+        description: List of Ruby versions to install.
+        required: true
+  - name: versions remove
+    description: Remove versions of Ruby (available in rbenv)
+    options:
+      versions:
+        type: array
+        description: List of Ruby versions to install.
+        required: true
+

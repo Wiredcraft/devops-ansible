@@ -1,10 +1,8 @@
 ---
-- name: Ensure custom gem modules are removed
+- name: Ensure custom gem packages are removed
   sudo: yes
-  gem:
-    name={{ item }}
-    state=absent
-    user_install=no
-  with_items:
-    task.ruby.gems_remove.gems | default([])
+  shell:
+    bash -l -c 'rbenv shell {{ task.ruby.gems_remove.ruby_version | default("system") }} && gem uninstall --all --executables --ignore-dependencies {{ task.ruby.gems_remove.gems | join(" ") }} && rbenv rehash'
+  when:
+    task.ruby.gems_remove.gems is defined and task.ruby.gems_remove.gems | length > 0
   ignore_errors: yes

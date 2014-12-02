@@ -1,0 +1,8 @@
+---
+- name: Add Ruby versions
+  sudo: yes
+  shell:
+    bash -l -c 'cd /opt/rbenv/plugins/ruby-build && git pull ; rbenv install {{ item }} && rbenv rehash'
+  with_items:
+    task.ruby.versions_add.versions | default([])
+  ignore_errors: yes

@@ -8,6 +8,7 @@
     - rbenv
     - zlib1g-dev
     - libssl-dev
+    - libsqlite3-dev
 
 - name: Ensure global rbenv folders
   file:
@@ -43,7 +44,7 @@
 
 - name: Install Ruby gems versions (bare with us ...)
   shell:
-    bash -l -c 'rbenv shell {{ item.key }} && gem install --no-rdoc --no-ri --no-user-install {{ item.value.gems | join(" ") }}'
+    bash -l -c 'rbenv shell {{ item.key }} && gem install --no-rdoc --no-ri --no-user-install {{ item.value.gems | join(" ") }}; rbenv rehash'
   when:
     item.value.gems is defined and item.value.gems | length > 0
   with_dict:
