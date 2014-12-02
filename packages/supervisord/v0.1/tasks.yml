@@ -30,7 +30,7 @@ tasks:
       env:
         type: string
         required: false
-        description: Space separated list of environment variables to provide to the command on execution.
+        description: Comma separated list of environment variables to provide to the command on execution.
         default: null
       log:
         type: object
