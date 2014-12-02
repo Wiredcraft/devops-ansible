@@ -34,9 +34,17 @@
     repo=https://github.com/sstephenson/ruby-build.git
     dest=/opt/rbenv/plugins/ruby-build
 
-- name: Install Ruby versions
+- name: Install Ruby versions (bare with us ...)
   shell:
     bash -l -c 'rbenv install {{ item.key }}'
+  with_dict:
+    ruby.versions
+
+- name: Install Ruby gems versions (bare with us ...)
+  shell:
+    bash -l -c 'rbenv shell {{ item.key }} && gem install --no-rdoc --no-ri --no-user-install {{ item.value.gems | join(" ") }}'
+  when:
+    item.value.gems is defined and item.value.gems | length > 0
   with_dict:
     ruby.versions
 
