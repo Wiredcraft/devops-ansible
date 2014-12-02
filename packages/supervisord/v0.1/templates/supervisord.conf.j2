@@ -1,15 +1,15 @@
-{% set inet = supervisord.inet | default({}) %}
-
 [supervisord]
 nodaemon = {% if supervisord.nodaemon is defined %}{{ supervisord.nodaemon }}{% else %}false{% endif %}
 
+
+{% set inet = supervisord.inet | default({}) %}
+{% if inet.port is defined and inet.port %}
 [inet_http_server]
-{% if inet.port is defined %}
 port = {{ inet.port }}
-{% endif %}
-{% if inet.username is defined %}
+{% if inet.username is defined and inet.username %}
 username = {{ inet.username }}
 {% endif %}
-{% if inet.password is defined %}
+{% if inet.password is defined and inet.password%}
 password = {{ inet.password }}
+{% endif %}
 {% endif %}
