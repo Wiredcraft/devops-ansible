@@ -36,7 +36,7 @@
 
 - name: Install Ruby versions (bare with us ...)
   shell:
-    bash -l -c 'rbenv install {{ item.key }}'
+    bash -l -c 'rbenv install -s {{ item.key }}'
   with_dict:
     ruby.versions
 
