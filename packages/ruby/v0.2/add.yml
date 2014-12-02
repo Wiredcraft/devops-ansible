@@ -6,6 +6,8 @@
   with_items:
     - ruby
     - rbenv
+    - zlib1g-dev
+    - libssl-dev
 
 - name: Ensure global rbenv folders
   file:
@@ -15,7 +17,6 @@
     group=root
   with_items:
     - /opt/rbenv
-    - /opt/rbenv/plugins
     - /opt/rbenv/shims
     - /opt/rbenv/versions
 
