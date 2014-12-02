@@ -62,4 +62,4 @@ supervisord:
         second = parameter
 ```
 
-Note the `|` after `extra:`, it will ensure both lines below are effectively treated as lines (instead of space separated strings of a larger `extra` string). See the [official YAML documentation)[http://www.yaml.org/spec/1.2/spec.html#id2760844] for more details about the scalars format.
+Note the `|` after `extra:`, it will ensure both lines below are effectively treated as lines (instead of space separated strings of a larger `extra` string). See the [official YAML documentation](http://www.yaml.org/spec/1.2/spec.html#id2760844) for more details about the scalars format.
