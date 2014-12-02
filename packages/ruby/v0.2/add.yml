@@ -16,6 +16,8 @@
   with_items:
     - /opt/rbenv
     - /opt/rbenv/plugins
+    - /opt/rbenv/shims
+    - /opt/rbenv/versions
 
 - name: Set rbenv PATH and shims
   lineinfile:
