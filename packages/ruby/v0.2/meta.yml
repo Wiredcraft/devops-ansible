@@ -1,5 +1,6 @@
 ---
 title: Ruby
+experimental: true
 tags:
     - language
 documentation: https://www.ruby-lang.org/en/documentation/
