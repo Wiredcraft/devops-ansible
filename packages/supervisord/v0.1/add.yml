@@ -15,6 +15,14 @@
     mode=0644
   notify: Restart Supervisord
 
+- name: Update Supervisord default PATH
+  lineinfile:
+    dest=/etc/default/supervisor
+    line='PATH={{ item }}:$PATH'
+  with_items:
+    - /opt/rbenv/shims
+  notify: Restart Supervisord
+
 - name: Prepare configurations for the Supervisord's programs
   template:
     src=DEVOPS_PACKAGE/templates/program.conf.j2
@@ -32,7 +40,7 @@
     name={{ item.item.name }}
     state=restarted
   when:
-    item.changed
+    supervisord_programs is defined and supervisord_programs.results is defined and supervisord_programs.results | length > 0 and item.changed
   with_items:
     supervisord_programs.results
 

@@ -1,0 +1,5 @@
+---
+- name: List the available versions of Ruby
+  sudo: yes
+  shell:
+    bash -l -c 'cd /opt/rbenv/plugins/ruby-build && git pull ; rbenv install -l' >&2

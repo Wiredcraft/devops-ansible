@@ -1,21 +1,54 @@
 ---
-- name: Ensure Ruby is installed
-  apt: 
-    pkg={{ item }}
-    state=present
-  with_items:
-    - rubygems
-  when:
-    ansible_lsb.major_release|int < 14
-
-- name: Ensure Ruby is installed
+- name: Ensure Ruby and rbenv are installed (system)
   apt: 
     pkg={{ item }}
     state=present
   with_items:
     - ruby
+    - rbenv
+    - zlib1g-dev
+    - libssl-dev
+    - libsqlite3-dev
+
+- name: Ensure global rbenv folders
+  file:
+    dest={{ item }}
+    state=directory
+    owner=root
+    group=root
+  with_items:
+    - /opt/rbenv
+    - /opt/rbenv/shims
+    - /opt/rbenv/versions
+
+- name: Set rbenv PATH and shims
+  lineinfile:
+    dest=/etc/profile
+    line='{{ item }}'
+    state=present
+  with_items:
+    - 'export RBENV_ROOT=/opt/rbenv'
+    - 'export PATH="$RBENV_ROOT/bin:$PATH"'
+    - 'eval "$(rbenv init -)"'
+
+- name: Add rbenv plugins
+  git:
+    repo=https://github.com/sstephenson/ruby-build.git
+    dest=/opt/rbenv/plugins/ruby-build
+
+- name: Install Ruby versions (bare with us ...)
+  shell:
+    bash -l -c 'rbenv install -s {{ item.key }}'
+  with_dict:
+    ruby.versions
+
+- name: Install Ruby gems versions (bare with us ...)
+  shell:
+    bash -l -c 'rbenv shell {{ item.key }} && gem install --no-rdoc --no-ri --no-user-install {{ item.value.gems | join(" ") }}; rbenv rehash'
   when:
-    ansible_lsb.major_release|int >= 14
+    item.value.gems is defined and item.value.gems | length > 0
+  with_dict:
+    ruby.versions
 
 - name: Ensure custom gem modules are installed
   gem:

@@ -1,10 +1,8 @@
 ---
-- name: Ensure custom gem modules are installed
+- name: Ensure custom gem packages are installed
   sudo: yes
-  gem:
-    name={{ item }}
-    state=present
-    user_install=no
-  with_items:
-    task.ruby.gems_add.gems | default([])
+  shell:
+    bash -l -c 'rbenv shell {{ task.ruby.gems_add.ruby_version | default("system") }} && gem install --no-rdoc --no-ri --no-user-install {{ task.ruby.gems_add.gems | join(" ") }} && rbenv rehash'
+  when:
+    task.ruby.gems_add.gems is defined and task.ruby.gems_add.gems | length > 0
   ignore_errors: yes

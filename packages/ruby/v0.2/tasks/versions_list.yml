@@ -1,0 +1,4 @@
+---
+- name: List the installed versions of Ruby
+  shell:
+    bash -l -c 'rbenv versions' >&2
