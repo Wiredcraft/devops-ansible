@@ -32,7 +32,7 @@
     name={{ item.item.name }}
     state=restarted
   when:
-    item.changed
+    supervisord_programs is defined and supervisord_programs.results is defined and supervisord_programs.results | length > 0 and item.changed
   with_items:
     supervisord_programs.results
 
