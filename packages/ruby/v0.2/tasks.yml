@@ -9,9 +9,7 @@ tasks:
         required: true
       ruby_version:
         type: string
-        description: >
-          Version of Ruby the gems should be installed to. Note: the version of
-          Ruby should be installed on the system already.
+        description: Version of Ruby the gems should be installed to. Note: the version of Ruby should be installed on the system already.
         required: false
         default: system
   - name: gems remove
@@ -23,9 +21,7 @@ tasks:
         required: true
       ruby_version:
         type: string
-        description: >
-          Version of Ruby the gem should be removed from. Note: the version of
-          Ruby should be installed on the system.
+        description: Version of Ruby the gem should be removed from. Note: the version of Ruby should be installed on the system.
         required: false
         default: system
   - name: versions list
