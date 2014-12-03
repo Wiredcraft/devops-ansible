@@ -20,7 +20,7 @@ Multiple versions of Ruby (and gems) can be installed with [rbenv](https://githu
 
   We are installing here the default version of Ruby available on the system via the package manager (apt), and install globally the gems `rails` and `compass`
 
-* ### Single custom Ruby version
+* ### Single custom version
 
   ```example
   services:
@@ -36,7 +36,7 @@ Multiple versions of Ruby (and gems) can be installed with [rbenv](https://githu
 
   We are installing here both the default version of Ruby available on the system via the package manager (apt), and the version `1.9.3-p551`. We install as well `compass` using the **system version** of Ruby, but install no extra gems with the `1.9.3-p551` version.
 
-* ### Multiple custom Ruby versions and gems
+* ### Multiple custom versions
 
   ```example
   services:
