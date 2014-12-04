@@ -1,1 +1,36 @@
-add.yml
+---
+tasks:
+  - name: start
+    description: Start all the apps managed by Forever if stopped.
+  - name: stop
+    description: Stop all the apps managed by Forever if started.
+  - name: restart
+    description: Restart all the apps managed by Forever.
+  - name: app add
+    description: Add a new app defintion for forever to run.
+    options:
+      name:
+        type: string
+        description: Name of your app
+        required: true
+      root:
+        type: string
+        description: Path of the root folder of your app
+        required: true
+      script:
+        type: string
+        description: Node.js script to run via foreverd
+        required: true
+      node_env:
+        type: string
+        description: Node.js environment var NODE_ENV
+        required: false
+      user:
+        type: string
+        description: Running user of the application
+        required: false
+        default: devops
+      extra_env:
+        type: string
+        description: Additional environment variable to pass to the application
+        required: false
