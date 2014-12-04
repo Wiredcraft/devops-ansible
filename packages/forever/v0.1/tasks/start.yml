@@ -1,0 +1,6 @@
+---
+- name: Ensure forever is running
+  sudo: yes
+  service: 
+    name=forever
+    state=started

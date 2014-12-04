@@ -1,7 +1,7 @@
 ---
 title: Supervisord
 tags:
-    - daemon
+    - process manager
 documentation: http://supervisord.org/configuration.html
 
 configuration:

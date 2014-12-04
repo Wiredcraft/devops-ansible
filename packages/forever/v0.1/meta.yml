@@ -1,0 +1,9 @@
+---
+title: Forever
+tags:
+    - process manager
+require:
+    - nodejs
+documentation: https://github.com/nodejitsu/forever/
+
+configuration: {}

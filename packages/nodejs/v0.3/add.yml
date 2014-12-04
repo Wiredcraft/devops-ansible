@@ -1,0 +1,19 @@
+---
+- name: Ensure NodeJS ppa is present
+  apt_repository:
+    repo='ppa:chris-lea/node.js'
+    state=present
+    update_cache=yes
+
+- name: Ensure NodeJS is installed
+  apt: 
+    pkg=nodejs
+    state=present
+
+- name: Ensure custom npm modules are installed
+  npm:
+    name={{ item }}
+    global=yes
+  with_items:
+    nodejs.packages
+  ignore_errors: yes

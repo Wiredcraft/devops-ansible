@@ -2,5 +2,5 @@
 title: uWSGI
 experimental: true
 tags:
-    - app
+    - process manager
 documentation: http://uwsgi-docs.readthedocs.org/en/latest/

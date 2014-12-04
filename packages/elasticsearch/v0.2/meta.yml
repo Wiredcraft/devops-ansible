@@ -3,6 +3,8 @@ title: ElasticSearch
 tags:
     - database
     - full text
+require:
+    - java
 documentation: http://www.elasticsearch.org/guide/
 
 configuration: 
