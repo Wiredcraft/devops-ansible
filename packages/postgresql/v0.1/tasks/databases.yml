@@ -15,6 +15,7 @@
     name={{ item.1 }}
     db={{ item.0.name }}
     priv=ALL
+    role_attr_flags=SUPERUSER
     state=present
   with_subelements:
     - postgresql.databases | default([])

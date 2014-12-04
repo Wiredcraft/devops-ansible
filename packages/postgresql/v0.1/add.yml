@@ -6,7 +6,8 @@
   with_items:
     - postgresql
     - libpq-dev
-    - python-psycopg2 
+    - python-psycopg2
+    - postgresql-contrib
 
 - name: Ensure the PostgreSQL configuration are up to date (step1)
   template:
