@@ -10,9 +10,9 @@ USERNAME={{ item.user }}
 {% set extra_env = item.extra_env | default('') %}
 {% if extra_env[0] == '"' %}
 {# quoted parameters #}
-EXTRA_ENV={{ item.extra_env | default('') }}
+EXTRA_ENV={{ item.extra_env | default('') | trim }}
 {% else %}
-EXTRA_ENV="{{ item.extra_env | default('') }}"
+EXTRA_ENV="{{ item.extra_env | default('') | trim }}"
 {% endif %}
 
 OPTIONS="--pidFile=/var/run/forever/$NAME.pid -a -l /var/log/forever/$NAME.log"
