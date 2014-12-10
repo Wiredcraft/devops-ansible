@@ -17,4 +17,4 @@
     state=absent
     path=/var/www/{{ task.nginx.vhost_remove.id }}
   when:
-    task.nginx.vhost_remove.purge == True
+    task.nginx.vhost_remove.purge is defined and task.nginx.vhost_remove.purge == True
