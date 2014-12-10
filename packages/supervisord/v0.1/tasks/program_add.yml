@@ -1,7 +1,7 @@
 ---
 # Expects to be triggerd via task with
 
-- name: Add Supervisord program
+- name: Add Supervisord program configuration
   sudo: yes
   template: 
     src=DEVOPS_PACKAGE/templates/program.conf.j2
@@ -10,13 +10,21 @@
     group=root
     mode=644
 
-- name: Start the Supervisord program
+- name: Add the program to Supervisord
   sudo: yes
   supervisorctl: 
     name={{ task.supervisord.program_add.name }}
-    state=started
+    state=present
+  register: program_added
+
+- name: Restart the program if present already
+  sudo: yes
+  supervisorctl: 
+    name={{ task.supervisord.program_add.name }}
+    state=restarted
   when:
-    task.supervisord.program_add.autostart is not defined or task.supervisord.program_add.autostart
+    program_added.changed and task.supervisord.program_add.autostart is not defined or task.supervisord.program_add.autostart
+
 
 # Register the vhost to the devops registry
 - name: Register Supervisord program
