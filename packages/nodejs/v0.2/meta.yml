@@ -1,5 +1,7 @@
 ---
 title: Node.js
+name: nodejs
+
 tags:
     - language
 documentation: http://nodejs.org/api/
