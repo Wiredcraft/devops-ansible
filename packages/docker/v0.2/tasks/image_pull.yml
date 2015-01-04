@@ -1,0 +1,4 @@
+---
+- name: Fetch a docker image
+  shell:
+    docker pull '{{ task.docker.pull_image.name }}'
