@@ -1,6 +1,6 @@
 ---
 # Require java to be present ...
-- include: DEVOPS_BASE/services/java/latest/add.yml
+# - include: DEVOPS_BASE/services/java/latest/add.yml
 
 - name: Ensure ElasticSearch repo GPG key is present
   apt_key:

@@ -8,3 +8,10 @@ tasks:
     description: Reload Docker, reload the configuration.
   - name: restart
     description: Restart Docker, stop then start the Docker daemon
+  - name: image pull
+    description: Pull a container image
+    options:
+      name: 
+        type: string
+        description: Name of the docker image to pull
+        required: true
