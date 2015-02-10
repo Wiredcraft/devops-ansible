@@ -8,7 +8,7 @@ NODE_ENV={{ item.node_env }}
 USERNAME={{ item.user }}
 
 {% set extra_env = item.extra_env | default('') %}
-{% if extra_env[0] == '"' %}
+{% if extra_env and extra_env|first() == '"' %}
 {# quoted parameters #}
 EXTRA_ENV={{ item.extra_env | default('') | trim }}
 {% else %}
