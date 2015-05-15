@@ -60,8 +60,8 @@ locations:
 
 defaults:
     image:
-        id: 9801950
-        name: Ubuntu 14.04.1 64bit LTS
+        id: 11836690
+        name: Ubuntu 14.04.2 64bit LTS
     location:
         id: 3
         name: San Francisco 1
